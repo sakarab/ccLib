@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+USEUNIT("Src\ccMatch.cpp");
+USEUNIT("Src\ccRegExp.cpp");
+USEUNIT("Src\ccUtils.cpp");
+USEUNIT("Src\CdlList.cpp");
+USEUNIT("Src\CIniFiles.cpp");
+USEUNIT("Src\CommandLine.cpp");
+USEUNIT("Src\CStreams.cpp");
+USEUNIT("Src\CSync.cpp");
+USEUNIT("Src\CTree.cpp");
+USEUNIT("Src\RefCnt.cpp");
+USEUNIT("Src\ScanDir.cpp");
+USEUNIT("Src\Buffers.cpp");
+USEUNIT("Src\ZLibStream.cpp");
+USEUNIT("Src\ccList.cpp");
+//---------------------------------------------------------------------------
+#define Library
+
+// To add a file to the library use the Project menu 'Add to Project'.
+

@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{319A0F6B-A473-4718-82D1-A4428F335516}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="ccLib.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ccLibTest.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="ccLib">
+			<MSBuild Projects="ccLib.cbproj"/>
+		</Target>
+		<Target Name="ccLib:Clean">
+			<MSBuild Projects="ccLib.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="ccLib:Make">
+			<MSBuild Projects="ccLib.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="ccLibTest">
+			<MSBuild Projects="ccLibTest.cbproj"/>
+		</Target>
+		<Target Name="ccLibTest:Clean">
+			<MSBuild Projects="ccLibTest.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="ccLibTest:Make">
+			<MSBuild Projects="ccLibTest.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="ccLib;ccLibTest"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="ccLib:Clean;ccLibTest:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="ccLib:Make;ccLibTest:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

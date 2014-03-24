@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frSelectEncoding</class>
+ <widget class="QWidget" name="frSelectEncoding">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>507</width>
+    <height>130</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Encoding:</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="cbEncoding">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Encoding used in the absence of BOM</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>&lt;none&gt;</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">System</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Apple Roman</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Big5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Big5-HKSCS</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">CP949</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">EUC-JP</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">EUC-KR</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">GB18030-0</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">IBM 850</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">IBM 866</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">IBM 874</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 2022-JP</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-6</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-7</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-10</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-13</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-14</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-15</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ISO 8859-16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Bng</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Dev</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Gjr</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Knd</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Mlm</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Ori</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Pnj</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Tlg</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Iscii-Tml</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">JIS X 0201</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">JIS X 0208</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">KOI8-R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">KOI8-U</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">MuleLao-1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">ROMAN8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Shift-JIS</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">TIS-620</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">TSCII</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-16BE</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-16LE</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-32</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-32BE</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">UTF-32LE</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1250</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1251</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1252</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1253</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1254</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1255</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1256</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1257</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">Windows-1258</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string notr="true">WINSAMI2</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="cbTextPreview">
+     <property name="text">
+      <string>Text Preview</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="lblPreviewBOM">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>BOM of selected file</string>
+     </property>
+     <property name="text">
+      <string>&lt;none&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QCheckBox" name="cbIgnoreBOM">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Ignore BOM</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QPlainTextEdit" name="ptePreview">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>80</height>
+      </size>
+     </property>
+     <property name="undoRedoEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::NoWrap</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

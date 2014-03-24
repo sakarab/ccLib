@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{0cbdae68-6268-42a6-bdbc-e11c5c9a595c}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_RTL_Win32">
+      <UniqueIdentifier>{d771dbaf-3113-4b83-a44f-e458edc83440}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_RTL_x64">
+      <UniqueIdentifier>{c2142477-b0f7-4d46-80b0-d1ea02c8a02c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_Static_Win32">
+      <UniqueIdentifier>{d7bf5bbe-e083-4f89-b37b-154094deb775}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_Static_x64">
+      <UniqueIdentifier>{c016bdce-2511-4ebb-b044-d709c54d03ca}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_RTL_Win32">
+      <UniqueIdentifier>{5fde1989-a2b6-4a9f-84f8-f2a82dd09acf}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_RTL_x64">
+      <UniqueIdentifier>{d17c2250-dd98-4f63-b5b6-6cea83eedbd9}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_Static_Win32">
+      <UniqueIdentifier>{1fcf88e6-f490-4d38-9283-ee02a7704116}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_Static_x64">
+      <UniqueIdentifier>{aca593f5-e723-49fc-ac8b-8d7f249ba3a8}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\smException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BomUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtSingletons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ScanDirectory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\IDirIter_Boost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\IDirIter_Qt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\qqOpenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frmSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\RefCnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\smException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\BomUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\QtApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\QtSingletons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\SharedFlag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IDirIter_Boost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IDirIter_Qt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IDirIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ScanDirectory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\qqOpenDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\frSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\Forms\frmSelectEncoding.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\frmSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Src\QtTrans\cclib_el.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

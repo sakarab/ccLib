@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="G:\Lib\ccLib50s.lib"/>
+    <OBJFILES value="OutC\ccLib\ccMatch.obj OutC\ccLib\ccRegExp.obj OutC\ccLib\ccUtils.obj 
+      OutC\ccLib\CdlList.obj OutC\ccLib\CIniFiles.obj OutC\ccLib\CommandLine.obj 
+      OutC\ccLib\CStreams.obj OutC\ccLib\CSync.obj OutC\ccLib\CTree.obj 
+      OutC\ccLib\RefCnt.obj OutC\ccLib\ScanDir.obj OutC\ccLib\Buffers.obj 
+      OutC\ccLib\ZLibStream.obj OutC\ccLib\ccList.obj"/>
+    <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;Src"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="__NOASSERTE"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="ccLib50s.bpf"/>
+    <INCLUDEPATH value="Src;..\ZLib\Src;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="Src;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w8092 -w8091 -w8090 -w8089 -w8087 -wprc -wuse -wucp -wstv -wstu -wsig 
+      -wpin -wnod -wnak -w-8027 -w-8026 -wdef -wcln -wbbf -wasm -wamp -wamb"/>
+    <LISTFILE value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-ISrc -I..\ZLib\Src -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp 
+      -D__NOASSERTE -boa"/>
+    <CFLAG1 value="-Og -Ov -H=OutC\ccLib\vcl50.csm -Q -Vx -Ve -X- -a8 -6 -b- -d -k- -y -v -vi 
+      -c -tW -tWM"/>
+    <PFLAGS value="-N2OutC\ccLib -N0OutC\ccLib -$YD -$T -v -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="/P32 /E /C"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1032
+CodePage=1253
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
