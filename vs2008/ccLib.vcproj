@@ -5,9 +5,6 @@
 	Name="ccLib"
 	ProjectGUID="{D9A06BA3-0708-4176-A1C3-6311E938E065}"
 	RootNamespace="ccLib"
-	SccProjectName="&quot;$/Libs/ccLib&quot;, ZOEAAAAA"
-	SccLocalPath=".."
-	SccProvider="MSSCCI:Microsoft Visual SourceSafe"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>

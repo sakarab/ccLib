@@ -1,19 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccLib", "ccLib.vcproj", "{D9A06BA3-0708-4176-A1C3-6311E938E065}"
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccProjectUniqueName0 = ccLib.vcproj
-		SccLocalPath0 = ..
-		SccProjectFilePathRelativizedFromConnection0 = vs2008\\
-		SccProjectName1 = \u0022$/Libs/ccLib\u0022,\u0020ZOEAAAAA
-		SccLocalPath1 = ..
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
-		SccProjectFilePathRelativizedFromConnection1 = vs2008\\
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_RTL|Win32 = Debug_RTL|Win32
 		Release_RTL|Win32 = Release_RTL|Win32
