@@ -38,9 +38,12 @@
     <ProjectGuid>{D9A06BA3-0708-4176-A1C3-6311E938E065}</ProjectGuid>
     <RootNamespace>ccLib</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
-    <SccProjectName>"$/Libs/ccLib", ZOEAAAAA</SccProjectName>
-    <SccLocalPath>..</SccLocalPath>
-    <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'" Label="Configuration">
