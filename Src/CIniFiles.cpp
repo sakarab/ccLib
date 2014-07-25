@@ -138,7 +138,7 @@ String FASTCALL CIniFile::ReadString( const wchar_t *Section, const wchar_t *Ide
 void FASTCALL CIniFile::WriteString( const wchar_t *Section, const wchar_t *Ident, const wchar_t *Value )
 {
 	if ( ! WritePrivateProfileString( Section, Ident, Value, GetFileName().c_str() ) )
-		throw Exception( String().LoadStr( _SIniFileWriteError.Identifier ) );
+		throw Exception( String().LoadStr( System::Rtlconsts::_SIniFileWriteError.Identifier ) );
 }
 //---------------------------------------------------------------------------
 };

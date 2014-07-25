@@ -60,10 +60,10 @@ private:
         const U& get_instance() const   { return  instance_; }
         //operator         U& ()       	{ return  instance_; }
         //operator   const U& () const 	{ return  instance_; }
-        //operator         U* ()       	{ return &instance_; }
-        //operator   const U* () const 	{ return &instance_; }
-        //U*       operator-> ()       	{ return &instance_; }
-        //const U* operator-> () const 	{ return &instance_; }
+        operator         U* ()       	{ return &instance_; }
+        operator   const U* () const 	{ return &instance_; }
+        U*       operator-> ()       	{ return &instance_; }
+        const U* operator-> () const 	{ return &instance_; }
 		bool is_shared() const			{ return num_references_ > 1; }
 	};
 

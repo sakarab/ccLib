@@ -1,48 +1,76 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-		<PropertyGroup>
-			<ProjectGuid>{319A0F6B-A473-4718-82D1-A4428F335516}</ProjectGuid>
-		</PropertyGroup>
-		<ItemGroup>
-			<Projects Include="ccLib.cbproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="ccLibTest.cbproj">
-				<Dependencies/>
-			</Projects>
-		</ItemGroup>
-		<ProjectExtensions>
-			<Borland.Personality>Default.Personality.12</Borland.Personality>
-			<Borland.ProjectType/>
-			<BorlandProject>
-				<Default.Personality/>
-			</BorlandProject>
-		</ProjectExtensions>
-		<Target Name="ccLib">
-			<MSBuild Projects="ccLib.cbproj"/>
-		</Target>
-		<Target Name="ccLib:Clean">
-			<MSBuild Projects="ccLib.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="ccLib:Make">
-			<MSBuild Projects="ccLib.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="ccLibTest">
-			<MSBuild Projects="ccLibTest.cbproj"/>
-		</Target>
-		<Target Name="ccLibTest:Clean">
-			<MSBuild Projects="ccLibTest.cbproj" Targets="Clean"/>
-		</Target>
-		<Target Name="ccLibTest:Make">
-			<MSBuild Projects="ccLibTest.cbproj" Targets="Make"/>
-		</Target>
-		<Target Name="Build">
-			<CallTarget Targets="ccLib;ccLibTest"/>
-		</Target>
-		<Target Name="Clean">
-			<CallTarget Targets="ccLib:Clean;ccLibTest:Clean"/>
-		</Target>
-		<Target Name="Make">
-			<CallTarget Targets="ccLib:Make;ccLibTest:Make"/>
-		</Target>
-		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
-	</Project>
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{319A0F6B-A473-4718-82D1-A4428F335516}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ccLib.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ccLibTest.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ccLib">
+        <MSBuild Projects="ccLib.cbproj"/>
+    </Target>
+    <Target Name="ccLib:Clean">
+        <MSBuild Projects="ccLib.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ccLib:Make">
+        <MSBuild Projects="ccLib.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ccLibTest">
+        <MSBuild Projects="ccLibTest.cbproj"/>
+    </Target>
+    <Target Name="ccLibTest:Clean">
+        <MSBuild Projects="ccLibTest.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ccLibTest:Make">
+        <MSBuild Projects="ccLibTest.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ccLib;ccLibTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ccLib:Clean;ccLibTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ccLib:Make;ccLibTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+    <ItemGroup Condition="'$(BuildGroup)'=='Debug_RTL'">
+        <BuildGroupProject Include="ccLibTest.cbproj">
+            <ProjectGuid>{427B68AF-3EAB-4911-AF9B-807A23C0EB63}</ProjectGuid>
+            <Configurations>Debug_RTL</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="ccLib.cbproj">
+            <ProjectGuid>{58CF3F49-B367-4B88-B250-F5E1B3E50AE0}</ProjectGuid>
+            <Configurations>Debug_RTL</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+    <ItemGroup Condition="'$(BuildGroup)'=='Release_RTL'">
+        <BuildGroupProject Include="ccLibTest.cbproj">
+            <ProjectGuid>{427B68AF-3EAB-4911-AF9B-807A23C0EB63}</ProjectGuid>
+            <Configurations>Release_RTL</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="ccLib.cbproj">
+            <ProjectGuid>{58CF3F49-B367-4B88-B250-F5E1B3E50AE0}</ProjectGuid>
+            <Configurations>Release_RTL</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+</Project>
