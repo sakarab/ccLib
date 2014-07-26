@@ -82,7 +82,7 @@ BOM::type GetBom_in( const wchar_t *file_name )
 
 #endif
 
-}; // namespace
+} // namespace
 
 #if defined(QT_CORE_LIB)
 BOM::type GetBom( const QString& file_name )        { return GetBom_in( file_name.toLocal8Bit().constData() ); }
@@ -100,7 +100,7 @@ BOM::type GetBom( const wchar_t *file_name )        { return GetBom_in( file_nam
 ********    BOM
 **************************************************************************/
 //static
-wchar_t  * BOM::Names[] =
+wchar_t  const * BOM::Names[] =
 {
     L"<none>", L"UTF-8", L"UTF-16LE", L"UTF-16BE", L"UTF-32LE", L"UTF-32BE"
 };
@@ -115,7 +115,7 @@ std::wstring BOM::Name( type bom )
 BOM::type BOM::Value( std::wstring name )
 {
     boost::to_lower( name );
-    for ( int n = 1 ; n < sizeof(Names) / sizeof(Names[0]) ; ++n )
+    for ( int n = 1 ; n < static_cast<int>(sizeof(Names) / sizeof(Names[0])) ; ++n )
         if ( std::wcscmp( name.c_str(), Names[n] ) == 0 )
             return BOM::type(n);
     return no_bom;

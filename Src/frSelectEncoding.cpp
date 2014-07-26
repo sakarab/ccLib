@@ -60,7 +60,7 @@ bool frSelectEncoding::FillControls( const QString& path, int current_encoding_i
     if ( file_info.isSymLink() || !file_info.isFile() )
         return false;
 
-    BOM::type               mCurrentBOM = GetBom( path.toStdWString() );
+    BOM::type               mCurrentBOM = GetBom( path );
 
     if ( ui.cbTextPreview->checkState() != Qt::Checked )
         return false;
