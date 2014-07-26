@@ -100,7 +100,7 @@ BOM::type GetBom( const wchar_t *file_name )        { return GetBom_in( file_nam
 ********    BOM
 **************************************************************************/
 //static
-wchar_t  const * BOM::Names[] =
+wchar_t const * BOM::Names[] =
 {
     L"<none>", L"UTF-8", L"UTF-16LE", L"UTF-16BE", L"UTF-32LE", L"UTF-32BE"
 };
