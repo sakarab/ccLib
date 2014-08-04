@@ -90,9 +90,6 @@
     <ClCompile Include="..\Src\smException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\wgOpenDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_frSelectEncoding.cpp">
       <Filter>Generated Files\Release_RTL_x64</Filter>
     </ClCompile>
@@ -116,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frSelectEncoding.cpp">
       <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\qqOpenDlg.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,8 +163,11 @@
     <ClInclude Include="..\Src\Thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wgOpenDlg.h">
+    <ClInclude Include="..\Src\qqOpenDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ccLib.props" />
   </ItemGroup>
 </Project>

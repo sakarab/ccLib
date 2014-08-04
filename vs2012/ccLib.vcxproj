@@ -39,11 +39,11 @@
     <ClCompile Include="..\Src\frSelectEncoding.cpp" />
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
     <ClCompile Include="..\Src\IDirIter_Qt.cpp" />
+    <ClCompile Include="..\Src\qqOpenDlg.cpp" />
     <ClCompile Include="..\Src\QtApp.cpp" />
     <ClCompile Include="..\Src\QtSingletons.cpp" />
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
-    <ClCompile Include="..\Src\wgOpenDlg.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
@@ -158,6 +158,7 @@
     <ClInclude Include="..\Src\IDirIterator.h" />
     <ClInclude Include="..\Src\IDirIter_Boost.h" />
     <ClInclude Include="..\Src\IDirIter_Qt.h" />
+    <ClInclude Include="..\Src\qqOpenDlg.h" />
     <ClInclude Include="..\Src\QtApp.h" />
     <ClInclude Include="..\Src\QtSingletons.h" />
     <ClInclude Include="..\Src\RefCnt.h" />
@@ -165,42 +166,44 @@
     <ClInclude Include="..\Src\SharedFlag.h" />
     <ClInclude Include="..\Src\smException.h" />
     <ClInclude Include="..\Src\Thread.h" />
-    <ClInclude Include="..\Src\wgOpenDlg.h" />
     <CustomBuild Include="..\Src\frSelectEncoding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -DQT_CORE_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -DQT_CORE_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DCCLIB_LIB -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -DQT_CORE_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">Moc%27ing frSelectEncoding.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QTDIR)\qtbase\include" "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -DQT_CORE_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2012\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
     </CustomBuild>
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ccLib.props" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
@@ -265,48 +268,56 @@
     <Import Project="..\..\..\Dbg_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Dbg_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Dbg_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Dbg_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Rel_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Rel_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Rel_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\Rel_100.props" />
     <Import Project="..\..\..\Qt_110.props" />
     <Import Project="..\..\..\Dirs_110.props" />
+    <Import Project="ccLib.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -357,7 +368,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -368,7 +379,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -379,7 +390,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -390,7 +401,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -401,7 +412,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <Optimization>MinSpace</Optimization>
@@ -414,7 +425,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -428,7 +439,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -443,7 +454,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_DLL;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;$(BOOST_INC);$(LOKI_INC);$(TBB_INC);.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
