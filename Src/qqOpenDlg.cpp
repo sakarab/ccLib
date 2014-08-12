@@ -40,6 +40,7 @@ QDialog::DialogCode FileDialog::exec()
 {
     QFileDialog     dlg( mParent, mFlags );
 
+    dlg.setOption( QFileDialog::DontUseNativeDialog, true );
     if ( ! ExecInit( dlg ) )
         return QDialog::Rejected;
     if ( ! mFilter.isEmpty() )
@@ -74,8 +75,9 @@ TextFileDialog::~TextFileDialog()
 
 bool TextFileDialog::ExecInit( QFileDialog& dlg )
 {
-    QGridLayout                         *layout = static_cast<QGridLayout *>(dlg.layout());
-    
+    QGridLayout     *layout = static_cast<QGridLayout *>(dlg.layout());
+    //QLayout             *layout = dlg.layout();
+
     mSelectEncoding = new frSelectEncoding( &dlg );
     QObject::connect( &dlg, SIGNAL(currentChanged(QString)), mSelectEncoding, SLOT(on_currentChanged(QString)) );
     layout->addWidget( mSelectEncoding, layout->rowCount(), 0, 1, -1 );
