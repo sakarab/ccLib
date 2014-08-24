@@ -76,7 +76,6 @@ TextFileDialog::~TextFileDialog()
 bool TextFileDialog::ExecInit( QFileDialog& dlg )
 {
     QGridLayout     *layout = static_cast<QGridLayout *>(dlg.layout());
-    //QLayout             *layout = dlg.layout();
 
     mSelectEncoding = new frSelectEncoding( &dlg );
     QObject::connect( &dlg, SIGNAL(currentChanged(QString)), mSelectEncoding, SLOT(on_currentChanged(QString)) );
