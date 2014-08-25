@@ -14,7 +14,7 @@ goto :EOF
 :Build_32
 setlocal
 pushd .
-call "%BB_VC_DIR%"\vc2012_cmd_xp.cmd x86
+call "%BB_VC_DIR%"\vc_xp.cmd x86
 popd
 call :Build_List Win32
 endlocal
@@ -23,7 +23,7 @@ goto :EOF
 :Build_64
 setlocal
 pushd .
-call "%BB_VC_DIR%"\vc2012_cmd_xp.cmd amd64
+call "%BB_VC_DIR%"\vc_xp.cmd amd64
 popd
 call :Build_List x64
 endlocal
@@ -45,7 +45,8 @@ REM ****    Start
 REM ******************************************
 :Start
 setlocal
-set BB_VC_DIR=F:\Vs2012\VC
+call /Src/user_vars
+set BB_VC_DIR=%MSVC_ROOT_2013%\VC
 call :Build_32
 call :Build_64
 popd

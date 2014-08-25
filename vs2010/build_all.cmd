@@ -45,7 +45,8 @@ REM ****    Start
 REM ******************************************
 :Start
 setlocal
-set BB_VC_DIR=F:\Vs2010\VC
+call /Src/user_vars
+set BB_VC_DIR=%MSVC_ROOT_2010%\VC
 call :Build_32
 call :Build_64
 popd
