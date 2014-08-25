@@ -19,7 +19,8 @@ SOURCES += \
     ../../Src/qqOpenDlg.cpp \
     ../../Src/QtApp.cpp \
     ../../Src/QtSingletons.cpp \
-    ../../Src/BomUtils.cpp
+    ../../Src/BomUtils.cpp \
+    ../../Src/chasewidget.cpp
 
 HEADERS += \
     ../../Src/frmSelectEncoding.h \
@@ -27,7 +28,8 @@ HEADERS += \
     ../../Src/qqOpenDlg.h \
     ../../Src/QtApp.h \
     ../../Src/QtSingletons.h \
-    ../../Src/BomUtils.h
+    ../../Src/BomUtils.h \
+    ../../Src/chasewidget.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
