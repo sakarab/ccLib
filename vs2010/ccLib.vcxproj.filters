@@ -149,6 +149,33 @@
     <ClCompile Include="..\Src\frmSelectEncoding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\chasewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\RefCnt.h">
@@ -205,6 +232,9 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\Src\frmSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\chasewidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -243,6 +243,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\BomUtils.cpp" />
+    <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
     <ClCompile Include="..\Src\frSelectEncoding.cpp" />
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
@@ -252,6 +253,15 @@
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\qqOpenDlg.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frmSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
@@ -263,6 +273,15 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
@@ -288,6 +307,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frmSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
@@ -301,6 +329,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
@@ -324,6 +361,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_frmSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
@@ -339,6 +385,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -360,6 +415,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_frmSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
@@ -377,6 +441,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_chasewidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_frmSelectEncoding.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">true</ExcludedFromBuild>
@@ -464,6 +537,40 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">Moc%27ing frmSelectEncoding.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\chasewidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -D_DEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -D_DEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -D_DEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -D_DEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">Moc%27ing chasewidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">Moc%27ing chasewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_LIB -DQT_CORE_LIB -DQT_GUI_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -DNO_CDFASTCALL -D_UNICODE -DUNICODE "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(Configuration)\." "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(CCLIB_INC)\." "-I$(CCLIB_DIR)\vs2010\GeneratedFiles" "-I$(QTDIR)\include"</Command>
     </CustomBuild>
