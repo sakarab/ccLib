@@ -171,6 +171,9 @@
     <ClCompile Include="..\Src\chasewidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\UntitledSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
@@ -231,6 +234,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\UntitledSequence.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

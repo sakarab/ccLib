@@ -46,6 +46,7 @@
     <ClCompile Include="..\Src\QtSingletons.cpp" />
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
+    <ClCompile Include="..\Src\UntitledSequence.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">true</ExcludedFromBuild>
@@ -414,6 +415,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DQT_DLL -DCCLIB_LIB -DQT_CORE_LIB -D_DEBUG -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNO_CDFASTCALL -D_UNICODE -DUNICODE  "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(TBB_INC)\." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtGui" "-I$(QT_INC)\QtWidgets" "-I$(QT_INC)\." "-I$(CCLIB_DIR)\vs2013\GeneratedFiles" "-I$(CCLIB_INC)\."</Command>
     </CustomBuild>
+    <ClInclude Include="..\Src\UntitledSequence.h" />
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h" />
   </ItemGroup>
