@@ -14,8 +14,7 @@ BaseException::BaseException( const char *message )
     SetMessage( message );
 }
 
-//virtual
-const char *BaseException::what() const throw()
+const char *BaseException::what() const throw() //override
 {
     if ( !mMessage.get() )
         return "";
@@ -24,10 +23,11 @@ const char *BaseException::what() const throw()
 
 void BaseException::SetMessage( const char *message )
 {
-    std::size_t     size = std::strlen( message ) + 1;
+    const char      *msg = message == nullptr ? "" : message;
+    std::size_t     size = std::strlen( msg ) + 1;
 
     mMessage.reset( new char[size] );
-    std::copy( message, message + size, mMessage.get() );
+    std::copy( msg, msg + size, mMessage.get() );
 }
 
 void BaseException::SetMessage( const boost::shared_array<char>& message )
