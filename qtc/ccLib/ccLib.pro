@@ -21,7 +21,8 @@ SOURCES += \
     ../../Src/QtSingletons.cpp \
     ../../Src/BomUtils.cpp \
     ../../Src/chasewidget.cpp \
-    ../../Src/UntitledSequence.cpp
+    ../../Src/UntitledSequence.cpp \
+    ../../Src/smException.cpp
 
 HEADERS += \
     ../../Src/frmSelectEncoding.h \
@@ -31,7 +32,8 @@ HEADERS += \
     ../../Src/QtSingletons.h \
     ../../Src/BomUtils.h \
     ../../Src/chasewidget.h \
-    ../../Src/UntitledSequence.h
+    ../../Src/UntitledSequence.h \
+    ../../Src/smException.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
