@@ -256,6 +256,9 @@
     <ClInclude Include="..\Src\dvc\StringUtils.h">
       <Filter>Header Files\dvc</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\dvc\Registry.h">
+      <Filter>Header Files\dvc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />

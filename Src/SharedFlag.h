@@ -4,7 +4,7 @@
 #define SHARED_FLAG_H
 
 #include <boost/shared_ptr.hpp>
-#include <tbb/atomic.h>
+#include <atomic>
 
 /*********************************************************************
 ****    SharedFlag
@@ -12,7 +12,7 @@
 class SharedFlag
 {
 private:
-    typedef tbb::atomic<bool>   bool_type;
+    typedef std::atomic<bool>   bool_type;
 
     boost::shared_ptr<bool_type>    mFlag;
 public:

@@ -6,7 +6,7 @@
 #include <boost/thread.hpp>
 #include <boost/scope_exit.hpp>
 #include <boost/shared_ptr.hpp>
-#include <tbb/atomic.h>
+#include <atomic>
 #include <SharedFlag.h>
 
 /*********************************************************************
@@ -21,7 +21,7 @@ private:
         struct data_hold
         {
             T                   mWork;
-            tbb::atomic<bool>   mRunning;
+            std::atomic<bool>   mRunning;
 
             data_hold( const T& work )
                 : mWork( work )
