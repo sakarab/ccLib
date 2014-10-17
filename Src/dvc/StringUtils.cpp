@@ -2,6 +2,7 @@
 #include <boost/smart_ptr.hpp>
 #include <boost/array.hpp>
 #include <boost/lexical_cast.hpp>
+#include <vector>
 
 namespace // anonymous
 {
@@ -53,20 +54,18 @@ namespace // anonymous
         return the_value;
     }
 //***********************************************************
-    int CharFromWChar( const std::wstring& str, std::string& result_str,
-                       char *buffer, std::size_t buffer_chars )
+    int CharFromWChar( const std::wstring& str, char *buffer, std::size_t buffer_size )
     {
-        BOOL            used_default_char = FALSE;    
-        unsigned int    buffer_size = static_cast<unsigned int>(buffer_chars);
-        int             result = WideCharToMultiByte( DefaultUserCodePage::Value(), 0,
-                                                      str.c_str(), static_cast<unsigned int>(str.length()),
-                                                      buffer, buffer_size, 0, &used_default_char );
-
-        if ( result > 0 && buffer_size > 0 )
-            result_str = std::string( buffer, buffer + result );
-        return result;
+        return WideCharToMultiByte( DefaultUserCodePage::Value(), 0,
+                                    str.c_str(), static_cast<unsigned int>(str.length()),
+                                    buffer, static_cast<int>(buffer_size), nullptr, nullptr );
     }
-//***********************************************************
+
+    std::string NarrowString_make( char *src, int len )
+    {
+        return std::string( src, src + len );
+    }
+
     std::string NarrowString_in( const std::wstring& str )
     {
         std::string     result;
@@ -74,24 +73,68 @@ namespace // anonymous
         if ( str.empty() )
             return result;
 
-        boost::array<char,4096>     buffer;
-        std::size_t                 hype_len = str.length() * 3 + 1;        // overallocate
+        std::size_t         hype_len = str.length() * 3 + 1;        // overallocate
 
-        if ( hype_len < buffer.size() )
+        if ( hype_len < 4096 )
         {
-            int     dest_len = CharFromWChar( str, result, buffer.data(), buffer.size() );
+            boost::array<char,4096>     buffer;
+            int                         dest_len = CharFromWChar( str, buffer.data(), buffer.size() );
 
-            if ( dest_len >= 0 )
-                return std::string( buffer.data(), buffer.data() + dest_len );
+            if ( dest_len > 0 )
+                result = NarrowString_make( buffer.data(), dest_len );
         }
+        else
+        {
+            boost::scoped_array<char>   bbuff( new char[hype_len] );
+            int                         dest_len = CharFromWChar( str, bbuff.get(), hype_len );
 
-        boost::scoped_array<char>   bbuff( new char[hype_len] );
-        int                         dest_len = CharFromWChar( str, result, bbuff.get(), hype_len );
-
-        if ( dest_len >= 0 )
-            return std::string( bbuff.get(), bbuff.get() + dest_len );
-        return std::string();
+            if ( dest_len > 0 )
+                result = NarrowString_make( bbuff.get(), dest_len );
+        }
+        return result;
     }
+//***********************************************************
+    int WCharFromChar( const std::string& str, wchar_t *buffer, std::size_t buffer_chars )
+    {
+        return MultiByteToWideChar( DefaultUserCodePage::Value(), 0,
+                                    str.c_str(), static_cast<unsigned int>(str.length()),
+                                    buffer, static_cast<unsigned int>(buffer_chars) );
+    }
+
+    std::wstring WideString_make( wchar_t *src, int len )
+    {
+        return std::wstring( src, src + len );
+    }
+
+    std::wstring WidenString_in( const std::string& str )
+    {
+        std::wstring        result;
+
+        if ( str.empty() )
+            return result;
+
+        std::size_t         hype_len = str.length() * 2 + 1;    // overallocate
+
+        if ( hype_len < 2048 )
+        {
+            boost::array<wchar_t,2048>      buffer;
+            int                             dest_len = WCharFromChar( str, buffer.data(), buffer.size() );
+
+            if ( dest_len > 0 )
+                result = WideString_make( buffer.data(), dest_len );
+        }
+        else
+        {
+            boost::scoped_array<wchar_t>    bbuff( new wchar_t[hype_len] );
+            int                             dest_len = WCharFromChar( str, bbuff.get(), hype_len );
+
+            if ( dest_len > 0 )
+                return WideString_make( bbuff.get(), dest_len );
+        }
+        return std::wstring();
+    }
+
+//***********************************************************
 }
 // namespace // anonymous
 
@@ -100,6 +143,11 @@ namespace dvc
     std::string NarrowString( const std::wstring& str )
     {
         return NarrowString_in( str );
+    }
+
+    std::wstring WidenString( const std::string& str )
+    {
+        return WidenString_in( str );
     }
 
     bool StrToUInt( const std::wstring& str, UINT& int_result )
@@ -116,6 +164,21 @@ namespace dvc
             result = false;
         }
         return result;
+    }
+
+    std::wstring BinToHex( const char *bytes, unsigned int length )
+    {
+        static const wchar_t   hex_map[] = { L'0', L'1', L'2', L'3', L'4', L'5', L'6', L'7',
+                                             L'8', L'9', L'A', L'B', L'C', L'D', L'E', L'F' };
+
+        std::vector<wchar_t>   res( 2 * length );
+
+        for ( unsigned int n = 0 ; n < length ; ++n )
+        {
+            res[2*n]   = hex_map[static_cast<unsigned char>(bytes[n]) >> 4];
+            res[2*n+1] = hex_map[static_cast<unsigned char>(bytes[n]) & 0xF];
+        }
+        return std::wstring( &res.front(), res.size() );
     }
 }
 // namespace dvc
