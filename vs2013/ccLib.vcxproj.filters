@@ -64,12 +64,6 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Source Files\dvc">
-      <UniqueIdentifier>{ab79520a-97bf-472d-ad67-786681fcb54f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\dvc">
-      <UniqueIdentifier>{dfc1826d-17fe-44d9-be83-d0303b72ebed}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\BomUtils.cpp">
@@ -180,9 +174,6 @@
     <ClCompile Include="..\Src\UntitledSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\dvc\StringUtils.cpp">
-      <Filter>Source Files\dvc</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
@@ -246,18 +237,6 @@
     </ClInclude>
     <ClInclude Include="..\Src\UntitledSequence.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\dvc\MachineID.h">
-      <Filter>Header Files\dvc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\dvc\StringList.h">
-      <Filter>Header Files\dvc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\dvc\StringUtils.h">
-      <Filter>Header Files\dvc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\dvc\Registry.h">
-      <Filter>Header Files\dvc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
