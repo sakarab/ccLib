@@ -4,6 +4,9 @@
 #include <exception>
 #include <boost/smart_ptr.hpp>
 
+namespace cc
+{
+
 /**************************************************************************************
 ************    BaseException
 **************************************************************************************/
@@ -19,5 +22,8 @@ public:
     BaseException( const char *message );
     virtual const char *what() const throw();
 };
+
+}
+//namespace cc
 
 #endif

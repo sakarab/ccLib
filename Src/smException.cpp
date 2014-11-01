@@ -1,6 +1,9 @@
 #include "smException.h"
 #include <cstring>
 
+namespace cc
+{
+
 /**************************************************************************************
 ************    BaseException
 **************************************************************************************/
@@ -35,3 +38,6 @@ void BaseException::SetMessage( const boost::shared_array<char>& message )
 {
     mMessage = message;
 }
+
+}
+//namespace cc
