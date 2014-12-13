@@ -11,7 +11,7 @@ namespace vcl
 
 //---------------------------------------------------------------------------
 // static
-bool FASTCALL TScanDir::IsDirLink( wchar_t *fname )
+bool FASTCALL TScanDir::IsDirLink( stru::char_type *fname )
 {
 	if ( *fname++ == '.' && *fname == 0 )
 		return ( true );
@@ -105,19 +105,19 @@ void FASTCALL TScanDir::Run( const String& start_dir, bool recurcive )
 		}
 	}
 }
-void FASTCALL TScanDir::Run( wchar_t *start_dir, bool recurcive )
+void FASTCALL TScanDir::Run( stru::char_type *start_dir, bool recurcive )
 {
 	Run( String( start_dir ), recurcive );
 }
 //---------------------------------------------------------------------------
-static int split_fname( wchar_t *name, wchar_t *store_base, wchar_t *store_ext )
+static int split_fname( stru::char_type *name, stru::char_type *store_base, stru::char_type *store_ext )
 {
-	wchar_t     drive[MAXDRIVE], dir[MAXDIR];
+	stru::char_type     drive[MAXDRIVE], dir[MAXDIR];
 
-	return _wfnsplit( name, drive, dir, store_base, store_ext );
+	return stru::in_fnsplit( name, drive, dir, store_base, store_ext );
 }
 
-static bool fname_cmp( wchar_t *name, wchar_t *spec )
+static bool fname_cmp( stru::char_type *name, stru::char_type *spec )
 {
 	do
 	{
@@ -132,10 +132,10 @@ static bool fname_cmp( wchar_t *name, wchar_t *spec )
 	return( false );
 }
 
-static bool fname_match( wchar_t *name, wchar_t *spec )
+static bool fname_match( stru::char_type *name, stru::char_type *spec )
 {
-	wchar_t     cname[MAXFILE], cext[MAXEXT];
-	wchar_t     st_name[MAXFILE], st_ext[MAXEXT];
+	stru::char_type     cname[MAXFILE], cext[MAXEXT];
+	stru::char_type     st_name[MAXFILE], st_ext[MAXEXT];
 
 	split_fname( name, cname, cext );
 	split_fname( spec, st_name, st_ext );
@@ -209,8 +209,8 @@ void FASTCALL TScanDir::Execute()
 //---------------------------------------------------------------------------
 void FASTCALL TScanDir::EnterDirectory()
 {
-	wchar_t     *tmpstr;
-	FindData    dta;
+	stru::char_type     *tmpstr;
+	FindData            dta;
 
 	FCurrentDir = FCurrentDir + GetCurrentData().data.cFileName + '\\';
 
@@ -220,7 +220,7 @@ void FASTCALL TScanDir::EnterDirectory()
 	dta.Close();
 
 	FCurrentDir.Delete( FCurrentDir.Length(), 1 );
-	if ( (tmpstr = wcsrchr( FCurrentDir.c_str(), '\\' ) ) != NULL )
+	if ( (tmpstr = stru::in_strrchr( FCurrentDir.c_str(), TEXT('\\') ) ) != NULL )
 		FCurrentDir.SetLength( tmpstr - FCurrentDir.c_str() + 1 );
 	if ( OnDirExited != NULL && OnDirExited( this ) == false )
 		Abort();

@@ -6,6 +6,7 @@
 #include "ssport.h"
 #include <UtilCls.h>
 #include "ccUtils.h"
+#include <string>
 //---------------------------------------------------------------------------
 
 const char	    EmptyChar[] = "";
@@ -13,45 +14,43 @@ const wchar_t	EmptyCharW[] = L"";
 
 String AddSlash( const String& fname )
 {
-	wchar_t     *str;
 	String	    result;
 
-	if ( fname != "" )
+	if ( ! fname.IsEmpty() )
 	{
 		result = fname;
-		str = result.c_str() + result.Length() - 1 ;
-		if ( *str != '\\' )
-			result += String( "\\" );
+		if ( result[result.Length() - 1] != '\\' )
+			result += String( TEXT("\\") );
 	}
 	else
-		result = "\\";
+		result = TEXT("\\");
 	return result;
 }
 
-void AddSlash( wchar_t *fname )
+void AddSlash( stru::char_type *fname )
 {
 	if ( fname != NULL )
 	{
-		if ( *fname != '\0' )
+		if ( *fname != TEXT('\0') )
 		{
-			fname += ( wcslen( fname ) - 1 );
-			if ( *fname != '\\' )
-				wcscpy( fname + 1, TEXT("\\") );
+			fname += ( stru::in_strlen( fname ) - 1 );
+			if ( *fname != TEXT('\\') )
+				stru::in_strcpy( fname + 1, TEXT("\\") );
 		}
 		else
-			wcscpy( fname, TEXT("\\") );
+			stru::in_strcpy( fname, TEXT("\\") );
 	}
 }
 
 String BaseName( const String& sstr )
 {
-	wchar_t     *c_str = sstr.c_str(), *start_str, *end_str;
+	stru::char_type     *c_str = sstr.c_str(), *start_str, *end_str;
 
-	if ( ( start_str = wcsrchr( c_str, TEXT('\\') ) ) == NULL )
+	if ( ( start_str = stru::in_strrchr( c_str, TEXT('\\') ) ) == NULL )
 		start_str = c_str;
 	else
 		start_str++;
-	if ( ( end_str = wcsrchr( start_str, TEXT('.') ) ) == NULL )
+	if ( ( end_str = stru::in_strrchr( start_str, TEXT('.') ) ) == NULL )
 		end_str = c_str + sstr.Length();
 	return String( start_str, end_str - start_str );
 }
@@ -63,7 +62,7 @@ String GetWinVersionInfo()
 	osver.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 	GetVersionEx( &osver );
 
-    wchar_t         *win_descr = TEXT("");
+    stru::char_type     *win_descr = TEXT("");
 
 	switch ( osver.dwPlatformId )
 	{
@@ -109,12 +108,12 @@ String GetDllVersion( const String& fname )
 	return result;
 }
 
-void ThrowException( wchar_t *mess )
+void ThrowException( stru::char_type *mess )
 {
 	throw Exception( mess );
 }
 
-void ThrowExceptionFmt( wchar_t *fmt, ... )
+void ThrowExceptionFmt( stru::char_type *fmt, ... )
 {
     String      str;
 	va_list		list;
@@ -127,7 +126,7 @@ void ThrowExceptionFmt( wchar_t *fmt, ... )
 
 String MakeTempFile()
 {
-	wchar_t     fname[MAX_PATH], fpath[MAX_PATH];
+	stru::char_type     fname[MAX_PATH], fpath[MAX_PATH];
 
 	GetTempPath( MAX_PATH, fpath );
 	GetTempFileName( fpath, TEXT("mtf"), 0, fname );

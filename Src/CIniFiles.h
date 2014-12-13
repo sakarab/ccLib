@@ -5,6 +5,7 @@
 #include "ssport.h"
 #include <System.hpp>
 #include <vector>
+#include "bcbStdString.h"
 
 namespace ww
 {
@@ -20,20 +21,20 @@ public:
 
 	CCustomIniFile& operator=( const CCustomIniFile& src );
 
-	virtual String FASTCALL ReadString( const wchar_t *Section, const wchar_t *Ident, const wchar_t *Default ) = 0;
-	virtual void FASTCALL WriteString( const wchar_t *Section, const wchar_t *Ident, const wchar_t *Value ) = 0;
+	virtual String FASTCALL ReadString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Default ) = 0;
+	virtual void FASTCALL WriteString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Value ) = 0;
 
-	bool FASTCALL ReadBool( const wchar_t *Section, const wchar_t *Ident, bool Default );
-	long FASTCALL ReadInteger( const wchar_t *Section, const wchar_t *Ident, long Default );
-	TDateTime FASTCALL ReadDateTime( const wchar_t *Section, const wchar_t *Ident, const TDateTime& Default );
-	double FASTCALL ReadFloat( const wchar_t *Section, const wchar_t *Ident, const double& Default );
+	bool FASTCALL ReadBool( const stru::char_type *Section, const stru::char_type *Ident, bool Default );
+	long FASTCALL ReadInteger( const stru::char_type *Section, const stru::char_type *Ident, long Default );
+	TDateTime FASTCALL ReadDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Default );
+	double FASTCALL ReadFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Default );
 
-    void FASTCALL ReadSection( const wchar_t *Section, std::vector<String>& strings );
+    void FASTCALL ReadSection( const stru::char_type *Section, std::vector<String>& strings );
 
-	void FASTCALL WriteBool( const wchar_t *Section, const wchar_t *Ident, bool Value );
-	void FASTCALL WriteInteger( const wchar_t *Section, const wchar_t *Ident, long Value);
-	void FASTCALL WriteDateTime( const wchar_t *Section, const wchar_t *Ident, const TDateTime& Value );
-	void FASTCALL WriteFloat( const wchar_t *Section, const wchar_t *Ident, const double& Value );
+	void FASTCALL WriteBool( const stru::char_type *Section, const stru::char_type *Ident, bool Value );
+	void FASTCALL WriteInteger( const stru::char_type *Section, const stru::char_type *Ident, long Value);
+	void FASTCALL WriteDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Value );
+	void FASTCALL WriteFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Value );
 
 	String FASTCALL GetFileName()                           { return ( FName ); }
 };
@@ -45,8 +46,8 @@ protected:
 public:
 	FASTCALL CIniFile();
 	FASTCALL CIniFile( String fname );
-	virtual String FASTCALL ReadString( const wchar_t *Section, const wchar_t *Ident, const wchar_t *Default );
-	virtual void FASTCALL WriteString( const wchar_t *Section, const wchar_t *Ident, const wchar_t *Value );
+	virtual String FASTCALL ReadString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Default );
+	virtual void FASTCALL WriteString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Value );
 };
 
 }

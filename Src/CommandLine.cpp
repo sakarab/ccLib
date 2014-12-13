@@ -18,7 +18,7 @@ __fastcall TCommandLine::TCommandLine( bool auto_parse )
 		ParseCommandLine( false );
 	else
 	{
-		wchar_t     fname[500];
+		stru::char_type     fname[500];
 
 		fname[0] = 0;
 		GetModuleFileName( NULL, fname, 500 );
@@ -38,19 +38,19 @@ int __fastcall TCommandLine::GetCount()
 
 void __fastcall TCommandLine::ClearArgs()
 {
-    for ( std::vector<wchar_t *>::iterator n = FArgs.begin() ; n != FArgs.end() ; ++n )
+    for ( std::vector<stru::char_type *>::iterator n = FArgs.begin() ; n != FArgs.end() ; ++n )
         delete [] *n;
 }
 
 void __fastcall TCommandLine::ParseCommandLine( bool clear_old )
 {
-	wchar_t		str[500];
-	wchar_t		*p1, *p2;
-	int			pass_count;
+	stru::char_type		str[500];
+	stru::char_type		*p1, *p2;
+	int			        pass_count;
 
 	if ( clear_old )
 		ClearArgs();
-	wcscpy( str, GetCommandLine() );
+	stru::in_strcpy( str, GetCommandLine() );
 	p1 = str;
 	pass_count = 0;
 	while ( *p1 != EOS )
@@ -88,22 +88,22 @@ void __fastcall TCommandLine::ParseCommandLine( bool clear_old )
 	}
 }
 
-TCommandLine& __fastcall TCommandLine::operator <<( wchar_t *param )
+TCommandLine& __fastcall TCommandLine::operator <<( stru::char_type *param )
 {
-	wchar_t     str[500], *tmpstr;
-	int         len;
+	stru::char_type     str[500], *tmpstr;
+	int                 len;
 
 	if ( *param == QUOTE )
 		param++;
-	wcscpy( str, param );
-	len = wcslen( str );
+	stru::in_strcpy( str, param );
+	len = stru::in_strlen( str );
 	if ( len > 0 && str[len-1] == QUOTE )
 		str[len-1] = EOS;
-	tmpstr = new wchar_t[len];
+	tmpstr = new stru::char_type[len];
 	try
 	{
 		FArgs.push_back( tmpstr );
-		wcscpy( tmpstr, str );
+		stru::in_strcpy( tmpstr, str );
 	}
 	catch(...)
 	{
@@ -112,7 +112,7 @@ TCommandLine& __fastcall TCommandLine::operator <<( wchar_t *param )
 	return ( *this );
 }
 
-wchar_t **__fastcall TCommandLine::GetArgv()
+stru::char_type **__fastcall TCommandLine::GetArgv()
 {
     return ( &FArgs.front() );
 }

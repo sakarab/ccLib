@@ -5,6 +5,7 @@
 
 //#include <Classes.hpp>
 #include <vector>
+#include "bcbStdString.h"
 
 namespace cc
 {
@@ -12,19 +13,19 @@ namespace cc
 class TCommandLine
 {
 private:
-	std::vector<wchar_t *>     FArgs;
+	std::vector<stru::char_type *>      FArgs;
 
 	void __fastcall ClearArgs();
 	int __fastcall GetCount();
-	wchar_t **__fastcall GetArgv();
+	stru::char_type **__fastcall GetArgv();
 protected:
 public:
 	__fastcall TCommandLine( bool auto_parse = false );
 	__fastcall ~TCommandLine();
 	void __fastcall ParseCommandLine( bool clear_old );
-	TCommandLine& __fastcall operator <<( wchar_t *param );
+	TCommandLine& __fastcall operator <<( stru::char_type *param );
 	__property int argc = { read=GetCount };
-	__property wchar_t **argv = { read=GetArgv };
+	__property stru::char_type **argv = { read=GetArgv };
 };
 
 }; // end namespace cc

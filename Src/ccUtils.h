@@ -5,15 +5,16 @@
 
 #include <System.hpp>
 #include "ssport.h"
+#include "bcbStdString.h"
 
 extern	const char	    EmptyChar[];
 extern	const wchar_t	EmptyCharW[];
 
 String BaseName( const String& sstr );
 String AddSlash( const String& fname );
-void AddSlash( wchar_t *fname );
-void ThrowException( wchar_t *mess );
-void ThrowExceptionFmt( wchar_t *fmt, ... );
+void AddSlash( stru::char_type *fname );
+void ThrowException( stru::char_type *mess );
+void ThrowExceptionFmt( stru::char_type *fmt, ... );
 
 String GetWinVersionInfo();
 String GetDllVersion( const String& fname );

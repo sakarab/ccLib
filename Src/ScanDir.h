@@ -6,6 +6,7 @@
 #include <System.hpp>
 #include "ssport.h"
 #include <vector>
+#include "bcbStdString.h"
 
 namespace vcl
 {
@@ -65,9 +66,9 @@ public:
 	void						*Data;
 	FASTCALL TScanDir();
 	void FASTCALL Run( const String& start_dir, bool recurcive );
-	void FASTCALL Run( wchar_t *start_dir, bool recurcive );
+	void FASTCALL Run( stru::char_type *start_dir, bool recurcive );
 
-    static bool FASTCALL IsDirLink( wchar_t *fname );
+    static bool FASTCALL IsDirLink( stru::char_type *fname );
 
 	__property DWORD FileSize = { read=GetFileSize };
     __property DWORD Attributes = { read=GetAttributes };
