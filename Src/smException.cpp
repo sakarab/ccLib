@@ -18,6 +18,12 @@ BaseException::BaseException( const char *message )
     SetMessage( message );
 }
 
+BaseException::BaseException( const std::string& message )
+    : mMessage()
+{
+    SetMessage( message.c_str() );
+}
+
 const char *BaseException::what() const throw() //override
 {
     if ( !mMessage.get() )
