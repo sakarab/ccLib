@@ -24,7 +24,9 @@
 #include <fstream>
 #include <boost/scope_exit.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/format.hpp>
 #include <boost/algorithm/string.hpp>
+#include "smException.h"
 
 namespace
 {
@@ -89,6 +91,8 @@ BOM::type GetBom_in( const char *file_name )
 {
     std::ifstream   st( file_name, std::ios_base::in );
 
+    if ( !st )
+        throw cc::BaseException( boost::str( boost::format( "Unable to open file: %1%" ) % file_name ) );
     return GetBom( st );
 }
 
