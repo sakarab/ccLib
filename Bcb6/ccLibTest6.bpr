@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="ccLibTest6.exe"/>
+    <PROJECT value=".\OutC\ccLibTest6.exe"/>
     <OBJFILES value="OutC\Test6\ccLibTest6.obj OutC\Test6\FMain.obj OutC\Test6\FCTree.obj 
       OutC\Test6\FCList.obj OutC\Test6\FRefCnt.obj"/>
     <RESFILES value="ccLibTest6.res"/>
@@ -42,10 +42,10 @@
     <IDLCFLAGS value="-I..\Test -I..\Src -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp 
       -D__NOASSERTE -boa"/>
     <CFLAG1 value="-Og -Ov -Q -Vx -Ve -X- -a8 -4 -b- -d -k- -y -v -vi -c -tW -tWM"/>
-    <PFLAGS value="-N2OutC\Test6 -N0OutC\Test6 -$YD -$T -$A8 -v -JPHNE -M"/>
+    <PFLAGS value="-N2.\OutC\Test6 -N0.\OutC\Test6 -$YD -$T -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-IOutC\Test6 -D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <LFLAGS value="-I.\OutC\Test6 -D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -93,6 +93,31 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=..\Test;..\Src;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=..\Test;$(BLIB);$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=__NOASSERTE
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=.\OutC\Test6
+Item1=OutC\Test6
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=.\OutC\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="G:\Lib\Bcb60\ccLib60r.lib"/>
+    <PROJECT value=".\OutC\ccLib60r.lib"/>
     <OBJFILES value="OutC\ccLib6R\ccMatch.obj OutC\ccLib6R\ccRegExp.obj 
       OutC\ccLib6R\ccUtils.obj OutC\ccLib6R\CdlList.obj 
       OutC\ccLib6R\CIniFiles.obj OutC\ccLib6R\CommandLine.obj 
@@ -37,7 +37,7 @@
     <IDLCFLAGS value="-I..\Src -I$(BOOST_INC) -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix 
       cpp -DNDEBUG -boa"/>
     <CFLAG1 value="-Og -Ov -Q -Vx -Ve -X- -a8 -6 -b- -d -k- -y -v -vi -c -tW -tWM"/>
-    <PFLAGS value="-N2OutC\ccLib6R -N0OutC\ccLib6R -$YD -$T -$A8 -v -JPHNE -M"/>
+    <PFLAGS value="-N2.\OutC\ccLib6R -N0.\OutC\ccLib6R -$YD -$T -$A8 -v -JPHNE -M"/>
     <AFLAGS value="/mx /w2 /zd"/>
     <LFLAGS value="/P32 /E /C"/>
     <OTHERFILES value=""/>
@@ -93,6 +93,32 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=..\Src;$(BOOST_INC);$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=..\Src;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=NDEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=.\OutC\ccLib6R
+Item1=OutC\ccLib6R
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=.\OutC\
+Item1=G:\Lib\Bcb60\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
