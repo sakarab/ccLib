@@ -94,30 +94,11 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 
-[HistoryLists\hlIncludePath]
-Count=1
-Item0=..\Test;..\Src;$(BCB)\include;$(BCB)\include\vcl
 
-[HistoryLists\hlLibraryPath]
-Count=1
-Item0=..\Test;$(BLIB);$(BCB)\lib\obj;$(BCB)\lib
 
-[HistoryLists\hlDebugSourcePath]
-Count=1
-Item0=$(BCB)\source\vcl
 
-[HistoryLists\hlConditionals]
-Count=1
-Item0=__NOASSERTE
 
-[HistoryLists\hlIntOutputDir]
-Count=2
-Item0=.\OutC\Test6
-Item1=OutC\Test6
 
-[HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=.\OutC\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
