@@ -94,12 +94,6 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 
-
-
-
-
-
-
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
 
