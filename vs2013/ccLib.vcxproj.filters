@@ -238,6 +238,9 @@
     <ClInclude Include="..\Src\UntitledSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\cpp_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />
