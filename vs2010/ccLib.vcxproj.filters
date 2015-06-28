@@ -86,9 +86,6 @@
     <ClCompile Include="..\Src\QtSingletons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\ScanDirectory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\IDirIter_Boost.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -196,9 +193,6 @@
     <ClInclude Include="..\Src\QtSingletons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\SharedFlag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\IDirIter_Boost.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -206,9 +200,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\IDirIterator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\ScanDirectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Thread.h">

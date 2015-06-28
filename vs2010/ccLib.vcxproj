@@ -250,7 +250,6 @@
     <ClCompile Include="..\Src\IDirIter_Qt.cpp" />
     <ClCompile Include="..\Src\QtApp.cpp" />
     <ClCompile Include="..\Src\QtSingletons.cpp" />
-    <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\qqOpenDlg.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
@@ -580,8 +579,6 @@
     <ClInclude Include="..\Src\QtApp.h" />
     <ClInclude Include="..\Src\QtSingletons.h" />
     <ClInclude Include="..\Src\RefCnt.h" />
-    <ClInclude Include="..\Src\ScanDirectory.h" />
-    <ClInclude Include="..\Src\SharedFlag.h" />
     <ClInclude Include="..\Src\smException.h" />
     <ClInclude Include="..\Src\Thread.h" />
     <ClInclude Include="..\Src\qqOpenDlg.h" />
