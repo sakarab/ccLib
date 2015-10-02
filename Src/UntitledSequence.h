@@ -1,7 +1,6 @@
 #ifndef UNTITLED_SEQUENCE_H
 #define UNTITLED_SEQUENCE_H
 
-#include <QObject>
 #include <memory>
 #include <set>
 #include <loki/Singleton.h>
