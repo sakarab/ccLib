@@ -19,6 +19,51 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_RTL_x64">
+      <UniqueIdentifier>{4f27092c-f393-4c19-8f6e-1afe7425b0f3}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_RTL_Win32">
+      <UniqueIdentifier>{f5cae213-11ed-47f4-b9db-36c8a98ae07d}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_RTL_Win32">
+      <UniqueIdentifier>{02a46cd1-476b-4099-bf5d-a11dcaf5b6e6}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_RTL_x64">
+      <UniqueIdentifier>{537f4d30-bc19-42cd-a207-be902cfa95ec}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_Static_x64">
+      <UniqueIdentifier>{63d7884a-edf6-4432-8c34-b75f4d50f33c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_Static_Win32">
+      <UniqueIdentifier>{62680dfe-ab95-48dc-aa49-a473e691aa85}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_Static_x64">
+      <UniqueIdentifier>{476be057-81f0-4cc2-bb91-f16342aff791}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_Static_Win32">
+      <UniqueIdentifier>{beed8e29-cda6-4b96-aac1-26cc1b1f157b}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\BomUtils.cpp">
@@ -34,6 +79,99 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\UntitledSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\chasewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frmSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_x64\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_x64</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static_Win32\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static_Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\IDirIter_Qt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\qqOpenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtSingletons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,8 +206,43 @@
     <ClInclude Include="..\Src\cpp_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\IDirIter_Qt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\qqOpenDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\QtApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\QtSingletons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\Src\Forms\frmSelectEncoding.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\chasewidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\frmSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\frSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>
