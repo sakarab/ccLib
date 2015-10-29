@@ -1,3 +1,4 @@
+#include <pre_cc.h>
 #include "smException.h"
 #include <cstring>
 

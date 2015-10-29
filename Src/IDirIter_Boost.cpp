@@ -1,3 +1,4 @@
+#include <pre_cc.h>
 #include "IDirIter_Boost.h"
 
 namespace fs = boost::filesystem;

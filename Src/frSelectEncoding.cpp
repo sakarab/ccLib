@@ -19,6 +19,7 @@
   information.
 ****************************************************************************/
 
+#include <pre_cc.h>
 #include "frSelectEncoding.h"
 #include <QTextStream>
 

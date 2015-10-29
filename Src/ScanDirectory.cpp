@@ -1,3 +1,4 @@
+#include <pre_cc.h>
 #include "ScanDirectory.h"
 #include <boost/algorithm/string.hpp>
 

@@ -19,6 +19,7 @@
   information.
 ****************************************************************************/
 
+#include <pre_cc.h>
 #include "BomUtils.h"
 #include <string>
 #include <fstream>
