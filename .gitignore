@@ -1,0 +1,7 @@
+*.res
+Debug_*
+Release_*
+GeneratedFiles
+*.opendb
+*.sdf
+*.user
