@@ -5,3 +5,5 @@ GeneratedFiles
 *.opendb
 *.sdf
 *.user
+*.opensdf
+*.suo
