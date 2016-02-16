@@ -7,4 +7,5 @@ GeneratedFiles
 *.user
 *.opensdf
 *.suo
+.vs
 ipch
