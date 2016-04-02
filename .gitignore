@@ -9,3 +9,7 @@ GeneratedFiles
 *.suo
 .vs
 ipch
+*.dsk
+*.ncb
+OutC*
+*.local
