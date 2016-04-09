@@ -92,7 +92,7 @@ bool frSelectEncoding::FillControls( const QString& path, int current_encoding_i
     std::vector<QString>    text = LoadFromFile( path, IgnoreBOM() ? BOM::no_bom : mCurrentBOM, Encoding( current_encoding_idx ) );
 
     ui.ptePreview->clear();
-    for ( auto it = text.begin(), eend = text.end() ; it != eend ; ++it )
+    for ( std::vector<QString>::iterator it = text.begin(), eend = text.end() ; it != eend ; ++it )
     {
         ui.ptePreview->textCursor().insertText( *it );
         ui.ptePreview->textCursor().insertText( QString( "\n" ) );

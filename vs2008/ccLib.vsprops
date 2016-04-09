@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1253"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="ccLib"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(QT_INC)\QtCore&quot;;&quot;$(QT_INC)\QtGui&quot;;&quot;$(QT_INC)\QtWidgets&quot;;&quot;$(WTLINC)&quot;;&quot;$(LOKI_INC)&quot;"
+		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;QT_CORE_LIB"
+	/>
+</VisualStudioPropertySheet>

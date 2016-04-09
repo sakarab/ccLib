@@ -25,7 +25,7 @@ bool ScanDirectory::check_quit()
 
 void ScanDirectory::Notify( std::vector<fnNotify>& vec, spFileInfo file_info )
 {
-    for ( auto it = vec.begin(), eend = vec.end() ; it != eend ; ++it )
+    for ( NotifyVector::iterator it = vec.begin(), eend = vec.end() ; it != eend ; ++it )
         (*it)( file_info );
 }
 

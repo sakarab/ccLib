@@ -21,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops"
+			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -41,7 +41,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(BOOST_INC)&quot;;&quot;.\GeneratedFiles&quot;"
+				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				RuntimeLibrary="3"
 			/>
@@ -78,7 +78,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops"
+			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -101,7 +101,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="&quot;$(BOOST_INC)&quot;;&quot;.\GeneratedFiles&quot;"
+				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 			/>
@@ -138,7 +138,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops"
+			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -158,7 +158,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(BOOST_INC)&quot;;&quot;.\GeneratedFiles&quot;"
+				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				RuntimeLibrary="1"
 			/>
@@ -195,7 +195,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops"
+			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -218,7 +218,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="&quot;$(BOOST_INC)&quot;;&quot;.\GeneratedFiles&quot;"
+				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 			/>
@@ -280,6 +280,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\pre_cc.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\qqOpenDlg.cpp"
 				>
 			</File>
@@ -318,7 +322,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -329,7 +333,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -340,7 +344,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -351,7 +355,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -366,7 +370,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -377,7 +381,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -388,7 +392,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -399,7 +403,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -D_UNICODE -DUNICODE  &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(CCLIB_DIR)\vs2008\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot;&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE  &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -415,6 +419,14 @@
 			</File>
 			<File
 				RelativePath="..\Src\IDirIterator.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\pre_cc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\predef_cc.h"
 				>
 			</File>
 			<File
@@ -586,6 +598,14 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
+						Name="Debug_Static|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
 						Name="Release_Static|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -633,6 +653,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug_Static|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release_Static|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool

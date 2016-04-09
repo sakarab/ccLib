@@ -17,6 +17,8 @@ public:
     typedef boost::function<bool ( spFileInfo entry )>      fnObserver;         // returns if used
     typedef boost::function<void ( spFileInfo entry )>      fnNotify;
 private:
+    typedef std::vector<fnNotify>   NotifyVector;
+private:
     fnObserver              mObserver;
     SharedFlag              mFCancel;
     std::vector<fnNotify>   mBeforeFilter;
