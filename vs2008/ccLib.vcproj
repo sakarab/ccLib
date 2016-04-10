@@ -220,7 +220,7 @@
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
