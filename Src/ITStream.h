@@ -20,8 +20,8 @@ private:
     virtual size_type get_size() const = 0;
     virtual void set_size( size_type value ) = 0;
     // noncopyable
-    ITStream( const ITStream& src ) CC_COPY_DELETE;
-    ITStream& operator = ( const ITStream& src ) CC_COPY_DELETE;
+    ITStream( const ITStream& src ) CC_EQ_DELETE;
+    ITStream& operator = ( const ITStream& src ) CC_EQ_DELETE;
 protected:
     ITStream() {} // empty
 public:

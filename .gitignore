@@ -13,3 +13,4 @@ ipch
 *.ncb
 OutC*
 *.local
+*.db
