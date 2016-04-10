@@ -314,6 +314,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\cc_atomic.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\cc_memory.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\frmSelectEncoding.h"
 				>
 				<FileConfiguration
@@ -491,6 +499,10 @@
 			</File>
 			<File
 				RelativePath="..\Src\ScanDirectory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\SharedFlag.h"
 				>
 			</File>
 			<File
