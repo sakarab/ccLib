@@ -1,6 +1,8 @@
 *.res
 Debug_*
 Release_*
+qtc/Debug
+qtc/Release
 GeneratedFiles
 *.opendb
 *.sdf
