@@ -20,6 +20,15 @@
 
 #elif defined (BOOST_COMP_GNUC_AVAILABLE)
 
+    #define CC_HAVE_COPY_DELETE
+    #define CC_HAVE_ATOMIC
+    #define CC_HAVE_INLINE_FUNCTORS
+    #define CC_HAVE_OVERRIDE
+    #define CC_HAVE_MOVE_CTOR
+    #define CC_HAVE_NULL_PTR
+    #define CC_HAVE_SHARED_PTR
+    #define CC_HAVE_ARRAY
+
 #endif
 
 #if !defined (CC_HAVE_NULL_PTR)

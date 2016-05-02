@@ -11,7 +11,9 @@ TEMPLATE = lib
 CONFIG += staticlib
 QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs
 
-INCLUDEPATH += ../../Src /home/sam/src/boost_1_56_0 /home/sam/src/libs/loki/include
+INCLUDEPATH += ../../Src \
+               /home/sam/src/boost \
+               /home/sam/src/libs/loki/include
 
 SOURCES += \
     ../../Src/frmSelectEncoding.cpp \
@@ -33,7 +35,10 @@ HEADERS += \
     ../../Src/BomUtils.h \
     ../../Src/chasewidget.h \
     ../../Src/UntitledSequence.h \
-    ../../Src/smException.h
+    ../../Src/smException.h \
+    ../../Src/pre_cc.h \
+    ../../Src/predef_cc.h
+
 unix {
     target.path = /usr/lib
     INSTALLS += target
