@@ -343,6 +343,10 @@
 				RelativePath="..\Src\smException.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\Src\wtlUtils.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -596,6 +600,10 @@
 						Outputs=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\Src\wtlUtils.h"
+				>
 			</File>
 		</Filter>
 		<Filter

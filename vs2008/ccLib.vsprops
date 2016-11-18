@@ -9,4 +9,9 @@
 		AdditionalIncludeDirectories="&quot;$(QT_INC)\QtCore&quot;;&quot;$(QT_INC)\QtGui&quot;;&quot;$(QT_INC)\QtWidgets&quot;;&quot;$(WTLINC)&quot;;&quot;$(LOKI_INC)&quot;"
 		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;QT_CORE_LIB"
 	/>
+	<UserMacro
+		Name="BOOST_INC"
+		Value="$(BOOST_1_59_0_INC)"
+		PerformEnvironmentSet="true"
+	/>
 </VisualStudioPropertySheet>
