@@ -27,11 +27,16 @@
 #include <QSettings>
 #include <QTranslator>
 
-/**************************************************************************
-********    Singletons
-**************************************************************************/
-QSettings& UserSettings();
-QSettings& AllUserSettings();
-QTranslator& Translator();
+namespace ccqt
+{
+
+    /**************************************************************************
+    ********    Singletons
+    **************************************************************************/
+    QSettings& UserSettings();
+    QSettings& AllUserSettings();
+    QTranslator& Translator();
+
+}
 
 #endif

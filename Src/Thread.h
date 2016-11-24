@@ -9,75 +9,78 @@
 #include <atomic>
 #include <SharedFlag.h>
 
-/*********************************************************************
-****    ThreadBoost
-*********************************************************************/
-template <class T> class ThreadBoost
+namespace cclib
 {
-private:
-    class ThreadWork
+
+    /*********************************************************************
+    ****    ThreadBoost
+    *********************************************************************/
+    template <class T> class ThreadBoost
     {
     private:
-        struct data_hold
+        class ThreadWork
         {
-            T                   mWork;
-            std::atomic<bool>   mRunning;
-
-            data_hold( const T& work )
-                : mWork( work )
+        private:
+            struct data_hold
             {
-                mRunning = false;
+                T                   mWork;
+                std::atomic<bool>   mRunning;
+
+                data_hold( const T& work )
+                    : mWork( work )
+                {
+                    mRunning = false;
+                }
+            };
+
+            boost::shared_ptr<data_hold>    mWork;
+        public:
+            ThreadWork( const T& work )
+                : mWork( new data_hold( work ) )
+            {}
+            void operator()()
+            {
+                mWork->mRunning = true;
+                BOOST_SCOPE_EXIT( (&mWork) )
+                {
+                    mWork->mRunning = false;
+                }
+                BOOST_SCOPE_EXIT_END;
+                try
+                {
+                    mWork->mWork();
+                }
+                catch ( const boost::thread_interrupted& )
+                {
+                }
+                catch ( const std::exception& )
+                {
+                }
             }
+            bool running() const { return mWork->mRunning; }
         };
 
-        boost::shared_ptr<data_hold>    mWork;
+        ThreadWork          mThreadWork;
+        boost::thread       mThread;
+        SharedFlag          mCancelF;
+
+        // noncopyable
+        ThreadBoost( const ThreadBoost& src );
+        ThreadBoost& operator=( const ThreadBoost& src );
     public:
-        ThreadWork( const T& work )
-            : mWork( new data_hold( work ) )
+        ThreadBoost( const T& worker, const SharedFlag& cancel_f )
+            : mThreadWork( worker ), mThread( mThreadWork ), mCancelF( cancel_f )
+        {}
+        ~ThreadBoost()
         {
+            mCancelF.set_value( true );
+            mThread.join();
         }
-        void operator()()
-        {
-            mWork->mRunning = true;
-            BOOST_SCOPE_EXIT( (&mWork) )
-            {
-                mWork->mRunning = false;
-            }
-            BOOST_SCOPE_EXIT_END;
-            try
-            {
-                mWork->mWork();
-            }
-            catch ( const boost::thread_interrupted& )
-            {
-            }
-            catch ( const std::exception& )
-            {
-            }
-        }
-        bool running() const                { return mWork->mRunning; }
+        bool running() const { return mThreadWork.running(); }
+        void cancel() { mCancelF.set_value( true ); }
+        bool is_canceled() { return mCancelF.is_set(); }
     };
 
-    ThreadWork          mThreadWork;
-    boost::thread       mThread;
-    SharedFlag          mCancelF;
-
-    // noncopyable
-    ThreadBoost( const ThreadBoost& src );
-    ThreadBoost& operator=( const ThreadBoost& src );
-public:
-    ThreadBoost( const T& worker, const SharedFlag& cancel_f )
-        : mThreadWork( worker ), mThread( mThreadWork ), mCancelF(cancel_f)
-    {
-    }
-    ~ThreadBoost()
-    {
-        mCancelF.set_value( true );
-        mThread.join();
-    }
-    bool running() const                    { return mThreadWork.running(); }
-    void cancel()                           { mCancelF.set_value( true ); }
-    bool is_canceled()                      { return mCancelF.is_set(); }
-};
+}
 
 #endif

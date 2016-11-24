@@ -6,13 +6,13 @@
 
 #if defined (CC_HAVE_ARRAY)
     #include <array>
-    namespace cc
+    namespace cclib
     {
         using std::array;
     }
 #else
     #include <boost/array.hpp>
-    namespace cc
+    namespace cclib
     {
         using boost::array;
     }

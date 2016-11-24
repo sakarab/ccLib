@@ -23,21 +23,23 @@
 #include "frSelectEncoding.h"
 #include <QTextStream>
 
-/**************************************************************************
-********    TextReadOptions
-**************************************************************************/
-TextReadOptions::TextReadOptions( const QString& encoding, BOM::type bom, bool ignore_bom )
-    : mEncoding(encoding), mBom(bom), mIgnoreBOM(ignore_bom)
+namespace ccqt
 {
-}
 
-TextReadOptions::TextReadOptions( BOM::type bom )
-    : mEncoding(), mBom(bom), mIgnoreBOM()
-{
-}
+    /**************************************************************************
+    ********    TextReadOptions
+    **************************************************************************/
+    TextReadOptions::TextReadOptions( const QString& encoding, BOM::type bom, bool ignore_bom )
+        : mEncoding( encoding ), mBom( bom ), mIgnoreBOM( ignore_bom )
+    {}
 
-TextReadOptions::~TextReadOptions()
-{
+    TextReadOptions::TextReadOptions( BOM::type bom )
+        : mEncoding(), mBom( bom ), mIgnoreBOM()
+    {}
+
+    TextReadOptions::~TextReadOptions()
+    {}
+
 }
 
 /**************************************************************************
@@ -50,17 +52,16 @@ frSelectEncoding::frSelectEncoding( QWidget *parent, Qt::WindowFlags flags )
 }
 
 frSelectEncoding::~frSelectEncoding()
-{
-}
+{}
 
 void frSelectEncoding::on_cbTextPreview_stateChanged( int state )
 {
-    if ( Qt::CheckState(state) == Qt::Unchecked )
+    if ( Qt::CheckState( state ) == Qt::Unchecked )
     {
         ui.ptePreview->setVisible( false );
         ui.lblPreviewBOM->setVisible( false );
     }
-    else if ( Qt::CheckState(state) == Qt::Checked )
+    else if ( Qt::CheckState( state ) == Qt::Checked )
     {
         ui.ptePreview->setVisible( true );
         ui.lblPreviewBOM->setVisible( true );
@@ -120,7 +121,7 @@ void frSelectEncoding::AppendFromStream( std::vector<QString>& container, QTextS
 {
     int     line_count = 0;
 
-    while ( ! st.atEnd() && line_count < 100 )
+    while ( !st.atEnd() && line_count < 100 )
     {
         QString     sstr = st.readLine( 80 );
 
@@ -135,7 +136,7 @@ void frSelectEncoding::AppendFromFile( std::vector<QString>& container, const QS
     QTextStream     st( &file );
 
     st.setAutoDetectUnicode( false );
-    if ( ! file.open( QIODevice::ReadOnly ) )
+    if ( !file.open( QIODevice::ReadOnly ) )
         throw std::runtime_error( "Unable to open file" );
     if ( bom_type != BOM::no_bom )
         st.setCodec( QString::fromStdWString( BOM::Name( bom_type ) ).toLocal8Bit() );
@@ -180,7 +181,7 @@ QString frSelectEncoding::Encoding()
     return Encoding( ui.cbEncoding->currentIndex() );
 }
 
-spTextReadOptions frSelectEncoding::getTextReadOptions()
+ccqt::spTextReadOptions frSelectEncoding::getTextReadOptions()
 {
-    return spTextReadOptions( new TextReadOptions( Encoding(), getBOM(), IgnoreBOM() ) );
+    return ccqt::spTextReadOptions( new ccqt::TextReadOptions( Encoding(), getBOM(), IgnoreBOM() ) );
 }

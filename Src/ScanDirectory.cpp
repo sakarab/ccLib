@@ -10,54 +10,58 @@
 
 namespace fs = boost::filesystem;
 
-/*********************************************************************
-****    ScanDirectory
-*********************************************************************/
-ScanDirectory::ScanDirectory( const fnObserver& observer, const SharedFlag& cancelf )
-    : mObserver(observer), mFCancel(cancelf)
+namespace cclib
 {
-}
 
-bool ScanDirectory::check_quit()
-{
-    return mFCancel.is_set();
-}
+    /*********************************************************************
+    ****    ScanDirectory
+    *********************************************************************/
+    ScanDirectory::ScanDirectory( const fnObserver& observer, const SharedFlag& cancelf )
+        : mObserver( observer ), mFCancel( cancelf )
+    {}
 
-void ScanDirectory::Notify( std::vector<fnNotify>& vec, spFileInfo file_info )
-{
-    for ( NotifyVector::iterator it = vec.begin(), eend = vec.end() ; it != eend ; ++it )
-        (*it)( file_info );
-}
+    bool ScanDirectory::check_quit()
+    {
+        return mFCancel.is_set();
+    }
 
-void ScanDirectory::operator()( const boost::filesystem::path& path, IDirIterator::flags flags )
-{
-    if ( ! mObserver )
-        return;
+    void ScanDirectory::Notify( std::vector<fnNotify>& vec, spFileInfo file_info )
+    {
+        for ( NotifyVector::iterator it = vec.begin(), eend = vec.end() ; it != eend ; ++it )
+            (*it)(file_info);
+    }
 
-    //boost::shared_ptr<IDirIterator>     dit( new QT_DirIterator( path, flags ) );
-    boost::shared_ptr<IDirIterator>     dit( new Boost_DirIterator( path, flags ) );
+    void ScanDirectory::operator()( const boost::filesystem::path& path, IDirIterator::flags flags )
+    {
+        if ( !mObserver )
+            return;
 
-    if ( dit->First() )
-        do
-        {
-            if ( check_quit() )
-                break;
+        //boost::shared_ptr<IDirIterator>     dit( new QT_DirIterator( path, flags ) );
+        boost::shared_ptr<IDirIterator>     dit( new Boost_DirIterator( path, flags ) );
 
-            spFileInfo  file_info = dit->FileInfo();
+        if ( dit->First() )
+            do
+            {
+                if ( check_quit() )
+                    break;
 
-            NotifyBefore( file_info );
-            if ( mObserver( file_info ) )
-                NotifyAfter( file_info );
-        }
+                spFileInfo  file_info = dit->FileInfo();
+
+                NotifyBefore( file_info );
+                if ( mObserver( file_info ) )
+                    NotifyAfter( file_info );
+            }
         while ( dit->Next() );
-}
+    }
 
-void ScanDirectory::AddNotifyBeforeFilter( const fnNotify& fn )
-{
-    mBeforeFilter.push_back( fn );
-}
+    void ScanDirectory::AddNotifyBeforeFilter( const fnNotify& fn )
+    {
+        mBeforeFilter.push_back( fn );
+    }
 
-void ScanDirectory::AddNotifyAfterFilter( const fnNotify& fn )
-{
-    mAfterFilter.push_back( fn );
+    void ScanDirectory::AddNotifyAfterFilter( const fnNotify& fn )
+    {
+        mAfterFilter.push_back( fn );
+    }
+
 }

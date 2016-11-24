@@ -6,13 +6,13 @@
 
 #if defined (CC_HAVE_ATOMIC)
     #include <atomic>
-    namespace cc
+    namespace cclib
     {
         using std::atomic;
     }
 #else
     #include <boost/atomic.hpp>
-    namespace cc
+    namespace cclib
     {
         using boost::atomic;
     }

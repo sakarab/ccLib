@@ -7,7 +7,7 @@
 #include "cpp_string.h"
 #include <atlctrls.h>
 
-namespace wtl
+namespace ccwtl
 {
     template <class CTRL> std_string getControlText( CTRL& ctrl )
     {

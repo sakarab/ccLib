@@ -6,14 +6,14 @@
 
 #if defined (CC_HAVE_SHARED_PTR)
     #include <memory>
-    namespace cc
+    namespace cclib
     {
         using std::shared_ptr;
         using std::make_shared;
     }
 #else
     #include <boost/smart_ptr.hpp>
-    namespace cc
+    namespace cclib
     {
         using boost::shared_ptr;
         using boost::make_shared;

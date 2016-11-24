@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------
 #include "predef_cc.h"
 //---------------------------------------------------------------------------
-namespace cc
+namespace cclib
 {
 
 template <class T> struct tArg00
@@ -172,7 +172,7 @@ template<class T> inline Handle<T>& Handle<T>::operator=( const Handle<T>& src )
 }
 */
 
-}; // end namespace cc
+}; // end namespace cclib
 //---------------------------------------------------------------------------
 
 #endif

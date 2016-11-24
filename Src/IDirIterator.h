@@ -37,6 +37,4 @@ public:
     virtual ~IDirIterator()         {} // empty
 };
 
-
 #endif
-

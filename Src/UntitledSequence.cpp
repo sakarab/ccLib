@@ -2,30 +2,33 @@
 #include "UntitledSequence.h"
 #include <algorithm>
 
-/********************************************************************
-********    UntitledSequence
-********************************************************************/
-UntitledSequence::UntitledSequence()
-    : mSequence()
+namespace cclib
 {
-}
 
-UntitledSequence::~UntitledSequence()
-{
-}
+    /********************************************************************
+    ********    UntitledSequence
+    ********************************************************************/
+    UntitledSequence::UntitledSequence()
+        : mSequence()
+    {}
 
-int UntitledSequence::getAvailable()
-{
-    // adjacent diff greater then one (1)
-    auto    it = std::adjacent_find( mSequence.begin(), mSequence.end(), []( int arg1, int arg2 ) { return arg2 - arg1 > 1; } );
-    int     result = (it != mSequence.end()) ? *it : mSequence.size();
+    UntitledSequence::~UntitledSequence()
+    {}
 
-    ++result;
-    mSequence.insert( result );
-    return result;
-}
+    int UntitledSequence::getAvailable()
+    {
+        // adjacent diff greater then one (1)
+        auto    it = std::adjacent_find( mSequence.begin(), mSequence.end(), []( int arg1, int arg2 ) { return arg2 - arg1 > 1; } );
+        int     result = (it != mSequence.end()) ? *it : mSequence.size();
 
-void UntitledSequence::Release( int seq )
-{
-    mSequence.erase( seq );
+        ++result;
+        mSequence.insert( result );
+        return result;
+    }
+
+    void UntitledSequence::Release( int seq )
+    {
+        mSequence.erase( seq );
+    }
+
 }

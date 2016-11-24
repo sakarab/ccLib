@@ -22,72 +22,73 @@
 #include <pre_cc.h>
 #include "qqOpenDlg.h"
 
-/**************************************************************************
-********    FileDialog
-**************************************************************************/
-FileDialog::FileDialog( QWidget *parent, Qt::WindowFlags flags )
-    : mParent(parent), mFlags(flags)
+namespace ccqt
 {
-}
 
-FileDialog::~FileDialog()
-{
-}
+    /**************************************************************************
+    ********    FileDialog
+    **************************************************************************/
+    FileDialog::FileDialog( QWidget *parent, Qt::WindowFlags flags )
+        : mParent( parent ), mFlags( flags )
+    {}
 
-bool FileDialog::ExecInit( QFileDialog& /*dlg*/ )                                       { return true; }
-bool FileDialog::ExecEnd( QFileDialog& /*dlg*/, QDialog::DialogCode /*dlg_result*/ )    { return true; }
+    FileDialog::~FileDialog()
+    {}
 
-QDialog::DialogCode FileDialog::exec()
-{
-    QFileDialog     dlg( mParent, mFlags );
+    bool FileDialog::ExecInit( QFileDialog& /*dlg*/ ) { return true; }
+    bool FileDialog::ExecEnd( QFileDialog& /*dlg*/, QDialog::DialogCode /*dlg_result*/ ) { return true; }
 
-    dlg.setOption( QFileDialog::DontUseNativeDialog, true );
-    if ( ! ExecInit( dlg ) )
-        return QDialog::Rejected;
-    if ( ! mFilter.isEmpty() )
-        dlg.setNameFilter( mFilter );
-    if ( ! mSelectedFilter.isEmpty() )
-        dlg.selectNameFilter( mSelectedFilter );
-    dlg.selectFile( mFileName );
-
-    QDialog::DialogCode     result = QDialog::DialogCode(dlg.exec());
-
-    if ( result == QDialog::Accepted )
+    QDialog::DialogCode FileDialog::exec()
     {
-        mSelectedFilter = dlg.selectedNameFilter();
-        mFileName = dlg.selectedFiles().value(0);
+        QFileDialog     dlg( mParent, mFlags );
+
+        dlg.setOption( QFileDialog::DontUseNativeDialog, true );
+        if ( !ExecInit( dlg ) )
+            return QDialog::Rejected;
+        if ( !mFilter.isEmpty() )
+            dlg.setNameFilter( mFilter );
+        if ( !mSelectedFilter.isEmpty() )
+            dlg.selectNameFilter( mSelectedFilter );
+        dlg.selectFile( mFileName );
+
+        QDialog::DialogCode     result = QDialog::DialogCode( dlg.exec() );
+
+        if ( result == QDialog::Accepted )
+        {
+            mSelectedFilter = dlg.selectedNameFilter();
+            mFileName = dlg.selectedFiles().value( 0 );
+        }
+        if ( !ExecEnd( dlg, result ) )
+            return QDialog::Rejected;
+        return result;
     }
-    if ( ! ExecEnd( dlg, result ) )
-        return QDialog::Rejected;
-    return result;
-}
 
-/**************************************************************************
-********    TextFileDialog
-**************************************************************************/
-TextFileDialog::TextFileDialog( QWidget *parent, Qt::WindowFlags flags )
-    : FileDialog(parent, flags), mSelectEncoding(), mResultOptions()
-{
-}
+    /**************************************************************************
+    ********    TextFileDialog
+    **************************************************************************/
+    TextFileDialog::TextFileDialog( QWidget *parent, Qt::WindowFlags flags )
+        : FileDialog( parent, flags ), mSelectEncoding(), mResultOptions()
+    {}
 
-TextFileDialog::~TextFileDialog()
-{
-}
+    TextFileDialog::~TextFileDialog()
+    {}
 
-bool TextFileDialog::ExecInit( QFileDialog& dlg )
-{
-    QGridLayout     *layout = static_cast<QGridLayout *>(dlg.layout());
+    bool TextFileDialog::ExecInit( QFileDialog& dlg )
+    {
+        QGridLayout     *layout = static_cast<QGridLayout *>(dlg.layout());
 
-    mSelectEncoding = new frSelectEncoding( &dlg );
-    QObject::connect( &dlg, SIGNAL(currentChanged(QString)), mSelectEncoding, SLOT(on_currentChanged(QString)) );
-    layout->addWidget( mSelectEncoding, layout->rowCount(), 0, 1, -1 );
-    return true;
-}
+        mSelectEncoding = new frSelectEncoding( &dlg );
+        QObject::connect( &dlg, SIGNAL( currentChanged( QString ) ), mSelectEncoding, SLOT( on_currentChanged( QString ) ) );
+        layout->addWidget( mSelectEncoding, layout->rowCount(), 0, 1, -1 );
+        return true;
+    }
 
-bool TextFileDialog::ExecEnd( QFileDialog& /*dlg*/, QDialog::DialogCode dlg_result )
-{
-    if ( dlg_result == QDialog::Accepted )
-        mResultOptions = mSelectEncoding->getTextReadOptions();
-    mSelectEncoding = nullptr;
-    return true;
+    bool TextFileDialog::ExecEnd( QFileDialog& /*dlg*/, QDialog::DialogCode dlg_result )
+    {
+        if ( dlg_result == QDialog::Accepted )
+            mResultOptions = mSelectEncoding->getTextReadOptions();
+        mSelectEncoding = nullptr;
+        return true;
+    }
+
 }

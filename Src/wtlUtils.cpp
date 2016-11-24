@@ -1,7 +1,7 @@
 #include <pre_cc.h>
 #include "wtlUtils.h"
 
-namespace wtl
+namespace ccwtl
 {
     std::wstring Get_Text( CComboBox& cb )
     {

@@ -29,26 +29,31 @@
 #include "BomUtils.h"
 #include <boost/shared_ptr.hpp>
 
-/**************************************************************************
-********    TextReadOptions
-**************************************************************************/
-class TextReadOptions
+namespace ccqt
 {
-private:
-    QString     mEncoding;
-    BOM::type   mBom;
-    bool        mIgnoreBOM;
-public:
-    TextReadOptions( const QString& encoding, BOM::type bom, bool ignore_bom );
-    TextReadOptions( BOM::type bom );
-    ~TextReadOptions();
 
-    QString     Encoding()                  { return mEncoding; }
-    BOM::type   Bom()                       { return mBom; }
-    bool        IgnoreBOM()                 { return mIgnoreBOM; }
-};
+    /**************************************************************************
+    ********    TextReadOptions
+    **************************************************************************/
+    class TextReadOptions
+    {
+    private:
+        QString     mEncoding;
+        BOM::type   mBom;
+        bool        mIgnoreBOM;
+    public:
+        TextReadOptions( const QString& encoding, BOM::type bom, bool ignore_bom );
+        TextReadOptions( BOM::type bom );
+        ~TextReadOptions();
 
-typedef boost::shared_ptr<TextReadOptions>      spTextReadOptions;
+        QString     Encoding() { return mEncoding; }
+        BOM::type   Bom() { return mBom; }
+        bool        IgnoreBOM() { return mIgnoreBOM; }
+    };
+
+    typedef boost::shared_ptr<TextReadOptions>      spTextReadOptions;
+
+}
 
 /**************************************************************************
 ********    frSelectEncoding
@@ -76,18 +81,18 @@ private:
     // noncopyable
     frSelectEncoding( const frSelectEncoding& src );
     frSelectEncoding& operator=( const frSelectEncoding& src );
-private slots:
+    private slots:
     // Auto-connected
     void on_cbTextPreview_stateChanged( int state );
     void on_cbIgnoreBOM_stateChanged( int state );
     void on_cbEncoding_currentIndexChanged( int idx );
-public slots:
+    public slots:
     void on_currentChanged( const QString& path );
 public:
     frSelectEncoding( QWidget *parent = 0, Qt::WindowFlags flags = 0 );
     ~frSelectEncoding();
 
-    spTextReadOptions getTextReadOptions();
+    ccqt::spTextReadOptions getTextReadOptions();
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 #include "predef_cc.h"
 
-namespace cc
+namespace cclib
 {
 
 /************************************************************
@@ -40,4 +40,4 @@ public:
 };
 
 }
-//namespace cc
+//namespace cclib

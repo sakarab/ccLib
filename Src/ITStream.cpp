@@ -3,7 +3,7 @@
 #include <vector>
 #include "smException.h"
 
-namespace cc
+namespace cclib
 {
 
 /************************************************************
@@ -47,4 +47,4 @@ void ITStream::WriteBuffer( const void *mem, int count )
 }
 
 }
-//namespace cc
+//namespace cclib
