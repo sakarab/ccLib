@@ -42,6 +42,7 @@
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
     <ClCompile Include="..\Src\IDirIter_Qt.cpp" />
     <ClCompile Include="..\Src\ITStream.cpp" />
+    <ClCompile Include="..\Src\LibLoader.cpp" />
     <ClCompile Include="..\Src\pre_cc.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">Create</PrecompiledHeader>
@@ -58,6 +59,7 @@
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
+    <ClCompile Include="..\Src\win_str.cpp" />
     <ClCompile Include="..\Src\wtlUtils.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">true</ExcludedFromBuild>
@@ -388,6 +390,7 @@
     <ClInclude Include="..\Src\IDirIter_Boost.h" />
     <ClInclude Include="..\Src\IDirIter_Qt.h" />
     <ClInclude Include="..\Src\ITStream.h" />
+    <ClInclude Include="..\Src\LibLoader.h" />
     <ClInclude Include="..\Src\predef_cc.h" />
     <ClInclude Include="..\Src\pre_cc.h" />
     <ClInclude Include="..\Src\qqOpenDlg.h" />
@@ -399,6 +402,7 @@
     <ClInclude Include="..\Src\smException.h" />
     <ClInclude Include="..\Src\Thread.h" />
     <ClInclude Include="..\Src\UntitledSequence.h" />
+    <ClInclude Include="..\Src\win_str.h" />
     <ClInclude Include="..\Src\wtlUtils.h" />
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h" />

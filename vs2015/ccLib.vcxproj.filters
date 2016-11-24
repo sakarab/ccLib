@@ -183,6 +183,12 @@
     <ClCompile Include="..\Src\wtlUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\LibLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\win_str.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\BomUtils.h">
@@ -252,6 +258,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\cc_memory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\LibLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\win_str.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
