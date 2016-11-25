@@ -18,10 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug_RTL|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -77,10 +75,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_RTL|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -139,10 +135,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Static|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -198,10 +192,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Static|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;..\..\..\Qt_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -272,19 +264,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Src\frmSelectEncoding.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\frSelectEncoding.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Src\IDirIter_Boost.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\IDirIter_Qt.cpp"
 				>
 			</File>
 			<File
@@ -324,18 +304,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\Src\qqOpenDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\QtApp.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\QtSingletons.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\Src\ScanDirectory.cpp"
 				>
 			</File>
@@ -370,107 +338,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Src\frmSelectEncoding.h"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frmSelectEncoding.h&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frmSelectEncoding.h&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frmSelectEncoding.h&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frmSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frmSelectEncoding.h&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\Src\frSelectEncoding.h"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frSelectEncoding.h&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frSelectEncoding.h&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frSelectEncoding.h&quot;  -DWIN32 -D_DEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing frSelectEncoding.h..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fpre_cc.h&quot; &quot;-f../../../Src/frSelectEncoding.h&quot;  -DWIN32 -DNDEBUG -D_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_SCL_SECURE_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_SECURE_SCL=0 -D_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0 -D_CRT_NON_CONFORMING_SWPRINTFS -DNO_CDFASTCALL -DNOMINMAX -D_UNICODE -DUNICODE &quot;-I.\..\Src&quot; &quot;-I$(BOOST_INC)\.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I$(QT_INC)\QtCore&quot; &quot;-I$(QT_INC)\QtGui&quot; &quot;-I$(QT_INC)\QtWidgets&quot; &quot;-I$(WTLINC)\.&quot; &quot;-I$(LOKI_INC)\.&quot; &quot;-I$(QT_DIR)\include&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
-						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\Src\IDirIter_Boost.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\IDirIter_Qt.h"
 				>
 			</File>
 			<File
@@ -483,18 +351,6 @@
 			</File>
 			<File
 				RelativePath="..\Src\predef_cc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\qqOpenDlg.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\QtApp.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\QtSingletons.h"
 				>
 			</File>
 			<File
@@ -611,376 +467,6 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-		</Filter>
-		<Filter
-			Name="Generated Files"
-			Filter="moc;h;cpp"
-			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
-			>
-			<File
-				RelativePath=".\GeneratedFiles\ui_frmSelectEncoding.h"
-				>
-			</File>
-			<File
-				RelativePath=".\GeneratedFiles\ui_frSelectEncoding.h"
-				>
-			</File>
-			<Filter
-				Name="Debug_RTL"
-				Filter="cpp;moc"
-				SourceControlFiles="false"
-				>
-				<File
-					RelativePath=".\GeneratedFiles\Debug_RTL\moc_frmSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Debug_RTL\moc_frSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="Release_RTL"
-				Filter="cpp;moc"
-				SourceControlFiles="false"
-				>
-				<File
-					RelativePath=".\GeneratedFiles\Release_RTL\moc_frmSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Release_RTL\moc_frSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="Debug_Static"
-				Filter="cpp;moc"
-				SourceControlFiles="false"
-				>
-				<File
-					RelativePath=".\GeneratedFiles\Debug_Static\moc_frmSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Debug_Static\moc_frSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="Release_Static"
-				Filter="cpp;moc"
-				SourceControlFiles="false"
-				>
-				<File
-					RelativePath=".\GeneratedFiles\Release_Static\moc_frmSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GeneratedFiles\Release_Static\moc_frSelectEncoding.cpp"
-					>
-					<FileConfiguration
-						Name="Debug_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release_RTL|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_Static|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-		</Filter>
-		<Filter
-			Name="Form Files"
-			>
-			<File
-				RelativePath="..\Src\Forms\frmSelectEncoding.ui"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\Src\Forms\frSelectEncoding.ui"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Uic&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\GeneratedFiles\ui_$(InputName).h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
-						Outputs="&quot;.\GeneratedFiles\ui_$(InputName).h&quot;"
-					/>
-				</FileConfiguration>
-			</File>
-		</Filter>
-		<Filter
-			Name="Translation Files"
-			>
-			<File
-				RelativePath="..\Src\QtTrans\cclib_el.ts"
-				>
-			</File>
 		</Filter>
 	</Files>
 	<Globals>

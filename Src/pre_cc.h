@@ -5,7 +5,10 @@
 #include "predef_cc.h"
 #include <string>
 #include <vector>
+
+#if ! defined (CC_NOT_USING_QT)
 #include <QtCore>
+#endif
 
 #define _WTL_USE_CSTRING
 
