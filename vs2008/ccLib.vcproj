@@ -39,11 +39,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
+				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="pre_cc.h"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -102,8 +100,6 @@
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="pre_cc.h"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -159,8 +155,6 @@
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="pre_cc.h"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -219,8 +213,6 @@
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="0"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="pre_cc.h"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -268,6 +260,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\LibLoader.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\pre_cc.cpp"
 				>
 				<FileConfiguration
@@ -312,6 +308,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\win_str.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\wtlUtils.cpp"
 				>
 			</File>
@@ -343,6 +343,10 @@
 			</File>
 			<File
 				RelativePath="..\Src\IDirIterator.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\LibLoader.h"
 				>
 			</File>
 			<File
@@ -456,6 +460,10 @@
 						Outputs=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\Src\win_str.h"
+				>
 			</File>
 			<File
 				RelativePath="..\Src\wtlUtils.h"
