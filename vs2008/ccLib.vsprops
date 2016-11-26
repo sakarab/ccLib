@@ -9,13 +9,8 @@
 	<Tool
 		Name="VCCLCompilerTool"
 		AdditionalIncludeDirectories="&quot;$(WTLINC)&quot;;&quot;$(LOKI_INC)&quot;"
-		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;CC_NOT_USING_QT"
+		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;NOMINMAX;CC_NOT_USING_QT"
 		UsePrecompiledHeader="2"
 		PrecompiledHeaderThrough="pre_cc.h"
-	/>
-	<UserMacro
-		Name="BOOST_INC"
-		Value="$(BOOST_1_59_0_INC)"
-		PerformEnvironmentSet="true"
 	/>
 </VisualStudioPropertySheet>
