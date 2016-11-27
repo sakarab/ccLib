@@ -312,6 +312,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\winClasses.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\winUtils.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\wtlUtils.cpp"
 				>
 			</File>
@@ -463,6 +471,14 @@
 			</File>
 			<File
 				RelativePath="..\Src\win_str.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\winClasses.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\winUtils.h"
 				>
 			</File>
 			<File

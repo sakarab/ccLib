@@ -5,6 +5,7 @@
 
 #include <Windows.h>
 #include "cpp_string.h"
+#include <functional>
 
 namespace ccwin
 {
