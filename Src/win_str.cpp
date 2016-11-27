@@ -4,13 +4,13 @@
 #include <boost/smart_ptr.hpp>
 #include <Windows.h>
 
-namespace ccwin
+namespace
 {
-    template <class TO, class FROM> TO size_cast( FROM value )              { return static_cast<TO>(value); }
+    template <class TO, class FROM> TO size_cast( FROM value ) { return static_cast<TO>(value); }
 
     UINT LCIDToCodePage( DWORD ALcid )
     {
-        cclib::array<char, sizeof(DWORD) * 2>       Buffer;
+        cclib::array<char, sizeof( DWORD ) * 2>       Buffer;
 
         std::fill( Buffer.begin(), Buffer.end(), char() );
         if ( GetLocaleInfo( ALcid, LOCALE_IDEFAULTANSICODEPAGE | LOCALE_RETURN_NUMBER,
@@ -51,6 +51,9 @@ namespace ccwin
         }
     };
 
+    /************************************************************
+    ********    String Functions (Char conversions)
+    ***********************************************************/
     int CharFromWChar( const std::wstring& str, std::string& result_str,
                        char *buffer, std::size_t buffer_chars )
     {
@@ -79,6 +82,43 @@ namespace ccwin
         return result;
     }
 
+    /************************************************************
+    ********    String Functions (Comparison)
+    ***********************************************************/
+    template<class CH, class COMPARATOR>
+    int CompareTextIN( const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& S1,
+                       const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& S2,
+                       COMPARATOR compare )
+    {
+        return compare( LOCALE_USER_DEFAULT, NORM_IGNORECASE,
+                        S1.c_str(), size_cast<unsigned int>(S1.length()),
+                        S2.c_str(), size_cast<unsigned int>(S2.length()) ) - 2;
+    }
+
+    /************************************************************
+    ********    String Functions (Trim)
+    ***********************************************************/
+    template <class CHAR_T>
+    std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >
+        Trim_in( const std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >& str )
+    {
+        typedef std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >   str_type;
+
+        typename str_type::size_type    len = str.length();
+        typename str_type::size_type    low = 0;
+
+        while ( low < len && str[low] <= L' ' )
+            ++low;
+        while ( low < len && str[len - 1] <= L' ' )
+            --len;
+        return str.substr( low, len - low );
+    }
+
+}
+// namespace
+
+namespace ccwin
+{
     std::string NarrowStringStrict( const std::wstring& str )
     {
         std::string     result;
@@ -131,4 +171,8 @@ namespace ccwin
         return std::wstring();
     }
 
+    int CompareText( const std::string& S1, const std::string& S2 )         { return CompareTextIN( S1, S2, CompareStringA ); }
+    int CompareText( const std::wstring& S1, const std::wstring& S2 )       { return CompareTextIN( S1, S2, CompareStringW ); }
+    std::wstring Trim( const std::wstring& str )                            { return Trim_in( str ); }
+    std::string Trim( const std::string& str )                              { return Trim_in( str ); }
 }

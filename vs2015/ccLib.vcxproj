@@ -59,6 +59,8 @@
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
+    <ClCompile Include="..\Src\winClasses.cpp" />
+    <ClCompile Include="..\Src\winUtils.cpp" />
     <ClCompile Include="..\Src\win_str.cpp" />
     <ClCompile Include="..\Src\wtlUtils.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
@@ -402,6 +404,8 @@
     <ClInclude Include="..\Src\smException.h" />
     <ClInclude Include="..\Src\Thread.h" />
     <ClInclude Include="..\Src\UntitledSequence.h" />
+    <ClInclude Include="..\Src\winClasses.h" />
+    <ClInclude Include="..\Src\winUtils.h" />
     <ClInclude Include="..\Src\win_str.h" />
     <ClInclude Include="..\Src\wtlUtils.h" />
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />
