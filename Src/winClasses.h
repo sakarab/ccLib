@@ -81,6 +81,7 @@ namespace ccwin
 
         size_type IndexOf( const std::wstring& str );
         void TrimBack();
+        std::wstring Text() const;
         void Text( const std::wstring& value );
         int IndexOfName( const std::wstring& str );
         std::wstring Names( size_type idx ) const;
@@ -121,6 +122,68 @@ namespace ccwin
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
         std::wstring ReadString( const wchar_t *section, const wchar_t *key, const std::wstring& def );
+    };
+#pragma endregion
+
+#pragma region TRegistry
+    /************************************************************
+    ********    TRegistry
+    ************************************************************/
+    class TRegistry
+    {
+    public:
+        enum TRegDataType { rdUnknown, rdString, rdExpandString, rdInteger, rdBinary };
+        struct TRegDataInfo
+        {
+            DWORD           DataSize;
+            TRegDataType    RegData;
+        };
+        struct TRegKeyInfo
+        {
+            DWORD       SubKeys;
+            DWORD       MaxSubKeyLen;
+            DWORD       Values;
+            DWORD       MaxValueNameLen;
+            DWORD       MaxValueLen;
+            FILETIME    LastWriteTime;
+        };
+    private:
+        HKEY            FRootKey;
+        HKEY            FCurrentKey;
+        std_string      FCurrentPath;
+        unsigned int    FAccess;
+        bool            FLazyWrite;
+        bool            FCloseRootKey;
+
+        HKEY GetBaseKey( bool relative );
+        void ChangeKey( HKEY value, const std::wstring& path );
+        int GetDataSize( const std::wstring& value_name );
+        bool GetDataInfo( const std::wstring& value_name, TRegDataInfo& value );
+        int GetData( const std::wstring& name, BYTE *buffer, DWORD buf_size, TRegDataType& reg_data );
+        void PutData( const std::wstring& name, const BYTE *buffer, DWORD buf_size, TRegDataType reg_data );
+        // noncopyable
+        TRegistry( const TRegistry& src );
+        TRegistry& operator = ( const TRegistry& src );
+    public:
+        TRegistry();
+        TRegistry( DWORD access_rights );
+        ~TRegistry();
+        void RootKey( HKEY key );
+        bool OpenKey( const std::wstring& key, bool can_create );
+        bool OpenKey( const wchar_t *key, bool can_create );
+        void CloseKey();
+        bool ValueExists( const std::wstring& key );
+        bool ValueExists( const wchar_t *key );
+        bool ReadBool( const std::wstring& key );
+        int  ReadInteger( const std::wstring& key );
+        std::wstring ReadString( const std::wstring& key );
+        int ReadBinaryData( const std::wstring& key, void *buffer, int buf_size );
+        void WriteBinaryData( const std::wstring& key, void *buffer, int buf_size );
+        void WriteString( const std::wstring& name, const std::wstring& value );
+        //std::string RegGetValueA( const char *key );
+        bool GetKeyInfo( TRegKeyInfo& value );
+
+        HKEY GetCurrentKey() const { return FCurrentKey; }
     };
 #pragma endregion
 

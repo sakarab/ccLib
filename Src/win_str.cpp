@@ -130,6 +130,37 @@ namespace
         result[len] = 0;
         return result;
     }
+
+    /************************************************************
+    ********    String Functions (StuffString)
+    ***********************************************************/
+    template <class STR_TYPE>
+    STR_TYPE StuffString_in( const STR_TYPE& text, typename STR_TYPE::size_type start,
+                             typename STR_TYPE::size_type length, const STR_TYPE& sub_text )
+    {
+        return text.substr( 0, start ) + sub_text + text.substr( start + length );
+    }
+
+    /************************************************************
+    ********    String Functions (StringReplace)
+    ***********************************************************/
+    template <class STR_TYPE>
+    STR_TYPE StringReplace_in( const STR_TYPE& str, const STR_TYPE& old_pattern, const STR_TYPE& new_pattern )
+    {
+        STR_TYPE                        result = str;
+        typename STR_TYPE::size_type    off = 0;
+
+        do
+        {
+            off = result.find( old_pattern, off );
+            if ( off != STR_TYPE::npos )
+            {
+                result = StuffString_in( result, off, old_pattern.length(), new_pattern );
+                off += new_pattern.length();
+            }
+        } while ( off != STR_TYPE::npos );
+        return result;
+    }
 }
 // namespace
 
@@ -193,4 +224,14 @@ namespace ccwin
     std::string Trim( const std::string& str )                                          { return Trim_in( str ); }
     boost::shared_array<std::string::value_type> smLPSTR( const std::string& str )      { return smLPSTR_in( str ); }
     boost::shared_array<std::wstring::value_type> smLPSTR( const std::wstring& str )    { return smLPSTR_in( str ); }
+
+    std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern )
+    {
+        return StringReplace_in( str, old_pattern, new_pattern );
+    }
+
+    std::wstring StringReplace( const std::wstring& str, const std::wstring& old_pattern, const std::wstring& new_pattern )
+    {
+        return StringReplace_in( str, old_pattern, new_pattern );
+    }
 }

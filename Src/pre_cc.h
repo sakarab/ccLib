@@ -5,6 +5,10 @@
 #include "predef_cc.h"
 #include <string>
 #include <vector>
+#include <boost/lexical_cast.hpp>
+#include <boost/smart_ptr.hpp>
+#include <boost/scope_exit.hpp>
+#include <boost/format.hpp>
 
 #if ! defined (CC_NOT_USING_QT)
 #include <QtCore>

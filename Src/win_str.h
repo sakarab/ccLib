@@ -135,6 +135,8 @@ namespace ccwin
     int CompareText( const std::wstring& S1, const std::wstring& S2 );
     std::wstring Trim( const std::wstring& str );
     std::string Trim( const std::string& str );
+    std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern );
+    std::wstring StringReplace( const std::wstring& str, const std::wstring& old_pattern, const std::wstring& new_pattern );
 
 }
 
