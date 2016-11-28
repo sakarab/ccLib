@@ -60,6 +60,7 @@
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
     <ClCompile Include="..\Src\winClasses.cpp" />
+    <ClCompile Include="..\Src\winOSUtils.cpp" />
     <ClCompile Include="..\Src\winUtils.cpp" />
     <ClCompile Include="..\Src\win_str.cpp" />
     <ClCompile Include="..\Src\wtlUtils.cpp" />
@@ -405,6 +406,7 @@
     <ClInclude Include="..\Src\Thread.h" />
     <ClInclude Include="..\Src\UntitledSequence.h" />
     <ClInclude Include="..\Src\winClasses.h" />
+    <ClInclude Include="..\Src\winOSUtils.h" />
     <ClInclude Include="..\Src\winUtils.h" />
     <ClInclude Include="..\Src\win_str.h" />
     <ClInclude Include="..\Src\wtlUtils.h" />

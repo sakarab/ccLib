@@ -4,6 +4,8 @@
 
 #include "predef_cc.h"
 
+template <class TO, class FROM> TO size_cast( FROM value )      { return static_cast<TO>(value); }
+
 #if defined (CC_HAVE_SHARED_PTR)
     #include <memory>
     namespace cclib

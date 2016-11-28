@@ -1,6 +1,9 @@
 #include <pre_cc.h>
 #include "winUtils.h"
 #include "smException.h"
+#include "winOSUtils.h"
+#include <shlobj.h>
+#include <boost/scope_exit.hpp>
 
 namespace
 {
@@ -21,7 +24,6 @@ namespace ccwin
     /************************************************************
     ********    File Name Functions
     ***********************************************************/
-
     std::wstring ExtractFileDrive( const std::wstring& fname )
     {
         if ( fname.length() >= 2 && fname[1] == DriveDelim )
@@ -130,5 +132,68 @@ namespace ccwin
             return str.substr( 0, len - 1 );
         return str;
     }
+
+    /************************************************************
+    ********    TCommonDirectories
+    ************************************************************/
+    TCommonDirectories::TCommonDirectories()
+        : mDirectoryPrivider()
+    {
+        if ( WinOSVersion::IsVistaGreater() )
+            mDirectoryPrivider = cclib::make_shared<TGetDirVista>();
+        else
+            mDirectoryPrivider = cclib::make_shared<TGetDirWin2K>();
+    }
+
+    TCommonDirectories::~TCommonDirectories()
+    {
+    }
+
+    /************************************************************
+    ********    TGetDirWin2K
+    ************************************************************/
+    std::wstring TGetDirWin2K::getCommonDirectory( int csidl )
+    {
+        TCHAR   szPath[MAX_PATH + 1];
+
+        if ( SHGetFolderPath( 0, csidl, 0, SHGFP_TYPE_CURRENT, szPath ) == SHGetFolderPath_ERROR_CODE )
+            throw cclib::BaseException( "getCommonDirectory failed." );
+        return std::wstring( szPath );
+    }
+
+    std::wstring TGetDirWin2K::get_AppDataDirectory_UserRoaming()   { return getCommonDirectory( CSIDL_APPDATA ); }
+    std::wstring TGetDirWin2K::get_AppDataDirectory_UserLocal()     { return getCommonDirectory( CSIDL_LOCAL_APPDATA ); }
+    std::wstring TGetDirWin2K::get_AppDataDirectory_System()        { return getCommonDirectory( CSIDL_COMMON_APPDATA ); }
+    std::wstring TGetDirWin2K::get_PublicDocumentsDirectory()       { return getCommonDirectory( CSIDL_COMMON_DOCUMENTS ); }
+
+    /************************************************************
+    ********    TGetDirVista
+    ************************************************************/
+    TGetDirVista::TGetDirVista()
+        : mShellDll( "Shell32.dll" ), mSHGetKnownFolderPath( 0 )
+    {
+        mSHGetKnownFolderPath = mShellDll.GetFuncAddress<SHGetKnownFolderPath_Func>( "SHGetKnownFolderPath" );
+    }
+
+    TGetDirVista::~TGetDirVista()
+    {
+    }
+
+    std::wstring TGetDirVista::getCommonDirectory( const KNOWNFOLDERID& folder_id )
+    {
+        PWSTR       path = 0;
+        HRESULT     ret = mSHGetKnownFolderPath( folder_id, KF_FLAG_NO_ALIAS, 0, &path );
+
+        BOOST_SCOPE_EXIT( path ) { CoTaskMemFree( path ); }      BOOST_SCOPE_EXIT_END;
+
+        if ( ret != S_OK )
+            throw cclib::BaseException( "getCommonDirectory failed." );
+        return std::wstring( path );
+    }
+
+    std::wstring TGetDirVista::get_AppDataDirectory_UserRoaming()   { return getCommonDirectory( FOLDERID_RoamingAppData ); }
+    std::wstring TGetDirVista::get_AppDataDirectory_UserLocal()     { return getCommonDirectory( FOLDERID_LocalAppData ); }
+    std::wstring TGetDirVista::get_AppDataDirectory_System()        { return getCommonDirectory( FOLDERID_ProgramData ); }
+    std::wstring TGetDirVista::get_PublicDocumentsDirectory()       { return getCommonDirectory( FOLDERID_PublicDocuments ); }
 
 }

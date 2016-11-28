@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include "cpp_string.h"
 #include <functional>
+#include <boost/smart_ptr.hpp>
 
 namespace ccwin
 {
@@ -70,6 +71,8 @@ namespace ccwin
     ************************************************************/
     std::string NarrowStringStrict( const std::wstring& str );
     std::wstring WidenStringStrict( const std::string& str );
+    boost::shared_array<std::string::value_type> smLPSTR( const std::string& str );
+    boost::shared_array<std::wstring::value_type> smLPSTR( const std::wstring& str );
 
     /************************************************************
     ********    StrConvertTrait

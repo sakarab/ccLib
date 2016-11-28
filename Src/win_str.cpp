@@ -1,13 +1,12 @@
 #include <pre_cc.h>
 #include "win_str.h"
 #include <cc_array.hpp>
+#include <cc_memory.hpp>
 #include <boost/smart_ptr.hpp>
 #include <Windows.h>
 
 namespace
 {
-    template <class TO, class FROM> TO size_cast( FROM value ) { return static_cast<TO>(value); }
-
     UINT LCIDToCodePage( DWORD ALcid )
     {
         cclib::array<char, sizeof( DWORD ) * 2>       Buffer;
@@ -114,6 +113,23 @@ namespace
         return str.substr( low, len - low );
     }
 
+    // These are used to call NOT 'const correct' functions.
+    /************************************************************
+    ********    String Functions (smLPSTR)
+    ***********************************************************/
+    template<class CH>
+    boost::shared_array<typename std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >::value_type>
+        smLPSTR_in( const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& str )
+    {
+        typedef std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >   str_type;
+
+        str_type::size_type                         len = str.length();
+        boost::shared_array<str_type::value_type>   result = boost::shared_array<str_type::value_type>( new str_type::value_type[len + 1] );
+
+        std::copy( str.begin(), str.end(), result.get() );
+        result[len] = 0;
+        return result;
+    }
 }
 // namespace
 
@@ -171,8 +187,10 @@ namespace ccwin
         return std::wstring();
     }
 
-    int CompareText( const std::string& S1, const std::string& S2 )         { return CompareTextIN( S1, S2, CompareStringA ); }
-    int CompareText( const std::wstring& S1, const std::wstring& S2 )       { return CompareTextIN( S1, S2, CompareStringW ); }
-    std::wstring Trim( const std::wstring& str )                            { return Trim_in( str ); }
-    std::string Trim( const std::string& str )                              { return Trim_in( str ); }
+    int CompareText( const std::string& S1, const std::string& S2 )                     { return CompareTextIN( S1, S2, CompareStringA ); }
+    int CompareText( const std::wstring& S1, const std::wstring& S2 )                   { return CompareTextIN( S1, S2, CompareStringW ); }
+    std::wstring Trim( const std::wstring& str )                                        { return Trim_in( str ); }
+    std::string Trim( const std::string& str )                                          { return Trim_in( str ); }
+    boost::shared_array<std::string::value_type> smLPSTR( const std::string& str )      { return smLPSTR_in( str ); }
+    boost::shared_array<std::wstring::value_type> smLPSTR( const std::wstring& str )    { return smLPSTR_in( str ); }
 }
