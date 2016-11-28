@@ -64,10 +64,10 @@ namespace ccwin
         TCommonDirectories();
         ~TCommonDirectories();
 
-        std::wstring GetUserRoamingAppDataDirectory() { return mDirectoryPrivider->AppDataDirectory_UserRoaming(); }
-        std::wstring GetUserLocalAppDataDirectory() { return mDirectoryPrivider->AppDataDirectory_UserLocal(); }
-        std::wstring GetSystemAppDataDirectory() { return mDirectoryPrivider->AppDataDirectory_System(); }
-        std::wstring GetPublicDocumentDirectory() { return mDirectoryPrivider->PublicDocumentsDirectory(); }
+        std::wstring AppDataDirectory_UserRoaming()     { return mDirectoryPrivider->AppDataDirectory_UserRoaming(); }
+        std::wstring AppDataDirectory_UserLocal()       { return mDirectoryPrivider->AppDataDirectory_UserLocal(); }
+        std::wstring AppDataDirectory_System()          { return mDirectoryPrivider->AppDataDirectory_System(); }
+        std::wstring PublicDocumentsDirectory()         { return mDirectoryPrivider->PublicDocumentsDirectory(); }
     };
 
     /************************************************************
