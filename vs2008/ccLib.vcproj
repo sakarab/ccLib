@@ -95,7 +95,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="2"
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
@@ -208,7 +207,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="2"
 				InlineFunctionExpansion="1"
 				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
@@ -313,6 +311,10 @@
 			</File>
 			<File
 				RelativePath="..\Src\winClasses.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\winOSUtils.cpp"
 				>
 			</File>
 			<File
@@ -475,6 +477,10 @@
 			</File>
 			<File
 				RelativePath="..\Src\winClasses.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\winOSUtils.h"
 				>
 			</File>
 			<File

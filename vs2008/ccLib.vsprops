@@ -12,5 +12,6 @@
 		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;NOMINMAX;CC_NOT_USING_QT"
 		UsePrecompiledHeader="2"
 		PrecompiledHeaderThrough="pre_cc.h"
+		DisableSpecificWarnings="4512"
 	/>
 </VisualStudioPropertySheet>

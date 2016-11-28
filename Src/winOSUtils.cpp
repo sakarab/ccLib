@@ -60,7 +60,7 @@ namespace
         if ( !CreateProcess( NULL, ccwin::smLPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
             ccwin::RaiseLastOSError();
 
-        BOOST_SCOPE_EXIT( &process_info )
+        BOOST_SCOPE_EXIT( (&process_info) )
         {
             CloseHandle( process_info.hThread );
             CloseHandle( process_info.hProcess );
