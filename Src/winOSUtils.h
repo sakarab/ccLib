@@ -44,6 +44,7 @@ namespace ccwin
 
     std::wstring getAPPName();
 
+    void ExecuteProgram( const std::wstring& command );
     DWORD ExecuteProgramWait( const std::wstring& command, DWORD timeout_msecs );
 
 }

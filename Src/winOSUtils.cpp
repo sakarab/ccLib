@@ -81,6 +81,23 @@ namespace
         return result;
     }
 
+    void DoExecuteProgram( const std::wstring& command, std_char *current_dir )
+    {
+        STARTUPINFO     startup_info;
+        BOOL            inherit_handles = FALSE;
+
+        memset( &startup_info, 0, sizeof( startup_info ) );
+        startup_info.cb = sizeof( startup_info );
+
+        PROCESS_INFORMATION     process_info;
+
+        if ( !CreateProcess( NULL, ccwin::smLPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
+            ccwin::RaiseLastOSError();
+
+        CloseHandle( process_info.hThread );
+        CloseHandle( process_info.hProcess );
+    }
+
     std::wstring get_module_filename( HMODULE h_module )
     {
         WCHAR       fname[MAX_PATH];
@@ -171,6 +188,11 @@ namespace ccwin
         if ( last_error != 0 )
             throw cclib::BaseException( boost::str( boost::format( "%1%" ) % SysErrorMessage( last_error ) ) );
         throw cclib::BaseException( "Unknown OS Error." );
+    }
+
+    void ExecuteProgram( const std::wstring& command )
+    {
+        DoExecuteProgram( command, nullptr );
     }
 
     DWORD ExecuteProgramWait( const std::wstring& command, DWORD timeout_msecs )
