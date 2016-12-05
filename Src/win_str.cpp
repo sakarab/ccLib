@@ -166,6 +166,9 @@ namespace
 
 namespace ccwin
 {
+    const char    * const CharConstant<char>::crlf    = "\r\n";
+    const wchar_t * const CharConstant<wchar_t>::crlf = L"\r\n";
+
     std::string NarrowStringStrict( const std::wstring& str )
     {
         std::string     result;
