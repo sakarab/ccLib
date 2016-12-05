@@ -38,9 +38,14 @@ namespace ccwin
     /************************************************************
     ********    OS Functions
     ***********************************************************/
-    void RaiseLastOSError( DWORD last_error );
+    void RaiseOSError( DWORD last_error );
+    void RaiseOSError( DWORD last_error, const char *message );
     void RaiseLastOSError();
+    void RaiseLastOSError( const char *message );
     std::string SysErrorMessage( DWORD error_code );
+
+    inline void RaiseOSError( DWORD last_error, const std::string& message )    { RaiseOSError( last_error, message.c_str() ); }
+    inline void RaiseLastOSError( const std::string& message )                  { RaiseLastOSError( message.c_str() ); }
 
     std::wstring getAPPName();
 

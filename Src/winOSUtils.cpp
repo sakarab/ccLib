@@ -180,13 +180,25 @@ namespace ccwin
 
     void RaiseLastOSError()
     {
-        RaiseLastOSError( GetLastError() );
+        RaiseOSError( GetLastError() );
     }
 
-    void RaiseLastOSError( DWORD last_error )
+    void RaiseLastOSError( const char *message )
+    {
+        RaiseOSError( GetLastError(), message );
+    }
+
+    void RaiseOSError( DWORD last_error )
     {
         if ( last_error != 0 )
             throw cclib::BaseException( boost::str( boost::format( "%1%" ) % SysErrorMessage( last_error ) ) );
+        throw cclib::BaseException( "Unknown OS Error." );
+    }
+
+    void RaiseOSError( DWORD last_error, const char *message )
+    {
+        if ( last_error != 0 )
+            throw cclib::BaseException( boost::str( boost::format( "%1%\n%2%" ) % SysErrorMessage( last_error ) % message ) );
         throw cclib::BaseException( "Unknown OS Error." );
     }
 
