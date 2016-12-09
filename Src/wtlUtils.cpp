@@ -16,4 +16,27 @@ namespace ccwtl
         }
         return std::wstring();
     }
+
+    bool Menu_ToggleChecked( CMenu& menu, int menu_id )
+    {
+        MENUITEMINFO    mii;
+
+        mii.cbSize = sizeof( MENUITEMINFO );
+        mii.fMask = MIIM_STATE;
+        menu.GetMenuItemInfo( menu_id, FALSE, &mii );
+        mii.fState ^= MFS_CHECKED;
+        menu.SetMenuItemInfo( menu_id, FALSE, &mii );
+        return (mii.fState & MFS_CHECKED) != 0;
+    }
+
+    bool Menu_GetChecked( CMenu& menu, int menu_id )
+    {
+        MENUITEMINFO    mii;
+
+        mii.cbSize = sizeof( MENUITEMINFO );
+        mii.fMask = MIIM_STATE;
+        menu.GetMenuItemInfo( menu_id, FALSE, &mii );
+        return (mii.fState & MFS_CHECKED) != 0;
+    }
+
 }

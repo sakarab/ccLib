@@ -19,6 +19,9 @@ namespace ccwtl
     }
 
     std::wstring Get_Text( CComboBox& cb );
+
+    bool Menu_ToggleChecked( CMenu& menu, int menu_id );
+    bool Menu_GetChecked( CMenu& menu, int menu_id );
 }
 
 #endif
