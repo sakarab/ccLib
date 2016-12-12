@@ -4,14 +4,16 @@
 
 #if defined (BOOST_COMP_MSVC_AVAILABLE)
 
-#if ( BOOST_COMP_MSVC_EMULATED >= BOOST_VERSION_NUMBER(12,0,0) )
+// vs2013
+#if ( _MSC_VER >= 1800 )
     #define CC_HAVE_COPY_DELETE
     #define CC_HAVE_ATOMIC
     #define CC_HAVE_INLINE_FUNCTORS
     #define CC_HAVE_OVERRIDE
 #endif
 
-#if ( BOOST_COMP_MSVC_EMULATED >= BOOST_VERSION_NUMBER(10,0,0) )
+// vs2010
+#if ( _MSC_VER >= 1600 )
     #define CC_HAVE_MOVE_CTOR
     #define CC_HAVE_NULL_PTR
     #define CC_HAVE_SHARED_PTR
