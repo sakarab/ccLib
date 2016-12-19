@@ -10,6 +10,8 @@
     #define CC_HAVE_ATOMIC
     #define CC_HAVE_INLINE_FUNCTORS
     #define CC_HAVE_OVERRIDE
+    #define CC_HAVE_ENUM_CLASS
+    #define CC_HAVE_RANGE_FOR
 #endif
 
 // vs2010
