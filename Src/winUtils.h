@@ -26,6 +26,8 @@ namespace ccwin
     ***********************************************************/
     bool FileExists( const std::wstring& fname );
     bool DirectoryExists( const std::wstring& directory );
+    inline bool IsFile( const std::wstring& fname )             { return FileExists( fname ); }
+    inline bool IsDirectory( const std::wstring& directory )    { return DirectoryExists( directory ); }
     bool ForceDirectories( const std::wstring& dir );
 
 #pragma region Common Directories

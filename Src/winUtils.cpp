@@ -88,17 +88,16 @@ namespace ccwin
     ***********************************************************/
     bool FileExists( const std::wstring& fname )
     {
-        struct _stat    info;
-        int             res = _tstat( fname.c_str(), &info );
+        DWORD   code = GetFileAttributes( fname.c_str() );
 
-        return res == 0;
+        return (code != INVALID_FILE_ATTRIBUTES && (code & (FILE_ATTRIBUTE_DEVICE | FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_OFFLINE)) == 0);
     }
 
     bool DirectoryExists( const std::wstring& directory )
     {
         DWORD   code = GetFileAttributes( directory.c_str() );
 
-        return (code != 0xFFFFFFFF && (FILE_ATTRIBUTE_DIRECTORY & code) != 0);
+        return (code != INVALID_FILE_ATTRIBUTES && (code & FILE_ATTRIBUTE_DIRECTORY) != 0);
     }
 
     bool ForceDirectories( const std::wstring& dir )
