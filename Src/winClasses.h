@@ -107,6 +107,11 @@ namespace ccwin
             return GetPrivateProfileString( section, key, def, out, out_size, FFileName.c_str() );
         }
 
+        int WriteProfile( const wchar_t *section, const wchar_t *key, const wchar_t *value )
+        {
+            return WritePrivateProfileString( section, key, value, FFileName.c_str() );
+        }
+
         void FillStringList( const TBuffer& buffer, TStringList& list );
 
         // noncopyable
@@ -121,7 +126,8 @@ namespace ccwin
 
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
-        std::wstring ReadString( const wchar_t *section, const wchar_t *key, const std::wstring& def );
+        std::wstring ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def );
+        void WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value );
     };
 #pragma endregion
 

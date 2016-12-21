@@ -268,7 +268,7 @@ namespace ccwin
     int TIniFile::ReadInteger( const wchar_t *section, const wchar_t *key, int def )
     {
         int             result = def;
-        std::wstring    int_str = ReadString( section, key, std::wstring() );
+        std::wstring    int_str = ReadString( section, key, L"" );
 
         if ( !int_str.empty() )
         {
@@ -283,12 +283,18 @@ namespace ccwin
         return result;
     }
 
-    std::wstring TIniFile::ReadString( const wchar_t *section, const wchar_t *key, const std_string& def )
+    std::wstring TIniFile::ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def )
     {
         cclib::array<wchar_t, 2048>     buffer;
-        int                             len = ReadProfile( section, key, def.c_str(), &buffer.front(), buffer.size() );
+        int                             len = ReadProfile( section, key, def, &buffer.front(), buffer.size() );
 
         return std::wstring( &buffer.front(), len );
+    }
+
+    void TIniFile::WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value )
+    {
+        if ( WriteProfile( section, key, value ) == 0 )
+            throw cclib::BaseException( "Error writing ini file." );
     }
 #pragma endregion
 
