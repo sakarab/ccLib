@@ -118,7 +118,7 @@ namespace ccwin
         TIniFile( const TIniFile& src );
         TIniFile& operator = ( const TIniFile& src );
     public:
-        TIniFile( const std::wstring& file_name );
+        explicit TIniFile( const std::wstring& file_name );
         ~TIniFile();
 
         void ReadSections( TStringList& list );
