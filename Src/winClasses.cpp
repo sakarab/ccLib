@@ -285,8 +285,8 @@ namespace ccwin
 
     std::wstring TIniFile::ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def )
     {
-        cclib::array<wchar_t, 2048>     buffer;
-        int                             len = ReadProfile( section, key, def, &buffer.front(), buffer.size() );
+        TBuffer     buffer;
+        int         len = ReadProfile( section, key, def, &buffer.front(), buffer.size() );
 
         return std::wstring( &buffer.front(), len );
     }
