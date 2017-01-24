@@ -164,7 +164,7 @@ namespace ccwin
         cclib::array<char, 256>         buffer;
 
         int     len = FormatMessageA( FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_ARGUMENT_ARRAY,
-                                      0, error_code, 0, buffer.data(), size_cast<DWORD>(buffer.size()), 0 );
+                                      0, error_code, 0, buffer.data(), cclib::size_cast<DWORD>(buffer.size()), 0 );
 
         while ( len > 0 )
         {

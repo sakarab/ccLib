@@ -13,7 +13,7 @@ namespace
 
         std::fill( Buffer.begin(), Buffer.end(), char() );
         if ( GetLocaleInfo( ALcid, LOCALE_IDEFAULTANSICODEPAGE | LOCALE_RETURN_NUMBER,
-                            reinterpret_cast<LPWSTR>(Buffer.data()), size_cast<unsigned int>(Buffer.size()) ) )
+                            reinterpret_cast<LPWSTR>(Buffer.data()), cclib::size_cast<unsigned int>(Buffer.size()) ) )
             return *reinterpret_cast<UINT *>(&Buffer.front());
         return CP_ACP;
     }
@@ -57,9 +57,9 @@ namespace
                        char *buffer, std::size_t buffer_chars )
     {
         BOOL            used_default_char = FALSE;
-        unsigned int    buffer_size = size_cast<unsigned int>(buffer_chars);
+        unsigned int    buffer_size = cclib::size_cast<unsigned int>(buffer_chars);
         int             result = WideCharToMultiByte( DefaultUserCodePage::Value(), 0,
-                                                      str.c_str(), size_cast<unsigned int>(str.length()),
+                                                      str.c_str(), cclib::size_cast<unsigned int>(str.length()),
                                                       buffer, buffer_size, 0, &used_default_char );
 
         //DUMPMSG1_IF( (result == 0), "CharFromWChar failed: %1%", GetLastError() );
@@ -73,8 +73,8 @@ namespace
                        wchar_t *buffer, std::size_t buffer_chars )
     {
         int     result = MultiByteToWideChar( DefaultUserCodePage::Value(), 0,
-                                              str.c_str(), size_cast<unsigned int>(str.length()),
-                                              buffer, size_cast<unsigned int>(buffer_chars) );
+                                              str.c_str(), cclib::size_cast<unsigned int>(str.length()),
+                                              buffer, cclib::size_cast<unsigned int>(buffer_chars) );
 
         if ( result >= 0 )
             result_str = std::wstring( buffer, buffer + result );
@@ -90,8 +90,8 @@ namespace
                        COMPARATOR compare )
     {
         return compare( LOCALE_USER_DEFAULT, NORM_IGNORECASE,
-                        S1.c_str(), size_cast<unsigned int>(S1.length()),
-                        S2.c_str(), size_cast<unsigned int>(S2.length()) ) - 2;
+                        S1.c_str(), cclib::size_cast<unsigned int>(S1.length()),
+                        S2.c_str(), cclib::size_cast<unsigned int>(S2.length()) ) - 2;
     }
 
     /************************************************************

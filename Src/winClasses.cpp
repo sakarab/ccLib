@@ -526,12 +526,12 @@ namespace ccwin
 
     void TRegistry::WriteBinaryData( const std::wstring& key, void *buffer, int buf_size )
     {
-        PutData( key, const_cast<const BYTE *>(reinterpret_cast<BYTE *>(buffer)), size_cast<DWORD>(buf_size), rdBinary );
+        PutData( key, const_cast<const BYTE *>(reinterpret_cast<BYTE *>(buffer)), cclib::size_cast<DWORD>(buf_size), rdBinary );
     }
 
     void TRegistry::WriteString( const std_string& name, const std_string& value )
     {
-        PutData( name, reinterpret_cast<const BYTE *>(value.c_str()), size_cast<DWORD>((value.length() + 1) * sizeof( TCHAR )), rdString );
+        PutData( name, reinterpret_cast<const BYTE *>(value.c_str()), cclib::size_cast<DWORD>((value.length() + 1) * sizeof( TCHAR )), rdString );
     }
 
     //std::string TRegistry::RegGetValueA( const char *key )
