@@ -182,6 +182,8 @@ namespace ccwin
             start = end_pos + 1;
             end_pos = value.find_first_of( delimiter, start );
         }
+        if ( start < value.length() )
+            slist.push_back( value.substr( start ) );
         mList = slist;
     }
 
