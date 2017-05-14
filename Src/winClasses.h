@@ -71,6 +71,11 @@ namespace ccwin
         TStringList();
         ~TStringList();
 
+        TStringList( const TStringList& other ) = default;
+        TStringList( TStringList&& other ) = default;
+        TStringList& operator=( const TStringList& other ) = default;
+        TStringList& operator=( TStringList&& other ) = default;
+
         const std::wstring& operator[]( size_type idx ) const;
         std::wstring& operator[]( size_type idx );
 
@@ -83,6 +88,7 @@ namespace ccwin
         void TrimBack();
         std::wstring Text() const;
         void Text( const std::wstring& value );
+        void DelimitedText( const std::wstring& value, wchar_t delimiter );
         int IndexOfName( const std::wstring& str );
         std::wstring Names( size_type idx ) const;
         std::wstring Values( size_type idx );
