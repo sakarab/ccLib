@@ -71,10 +71,12 @@ namespace ccwin
         TStringList();
         ~TStringList();
 
+#if defined(CC_HAVE_COPY_DEFAULT)
         TStringList( const TStringList& other ) = default;
         TStringList( TStringList&& other ) = default;
         TStringList& operator=( const TStringList& other ) = default;
         TStringList& operator=( TStringList&& other ) = default;
+#endif
 
         const std::wstring& operator[]( size_type idx ) const;
         std::wstring& operator[]( size_type idx );

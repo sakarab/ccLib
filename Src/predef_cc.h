@@ -7,6 +7,7 @@
 // vs2013
 #if ( _MSC_VER >= 1800 )
     #define CC_HAVE_COPY_DELETE
+    #define CC_HAVE_COPY_DEFAULT
     #define CC_HAVE_ATOMIC
     #define CC_HAVE_INLINE_FUNCTORS
     #define CC_HAVE_OVERRIDE
