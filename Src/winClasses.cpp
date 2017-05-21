@@ -187,6 +187,24 @@ namespace ccwin
         mList = slist;
     }
 
+    std::wstring TStringList::DelimitedText( wchar_t delimiter ) const
+    {
+        std::vector<wchar_t>        buffer;
+
+        for ( size_type n = 0, eend = Count() ; n < eend ; ++n )
+        {
+            const std::wstring&     sstr = mList[n];
+
+            buffer.insert( buffer.end(), sstr.begin(), sstr.end() );
+            buffer.push_back( delimiter );
+        }
+        if ( buffer.empty() )
+            return std::wstring();
+        else
+            buffer.resize( buffer.size() - 1 );
+        return std::wstring( &buffer.front(), buffer.size() );
+    }
+
     TStringList::size_type TStringList::Count() const
     {
         return mList.size();

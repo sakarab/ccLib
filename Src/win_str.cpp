@@ -161,6 +161,26 @@ namespace
         } while ( off != STR_TYPE::npos );
         return result;
     }
+
+    /************************************************************
+    ********    String Functions (Lower/Upper)
+    ***********************************************************/
+    template<class CH, class CONVERTER>
+    std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >
+        CharConvert( const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& src, CONVERTER convert )
+    {
+        typedef std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >   str_type;
+
+        if ( src.empty() )
+            return str_type();
+
+        std::vector<str_type::value_type>       vec_result;
+
+        std::copy( src.begin(), src.end(), std::back_inserter( vec_result ) );
+        vec_result.push_back( 0 );
+        convert( &vec_result.front() );
+        return str_type( &vec_result.front(), vec_result.size() );
+    }
 }
 // namespace
 
@@ -237,4 +257,12 @@ namespace ccwin
     {
         return StringReplace_in( str, old_pattern, new_pattern );
     }
+
+    /************************************************************
+    ********    String Functions (Lower/Upper)
+    ***********************************************************/
+    std::string  LowerCase( const std::string& src )        { return CharConvert( src, CharLowerA ); }
+    std::wstring LowerCase( const std::wstring& src )       { return CharConvert( src, CharLowerW ); }
+    std::string  UpperCase( const std::string& src )        { return CharConvert( src, CharUpperA ); }
+    std::wstring UpperCase( const std::wstring& src )       { return CharConvert( src, CharUpperW ); }
 }

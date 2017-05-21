@@ -91,6 +91,7 @@ namespace ccwin
         std::wstring Text() const;
         void Text( const std::wstring& value );
         void DelimitedText( const std::wstring& value, wchar_t delimiter );
+        std::wstring DelimitedText( wchar_t delimiter ) const;
         int IndexOfName( const std::wstring& str );
         std::wstring Names( size_type idx ) const;
         std::wstring Values( size_type idx );

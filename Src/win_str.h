@@ -164,6 +164,14 @@ namespace ccwin
     std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern );
     std::wstring StringReplace( const std::wstring& str, const std::wstring& old_pattern, const std::wstring& new_pattern );
 
+    //===============================================================
+    //==========    String Functions
+    //===============================================================
+    std::string  LowerCase( const std::string& src );
+    std::wstring LowerCase( const std::wstring& src );
+    std::string  UpperCase( const std::string& src );
+    std::wstring UpperCase( const std::wstring& src );
+
 }
 
 #endif
