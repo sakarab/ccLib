@@ -405,6 +405,7 @@
     <ClInclude Include="..\Src\smException.h" />
     <ClInclude Include="..\Src\Thread.h" />
     <ClInclude Include="..\Src\UntitledSequence.h" />
+    <ClInclude Include="..\Src\utf8.h" />
     <ClInclude Include="..\Src\winClasses.h" />
     <ClInclude Include="..\Src\winOSUtils.h" />
     <ClInclude Include="..\Src\winUtils.h" />
