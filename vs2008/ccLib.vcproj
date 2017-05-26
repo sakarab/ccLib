@@ -472,6 +472,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\Src\utf8.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\win_str.h"
 				>
 			</File>
