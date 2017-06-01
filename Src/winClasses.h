@@ -136,6 +136,7 @@ namespace ccwin
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
         std::wstring ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def );
+        void WriteInteger( const wchar_t *section, const wchar_t *key, int value );
         void WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value );
     };
 #pragma endregion

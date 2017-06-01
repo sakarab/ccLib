@@ -326,6 +326,11 @@ namespace ccwin
         return std::wstring( &buffer.front(), len );
     }
 
+    void TIniFile::WriteInteger( const wchar_t * section, const wchar_t * key, int value )
+    {
+        WriteString( section, key, boost::str( boost::wformat( L"%1%" ) % value ).c_str() );
+    }
+
     void TIniFile::WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value )
     {
         if ( WriteProfile( section, key, value ) == 0 )
