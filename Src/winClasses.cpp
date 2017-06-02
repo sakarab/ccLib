@@ -3,6 +3,8 @@
 #include "smException.h"
 #include "cc_memory.hpp"
 #include <boost/lexical_cast.hpp>
+#include "winUtils.h"
+#include "winOSUtils.h"
 
 namespace
 {
@@ -255,12 +257,28 @@ namespace ccwin
     ********    TIniFile
     ************************************************************/
     TIniFile::TIniFile( const std_string& file_name )
-        : FFileName( file_name )
+        : mFileName( file_name ), mDirectoryExists( DirectoryExists( ExtractFilePath( file_name ) ) )
     {
     }
 
     TIniFile::~TIniFile()
     {}
+
+    int TIniFile::ReadProfile( const wchar_t * section, const wchar_t * key, const wchar_t * def, wchar_t * out, int out_size )
+    {
+        return GetPrivateProfileString( section, key, def, out, out_size, mFileName.c_str() );
+    }
+
+    void TIniFile::WriteProfile( const wchar_t * section, const wchar_t * key, const wchar_t * value )
+    {
+        if ( !mDirectoryExists )
+        {
+            ForceDirectories( ExtractFilePath( mFileName ) );
+            mDirectoryExists = true;
+        }
+        if ( ! WritePrivateProfileString( section, key, value, mFileName.c_str() ) )
+            RaiseLastOSError();
+    }
 
     void TIniFile::FillStringList( const TBuffer& buffer, TStringList& list )
     {
@@ -270,6 +288,22 @@ namespace ccwin
         {
             list.Add( std::wstring( ptr ) );
             ptr += wcslen( ptr ) + 1;
+        }
+    }
+
+    void TIniFile::FillStringList( const TBuffer& buffer, std::vector<std::wstring>& list )
+    {
+        const wchar_t           *ptr = &buffer.front();
+        TBuffer::size_type      idx = 0;
+
+        while ( *ptr != 0 && idx < buffer.size() )
+        {
+            list.push_back( std::wstring( ptr ) );
+
+            TBuffer::size_type      diff = wcslen( ptr ) + 1;
+
+            ptr += diff;
+            idx += diff;
         }
     }
 
@@ -293,6 +327,22 @@ namespace ccwin
 
         if ( len > 0 )
             FillStringList( buffer, list );
+    }
+
+    void TIniFile::ReadSectionKeys( const wchar_t * section, std::vector<std::wstring>& list )
+    {
+        list.clear();
+
+        TBuffer     buffer;
+        int         len = ReadProfile( section, nullptr, nullptr, &buffer.front(), buffer.size() );
+
+        if ( len > 0 )
+            FillStringList( buffer, list );
+    }
+
+    void TIniFile::EraseSection( const wchar_t * section )
+    {
+        WriteProfile( section, 0, 0 );
     }
 
     bool TIniFile::ReadBool( const wchar_t *section, const wchar_t *key, bool def )
@@ -333,8 +383,7 @@ namespace ccwin
 
     void TIniFile::WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value )
     {
-        if ( WriteProfile( section, key, value ) == 0 )
-            throw cclib::BaseException( "Error writing ini file." );
+        WriteProfile( section, key, value );
     }
 #pragma endregion
 

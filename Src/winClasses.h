@@ -107,22 +107,15 @@ namespace ccwin
     class TIniFile
     {
     private:
-        typedef cclib::array<wchar_t, 2048>     TBuffer;
+        typedef cclib::array<wchar_t, 8192>     TBuffer;
     private:
-        std::wstring    FFileName;
+        std::wstring    mFileName;
+        bool            mDirectoryExists;
 
-        int ReadProfile( const wchar_t *section, const wchar_t *key, const wchar_t *def, wchar_t *out, int out_size )
-        {
-            return GetPrivateProfileString( section, key, def, out, out_size, FFileName.c_str() );
-        }
-
-        int WriteProfile( const wchar_t *section, const wchar_t *key, const wchar_t *value )
-        {
-            return WritePrivateProfileString( section, key, value, FFileName.c_str() );
-        }
-
+        int ReadProfile( const wchar_t *section, const wchar_t *key, const wchar_t *def, wchar_t *out, int out_size );
+        void WriteProfile( const wchar_t *section, const wchar_t *key, const wchar_t *value );
         void FillStringList( const TBuffer& buffer, TStringList& list );
-
+        void FillStringList( const TBuffer& buffer, std::vector<std::wstring>& list );
         // noncopyable
         TIniFile( const TIniFile& src );
         TIniFile& operator = ( const TIniFile& src );
@@ -132,6 +125,8 @@ namespace ccwin
 
         void ReadSections( TStringList& list );
         void ReadSectionKeys( const wchar_t *section, TStringList& list );
+        void ReadSectionKeys( const wchar_t *section, std::vector<std::wstring>& list );
+        void EraseSection( const wchar_t *section );
 
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
