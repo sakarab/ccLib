@@ -148,6 +148,7 @@ namespace ccwin
         void ReadSectionKeys( const wchar_t *section, TStringList& list );
         void ReadSectionKeys( const wchar_t *section, std::vector<std::wstring>& list );
         void EraseSection( const wchar_t *section );
+        void EraseKey( const wchar_t *section, const wchar_t *key );
 
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );

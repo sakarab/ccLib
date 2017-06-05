@@ -366,6 +366,11 @@ namespace ccwin
         WriteProfile( section, 0, 0 );
     }
 
+    void TIniFile::EraseKey( const wchar_t * section, const wchar_t * key )
+    {
+        WriteProfile( section, key, 0 );
+    }
+
     bool TIniFile::ReadBool( const wchar_t *section, const wchar_t *key, bool def )
     {
         return ReadInteger( section, key, def ? 1 : 0 ) != 0;
