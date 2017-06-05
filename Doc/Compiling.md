@@ -2,4 +2,4 @@ This library is developed mainly on Windows(TM). So a bunch of Visual Studio pro
 
 Having said that, what is needed is install the dependencies (disgusted below), load the solution and build it.
 
-The library has utility classes and functions for `WTL` (Windows Template Library) and `Qt`, and uses `boost` and `Loki` (mainly for `Loki::Singleton` class).
+The library has utility classes and functions for Windows(TM) API, `WTL` (Windows Template Library) and `Qt`, and uses `boost` and `Loki` (mainly for `Loki::Singleton` class) libraries.
