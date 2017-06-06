@@ -29,6 +29,10 @@
 #include <atlctrls.h>
 #include "winClasses.h"
 
+#define WM_USER_WTL             WM_USER + 1000
+
+#define RECORD_WINDOW_SIZE      WM_USER_WTL + 1
+
 namespace ccwtl
 {
     template <class CTRL> std_string getControlText( CTRL& ctrl )
@@ -51,45 +55,71 @@ namespace ccwtl
     template <class T> class CFormSize
     {
     private:
+        enum class WindowState { Normal, Minimized, Maximized };
+    private:
         std::wstring    mSection;
         std::wstring    mKeyPrefix;
         int             mClientTop;
         int             mClientLeft;
         int             mClientWidth;
         int             mClientHeight;
-        UINT            mShowState;
+        WindowState     mWindowState;
 
-        UINT GetShowState( T *pT )
+        WindowState GetWindowState( T *pT )
         {
             WINDOWPLACEMENT     wp;
 
             wp.length = sizeof( WINDOWPLACEMENT );
             GetWindowPlacement( *pT, &wp );
-            return wp.showCmd;
+            if ( wp.showCmd == SW_SHOWMINIMIZED )
+                return WindowState::Minimized;
+            else if ( wp.showCmd == SW_SHOWMAXIMIZED )
+                return WindowState::Maximized;
+            return WindowState::Normal;
         }
 
-        LRESULT OnSize( UINT /*uMsg*/, WPARAM wParam, LPARAM lParam, BOOL& bHandled )
+        WindowState GetWindowState_2( T *pT )
         {
-            if ( wParam == SIZE_RESTORED )
-            {
-                mClientWidth = LOWORD( lParam );
-                mClientHeight = HIWORD( lParam );
-                mShowState = wParam;
-            }
-            else if ( wParam == SIZE_MINIMIZED || wParam == SIZE_MAXIMIZED )
-                mShowState = wParam;
+            if ( IsIconic( *pT ) )
+                return WindowState::Minimized;
+            else if ( IsZoomed( *pT ) )
+                return WindowState::Maximized;
+            return WindowState::Normal;
+        }
+
+        LRESULT OnSize( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
+        {
+            T       *pT = static_cast<T*>(this);
+
+            pT->PostMessage( RECORD_WINDOW_SIZE, 0, 0 );
             bHandled = FALSE;
             return 1;
         }
 
-        LRESULT OnMove( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM lParam, BOOL& bHandled )
+        LRESULT OnMove( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
         {
             T       *pT = static_cast<T*>(this);
 
-            if ( GetShowState( pT ) == SW_SHOWNORMAL )
+            pT->PostMessage( RECORD_WINDOW_SIZE, 0, 0 );
+            bHandled = FALSE;
+            return 1;
+        }
+
+        LRESULT OnRecordSize( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
+        {
+            T       *pT = static_cast<T*>(this);
+
+            mWindowState = GetWindowState_2( pT );
+
+            if ( mWindowState == WindowState::Normal )
             {
-                mClientLeft = LOWORD( lParam );
-                mClientTop = HIWORD( lParam );
+                CRect   rect;
+
+                pT->GetWindowRect( &rect );
+                mClientLeft = rect.left;
+                mClientTop = rect.top;
+                mClientWidth = rect.Width();
+                mClientHeight = rect.Height();
             }
             bHandled = FALSE;
             return 1;
@@ -98,6 +128,7 @@ namespace ccwtl
         BEGIN_MSG_MAP( CFormSize )
             MESSAGE_HANDLER( WM_SIZE, OnSize );
             MESSAGE_HANDLER( WM_MOVE, OnMove );
+            MESSAGE_HANDLER( RECORD_WINDOW_SIZE, OnRecordSize );
         END_MSG_MAP()
     public:
         CFormSize( const std::wstring& section )
@@ -118,20 +149,21 @@ namespace ccwtl
             mClientTop = ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Top" ).c_str(), rect.top );
             mClientWidth = ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Width" ).c_str(), rect.Width() );
             mClientHeight = ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Height" ).c_str(), rect.Height() );
-            mShowState = ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(), SIZE_RESTORED );
+            mWindowState = static_cast<WindowState>(ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(),
+                                                                     static_cast<int>(WindowState::Normal) ));
 
-            if ( mShowState == SIZE_RESTORED )
-                pT->MoveWindow( mClientLeft, mClientTop, mClientWidth, mClientHeight, TRUE );
-            else if ( mShowState == SIZE_MINIMIZED )
+            if ( GetWindowState_2( pT ) == WindowState::Normal )
+                SetWindowPos( *pT, 0, mClientLeft, mClientTop, mClientWidth, mClientHeight, SWP_NOZORDER | SWP_NOACTIVATE );
+            else
             {
-                pT->ShowWindow( SW_MINIMIZE );
-                pT->ShowWindow( SW_MINIMIZE );
+                WINDOWPLACEMENT     wp;
+
+                wp.length = sizeof( WINDOWPLACEMENT );
+                GetWindowPlacement( *pT, &wp );
+                wp.rcNormalPosition = CRect( CPoint( mClientLeft, mClientTop ), CSize( mClientWidth, mClientHeight ) );
+                SetWindowPlacement( *pT, &wp );
             }
-            else if ( mShowState == SIZE_MAXIMIZED )
-            {
-                pT->ShowWindow( SW_MAXIMIZE );
-                pT->ShowWindow( SW_MAXIMIZE );
-            }
+            ShowWindow( *pT, static_cast<int>(mWindowState) + 1 );
         }
 
         void Save( ccwin::TIniFile& ini )
@@ -140,7 +172,7 @@ namespace ccwtl
             ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Top" ).c_str(), mClientTop );
             ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Width" ).c_str(), mClientWidth );
             ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Height" ).c_str(), mClientHeight );
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(), mShowState );
+            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(), static_cast<int>(mWindowState) );
         }
     };
 
