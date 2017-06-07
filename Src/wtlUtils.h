@@ -56,7 +56,16 @@ namespace ccwtl
     template <class T> class CFormSize
     {
     private:
+#if defined (CC_HAVE_ENUM_CLASS)
         enum class WindowState { Normal, Minimized, Maximized };
+#else
+        struct WindowState
+        {
+            static const int Normal = 0;
+            static const int Minimized = 1;
+            static const int Maximized  = 2;
+        };
+#endif
     private:
         std::wstring    mSection;
         std::wstring    mKeyPrefix;
@@ -65,7 +74,7 @@ namespace ccwtl
         int             mClientWidth;
         int             mClientHeight;
         WindowState     mWindowState;
-        bool            mSizeSet = false;
+        bool            mSizeSet;
 
         WindowState GetWindowState( T *pT )
         {
@@ -147,11 +156,15 @@ namespace ccwtl
         END_MSG_MAP()
     public:
         CFormSize( const std::wstring& section )
-            : mSection( section )
+            : mSection( section ),
+              mClientTop(), mClientLeft(), mClientWidth(), mClientHeight(),
+              mWindowState(), mSizeSet(false)
         {}
 
         CFormSize( const std::wstring& section, const std::wstring& key_prefix )
-            : mSection( section ), mKeyPrefix( key_prefix )
+            : mSection( section ), mKeyPrefix( key_prefix ),
+              mClientTop(), mClientLeft(), mClientWidth(), mClientHeight(),
+              mWindowState(), mSizeSet(false)
         {}
 
         void Load( ccwin::TIniFile& ini )
