@@ -29,9 +29,10 @@
 #include <atlctrls.h>
 #include "winClasses.h"
 
-#define WM_USER_WTL             WM_USER + 1000
+#define WTL_CLASS_USER                  WM_USER + 1000
 
-#define RECORD_WINDOW_SIZE      WM_USER_WTL + 1
+#define WTLU_RECORD_WINDOW_SIZE         WTL_CLASS_USER + 1
+#define WTLU_SET_WINDOW_SIZE            WTL_CLASS_USER + 2
 
 namespace ccwtl
 {
@@ -64,6 +65,7 @@ namespace ccwtl
         int             mClientWidth;
         int             mClientHeight;
         WindowState     mWindowState;
+        bool            mSizeSet = false;
 
         WindowState GetWindowState( T *pT )
         {
@@ -91,7 +93,7 @@ namespace ccwtl
         {
             T       *pT = static_cast<T*>(this);
 
-            pT->PostMessage( RECORD_WINDOW_SIZE, 0, 0 );
+            pT->PostMessage( WTLU_RECORD_WINDOW_SIZE, 0, 0 );
             bHandled = FALSE;
             return 1;
         }
@@ -100,27 +102,39 @@ namespace ccwtl
         {
             T       *pT = static_cast<T*>(this);
 
-            pT->PostMessage( RECORD_WINDOW_SIZE, 0, 0 );
+            pT->PostMessage( WTLU_RECORD_WINDOW_SIZE, 0, 0 );
             bHandled = FALSE;
             return 1;
         }
 
         LRESULT OnRecordSize( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
         {
+            if ( mSizeSet )
+            {
+                T       *pT = static_cast<T*>(this);
+
+                mWindowState = GetWindowState_2( pT );
+                if ( mWindowState == WindowState::Normal )
+                {
+                    CRect   rect;
+
+                    pT->GetWindowRect( &rect );
+                    mClientLeft = rect.left;
+                    mClientTop = rect.top;
+                    mClientWidth = rect.Width();
+                    mClientHeight = rect.Height();
+                }
+            }
+            bHandled = FALSE;
+            return 1;
+        }
+
+        LRESULT OnSetSize( UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled )
+        {
             T       *pT = static_cast<T*>(this);
 
-            mWindowState = GetWindowState_2( pT );
-
-            if ( mWindowState == WindowState::Normal )
-            {
-                CRect   rect;
-
-                pT->GetWindowRect( &rect );
-                mClientLeft = rect.left;
-                mClientTop = rect.top;
-                mClientWidth = rect.Width();
-                mClientHeight = rect.Height();
-            }
+            ShowWindow( *pT, static_cast<int>(mWindowState) + 1 );
+            mSizeSet = true;
             bHandled = FALSE;
             return 1;
         }
@@ -128,7 +142,8 @@ namespace ccwtl
         BEGIN_MSG_MAP( CFormSize )
             MESSAGE_HANDLER( WM_SIZE, OnSize );
             MESSAGE_HANDLER( WM_MOVE, OnMove );
-            MESSAGE_HANDLER( RECORD_WINDOW_SIZE, OnRecordSize );
+            MESSAGE_HANDLER( WTLU_RECORD_WINDOW_SIZE, OnRecordSize );
+            MESSAGE_HANDLER( WTLU_SET_WINDOW_SIZE, OnSetSize );
         END_MSG_MAP()
     public:
         CFormSize( const std::wstring& section )
@@ -151,7 +166,6 @@ namespace ccwtl
             mClientHeight = ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Height" ).c_str(), rect.Height() );
             mWindowState = static_cast<WindowState>(ini.ReadInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(),
                                                                      static_cast<int>(WindowState::Normal) ));
-
             if ( GetWindowState_2( pT ) == WindowState::Normal )
                 SetWindowPos( *pT, 0, mClientLeft, mClientTop, mClientWidth, mClientHeight, SWP_NOZORDER | SWP_NOACTIVATE );
             else
@@ -163,7 +177,7 @@ namespace ccwtl
                 wp.rcNormalPosition = CRect( CPoint( mClientLeft, mClientTop ), CSize( mClientWidth, mClientHeight ) );
                 SetWindowPlacement( *pT, &wp );
             }
-            ShowWindow( *pT, static_cast<int>(mWindowState) + 1 );
+            pT->PostMessage( WTLU_SET_WINDOW_SIZE, 0, 0 );
         }
 
         void Save( ccwin::TIniFile& ini )
