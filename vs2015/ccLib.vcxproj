@@ -62,6 +62,7 @@
     <ClCompile Include="..\Src\winClasses.cpp" />
     <ClCompile Include="..\Src\winOSUtils.cpp" />
     <ClCompile Include="..\Src\winUtils.cpp" />
+    <ClCompile Include="..\Src\winVersion.cpp" />
     <ClCompile Include="..\Src\win_str.cpp" />
     <ClCompile Include="..\Src\wtlUtils.cpp" />
     <ClCompile Include="GeneratedFiles\Debug_RTL_Win32\moc_chasewidget.cpp">
@@ -409,6 +410,7 @@
     <ClInclude Include="..\Src\winClasses.h" />
     <ClInclude Include="..\Src\winOSUtils.h" />
     <ClInclude Include="..\Src\winUtils.h" />
+    <ClInclude Include="..\Src\winVersion.h" />
     <ClInclude Include="..\Src\win_str.h" />
     <ClInclude Include="..\Src\wtlUtils.h" />
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />

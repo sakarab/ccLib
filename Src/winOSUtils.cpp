@@ -148,6 +148,37 @@ namespace ccwin
         return IsWin64_Internal();
     }
 
+#if (_WIN32_WINNT >= _WIN32_WINNT_WINXP)
+
+    HMODULE get_module_handle()
+    {
+        HMODULE( *address )() = &get_module_handle;
+        HMODULE     h_module;
+
+        if ( GetModuleHandleEx( GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                                reinterpret_cast<LPCTSTR>(address), &h_module ) == 0 )
+            RaiseLastOSError();
+        return h_module;
+    }
+
+    std::wstring get_module_filename()
+    {
+        return get_module_filename( get_module_handle() );
+    }
+
+#endif
+
+    std::wstring get_module_filename( HMODULE h_module )
+    {
+        TCHAR       fname[MAX_PATH];
+        DWORD       ret = GetModuleFileName( h_module, fname, MAX_PATH );
+        DWORD       err = GetLastError();
+
+        if ( ret == 0 || (ret == MAX_PATH && err == ERROR_INSUFFICIENT_BUFFER) )
+            RaiseOSError( err );
+        return std::wstring( fname );
+    }
+
     /************************************************************
     ********    WinOSVersion
     ************************************************************/

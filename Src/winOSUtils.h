@@ -29,12 +29,19 @@
 
 namespace ccwin
 {
-
     /************************************************************
     ********    System Functions
     ************************************************************/
     bool RunningOnWOW64();
     bool IsWin64();
+
+#if (_WIN32_WINNT >= _WIN32_WINNT_WINXP)
+    // these function must be statically linked to have the desired results
+    HMODULE get_module_handle();
+    std::wstring get_module_filename();
+#endif
+
+    std::wstring get_module_filename( HMODULE h_module );
 
     /************************************************************
     ********    WinOSVersion
@@ -72,7 +79,6 @@ namespace ccwin
 
     void ExecuteProgram( const std::wstring& command );
     DWORD ExecuteProgramWait( const std::wstring& command, DWORD timeout_msecs );
-
 }
 
 #endif
