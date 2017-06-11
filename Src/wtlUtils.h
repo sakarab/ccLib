@@ -46,6 +46,7 @@ namespace ccwtl
     }
 
     std::wstring Get_Text( CComboBox& cb );
+    std::wstring Get_Text( CListBox& cb );
 
     bool Menu_ToggleChecked( CMenu& menu, int menu_id );
     bool Menu_GetChecked( CMenu& menu, int menu_id );

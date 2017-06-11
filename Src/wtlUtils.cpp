@@ -38,6 +38,20 @@ namespace ccwtl
         return std::wstring();
     }
 
+    std::wstring Get_Text( CListBox& cb )
+    {
+        int         idx = cb.GetCurSel();
+
+        if ( idx >= 0 )
+        {
+            CString     str;
+
+            cb.GetText( idx, str );
+            return std::wstring( str );
+        }
+        return std::wstring();
+    }
+
     bool Menu_ToggleChecked( CMenu& menu, int menu_id )
     {
         MENUITEMINFO    mii;
