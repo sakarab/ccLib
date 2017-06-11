@@ -412,6 +412,10 @@
     <ClInclude Include="..\Src\winUtils.h" />
     <ClInclude Include="..\Src\winVersion.h" />
     <ClInclude Include="..\Src\win_str.h" />
+    <ClInclude Include="..\Src\wtlPropertyGrid.h" />
+    <ClInclude Include="..\Src\wtlPropertyItem.h" />
+    <ClInclude Include="..\Src\wtlPropertyItemEditors.h" />
+    <ClInclude Include="..\Src\wtlPropertyItemImpl.h" />
     <ClInclude Include="..\Src\wtlUtils.h" />
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h" />
