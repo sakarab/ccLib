@@ -35,6 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
     <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
@@ -283,6 +284,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\boDateUtils.h" />
     <ClInclude Include="..\Src\BomUtils.h" />
     <CustomBuild Include="..\Src\chasewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
