@@ -97,7 +97,7 @@ namespace ccbo
     {
         mSStream.str( time );
 
-        boost::local_time::local_date_time      result( boost::date_time::special_values::not_a_date_time );
+        boost::local_time::local_date_time      result( boost::date_time::not_a_date_time );
 
         mSStream >> result;
         return result;
