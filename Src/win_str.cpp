@@ -127,9 +127,9 @@ namespace
         typename str_type::size_type    len = str.length();
         typename str_type::size_type    low = 0;
 
-        while ( low < len && str[low] <= L' ' )
+        while ( low < len && static_cast<unsigned char>(str[low]) <= ccwin::CharConstant<CHAR_T>::sp )
             ++low;
-        while ( low < len && str[len - 1] <= L' ' )
+        while ( low < len && static_cast<unsigned char>(str[len - 1]) <= ccwin::CharConstant<CHAR_T>::sp )
             --len;
         return str.substr( low, len - low );
     }
@@ -207,9 +207,6 @@ namespace
 
 namespace ccwin
 {
-    const char    * const CharConstant<char>::crlf    = "\r\n";
-    const wchar_t * const CharConstant<wchar_t>::crlf = L"\r\n";
-
     std::string NarrowStringStrict( const std::wstring& str )
     {
         std::string     result;

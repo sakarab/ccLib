@@ -39,8 +39,10 @@ namespace ccwin
     template <> struct CharConstant<char>
     {
         static const char equal = '=';
+        static const char minus = '-';
         static const char cr = '\r';
         static const char lf = '\n';
+        static const char sp = ' ';
         static const char * const crlf; // = "\r\n";
         static const char semicolon = ';';
         static const char colon = ':';
@@ -51,13 +53,15 @@ namespace ccwin
     template <> struct CharConstant<wchar_t>
     {
         static const wchar_t equal = L'=';
+        static const wchar_t minus = L'-';
         static const wchar_t cr = L'\r';
         static const wchar_t lf = L'\n';
+        static const wchar_t sp = L' ';
         static const wchar_t * const crlf; // = L"\r\n";
-        static const char semicolon = L';';
-        static const char colon = L':';
-        static const char l_bracket = L'[';
-        static const char r_bracket = L']';
+        static const wchar_t semicolon = L';';
+        static const wchar_t colon = L':';
+        static const wchar_t l_bracket = L'[';
+        static const wchar_t r_bracket = L']';
     };
 
     /************************************************************
