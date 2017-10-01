@@ -651,7 +651,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_cc.h</PrecompiledHeaderFile>
@@ -664,7 +664,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_cc.h</PrecompiledHeaderFile>
@@ -677,7 +677,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_cc.h</PrecompiledHeaderFile>
@@ -690,7 +690,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_cc.h</PrecompiledHeaderFile>
@@ -703,7 +703,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <Optimization>MinSpace</Optimization>
@@ -718,7 +718,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -734,7 +734,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -751,7 +751,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(BOOST_INC);$(LOKI_INC);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName);..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
