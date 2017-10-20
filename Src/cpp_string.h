@@ -27,12 +27,8 @@
 
 #include <string>
 
-#if defined(_UNICODE) || defined(UNICODE)
-    typedef std::wstring            std_string;
-#else
-    typedef std::string             std_string;
-#endif
-typedef std_string::value_type      std_char;
+typedef std::basic_string< TCHAR, std::char_traits<TCHAR>, std::allocator<TCHAR> >          std_string;
+typedef std_string::value_type                                                              std_char;
 
 #endif
 

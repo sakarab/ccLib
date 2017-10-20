@@ -356,6 +356,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\cpp_string.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\IDirIter_Boost.h"
 				>
 			</File>
