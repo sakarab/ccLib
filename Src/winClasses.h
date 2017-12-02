@@ -144,6 +144,8 @@ namespace ccwin
         explicit TIniFile( const std::wstring& file_name );
         ~TIniFile();
 
+        const std::wstring& FileName() const                { return mFileName; }
+
         void ReadSections( TStringList& list );
         void ReadSectionKeys( const wchar_t *section, TStringList& list );
         void ReadSectionKeys( const wchar_t *section, std::vector<std::wstring>& list );
