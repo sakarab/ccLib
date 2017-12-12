@@ -68,6 +68,7 @@ namespace ccwin
     ********    case_insensitive_string_compare
     ***********************************************************/
     template<class CH> struct case_insensitive_string_compare_ptr;
+    template<class CH> class case_insensitive_string_compare_ptr_n;
 
     template<>
     struct case_insensitive_string_compare_ptr<wchar_t> : public std::binary_function<const wchar_t *, const wchar_t *, int>
@@ -86,15 +87,59 @@ namespace ccwin
             return _stricmp( str1, str2 );
         }
     };
+
+    template<>
+    class case_insensitive_string_compare_ptr_n<wchar_t> : public std::binary_function<const wchar_t *, const wchar_t *, int>
+    {
+    private:
+        size_t  mMaxChars;
+    public:
+        explicit case_insensitive_string_compare_ptr_n( size_t max_chars ) : mMaxChars( max_chars ) {}
+        result_type operator()( const first_argument_type& str1, const second_argument_type& str2 ) const
+        {
+            return _wcsnicmp( str1, str2, mMaxChars );
+        }
+    };
+
+    template<>
+    class case_insensitive_string_compare_ptr_n<char> : public std::binary_function<const char *, const char *, int>
+    {
+    private:
+        size_t  mMaxChars;
+    public:
+        explicit case_insensitive_string_compare_ptr_n( size_t max_chars ) : mMaxChars( max_chars ) {}
+        result_type operator()( const first_argument_type& str1, const second_argument_type& str2 ) const
+        {
+            return _strnicmp( str1, str2, mMaxChars );
+        }
+    };
     //----------------------------------------------------------------
-    template<class CH> struct case_insensitive_string_compare
+    template<class CH> class case_insensitive_string_compare
         : public std::binary_function<std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >,
                                       std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >,
                                       int>
     {
+    private:
+        case_insensitive_string_compare_ptr<CH>     mCmp;
+    public:
         result_type operator()( const first_argument_type& str1, const second_argument_type& str2 ) const
         {
-            return case_insensitive_string_compare_ptr<CH>()( str1.c_str(), str2.c_str() );
+            return mCmp( str1.c_str(), str2.c_str() );
+        }
+    };
+
+    template<class CH> class case_insensitive_string_compare_n
+        : public std::binary_function<std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >,
+                                      std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >,
+                                      int>
+    {
+    private:
+        case_insensitive_string_compare_ptr_n<CH>       mCmp;
+    public:
+        explicit case_insensitive_string_compare_n( size_t max_chars ) : mCmp( max_chars ) {}
+        result_type operator()( const first_argument_type& str1, const second_argument_type& str2 ) const
+        {
+            return mCmp( str1.c_str(), str2.c_str() );
         }
     };
     //----------------------------------------------------------------
