@@ -11,9 +11,12 @@ TEMPLATE = lib
 CONFIG += staticlib
 QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs
 
+include (user_config.pri)
+
 INCLUDEPATH += ../../Src \
-               /home/sam/src/boost \
-               /home/sam/src/libs/loki/include
+               ../../include \
+               $$ROOT_BOOST \
+               $$ROOT_LOKI/include
 
 SOURCES += \
     ../../Src/frmSelectEncoding.cpp \
