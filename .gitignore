@@ -16,3 +16,4 @@ ipch
 OutC*
 *.local
 *.db
+/qtc/ccLib/user_config.pri
