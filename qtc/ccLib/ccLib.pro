@@ -9,7 +9,10 @@ QT       += widgets xml xmlpatterns
 TARGET = ccLib
 TEMPLATE = lib
 CONFIG += staticlib
-QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs
+
+unix {
+    QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs
+}
 
 include (user_config.pri)
 
@@ -17,6 +20,10 @@ INCLUDEPATH += ../../Src \
                ../../include \
                $$ROOT_BOOST \
                $$ROOT_LOKI/include
+
+win32 {
+    INCLUDEPATH += $$ROOT_WTL\include
+}
 
 SOURCES += \
     ../../Src/frmSelectEncoding.cpp \
