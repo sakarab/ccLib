@@ -21,6 +21,9 @@
 
 #pragma once
 
+#if !defined(PREDEF_CC_H)
+#define PREDEF_CC_H
+
 #include <boost/predef.h>
 
 #if defined (BOOST_COMP_MSVC_AVAILABLE)
@@ -71,4 +74,6 @@
     #define CC_OVERRIDE     override
 #else
     #define CC_OVERRIDE
+#endif
+
 #endif
