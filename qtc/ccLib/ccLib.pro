@@ -34,6 +34,7 @@ SOURCES += \
     ../../Src/BomUtils.cpp \
     ../../Src/chasewidget.cpp \
     ../../Src/UntitledSequence.cpp \
+    ../../Src/cpp_lpstr.cpp \
     ../../Src/smException.cpp
 
 HEADERS += \
@@ -46,6 +47,7 @@ HEADERS += \
     ../../Src/chasewidget.h \
     ../../Src/UntitledSequence.h \
     ../../Src/smException.h \
+    ../../Src/cpp_lpstr.h \
     ../../Src/pre_cc.h \
     ../../Src/predef_cc.h
 

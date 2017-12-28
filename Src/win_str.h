@@ -167,8 +167,6 @@ namespace ccwin
     ************************************************************/
     std::string NarrowStringStrict( const std::wstring& str );
     std::wstring WidenStringStrict( const std::string& str );
-    boost::shared_array<std::string::value_type> smLPSTR( const std::string& str );
-    boost::shared_array<std::wstring::value_type> smLPSTR( const std::wstring& str );
 
     /************************************************************
     ********    StrConvertTrait

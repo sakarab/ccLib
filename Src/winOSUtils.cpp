@@ -25,6 +25,7 @@
 #include "win_str.h"
 #include "cc_array.hpp"
 #include "cc_memory.hpp"
+#include "cpp_lpstr.h"
 #include <boost/scope_exit.hpp>
 #include <boost/format.hpp>
 
@@ -78,7 +79,7 @@ namespace
 
         PROCESS_INFORMATION     process_info;
 
-        if ( !CreateProcess( NULL, ccwin::smLPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
+        if ( !CreateProcess( NULL, cclib::LPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
             ccwin::RaiseLastOSError();
 
         BOOST_SCOPE_EXIT( (&process_info) )
@@ -112,7 +113,7 @@ namespace
 
         PROCESS_INFORMATION     process_info;
 
-        if ( !CreateProcess( NULL, ccwin::smLPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
+        if ( !CreateProcess( NULL, cclib::LPSTR( command ).get(), NULL, NULL, inherit_handles, 0, NULL, current_dir, &startup_info, &process_info ) )
             ccwin::RaiseLastOSError();
 
         CloseHandle( process_info.hThread );

@@ -38,6 +38,7 @@
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
     <ClCompile Include="..\Src\chasewidget.cpp" />
+    <ClCompile Include="..\Src\cpp_lpstr.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
     <ClCompile Include="..\Src\frSelectEncoding.cpp" />
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
@@ -323,6 +324,7 @@
     <ClInclude Include="..\Src\cc_array.hpp" />
     <ClInclude Include="..\Src\cc_atomic.hpp" />
     <ClInclude Include="..\Src\cc_memory.hpp" />
+    <ClInclude Include="..\Src\cpp_lpstr.h" />
     <ClInclude Include="..\Src\cpp_string.h" />
     <CustomBuild Include="..\Src\frmSelectEncoding.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

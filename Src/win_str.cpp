@@ -134,24 +134,6 @@ namespace
         return str.substr( low, len - low );
     }
 
-    // These are used to call NOT 'const correct' functions.
-    /************************************************************
-    ********    String Functions (smLPSTR)
-    ***********************************************************/
-    template<class CH>
-    boost::shared_array<typename std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >::value_type>
-        smLPSTR_in( const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& str )
-    {
-        typedef std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >   str_type;
-
-        str_type::size_type                         len = str.length();
-        boost::shared_array<str_type::value_type>   result = boost::shared_array<str_type::value_type>( new str_type::value_type[len + 1] );
-
-        std::copy( str.begin(), str.end(), result.get() );
-        result[len] = 0;
-        return result;
-    }
-
     /************************************************************
     ********    String Functions (StuffString)
     ***********************************************************/
@@ -263,8 +245,6 @@ namespace ccwin
     int CompareText( const std::wstring& S1, const std::wstring& S2 )                   { return CompareTextIN( S1, S2, CompareStringW ); }
     std::wstring Trim( const std::wstring& str )                                        { return Trim_in( str ); }
     std::string Trim( const std::string& str )                                          { return Trim_in( str ); }
-    boost::shared_array<std::string::value_type> smLPSTR( const std::string& str )      { return smLPSTR_in( str ); }
-    boost::shared_array<std::wstring::value_type> smLPSTR( const std::wstring& str )    { return smLPSTR_in( str ); }
 
     std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern )
     {
