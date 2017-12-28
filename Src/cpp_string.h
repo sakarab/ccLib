@@ -27,8 +27,15 @@
 
 #include <string>
 
-typedef std::basic_string< TCHAR, std::char_traits<TCHAR>, std::allocator<TCHAR> >          std_string;
-typedef std_string::value_type                                                              std_char;
+#if defined(_UNICODE) || defined(UNICODE)
+    #define CCLIB_STRING(a)         L##a
+
+    typedef std::wstring            std_string;
+#else
+    #define CCLIB_STRING(a)         ##a
+    typedef std::string             std_string;
+#endif
+typedef std_string::value_type      std_char;
 
 #endif
 
