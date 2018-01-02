@@ -258,6 +258,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\cpp_lpstr.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\IDirIter_Boost.cpp"
 				>
 			</File>
@@ -353,6 +357,10 @@
 			</File>
 			<File
 				RelativePath="..\Src\cc_memory.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\cpp_lpstr.h"
 				>
 			</File>
 			<File
