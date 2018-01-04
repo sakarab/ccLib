@@ -41,6 +41,10 @@ ITStream::size_type ITStream::CopyFrom( ITStream& src, size_type count )
     }
 
     size_type           result = count;
+
+    if ( count == 0 )
+        return result;
+
     size_type           buff_size = count > MaxBufSize ? MaxBufSize : count;
     std::vector<char>   buffer( buff_size );
 
