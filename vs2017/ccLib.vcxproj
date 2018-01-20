@@ -37,7 +37,6 @@
   <ItemGroup>
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
-    <ClCompile Include="..\Src\Buffers.cpp" />
     <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
@@ -62,6 +61,7 @@
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
+    <ClCompile Include="..\Src\winBuffers.cpp" />
     <ClCompile Include="..\Src\winClasses.cpp" />
     <ClCompile Include="..\Src\winOSUtils.cpp" />
     <ClCompile Include="..\Src\winUtils.cpp" />
@@ -322,7 +322,6 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp"  -DWIN32 -DCCLIB_LIB -DWIN32_LEAN_AND_MEAN -DQT_CORE_LIB -D_DEBUG -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_DEPRECATE -D_CRT_NON_CONFORMING_SWPRINTFS=1 -DNO_CDFASTCALL -DwxCFG=_141 -D_UNICODE -DUNICODE  "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\." "-I.\..\Src" "-I.\..\include" "-I$(BOOST_INC)\." "-I$(LOKI_INC)\." "-I$(QT_INC)\QtCore" "-I$(QT_INC)\QtGui" "-I$(QT_INC)\QtWidgets" "-I$(WTLINC)\." "-I$(QT_INC)\." "-I$(QT_INC)\QtANGLE" "-I$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles" "-I$(CCLIB_INC)\." "-fpre_cc.h" "-f../../../include/chasewidget.h"</Command>
     </CustomBuild>
-    <ClInclude Include="..\include\Buffers.h" />
     <ClInclude Include="..\include\cc_array.hpp" />
     <ClInclude Include="..\include\cc_atomic.hpp" />
     <ClInclude Include="..\include\cc_memory.hpp" />
@@ -403,6 +402,7 @@
     <ClInclude Include="..\include\ITStream.h" />
     <ClInclude Include="..\include\LibLoader.h" />
     <ClInclude Include="..\include\predef_cc.h" />
+    <ClInclude Include="..\include\winBuffers.h" />
     <ClInclude Include="..\Src\pre_cc.h" />
     <ClInclude Include="..\include\qqOpenDlg.h" />
     <ClInclude Include="..\include\QtApp.h" />

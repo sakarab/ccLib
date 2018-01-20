@@ -1,30 +1,28 @@
-//---------------------------------------------------------------------------
-#ifndef BuffersH
-#define BuffersH
-//---------------------------------------------------------------------------
-#include <streambuf>
-#include "ssport.h"
-#include <StdCtrls.hpp>
+#ifndef CCLIB_WIN_BUFFERS_H
+#define CCLIB_WIN_BUFFERS_H
 
-namespace cc
+#include <streambuf>
+#include <Windows.h>
+
+namespace ccwin
 {
 
 class NewStreamBuf : public std::streambuf
 {
 private:
-	void FASTCALL WriteBuffer();
+	void WriteBuffer();
 protected:
-	virtual void FASTCALL AppendToControl() = 0;
-	virtual void FASTCALL WriteChar( char ch ) = 0;
+	virtual void AppendToControl() = 0;
+	virtual void WriteChar( char ch ) = 0;
 	//  from streambuf - these have to send the text to the memo
-	virtual int overflow( int_type ch );
-	virtual int sync();
+	int overflow( int_type ch );
+	int sync();
 public:
-	FASTCALL NewStreamBuf( unsigned int size = 2048 );
+	NewStreamBuf( unsigned int size = 2048 );
 	virtual ~NewStreamBuf();
 };
 
-FASTCALL NewStreamBuf::NewStreamBuf( unsigned int size )
+NewStreamBuf::NewStreamBuf( unsigned int size )
 	: std::streambuf()
 {
 	char	*ptr;
@@ -67,7 +65,7 @@ int NewStreamBuf::sync()
 	return 0;
 }
 
-void FASTCALL NewStreamBuf::WriteBuffer()
+void NewStreamBuf::WriteBuffer()
 {
 	char	*buffer = pbase();
 
@@ -78,75 +76,79 @@ void FASTCALL NewStreamBuf::WriteBuffer()
 	}
 }
 
-}; // namespace cc
+//
+//class TStringsStreamBuf : public cc::NewStreamBuf
+//{
+//private:
+//	TStrings    *vcl_ptr;
+//	bool	    LastWasCR;
+//	char	    LastChar;
+//protected:
+//	virtual void FASTCALL AppendToControl();
+//	virtual void FASTCALL WriteChar( char ch );
+//public:
+//	FASTCALL TStringsStreamBuf( TStrings* strings, unsigned int size = 2048 )
+//        : cc::NewStreamBuf( size ), vcl_ptr(strings), LastWasCR(true)
+//	{
+//	}
+//};
+//
+//class TListBoxStreambuf : public TStringsStreamBuf
+//{
+//public:
+//	FASTCALL TListBoxStreambuf( TListBox* list_box, unsigned int size = 2048 )
+//		: TStringsStreamBuf( list_box->Items, size )
+//    {
+//    }
+//};
+//
+//class TComboBoxStreambuf : public TStringsStreamBuf
+//{
+//public:
+//	FASTCALL TComboBoxStreambuf( TComboBox* combo_box, unsigned int size = 2048 )
+//		: TStringsStreamBuf( combo_box->Items, size )
+//    {
+//    }
+//};
 
-namespace vcl
-{
-
-class TStringsStreamBuf : public cc::NewStreamBuf
-{
-private:
-	TStrings    *vcl_ptr;
-	bool	    LastWasCR;
-	char	    LastChar;
-protected:
-	virtual void FASTCALL AppendToControl();
-	virtual void FASTCALL WriteChar( char ch );
-public:
-	FASTCALL TStringsStreamBuf( TStrings* strings, unsigned int size = 2048 )
-        : cc::NewStreamBuf( size ), vcl_ptr(strings), LastWasCR(true)
-	{
-	}
-};
-
-class TListBoxStreambuf : public TStringsStreamBuf
-{
-public:
-	FASTCALL TListBoxStreambuf( TListBox* list_box, unsigned int size = 2048 )
-		: TStringsStreamBuf( list_box->Items, size )
-    {
-    }
-};
-
-class TComboBoxStreambuf : public TStringsStreamBuf
-{
-public:
-	FASTCALL TComboBoxStreambuf( TComboBox* combo_box, unsigned int size = 2048 )
-		: TStringsStreamBuf( combo_box->Items, size )
-    {
-    }
-};
-
-class TMemoStreambuf : public cc::NewStreamBuf
-{
-private:
-    HWND    WinHandle;
-	void FASTCALL InternalAppendToControl( const char * const str );
-protected:
-	virtual void FASTCALL AppendToControl();
-	virtual void FASTCALL WriteChar( char ch );
-public:
-	FASTCALL TMemoStreambuf( TWinControl *memo, unsigned int size = 2048 )
-		: cc::NewStreamBuf( size ), WinHandle(memo->Handle)
-    {
-    }
-};
-
-class TRitchEditStreambuf : public cc::NewStreamBuf
+//=====================================================================
+//==============    TMemoStreambuf
+//=====================================================================
+class TMemoStreambuf : public NewStreamBuf
 {
 private:
-    HWND    WinHandle;
-	void FASTCALL InternalAppendToControl( const char * const str );
+    HWND    mWinHandle;
+
+    void InternalAppendToControl( const char * const str );
 protected:
-	virtual void FASTCALL AppendToControl();
-	virtual void FASTCALL WriteChar( char ch );
+	virtual void AppendToControl();
+	virtual void WriteChar( char ch );
 public:
-	FASTCALL TRitchEditStreambuf( TWinControl *rich_edit, unsigned int size = 2048 )
-		: cc::NewStreamBuf( size ), WinHandle(rich_edit->Handle)
+	TMemoStreambuf( HWND memo, unsigned int size = 2048 )
+		: NewStreamBuf( size ), mWinHandle(memo)
     {
     }
 };
 
-}; // namespace vcl
-//---------------------------------------------------------------------------
+//=====================================================================
+//==============    TRitchEditStreambuf
+//=====================================================================
+class TRitchEditStreambuf : public NewStreamBuf
+{
+private:
+    HWND    mWinHandle;
+
+    void InternalAppendToControl( const char * const str );
+protected:
+	virtual void AppendToControl();
+	virtual void WriteChar( char ch );
+public:
+	TRitchEditStreambuf( HWND rich_edit, unsigned int size = 2048 )
+		: NewStreamBuf( size ), mWinHandle(rich_edit)
+    {
+    }
+};
+
+} // namespace ccwin
+
 #endif
