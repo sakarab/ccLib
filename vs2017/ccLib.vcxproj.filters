@@ -209,34 +209,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\BomUtils.h">
+    <ClInclude Include="..\include\BomUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\IDirIter_Boost.h">
+    <ClInclude Include="..\include\IDirIter_Boost.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\IDirIterator.h">
+    <ClInclude Include="..\include\IDirIterator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\RefCnt.h">
+    <ClInclude Include="..\include\RefCnt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\ScanDirectory.h">
+    <ClInclude Include="..\include\ScanDirectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\SharedFlag.h">
+    <ClInclude Include="..\include\SharedFlag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\smException.h">
+    <ClInclude Include="..\include\smException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Thread.h">
+    <ClInclude Include="..\include\Thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\UntitledSequence.h">
+    <ClInclude Include="..\include\UntitledSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\cpp_string.h">
+    <ClInclude Include="..\include\cpp_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h">
@@ -245,76 +245,82 @@
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\IDirIter_Qt.h">
+    <ClInclude Include="..\include\IDirIter_Qt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\qqOpenDlg.h">
+    <ClInclude Include="..\include\qqOpenDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\QtApp.h">
+    <ClInclude Include="..\include\QtApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\QtSingletons.h">
+    <ClInclude Include="..\include\QtSingletons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\ITStream.h">
+    <ClInclude Include="..\include\ITStream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\pre_cc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\predef_cc.h">
+    <ClInclude Include="..\include\predef_cc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wtlUtils.h">
+    <ClInclude Include="..\include\wtlUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\cc_array.hpp">
+    <ClInclude Include="..\include\cc_array.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\cc_atomic.hpp">
+    <ClInclude Include="..\include\cc_atomic.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\cc_memory.hpp">
+    <ClInclude Include="..\include\cc_memory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\LibLoader.h">
+    <ClInclude Include="..\include\LibLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\win_str.h">
+    <ClInclude Include="..\include\win_str.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winUtils.h">
+    <ClInclude Include="..\include\winUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winClasses.h">
+    <ClInclude Include="..\include\winClasses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winOSUtils.h">
+    <ClInclude Include="..\include\winOSUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winVersion.h">
+    <ClInclude Include="..\include\winVersion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\boDateUtils.h">
+    <ClInclude Include="..\include\boDateUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\utf8.h">
+    <ClInclude Include="..\include\utf8.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wtlPropertyGrid.h">
+    <ClInclude Include="..\include\wtlPropertyGrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wtlPropertyItem.h">
+    <ClInclude Include="..\include\wtlPropertyItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wtlPropertyItemEditors.h">
+    <ClInclude Include="..\include\wtlPropertyItemEditors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\wtlPropertyItemImpl.h">
+    <ClInclude Include="..\include\wtlPropertyItemImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\cpp_lpstr.h">
+    <ClInclude Include="..\include\cpp_lpstr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cpp_sstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Buffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -328,13 +334,13 @@
     <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\Src\chasewidget.h">
+    <CustomBuild Include="..\include\chasewidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\Src\frmSelectEncoding.h">
+    <CustomBuild Include="..\include\frmSelectEncoding.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\Src\frSelectEncoding.h">
+    <CustomBuild Include="..\include\frSelectEncoding.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
