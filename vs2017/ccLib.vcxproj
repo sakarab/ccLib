@@ -37,6 +37,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
+    <ClCompile Include="..\Src\Buffers.cpp" />
     <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
