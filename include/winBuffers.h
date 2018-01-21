@@ -41,11 +41,11 @@ namespace ccwin
         virtual void AppendToControl() = 0;
         virtual void WriteChar( char_type ch ) = 0;
         //  from streambuf - these have to send the text to the memo
-        int_type overflow( int_type ch ) CC_OVERRIDE;
-        int sync() CC_OVERRIDE;
+        virtual int_type overflow( int_type ch ) CC_OVERRIDE;
+        virtual int sync() CC_OVERRIDE;
     public:
         NewStreamBuf( unsigned int size = 2048 );
-        virtual ~NewStreamBuf();
+        virtual ~NewStreamBuf() CC_OVERRIDE;
     };
 
     //
@@ -93,8 +93,8 @@ namespace ccwin
 
         void InternalAppendToControl( const char_type * const str );
     protected:
-        virtual void AppendToControl();
-        virtual void WriteChar( wchar_t ch );
+        virtual void AppendToControl() CC_OVERRIDE;
+        virtual void WriteChar( char_type ch ) CC_OVERRIDE;
     public:
         TMemoStreambuf( HWND memo, unsigned int size = 2048 )
             : NewStreamBuf( size ), mWinHandle( memo )
@@ -111,8 +111,8 @@ namespace ccwin
 
         void InternalAppendToControl( const char_type * const str );
     protected:
-        virtual void AppendToControl();
-        virtual void WriteChar( wchar_t ch );
+        virtual void AppendToControl() CC_OVERRIDE;
+        virtual void WriteChar( char_type ch ) CC_OVERRIDE;
     public:
         TRitchEditStreambuf( HWND rich_edit, unsigned int size = 2048 )
             : NewStreamBuf( size ), mWinHandle( rich_edit )

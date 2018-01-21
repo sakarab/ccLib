@@ -201,7 +201,7 @@ void TMemoStreambuf::InternalAppendToControl( const char_type * const str )
     int     len = SendMessage( mWinHandle, WM_GETTEXTLENGTH, 0, 0 );
 
     SendMessage( mWinHandle, EM_SETSEL, len, len );
-    SendMessage( mWinHandle, EM_REPLACESEL, 0, reinterpret_cast<LONG>(str) );
+    SendMessage( mWinHandle, EM_REPLACESEL, 0, reinterpret_cast<LPARAM>(const_cast<char_type *>(str)) );
 }
 
 void TMemoStreambuf::AppendToControl()
@@ -246,7 +246,7 @@ void TRitchEditStreambuf::InternalAppendToControl( const char_type * const str )
     int     len = SendMessage( mWinHandle, WM_GETTEXTLENGTH, 0, 0 );
 
     SendMessage( mWinHandle, EM_SETSEL, len, len );
-    SendMessage( mWinHandle, EM_REPLACESEL, 0, reinterpret_cast<LONG>(str) );
+    SendMessage( mWinHandle, EM_REPLACESEL, 0, reinterpret_cast<LPARAM>(const_cast<char_type *>(str)) );
 }
 
 void TRitchEditStreambuf::AppendToControl()
@@ -259,17 +259,17 @@ void TRitchEditStreambuf::AppendToControl()
         char_type                           ch, *dst = buff.get();
 
         while ( start < end )
-            *dst++ = (ch = *start++) != 0 ? ch : '\n';
+            *dst++ = (ch = *start++) != 0 ? ch : cclib::CharConstant<char_type>::lf;
         *dst = 0;
         InternalAppendToControl( buff.get() );
     }
 }
 
-void TRitchEditStreambuf::WriteChar( wchar_t ch )
+void TRitchEditStreambuf::WriteChar( char_type ch )
 {
-    char    str[2];
+    char_type   str[2];
 
-    str[0] = ch != 0 ? ch : '\n';
+    str[0] = ch != 0 ? ch : cclib::CharConstant<char_type>::lf;
     str[1] = 0;
     InternalAppendToControl( str );
 }
