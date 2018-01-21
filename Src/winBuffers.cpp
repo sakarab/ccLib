@@ -20,11 +20,68 @@
 //***************************************************************************
 #include <pre_cc.h>
 #include "winBuffers.h"
+#include "cpp_string.h"
 #include <vector>
 #include <boost/smart_ptr.hpp>
 
 namespace ccwin
 {
+    //=====================================================================
+    //==============    NewStreamBuf
+    //=====================================================================
+    NewStreamBuf::NewStreamBuf( unsigned int size )
+        : std::wstreambuf()
+    {
+        char_type   *ptr;
+
+        if ( size > 0 )
+        {
+            ptr = new char_type[size];
+            setp( ptr, ptr + size );		// set output poiners
+        }
+        else
+            setp( 0, 0 );					// set output poiners
+        setg( 0, 0, 0 );					// set input poiners
+    }
+
+    NewStreamBuf::~NewStreamBuf()
+    {
+        if ( pbase() != nullptr )
+            delete[] pbase();
+    }
+
+    NewStreamBuf::inherited::int_type NewStreamBuf::overflow( int_type ch )
+    {
+        if ( pbase() == epptr() )
+        {
+            if ( ch != std::char_traits<inherited::char_type>::eof() )
+                WriteChar( static_cast<char_type>(ch) );        // unbuffered streambuf
+        }
+        else
+        {
+            WriteBuffer();
+            if ( ch != std::char_traits<inherited::char_type>::eof() )
+                sputc( static_cast<char_type>(ch) );            // buffered streambuf
+        }
+        return 0;
+    }
+
+    int NewStreamBuf::sync()
+    {
+        WriteBuffer();
+        return 0;
+    }
+
+    void NewStreamBuf::WriteBuffer()
+    {
+        char_type   *buffer = pbase();
+
+        if ( pptr() - buffer > 0 )
+        {
+            AppendToControl();
+            setp( buffer, epptr() );
+        }
+    }
 
 //=====================================================================
 //==============    Buffer
@@ -139,7 +196,7 @@ namespace ccwin
 //=====================================================================
 //==============    TMemoStreambuf
 //=====================================================================
-void TMemoStreambuf::InternalAppendToControl( const char * const str )
+void TMemoStreambuf::InternalAppendToControl( const char_type * const str )
 {
     int     len = SendMessage( mWinHandle, WM_GETTEXTLENGTH, 0, 0 );
 
@@ -149,22 +206,22 @@ void TMemoStreambuf::InternalAppendToControl( const char * const str )
 
 void TMemoStreambuf::AppendToControl()
 {
-	char    *start = pbase(), *end = pptr();
+    char_type   *start = pbase(), *end = pptr();
 
     if ( start < end )
     {
-        std::vector<char>   buff;
-        char                ch;
+        std::vector<char_type>      buff;
+        char_type                   ch;
 
         while ( start < end )
         {
             ch = *start++;
-            if ( ch == '\n' || ch == '\0' )
+            if ( ch == cclib::CharConstant<char_type>::lf || ch == '\0' )
             {
-                buff.push_back( '\r' );
-                buff.push_back( '\n' );
+                buff.push_back( cclib::CharConstant<char_type>::cr );
+                buff.push_back( cclib::CharConstant<char_type>::lf );
             }
-            else if ( ch != '\r' )
+            else if ( ch != cclib::CharConstant<char_type>::cr )
                 buff.push_back( ch );
         }
         buff.push_back( '\0' );
@@ -172,9 +229,9 @@ void TMemoStreambuf::AppendToControl()
     }
 }
 
-void TMemoStreambuf::WriteChar( char ch )
+void TMemoStreambuf::WriteChar( char_type ch )
 {
-    char    str[2];
+    char_type   str[2];
 
     str[0] = ch;
     str[1] = 0;
@@ -184,7 +241,7 @@ void TMemoStreambuf::WriteChar( char ch )
 //=====================================================================
 //==============    TRitchEditStreambuf
 //=====================================================================
-void TRitchEditStreambuf::InternalAppendToControl( const char * const str )
+void TRitchEditStreambuf::InternalAppendToControl( const char_type * const str )
 {
     int     len = SendMessage( mWinHandle, WM_GETTEXTLENGTH, 0, 0 );
 
@@ -194,12 +251,12 @@ void TRitchEditStreambuf::InternalAppendToControl( const char * const str )
 
 void TRitchEditStreambuf::AppendToControl()
 {
-	char    *start = pbase(), *end = pptr();
+    char_type   *start = pbase(), *end = pptr();
 
     if ( start < end )
     {
-        boost::scoped_array<char>   buff( new char[(end-start)+1] );
-        char                        ch, *dst = buff.get();
+        boost::scoped_array<char_type>      buff( new char_type[(end-start)+1] );
+        char_type                           ch, *dst = buff.get();
 
         while ( start < end )
             *dst++ = (ch = *start++) != 0 ? ch : '\n';
@@ -208,7 +265,7 @@ void TRitchEditStreambuf::AppendToControl()
     }
 }
 
-void TRitchEditStreambuf::WriteChar( char ch )
+void TRitchEditStreambuf::WriteChar( wchar_t ch )
 {
     char    str[2];
 
@@ -217,6 +274,4 @@ void TRitchEditStreambuf::WriteChar( char ch )
     InternalAppendToControl( str );
 }
 
-}; // namespace vcl
-//--------------------------------------------------------------------------------------
-
+}; // namespace ccwin
