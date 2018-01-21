@@ -28,15 +28,51 @@
 #include <string>
 
 #if defined(_UNICODE) || defined(UNICODE)
-    #define CCLIB_STRING(a)         L##a
+    #define CCTEXT(a)               L##a
 
     typedef std::wstring            std_string;
 #else
-    #define CCLIB_STRING(a)         ##a
+    #define CCTEXT(a)               ##a
     typedef std::string             std_string;
 #endif
 typedef std_string::value_type      std_char;
 
 #endif
+
+namespace cclib
+{
+    /************************************************************
+    ********    CharConstant
+    ************************************************************/
+    template <class CH> struct CharConstant;
+
+    template <> struct CharConstant<char>
+    {
+        static const char equal = '=';
+        static const char minus = '-';
+        static const char cr = '\r';
+        static const char lf = '\n';
+        static const char sp = ' ';
+        static const char * const crlf; // = "\r\n";
+        static const char semicolon = ';';
+        static const char colon = ':';
+        static const char l_bracket = '[';
+        static const char r_bracket = ']';
+    };
+
+    template <> struct CharConstant<wchar_t>
+    {
+        static const wchar_t equal = L'=';
+        static const wchar_t minus = L'-';
+        static const wchar_t cr = L'\r';
+        static const wchar_t lf = L'\n';
+        static const wchar_t sp = L' ';
+        static const wchar_t * const crlf; // = L"\r\n";
+        static const wchar_t semicolon = L';';
+        static const wchar_t colon = L':';
+        static const wchar_t l_bracket = L'[';
+        static const wchar_t r_bracket = L']';
+    };
+}
 
 #endif

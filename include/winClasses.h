@@ -26,7 +26,7 @@
 
 #include <string>
 #include <vector>
-#include "win_str.h"
+#include "cpp_string.h"
 #include "cc_array.hpp"
 
 namespace ccwin
@@ -56,7 +56,7 @@ namespace ccwin
                 if ( it != end )
                 {
                     ch = *it;
-                    return (ch == CharConstant<wchar_t>::lf || ch == CharConstant<wchar_t>::cr);
+                    return (ch == cclib::CharConstant<wchar_t>::lf || ch == cclib::CharConstant<wchar_t>::cr);
                 }
             }
             return false;
@@ -74,7 +74,7 @@ namespace ccwin
                 IT          start = begin;
                 wchar_t     ch = *begin;
 
-                while ( ch != CharConstant<wchar_t>::lf && ch != CharConstant<wchar_t>::cr )
+                while ( ch != cclib::CharConstant<wchar_t>::lf && ch != cclib::CharConstant<wchar_t>::cr )
                 {
                     ++begin;
                     if ( begin == end )

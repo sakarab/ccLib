@@ -20,7 +20,7 @@
 //***************************************************************************
 
 #include <pre_cc.h>
-#include "win_str.h"
+#include "cpp_string.h"
 #include <cc_array.hpp>
 #include <cc_memory.hpp>
 #include <boost/smart_ptr.hpp>
@@ -127,9 +127,9 @@ namespace
         typename str_type::size_type    len = str.length();
         typename str_type::size_type    low = 0;
 
-        while ( low < len && static_cast<unsigned char>(str[low]) <= ccwin::CharConstant<CHAR_T>::sp )
+        while ( low < len && static_cast<unsigned char>(str[low]) <= cclib::CharConstant<CHAR_T>::sp )
             ++low;
-        while ( low < len && static_cast<unsigned char>(str[len - 1]) <= ccwin::CharConstant<CHAR_T>::sp )
+        while ( low < len && static_cast<unsigned char>(str[len - 1]) <= cclib::CharConstant<CHAR_T>::sp )
             --len;
         return str.substr( low, len - low );
     }

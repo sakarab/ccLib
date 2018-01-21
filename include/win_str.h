@@ -32,39 +32,6 @@
 namespace ccwin
 {
     /************************************************************
-    ********    CharConstant
-    ************************************************************/
-    template <class CH> struct CharConstant;
-
-    template <> struct CharConstant<char>
-    {
-        static const char equal = '=';
-        static const char minus = '-';
-        static const char cr = '\r';
-        static const char lf = '\n';
-        static const char sp = ' ';
-        static const char * const crlf; // = "\r\n";
-        static const char semicolon = ';';
-        static const char colon = ':';
-        static const char l_bracket = '[';
-        static const char r_bracket = ']';
-    };
-
-    template <> struct CharConstant<wchar_t>
-    {
-        static const wchar_t equal = L'=';
-        static const wchar_t minus = L'-';
-        static const wchar_t cr = L'\r';
-        static const wchar_t lf = L'\n';
-        static const wchar_t sp = L' ';
-        static const wchar_t * const crlf; // = L"\r\n";
-        static const wchar_t semicolon = L';';
-        static const wchar_t colon = L':';
-        static const wchar_t l_bracket = L'[';
-        static const wchar_t r_bracket = L']';
-    };
-
-    /************************************************************
     ********    case_insensitive_string_compare
     ***********************************************************/
     template<class CH> struct case_insensitive_string_compare_ptr;

@@ -21,6 +21,7 @@
 
 #include <pre_cc.h>
 #include "winClasses.h"
+#include "win_str.h"
 #include "smException.h"
 #include "cc_memory.hpp"
 #include <boost/lexical_cast.hpp>
@@ -125,7 +126,7 @@ namespace ccwin
         for ( container::iterator it = mList.begin(), eend = mList.end() ; it != eend ; ++it )
         {
             if ( it->length() > str_len &&
-                (*it)[str_len] == CharConstant<wchar_t>::equal &&
+                (*it)[str_len] == cclib::CharConstant<wchar_t>::equal &&
                  wcsncmp( it->c_str(), str.c_str(), str_len ) == 0 )
             {
                 return it;
@@ -180,8 +181,8 @@ namespace ccwin
             const std::wstring&     sstr = mList[n];
 
             buffer.insert( buffer.end(), sstr.begin(), sstr.end() );
-            buffer.push_back( CharConstant<wchar_t>::cr );
-            buffer.push_back( CharConstant<wchar_t>::lf );
+            buffer.push_back( cclib::CharConstant<wchar_t>::cr );
+            buffer.push_back( cclib::CharConstant<wchar_t>::lf );
         }
         if ( buffer.empty() )
             return std::wstring();
@@ -241,7 +242,7 @@ namespace ccwin
     std::wstring TStringList::Names( size_type idx ) const
     {
         std::wstring                result = operator[]( idx );
-        std::wstring::size_type     pos = result.find( CharConstant<wchar_t>::equal );
+        std::wstring::size_type     pos = result.find( cclib::CharConstant<wchar_t>::equal );
 
         if ( pos != std::wstring::npos )
             return result.substr( 0, pos );
@@ -251,7 +252,7 @@ namespace ccwin
     std::wstring TStringList::Values( size_type idx )
     {
         std::wstring                result = operator[]( idx );
-        std::wstring::size_type     pos = result.find( CharConstant<wchar_t>::equal );
+        std::wstring::size_type     pos = result.find( cclib::CharConstant<wchar_t>::equal );
 
         if ( pos != std_string::npos )
             return result.substr( pos + 1 );
