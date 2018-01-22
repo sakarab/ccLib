@@ -25,6 +25,7 @@
 #include <memory>
 #include <set>
 #include <loki/Singleton.h>
+#include "predef_cc.h"
 
 namespace cclib
 {
@@ -43,8 +44,8 @@ namespace cclib
         // singleton
         UntitledSequence();
         ~UntitledSequence();
-        UntitledSequence( const UntitledSequence& ) = delete;
-        UntitledSequence& operator=( const UntitledSequence& ) = delete;
+        UntitledSequence( const UntitledSequence& ) CC_EQ_DELETE;
+        UntitledSequence& operator=( const UntitledSequence& ) CC_EQ_DELETE;
     public:
         int getAvailable();
         void Release( int seq );
