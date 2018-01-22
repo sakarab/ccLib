@@ -13,7 +13,7 @@
       <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;CC_NOT_USING_QT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_cc.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(WTLINC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;$(WTLINC);$(QT_INC)\QtCore;$(QT_INC)\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>

@@ -14,30 +14,91 @@
       <Extensions>qrc</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Forms">
+      <UniqueIdentifier>{3a4707a3-7a23-4985-9aa0-0a4e1cf9a49c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_RTL">
+      <UniqueIdentifier>{f07d9170-3376-4ee5-bab3-3ef403e6e077}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug_Static">
+      <UniqueIdentifier>{0acff366-8480-4d42-ac3c-befe58340d49}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_RTL">
+      <UniqueIdentifier>{e32511c6-a632-424f-96e8-9a65f046ace9}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release_Static">
+      <UniqueIdentifier>{499c5607-aba4-4f94-a9c1-f94fa0ae9399}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Src\smException.cpp">
+    <ClCompile Include="..\Src\pre_cc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\boDateUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\BomUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\chasewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\cpp_lpstr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frmSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\frSelectEncoding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\Src\IDirIter_Boost.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\wtlUtils.cpp">
+    <ClCompile Include="..\Src\IDirIter_Qt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ITStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\LibLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\pre_cc.cpp">
+    <ClCompile Include="..\Src\qqOpenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\QtSingletons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\ScanDirectory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\smException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\UntitledSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\Src\win_str.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\winBuffers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\winClasses.cpp">
@@ -49,64 +110,183 @@
     <ClCompile Include="..\Src\winUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\winVersion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\wtlUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static\moc_chasewidget.cpp">
+      <Filter>Generated Files\Debug_Static</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static\moc_chasewidget.cpp">
+      <Filter>Generated Files\Release_Static</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static\moc_frmSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_RTL\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug_Static\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Debug_Static</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_RTL\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_RTL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release_Static\moc_frSelectEncoding.cpp">
+      <Filter>Generated Files\Release_Static</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\RefCnt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\smException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\BomUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\IDirIter_Boost.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\IDirIterator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\wtlUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\cc_array.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\cc_atomic.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\cc_memory.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\LibLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\pre_cc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\predef_cc.h">
+    <ClInclude Include="..\include\boDateUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\ScanDirectory.h">
+    <ClInclude Include="..\include\BomUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\SharedFlag.h">
+    <ClInclude Include="..\include\cc_array.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\win_str.h">
+    <ClInclude Include="..\include\cc_atomic.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winClasses.h">
+    <ClInclude Include="..\include\cc_memory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winOSUtils.h">
+    <ClInclude Include="..\include\cpp_lpstr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\winUtils.h">
+    <ClInclude Include="..\include\cpp_sstream.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cpp_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IDirIter_Boost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IDirIter_Qt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\IDirIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ITStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\LibLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\predef_cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\qqOpenDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\QtApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\QtSingletons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RefCnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ScanDirectory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SharedFlag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\smException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\UntitledSequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utf8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\win_str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winBuffers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winClasses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winOSUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\winVersion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wtlPropertyGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wtlPropertyItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wtlPropertyItemEditors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wtlPropertyItemImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wtlUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\Src\Forms\frmSelectEncoding.ui">
+      <Filter>Forms</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\Src\Forms\frSelectEncoding.ui">
+      <Filter>Forms</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\include\chasewidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\include\frmSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\include\frSelectEncoding.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>
