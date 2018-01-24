@@ -340,43 +340,43 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\Src\boDateUtils.h"
+				RelativePath="..\include\boDateUtils.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\BomUtils.h"
+				RelativePath="..\include\BomUtils.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cc_array.hpp"
+				RelativePath="..\include\cc_array.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cc_atomic.hpp"
+				RelativePath="..\include\cc_atomic.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cc_memory.hpp"
+				RelativePath="..\include\cc_memory.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cpp_lpstr.h"
+				RelativePath="..\include\cpp_lpstr.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cpp_string.h"
+				RelativePath="..\include\cpp_string.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\IDirIter_Boost.h"
+				RelativePath="..\include\IDirIter_Boost.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\IDirIterator.h"
+				RelativePath="..\include\IDirIterator.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\LibLoader.h"
+				RelativePath="..\include\LibLoader.h"
 				>
 			</File>
 			<File
@@ -384,135 +384,47 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Src\predef_cc.h"
+				RelativePath="..\include\predef_cc.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\RefCnt.h"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\Src\ScanDirectory.h"
+				RelativePath="..\include\RefCnt.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\SharedFlag.h"
+				RelativePath="..\include\ScanDirectory.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\smException.h"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step"
-						CommandLine=""
-						AdditionalDependencies=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\Src\utf8.h"
+				RelativePath="..\include\SharedFlag.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\win_str.h"
+				RelativePath="..\include\smException.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\winClasses.h"
+				RelativePath="..\include\utf8.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\winOSUtils.h"
+				RelativePath="..\include\win_str.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\winUtils.h"
+				RelativePath="..\include\winClasses.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\wtlUtils.h"
+				RelativePath="..\include\winOSUtils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\winUtils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\wtlUtils.h"
 				>
 			</File>
 		</Filter>
@@ -527,10 +439,4 @@
 			>
 		</File>
 	</Files>
-	<Globals>
-		<Global
-			Name="QtVersion Win32"
-			Value="Qt-32"
-		/>
-	</Globals>
 </VisualStudioProject>
