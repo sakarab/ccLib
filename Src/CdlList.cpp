@@ -20,19 +20,19 @@ static void Error( int res_id, int data )
 
 //---------------------------------------------------------------------------
 
-FASTCALL CdlNode::CdlNode()
+CdlNode::CdlNode()
 {
 	FNext = NULL;
 	FPrev = NULL;
 	FData = NULL;
 }
 
-FASTCALL CdlNode::~CdlNode()
+CdlNode::~CdlNode()
 {
 	Unlink();
 }
 
-void FASTCALL CdlNode::LinkPrev( CdlNode *new_node )
+void CdlNode::LinkPrev( CdlNode *new_node )
 {
 	new_node->FPrev = FPrev;
 	new_node->FNext = this;
@@ -41,7 +41,7 @@ void FASTCALL CdlNode::LinkPrev( CdlNode *new_node )
 	FPrev = new_node;
 }
 
-void FASTCALL CdlNode::LinkNext( CdlNode *new_node )
+void CdlNode::LinkNext( CdlNode *new_node )
 {
 	new_node->FNext = FNext;
 	new_node->FPrev = this;
@@ -50,7 +50,7 @@ void FASTCALL CdlNode::LinkNext( CdlNode *new_node )
 	FNext = new_node;
 }
 
-void FASTCALL CdlNode::Unlink( void )
+void CdlNode::Unlink( void )
 {
 	if ( FPrev != NULL )
 		FPrev->FNext = FNext;
@@ -60,7 +60,7 @@ void FASTCALL CdlNode::Unlink( void )
 	FNext = NULL;
 }
 
-CdlNode * FASTCALL CdlNode::Delete( void )
+CdlNode * CdlNode::Delete( void )
 {
 	CdlNode *node = FPrev;
 
@@ -70,7 +70,7 @@ CdlNode * FASTCALL CdlNode::Delete( void )
 	return node;
 }
 
-CdlNode * FASTCALL CdlNode::MoveUpBy( long cnt )
+CdlNode * CdlNode::MoveUpBy( long cnt )
 {
 	CdlNode *node = this;
 
@@ -82,7 +82,7 @@ CdlNode * FASTCALL CdlNode::MoveUpBy( long cnt )
 	return node;
 }
 
-void FASTCALL CdlNode::Sort( long lo, long hi, CdlNode *nlo, CdlNode *nhi, TdlCustomCompareFunc func )
+void CdlNode::Sort( long lo, long hi, CdlNode *nlo, CdlNode *nhi, TdlCustomCompareFunc func )
 {
 	long		i, j;
 	CdlNode		*ni, *nj, *pivot;
@@ -127,7 +127,7 @@ void FASTCALL CdlNode::Sort( long lo, long hi, CdlNode *nlo, CdlNode *nhi, TdlCu
 	}
 }
 //---------------------------------------------------------------------------
-FASTCALL CCustomDLList::CCustomDLList( bool can_delete )
+CCustomDLList::CCustomDLList( bool can_delete )
 {
 	FFirst = NULL;
 	FLast = NULL;
@@ -136,12 +136,12 @@ FASTCALL CCustomDLList::CCustomDLList( bool can_delete )
 	FCanDelete = can_delete;
 }
 
-FASTCALL CCustomDLList::~CCustomDLList()
+CCustomDLList::~CCustomDLList()
 {
 	Clear();
 }
 
-CdlNode * FASTCALL CCustomDLList::GetNode( long index )
+CdlNode * CCustomDLList::GetNode( long index )
 {
 	CdlNode		*node;
 
@@ -169,12 +169,12 @@ CdlNode * FASTCALL CCustomDLList::GetNode( long index )
 	return node;
 }
 
-void * FASTCALL CCustomDLList::Add( void *a_object )
+void * CCustomDLList::Add( void *a_object )
 {
 	return InsertAtPos( a_object, FCount );
 }
 
-void * FASTCALL CCustomDLList::InsertAtPos( void *a_object, long pos )
+void * CCustomDLList::InsertAtPos( void *a_object, long pos )
 {
 	CdlNode		*new_node;
 
@@ -193,7 +193,7 @@ void * FASTCALL CCustomDLList::InsertAtPos( void *a_object, long pos )
 	return a_object;
 }
 
-void FASTCALL CCustomDLList::LinkNode( long pos, CdlNode *new_node )
+void CCustomDLList::LinkNode( long pos, CdlNode *new_node )
 {
 	if ( pos < 0 || pos > FCount )
 		ThrowException( TEXT("Invalid TdlList index") );
@@ -217,7 +217,7 @@ void FASTCALL CCustomDLList::LinkNode( long pos, CdlNode *new_node )
 	FCount++;
 }
 
-long FASTCALL CCustomDLList::PosFromObject( void *a_object )
+long CCustomDLList::PosFromObject( void *a_object )
 {
 	CdlNode		*node = FFirst;
 	long		ret_val = 0;
@@ -234,7 +234,7 @@ long FASTCALL CCustomDLList::PosFromObject( void *a_object )
 	return ret_val;
 }
 
-void FASTCALL CCustomDLList::DeleteAtPos( long pos )
+void CCustomDLList::DeleteAtPos( long pos )
 {
 	CdlNode		*node;
 
@@ -248,7 +248,7 @@ void FASTCALL CCustomDLList::DeleteAtPos( long pos )
 	}
 }
 
-void FASTCALL CCustomDLList::UnlinkNode( CdlNode *node )
+void CCustomDLList::UnlinkNode( CdlNode *node )
 {
 	if ( FFirst == node )
 		FFirst = node->FNext;
@@ -257,7 +257,7 @@ void FASTCALL CCustomDLList::UnlinkNode( CdlNode *node )
 	node->Unlink();
 }
 
-void FASTCALL CCustomDLList::Clear( void )
+void CCustomDLList::Clear( void )
 {
 	CdlNode		*node = FLast;
 
@@ -272,12 +272,12 @@ void FASTCALL CCustomDLList::Clear( void )
 	FLast = NULL;
 }
 
-void * FASTCALL CCustomDLList::operator []( long index )
+void * CCustomDLList::operator []( long index )
 {
 	return GetNode( index )->FData;
 }
 
-void FASTCALL CCustomDLList::Swap( long pos1, long pos2 )
+void CCustomDLList::Swap( long pos1, long pos2 )
 {
 	void		*data;
 	CdlNode		*node1 = Nodes[pos1], *node2 = Nodes[pos2];
@@ -287,7 +287,7 @@ void FASTCALL CCustomDLList::Swap( long pos1, long pos2 )
 	node2->FData = data;
 }
 
-void FASTCALL CCustomDLList::Move( long from_pos, long to_pos )
+void CCustomDLList::Move( long from_pos, long to_pos )
 {
 	CdlNode		*from_node;
 
@@ -301,27 +301,27 @@ void FASTCALL CCustomDLList::Move( long from_pos, long to_pos )
 	}
 }
 
-void FASTCALL CCustomDLList::QSort( TdlCustomCompareFunc func )
+void CCustomDLList::QSort( TdlCustomCompareFunc func )
 {
 	if ( FCount > 1 )
 		FFirst->Sort( 0, FCount-1, FFirst, FLast, func );
 }
 
-void * FASTCALL CCustomDLList::IteratorFirst( void )
+void * CCustomDLList::IteratorFirst( void )
 {
 	if ( (FIteratorCurrent = FFirst) != NULL )
 		return FIteratorCurrent->FData;
 	return NULL;
 }
 
-void * FASTCALL CCustomDLList::IteratorLast( void )
+void * CCustomDLList::IteratorLast( void )
 {
 	if ( (FIteratorCurrent = FLast) != NULL )
 		return FIteratorCurrent->FData;
 	return NULL;
 }
 
-void * FASTCALL CCustomDLList::IteratorNext( void )
+void * CCustomDLList::IteratorNext( void )
 {
 	if ( FIteratorCurrent != NULL )
 		if ( (FIteratorCurrent = FIteratorCurrent->FNext) != NULL )
@@ -329,7 +329,7 @@ void * FASTCALL CCustomDLList::IteratorNext( void )
 	return NULL;
 }
 
-void * FASTCALL CCustomDLList::IteratorPrev( void )
+void * CCustomDLList::IteratorPrev( void )
 {
 	if ( FIteratorCurrent != NULL )
 		if ( (FIteratorCurrent = FIteratorCurrent->FPrev) != NULL )

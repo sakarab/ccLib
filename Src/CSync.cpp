@@ -8,12 +8,12 @@ namespace ww
 //---------------------------------------------------------------------------
 //-- CCriticalSection
 //---------------------------------------------------------------------------
-__fastcall CCriticalSection::CCriticalSection()
+CCriticalSection::CCriticalSection()
 {
 	InitializeCriticalSectionAndSpinCount( &FCriticalSection, 4000 );
 }
 
-__fastcall CCriticalSection::~CCriticalSection()
+CCriticalSection::~CCriticalSection()
 {
 	DeleteCriticalSection( &FCriticalSection );
 }

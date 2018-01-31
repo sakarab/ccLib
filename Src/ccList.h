@@ -2,7 +2,6 @@
 #ifndef ccListH
 #define ccListH
 //---------------------------------------------------------------------------
-#include "ssport.h"
 #include <cstddef>
 #include <memory>
 
@@ -24,10 +23,10 @@ private:
 	int					FCount;
 	int					FCapacity;
 	bool                FCanDelete;
-    //static void FASTCALL Error( int res_id, int data );
-    static void FASTCALL OutOfRangeError();
-    static void FASTCALL RangeError();
-	int FASTCALL CheckIndex( int Index )
+    //static void Error( int res_id, int data );
+    static void OutOfRangeError();
+    static void RangeError();
+	int CheckIndex( int Index )
 	{
 #if defined ( S_DEBUG )
 		if ( Index < 0 || Index >= FCount )
@@ -35,41 +34,41 @@ private:
 #endif
 		return ( Index );
 	}
-	NO_COPY_CTOR(CCustomList);
-	NO_COPY_OPER(CCustomList);
+	CCustomList( const CCustomList& );
+	CCustomList& operator=( const CCustomList& );
 protected:
-	virtual void FASTCALL Grow( void );
+	virtual void Grow( void );
 	virtual void DeleteItem( void *Item ) = 0;
-	FASTCALL CCustomList( bool can_delete = true );
-	FASTCALL ~CCustomList( void );
+	CCustomList( bool can_delete = true );
+	~CCustomList( void );
 	// Override	-------------------------------------------------------
-	void * FASTCALL Get( int Index ) const
+	void * Get( int Index ) const
 	{
 #if defined ( S_DEBUG )
 		CheckIndex( Index );
 #endif
 		return ( GetList()[Index] );
 	}
-	void FASTCALL Put( int Index, void * Item );
-	int FASTCALL Add( void *Item );
-	void * FASTCALL First( void );
-	int FASTCALL IndexOf( void *Item );
-	void FASTCALL Insert( int Index, void *Item );
-	void * FASTCALL Last( void );
-	int FASTCALL Remove( void *Item );
-	CCustomList* FASTCALL Expand( void );			// ??
+	void Put( int Index, void * Item );
+	int Add( void *Item );
+	void * First( void );
+	int IndexOf( void *Item );
+	void Insert( int Index, void *Item );
+	void * Last( void );
+	int Remove( void *Item );
+	CCustomList* Expand( void );			// ??
 	// end Override	---------------------------------------------------
-	void ** FASTCALL GetList() const                                { return ( FList ); }
+	void ** GetList() const                                { return ( FList ); }
 public:
-	void FASTCALL Clear( void );
-	void FASTCALL Delete( int Index );
-	void FASTCALL Exchange( int Index1, int Index2 );
-	void FASTCALL Pack( void );
-	void FASTCALL Move( int CurIndex, int NewIndex );
-	void FASTCALL SetCapacity( int NewCapacity );
-	void FASTCALL SetCount( int NewCount );
-	int FASTCALL GetCapacity()										{ return ( FCapacity ); }
-	int FASTCALL GetCount() const                                   { return ( FCount ); }
+	void Clear( void );
+	void Delete( int Index );
+	void Exchange( int Index1, int Index2 );
+	void Pack( void );
+	void Move( int CurIndex, int NewIndex );
+	void SetCapacity( int NewCapacity );
+	void SetCount( int NewCount );
+	int GetCapacity()										{ return ( FCapacity ); }
+	int GetCount() const                                   { return ( FCount ); }
 };
 
 template <class T> class CList : public CCustomList
@@ -83,13 +82,13 @@ public:
 	typedef	const T&	    const_reference;
 	typedef	std::ptrdiff_t  difference_type;
 private:
-	T ** FASTCALL GetList()						{ return ( reinterpret_cast<T **>(CCustomList::GetList()) ); }
+	T ** GetList()						{ return ( reinterpret_cast<T **>(CCustomList::GetList()) ); }
 	NO_COPY_CTOR(CList);
 	NO_COPY_OPER(CList);
 protected:
 	virtual void DeleteItem( void *Item )		{ delete reinterpret_cast<pointer>(Item); }
 
-	template <class FUNC> void FASTCALL QuickSort( T **SortList, int L, int R, const FUNC& SCompare )
+	template <class FUNC> void QuickSort( T **SortList, int L, int R, const FUNC& SCompare )
 	{
 		int		I, J;
 		T		*p, *t;
@@ -243,26 +242,26 @@ public:
 //#endif
 
 public:
-	FASTCALL CList( bool can_delete = true ) : CCustomList( can_delete )    {}
-	FASTCALL ~CList( void )                                                 { Clear(); }
-	T * FASTCALL GetItem( int Index ) const                                 { return ( reinterpret_cast<pointer>(CCustomList::Get( Index )) ); }
-	void FASTCALL SetItem( int Index, pointer Item )                        { CCustomList::Put( Index, Item ); }
-	int FASTCALL Add( pointer Item )                                        { return ( CCustomList::Add( Item ) ); }
-	T * FASTCALL First( void )                                              { return ( reinterpret_cast<pointer>(CCustomList::First()) ); }
-	int FASTCALL IndexOf( pointer Item )                                    { return ( CCustomList::IndexOf( Item ) ); }
-	void FASTCALL Insert( int Index, pointer Item )                         { CCustomList::Insert( Index, Item ); }
-	T * FASTCALL Last( void )                                               { return ( reinterpret_cast<pointer>(CCustomList::Last()) ); }
-	int FASTCALL Remove( pointer Item )                                     { return ( CCustomList::Remove( Item ) ); }
+	CList( bool can_delete = true ) : CCustomList( can_delete )    {}
+	~CList( void )                                                 { Clear(); }
+	T * GetItem( int Index ) const                                 { return ( reinterpret_cast<pointer>(CCustomList::Get( Index )) ); }
+	void SetItem( int Index, pointer Item )                        { CCustomList::Put( Index, Item ); }
+	int Add( pointer Item )                                        { return ( CCustomList::Add( Item ) ); }
+	T * First( void )                                              { return ( reinterpret_cast<pointer>(CCustomList::First()) ); }
+	int IndexOf( pointer Item )                                    { return ( CCustomList::IndexOf( Item ) ); }
+	void Insert( int Index, pointer Item )                         { CCustomList::Insert( Index, Item ); }
+	T * Last( void )                                               { return ( reinterpret_cast<pointer>(CCustomList::Last()) ); }
+	int Remove( pointer Item )                                     { return ( CCustomList::Remove( Item ) ); }
 
 	iterator begin()                                                        { return ( GetList() ); }
 	iterator end()                                                          { return ( GetList() + GetCount() ); }
 
-	template <class FUNC> void FASTCALL Sort( const FUNC& func )
+	template <class FUNC> void Sort( const FUNC& func )
 	{
 		if ( GetList() != NULL && GetCount() > 0 )
 			QuickSort( GetList(), 0, GetCount() - 1, func );
 	}
-	template <class WHAT, class FUNC> T * FASTCALL Find( const WHAT& what, const FUNC& func, int& idx )
+	template <class WHAT, class FUNC> T * Find( const WHAT& what, const FUNC& func, int& idx )
 	{
 		int		L, H, I, C;
 
@@ -285,7 +284,7 @@ public:
 		idx = L;
 		return ( NULL );
 	}
-	template <class WHAT, class FUNC> T * FASTCALL Find( const WHAT& what, const FUNC& func )
+	template <class WHAT, class FUNC> T * Find( const WHAT& what, const FUNC& func )
 	{
 		int		idx;
 		return ( Find( what, func, idx ) );

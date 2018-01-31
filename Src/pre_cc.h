@@ -25,28 +25,34 @@
 #define CC_PRE_CC_H
 
 #include "predef_cc.h"
+
 #include <string>
 #include <vector>
 #include <boost/lexical_cast.hpp>
 #include <boost/smart_ptr.hpp>
-#include <boost/scope_exit.hpp>
 #include <boost/format.hpp>
-
-#if ! defined (CC_NOT_USING_QT)
-#include <QtCore>
+#ifndef __BORLANDC__
+    #include <boost/scope_exit.hpp>
 #endif
 
-#define _WTL_USE_CSTRING
 
-#if defined (WIN32)
+#if ! defined (CC_NOT_USING_QT)
+    #include <QtCore>
+#endif
+
+#if defined (WIN32) && !defined (CC_NOT_USING_WTL)
+    #define _WTL_USE_CSTRING
     #include <atlbase.h>
     #include <atlapp.h>
     #include <atlctrls.h>
     #include <atlmisc.h>
 #endif
 
-#if ( BOOST_LANG_STDCPP == BOOST_VERSION_NUMBER( 41, 12, 1 ) )
-#define CPP_X11_SUPPORT
+#ifndef __BORLANDC__
+    #if ( BOOST_LANG_STDCPP == BOOST_VERSION_NUMBER( 41, 12, 1 ) )
+        #define CPP_X11_SUPPORT
+    #endif
 #endif
 
 #endif
+

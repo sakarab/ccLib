@@ -32,15 +32,15 @@
     <USERDEFINES value="__NOASSERTE"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="ccLibTest6.cpp"/>
-    <INCLUDEPATH value="..\Test;..\Src;$(BCB)\include;$(BCB)\include\vcl"/>
+    <INCLUDEPATH value="..\Test;..\Src;..\Include;$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="..\Test;$(BLIB);$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w8092 -w8091 -w8090 -w8089 -w8087 -wprc -wuse -wucp -wstv -wstu -wsig 
       -wpin -w-par -wnod -wnak -w-8027 -w-8026 -wdef -wcln -wbbf -wasm -wamp -wamb"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I..\Test -I..\Src -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp 
-      -D__NOASSERTE -boa"/>
+    <IDLCFLAGS value="-I..\Test -I..\Src -I..\Include -I$(BCB)\include -I$(BCB)\include\vcl 
+      -src_suffix cpp -D__NOASSERTE -boa"/>
     <CFLAG1 value="-Og -Ov -Q -Vx -Ve -X- -a8 -4 -b- -d -k- -y -v -vi -c -tW -tWM"/>
     <PFLAGS value="-N2.\OutC\Test6 -N0.\OutC\Test6 -$YD -$T -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>

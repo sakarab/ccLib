@@ -54,7 +54,7 @@ AnsiString __fastcall TfrmCTree::SelectDir()
 	return ( result );
 }
 //---------------------------------------------------------------------------
-bool __fastcall TfrmCTree::OnFindFile( vcl::TScanDir *scan_dir )
+bool TfrmCTree::OnFindFile( vcl::TScanDir *scan_dir )
 {
 	FileTree	*tree = reinterpret_cast<FileTree *>(scan_dir->Data);
 
@@ -62,7 +62,7 @@ bool __fastcall TfrmCTree::OnFindFile( vcl::TScanDir *scan_dir )
 	return ( true );
 }
 //---------------------------------------------------------------------------
-vcl::TScanDir::TFindDirResult __fastcall TfrmCTree::OnFindDir( vcl::TScanDir *scan_dir )
+vcl::TScanDir::TFindDirResult TfrmCTree::OnFindDir( vcl::TScanDir *scan_dir )
 {
 	FileTree			*tree = reinterpret_cast<FileTree *>(scan_dir->Data);
 
@@ -71,7 +71,7 @@ vcl::TScanDir::TFindDirResult __fastcall TfrmCTree::OnFindDir( vcl::TScanDir *sc
 	return ( vcl::TScanDir::sdfrContinue );
 }
 //---------------------------------------------------------------------------
-bool __fastcall TfrmCTree::OnDirExited( vcl::TScanDir *scan_dir )
+bool TfrmCTree::OnDirExited( vcl::TScanDir *scan_dir )
 {
 	FileTree	*tree = reinterpret_cast<FileTree *>(scan_dir->Data);
 

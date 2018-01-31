@@ -4,8 +4,7 @@
 //---------------------------------------------------------------------------
 
 #include <System.hpp>
-#include "ssport.h"
-#include "bcbStdString.h"
+#include "ccStdString.h"
 
 extern	const char	    EmptyChar[];
 extern	const wchar_t	EmptyCharW[];
@@ -54,9 +53,9 @@ private:
     NO_COPY_CTOR(UpdateLocker);
     NO_COPY_OPER(UpdateLocker);
 public:
-    FASTCALL UpdateLocker( T*& obj ) : FObj(obj)            { FObj->BeginUpdate(); }
-    FASTCALL UpdateLocker( T* const & obj ) : FObj(obj)     { FObj->BeginUpdate(); }
-    FASTCALL ~UpdateLocker()                                { FObj->EndUpdate(); }
+    UpdateLocker( T*& obj ) : FObj(obj)            { FObj->BeginUpdate(); }
+    UpdateLocker( T* const & obj ) : FObj(obj)     { FObj->BeginUpdate(); }
+    ~UpdateLocker()                                { FObj->EndUpdate(); }
 };
 
 class HandleCloser
@@ -66,8 +65,8 @@ private:
     NO_COPY_CTOR(HandleCloser);
     NO_COPY_OPER(HandleCloser);
 public:
-    FASTCALL HandleCloser( const HANDLE& hnd ) : Hand(hnd)      { /* empty */ }
-    FASTCALL ~HandleCloser()                                    { CloseHandle( Hand ); }
+    HandleCloser( const HANDLE& hnd ) : Hand(hnd)      { /* empty */ }
+    ~HandleCloser()                                    { CloseHandle( Hand ); }
 };
 
 };  // end namespace vcl

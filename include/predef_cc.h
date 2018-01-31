@@ -24,7 +24,9 @@
 #if !defined(PREDEF_CC_H)
 #define PREDEF_CC_H
 
-#include <boost/predef.h>
+#ifndef __BORLANDC__
+    #include <boost/predef.h>
+#endif
 
 #if defined (BOOST_COMP_MSVC_AVAILABLE)
 
@@ -60,6 +62,10 @@
 
 #endif
 
+#if defined(__BORLANDC__)
+    // HAS NOTHING
+#endif
+
 #if !defined (CC_HAVE_NULL_PTR)
     #define nullptr     NULL
 #endif
@@ -77,3 +83,4 @@
 #endif
 
 #endif
+

@@ -2,8 +2,6 @@
 #ifndef CTreeH
 #define CTreeH
 //---------------------------------------------------------------------------
-
-#include "ssport.h"
 #include <iterator>
 #include <ccList.h>
 

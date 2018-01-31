@@ -4,12 +4,11 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value=".\OutC\ccLib60r.lib"/>
-    <OBJFILES value="OutC\ccLib6R\ccMatch.obj OutC\ccLib6R\ccRegExp.obj 
-      OutC\ccLib6R\ccUtils.obj OutC\ccLib6R\CdlList.obj 
-      OutC\ccLib6R\CIniFiles.obj OutC\ccLib6R\CommandLine.obj 
-      OutC\ccLib6R\CStreams.obj OutC\ccLib6R\CSync.obj OutC\ccLib6R\CTree.obj 
-      OutC\ccLib6R\RefCnt.obj OutC\ccLib6R\ScanDir.obj OutC\ccLib6R\Buffers.obj 
-      OutC\ccLib6R\ccList.obj"/>
+    <OBJFILES value="OutC\ccLibR\ccMatch.obj OutC\ccLibR\ccRegExp.obj OutC\ccLibR\ccUtils.obj 
+      OutC\ccLibR\CdlList.obj OutC\ccLibR\CIniFiles.obj 
+      OutC\ccLibR\CommandLine.obj OutC\ccLibR\CStreams.obj OutC\ccLibR\CSync.obj 
+      OutC\ccLibR\CTree.obj OutC\ccLibR\RefCnt.obj OutC\ccLibR\ScanDir.obj 
+      OutC\ccLibR\ccList.obj OutC\ccLibR\winBuffers.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -23,10 +22,10 @@
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
     <LINKER value="TLib"/>
-    <USERDEFINES value="NDEBUG"/>
+    <USERDEFINES value="NDEBUG;CC_NOT_USING_QT;CC_NOT_USING_WTL"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT"/>
     <MAINSOURCE value="ccLib60r.bpf"/>
-    <INCLUDEPATH value="..\Src;$(BOOST_INC);$(BCB)\include;$(BCB)\include\vcl"/>
+    <INCLUDEPATH value="..\Src;..\Include;$(BOOST_INC);$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="..\Src;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w8092 -w8091 -w8090 -w8089 -w8087 -wprc -wuse -wucp -wstv -wstu -wsig 
       -wpin -wnod -wnak -w-8027 -w-8026 -wdef -wcln -wbbf -wasm -wamp -wamb"/>
@@ -34,10 +33,10 @@
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I..\Src -I$(BOOST_INC) -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix 
-      cpp -DNDEBUG -boa"/>
+    <IDLCFLAGS value="-I..\Src -I..\Include -I$(BOOST_INC) -I$(BCB)\include -I$(BCB)\include\vcl 
+      -src_suffix cpp -DNDEBUG -DCC_NOT_USING_QT -DCC_NOT_USING_WTL -boa"/>
     <CFLAG1 value="-Og -Ov -Q -Vx -Ve -X- -a8 -6 -b- -d -k- -y -v -vi -c -tW -tWM"/>
-    <PFLAGS value="-N2.\OutC\ccLib6R -N0.\OutC\ccLib6R -$YD -$T -$A8 -v -JPHNE -M"/>
+    <PFLAGS value="-N2.\OutC\ccLibR -N0.\OutC\ccLibR -$YD -$T -$A8 -v -JPHNE -M"/>
     <AFLAGS value="/mx /w2 /zd"/>
     <LFLAGS value="/P32 /E /C"/>
     <OTHERFILES value=""/>
@@ -60,8 +59,8 @@
       <FILE FILENAME="..\Src\CTree.cpp" FORMNAME="" UNITNAME="CTree.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\RefCnt.cpp" FORMNAME="" UNITNAME="RefCnt.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\ScanDir.cpp" FORMNAME="" UNITNAME="ScanDir.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="..\Src\Buffers.cpp" FORMNAME="" UNITNAME="Buffers.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\ccList.cpp" FORMNAME="" UNITNAME="ccList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Src\winBuffers.cpp" FORMNAME="" UNITNAME="winBuffers" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

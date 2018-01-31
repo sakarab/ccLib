@@ -3,7 +3,6 @@
 #define CSyncH
 //---------------------------------------------------------------------------
 #include <windows.h>
-#include "ssport.h"
 
 namespace ww
 {
@@ -15,10 +14,10 @@ private:
 	NO_COPY_CTOR(CCriticalSection);
 	NO_COPY_OPER(CCriticalSection);
 public:
-	FASTCALL CCriticalSection();
-	FASTCALL ~CCriticalSection();
-	void FASTCALL Enter()				{ EnterCriticalSection( &FCriticalSection ); }
-	void FASTCALL Leave()				{ LeaveCriticalSection( &FCriticalSection ); }
+	CCriticalSection();
+	~CCriticalSection();
+	void Enter()				{ EnterCriticalSection( &FCriticalSection ); }
+	void Leave()				{ LeaveCriticalSection( &FCriticalSection ); }
 };
 
 class Locker
@@ -28,12 +27,12 @@ private:
 	NO_COPY_CTOR(Locker);
 	NO_COPY_OPER(Locker);
 public:
-    FASTCALL Locker( CCriticalSection& critical_section )
+    Locker( CCriticalSection& critical_section )
         : FCriticalSection(critical_section)
     {
         FCriticalSection.Enter();
     }
-    FASTCALL ~Locker()
+    ~Locker()
     {
         FCriticalSection.Leave();
     }

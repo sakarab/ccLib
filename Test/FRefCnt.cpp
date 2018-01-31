@@ -33,13 +33,13 @@ __fastcall TfrmRefCnt::TfrmRefCnt(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TfrmRefCnt::Button1Click(TObject *Sender)
 {
-    cc::Handle<rcData>      aa;
-    cc::Handle<rcData>      bb( 5, "aaaa" );
-    cc::Handle<rcData>      cc( bb );
+    cclib::Handle<rcData>       aa;
+    cclib::Handle<rcData>       bb( 5, "aaaa" );
+    cclib::Handle<rcData>       cc( bb );
 
-    std::string             str( "bbbb" );
+    std::string                 str( "bbbb" );
 
-    cc::Handle<rcData>      dd( str );
+    cclib::Handle<rcData>       dd( str );
 }
 //---------------------------------------------------------------------------
 unsigned __int64 foot()

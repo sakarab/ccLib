@@ -22,7 +22,7 @@
 #ifndef SM_RefCnt_H_INCLUDED
 #define SM_RefCnt_H_INCLUDED
 
-#include "predef_cc.h"
+#include "predef_cc.h"          // there is no support for BCB
 
 namespace cclib
 {
@@ -48,7 +48,7 @@ template <class T, class Arg01, class Arg02> struct tArg02
 template <class T> class Handle
 {
 private:
-	Handle<T> * operator& () CC_COPY_DELETE;        // Not defined to prevent usage.
+	Handle<T> * operator& () CC_EQ_DELETE;          // Not defined to prevent usage.
 
 	template <class U> class Counted
 	{

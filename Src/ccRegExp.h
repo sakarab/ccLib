@@ -1,7 +1,6 @@
 #ifndef __CCREGEXP_H
 #define __CCREGEXP_H
 
-#include <ssport.h>
 #include <vector>
 
 /*----------------------------------------------------------------------*/

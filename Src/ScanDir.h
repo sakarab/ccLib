@@ -4,9 +4,8 @@
 //---------------------------------------------------------------------------
 
 #include <System.hpp>
-#include "ssport.h"
 #include <vector>
-#include "bcbStdString.h"
+#include "ccStdString.h"
 
 namespace vcl
 {
@@ -19,13 +18,13 @@ private:
 	public:
 		HANDLE				fh;
 		WIN32_FIND_DATA		data;
-		FASTCALL FindData() : fh(INVALID_HANDLE_VALUE)			{ /* empty */ }
-		FASTCALL ~FindData()
+		FindData() : fh(INVALID_HANDLE_VALUE)			{ /* empty */ }
+		~FindData()
 		{
 			if ( fh != INVALID_HANDLE_VALUE )
 				FindClose( fh );
 		}
-		void FASTCALL Close()
+		void Close()
 		{
 			if ( fh != INVALID_HANDLE_VALUE )
 				FindClose( fh );
@@ -37,25 +36,25 @@ private:
 	String                      FCurrentDir;
 	bool						FRunning;
 	bool						FRecurcive;
-    DWORD FASTCALL GetAttributes();
-	DWORD FASTCALL GetFileSize();
-	TDateTime FASTCALL GetCreationTime();
-	TDateTime FASTCALL GetLastAccessTime();
-	TDateTime FASTCALL GetLastWriteTime();
-	String FASTCALL GetLongFileName();
-	String FASTCALL GetShortFileName();
-	String FASTCALL GetBaseDirectory();
-	TDateTime FASTCALL FileTimeToDateTime( FILETIME *ttime );
-	void FASTCALL Execute();
-	void FASTCALL EnterDirectory();
-	FindData& FASTCALL GetCurrentData()		                { return ( *FDirList.back() ); }
+    DWORD GetAttributes();
+	DWORD GetFileSize();
+	TDateTime GetCreationTime();
+	TDateTime GetLastAccessTime();
+	TDateTime GetLastWriteTime();
+	String GetLongFileName();
+	String GetShortFileName();
+	String GetBaseDirectory();
+	TDateTime FileTimeToDateTime( FILETIME *ttime );
+	void Execute();
+	void EnterDirectory();
+	FindData& GetCurrentData()		                { return ( *FDirList.back() ); }
 protected:
-	FASTCALL TScanDir( const TScanDir& rhs );				//				{ /* empty */ }
-	TScanDir& FASTCALL operator=( const TScanDir& rhs );	//				{ return ( *this ); }
+	TScanDir( const TScanDir& rhs );				//				{ /* empty */ }
+	TScanDir& operator=( const TScanDir& rhs );	//				{ return ( *this ); }
 public:
 	typedef enum				{ sdfrCancel, sdfrSkip, sdfrContinue } TFindDirResult;
-	typedef	TFindDirResult (__closure FASTCALL * TsdfFindDirFunc)( TScanDir *Sender );
-	typedef	bool (__closure FASTCALL * TScanDirFunc)( TScanDir *Sender );
+	typedef	TFindDirResult (__closure * TsdfFindDirFunc)( TScanDir *Sender );
+	typedef	bool (__closure * TScanDirFunc)( TScanDir *Sender );
 
 	TScanDirFunc				OnFindFile;
 	TsdfFindDirFunc				OnFindDir;
@@ -64,11 +63,11 @@ public:
 	TScanDirFunc				OnDirExited;
 	std::vector<String>         FileSpecList;
 	void						*Data;
-	FASTCALL TScanDir();
-	void FASTCALL Run( const String& start_dir, bool recurcive );
-	void FASTCALL Run( stru::char_type *start_dir, bool recurcive );
+	TScanDir();
+	void Run( const String& start_dir, bool recurcive );
+	void Run( stru::char_type *start_dir, bool recurcive );
 
-    static bool FASTCALL IsDirLink( stru::char_type *fname );
+    static bool IsDirLink( stru::char_type *fname );
 
 	__property DWORD FileSize = { read=GetFileSize };
     __property DWORD Attributes = { read=GetAttributes };

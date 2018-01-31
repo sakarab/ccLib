@@ -11,7 +11,7 @@ namespace vcl
 
 //---------------------------------------------------------------------------
 // static
-bool FASTCALL TScanDir::IsDirLink( stru::char_type *fname )
+bool TScanDir::IsDirLink( stru::char_type *fname )
 {
 	if ( *fname++ == '.' && *fname == 0 )
 		return ( true );
@@ -20,7 +20,7 @@ bool FASTCALL TScanDir::IsDirLink( stru::char_type *fname )
 	return ( false );
 }
 //---------------------------------------------------------------------------
-FASTCALL TScanDir::TScanDir()
+TScanDir::TScanDir()
 {
 	FRunning = false;
 	OnFindFile = NULL;
@@ -30,17 +30,17 @@ FASTCALL TScanDir::TScanDir()
 	OnDirExited = NULL;
 }
 //---------------------------------------------------------------------------
-DWORD FASTCALL TScanDir::GetFileSize( void )
+DWORD TScanDir::GetFileSize( void )
 {
 	return GetCurrentData().data.nFileSizeLow;
 }
 //---------------------------------------------------------------------------
-DWORD FASTCALL TScanDir::GetAttributes()
+DWORD TScanDir::GetAttributes()
 {
 	return GetCurrentData().data.dwFileAttributes;
 }
 //---------------------------------------------------------------------------
-TDateTime FASTCALL TScanDir::FileTimeToDateTime( FILETIME *ttime )
+TDateTime TScanDir::FileTimeToDateTime( FILETIME *ttime )
 {
 	FILETIME	file_time;
 	SYSTEMTIME	system_time;
@@ -51,37 +51,37 @@ TDateTime FASTCALL TScanDir::FileTimeToDateTime( FILETIME *ttime )
 			 EncodeTime( system_time.wHour, system_time.wMinute, system_time.wSecond, system_time.wMilliseconds ) );
 }
 //---------------------------------------------------------------------------
-TDateTime FASTCALL TScanDir::GetCreationTime()
+TDateTime TScanDir::GetCreationTime()
 {
 	return FileTimeToDateTime( &(GetCurrentData().data.ftCreationTime) );
 }
 //---------------------------------------------------------------------------
-TDateTime FASTCALL TScanDir::GetLastAccessTime()
+TDateTime TScanDir::GetLastAccessTime()
 {
 	return FileTimeToDateTime( &(GetCurrentData().data.ftLastAccessTime) );
 }
 //---------------------------------------------------------------------------
-TDateTime FASTCALL TScanDir::GetLastWriteTime()
+TDateTime TScanDir::GetLastWriteTime()
 {
 	return FileTimeToDateTime( &(GetCurrentData().data.ftLastWriteTime) );
 }
 //---------------------------------------------------------------------------
-String FASTCALL TScanDir::GetLongFileName()
+String TScanDir::GetLongFileName()
 {
 	return GetCurrentData().data.cFileName;
 }
 //---------------------------------------------------------------------------
-String FASTCALL TScanDir::GetShortFileName()
+String TScanDir::GetShortFileName()
 {
 	return GetCurrentData().data.cAlternateFileName;
 }
 //---------------------------------------------------------------------------
-String FASTCALL TScanDir::GetBaseDirectory()
+String TScanDir::GetBaseDirectory()
 {
 	return ( FCurrentDir.c_str() + FStartDir.Length() );
 }
 //---------------------------------------------------------------------------
-void FASTCALL TScanDir::Run( const String& start_dir, bool recurcive )
+void TScanDir::Run( const String& start_dir, bool recurcive )
 {
 	if ( FRunning == false )
 	{
@@ -105,7 +105,7 @@ void FASTCALL TScanDir::Run( const String& start_dir, bool recurcive )
 		}
 	}
 }
-void FASTCALL TScanDir::Run( stru::char_type *start_dir, bool recurcive )
+void TScanDir::Run( stru::char_type *start_dir, bool recurcive )
 {
 	Run( String( start_dir ), recurcive );
 }
@@ -148,7 +148,7 @@ static bool fname_match( stru::char_type *name, stru::char_type *spec )
 	return( false );
 }
 
-void FASTCALL TScanDir::Execute()
+void TScanDir::Execute()
 {
 	bool				stop;
 	TFindDirResult	    fdr;
@@ -207,7 +207,7 @@ void FASTCALL TScanDir::Execute()
 		Abort();
 }
 //---------------------------------------------------------------------------
-void FASTCALL TScanDir::EnterDirectory()
+void TScanDir::EnterDirectory()
 {
 	stru::char_type     *tmpstr;
 	FindData            dta;

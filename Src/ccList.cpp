@@ -7,27 +7,27 @@
 namespace cc
 {
 
-void FASTCALL CCustomList::OutOfRangeError()
+void CCustomList::OutOfRangeError()
 {
     throw std::out_of_range( "Out of range error." );
 }
 
-void FASTCALL CCustomList::RangeError()
+void CCustomList::RangeError()
 {
     throw std::range_error( "Range error." );
 }
 
-FASTCALL CCustomList::CCustomList( bool can_delete )
+CCustomList::CCustomList( bool can_delete )
     : FList((void **)0), FCount(0), FCapacity(0), FCanDelete(can_delete)
 
 {
 }
 
-FASTCALL CCustomList::~CCustomList( void )
+CCustomList::~CCustomList( void )
 {
 }
 
-int FASTCALL CCustomList::Add( void *Item )
+int CCustomList::Add( void *Item )
 {
 	int 	result = FCount;
 
@@ -47,7 +47,7 @@ int FASTCALL CCustomList::Add( void *Item )
 	return ( result );
 }
 
-void FASTCALL CCustomList::Clear( void )
+void CCustomList::Clear( void )
 {
 	if ( FCanDelete )
 		for ( int n = FCount - 1 ; n >= 0 ; n-- )
@@ -56,7 +56,7 @@ void FASTCALL CCustomList::Clear( void )
 	SetCapacity( 0 );
 }
 
-void FASTCALL CCustomList::Delete( int Index )
+void CCustomList::Delete( int Index )
 {
 	CheckIndex( Index );
 	if ( FCanDelete )
@@ -66,7 +66,7 @@ void FASTCALL CCustomList::Delete( int Index )
 		std::memmove( &FList[Index], &FList[Index+1], (FCount - Index) * sizeof(void *) );
 }
 
-void FASTCALL CCustomList::Exchange( int Index1, int Index2 )
+void CCustomList::Exchange( int Index1, int Index2 )
 {
 	void	*Item;
 
@@ -77,19 +77,19 @@ void FASTCALL CCustomList::Exchange( int Index1, int Index2 )
 	FList[Index2] = Item;
 }
 
-CCustomList * FASTCALL CCustomList::Expand( void )
+CCustomList * CCustomList::Expand( void )
 {
 	if ( FCount == FCapacity )
 		Grow();
 	return ( this );
 }
 
-void * FASTCALL CCustomList::First( void )
+void * CCustomList::First( void )
 {
 	return ( Get( 0 ) );
 }
 
-void FASTCALL CCustomList::Put( int Index, void *Item )
+void CCustomList::Put( int Index, void *Item )
 {
 	CheckIndex( Index );
 	if ( FCanDelete && FList[Index] != NULL )
@@ -97,7 +97,7 @@ void FASTCALL CCustomList::Put( int Index, void *Item )
 	FList[Index] = Item;
 }
 
-void FASTCALL CCustomList::Grow( void )
+void CCustomList::Grow( void )
 {
 	int		Delta;
 
@@ -110,7 +110,7 @@ void FASTCALL CCustomList::Grow( void )
 	SetCapacity( FCapacity + Delta );
 }
 
-int FASTCALL CCustomList::IndexOf( void *Item )
+int CCustomList::IndexOf( void *Item )
 {
 	int		result = 0;
 
@@ -121,7 +121,7 @@ int FASTCALL CCustomList::IndexOf( void *Item )
 	return ( result );
 }
 
-void FASTCALL CCustomList::Insert( int Index, void *Item )
+void CCustomList::Insert( int Index, void *Item )
 {
 	if ( Index < 0 || Index > FCount )
         OutOfRangeError();
@@ -133,12 +133,12 @@ void FASTCALL CCustomList::Insert( int Index, void *Item )
 	FCount++;
 }
 
-void * FASTCALL CCustomList::Last( void )
+void * CCustomList::Last( void )
 {
 	return ( Get( FCount - 1 ) );
 }
 
-void FASTCALL CCustomList::Move( int CurIndex, int NewIndex )
+void CCustomList::Move( int CurIndex, int NewIndex )
 {
 	void	*Item;
 
@@ -151,7 +151,7 @@ void FASTCALL CCustomList::Move( int CurIndex, int NewIndex )
 	}
 }
 
-int FASTCALL CCustomList::Remove( void *Item )
+int CCustomList::Remove( void *Item )
 {
 	int		result = IndexOf( Item );
 
@@ -160,14 +160,14 @@ int FASTCALL CCustomList::Remove( void *Item )
 	return ( result );
 }
 
-void FASTCALL CCustomList::Pack( void )
+void CCustomList::Pack( void )
 {
 	for ( int i = FCount - 1 ; i >= 0 ; i-- )
 		if ( FList[i] == NULL )
 			Delete( i );
 }
 
-void FASTCALL CCustomList::SetCapacity( int NewCapacity )
+void CCustomList::SetCapacity( int NewCapacity )
 {
 	if ( NewCapacity < FCount || NewCapacity > MAX_LIST_SIZE )
 		RangeError();
@@ -178,7 +178,7 @@ void FASTCALL CCustomList::SetCapacity( int NewCapacity )
 	}
 }
 
-void FASTCALL CCustomList::SetCount( int NewCount )
+void CCustomList::SetCount( int NewCount )
 {
 	if ( NewCount < 0 || NewCount > MAX_LIST_SIZE )
 		RangeError();

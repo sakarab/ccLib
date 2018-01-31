@@ -14,17 +14,17 @@ namespace ww
 //---------------------------------------------------------------------------
 //-- CCustomIniFile
 //---------------------------------------------------------------------------
-FASTCALL CCustomIniFile::CCustomIniFile()
+CCustomIniFile::CCustomIniFile()
 	: FName( ChangeFileExt( Application->ExeName, ".ini" ) )
 {
 }
 
-FASTCALL CCustomIniFile::CCustomIniFile( const CCustomIniFile& src )
+CCustomIniFile::CCustomIniFile( const CCustomIniFile& src )
 	: FName(src.FName)
 {
 }
 
-FASTCALL CCustomIniFile::CCustomIniFile( const String& fname )
+CCustomIniFile::CCustomIniFile( const String& fname )
 	: FName(fname)
 {
 }
@@ -36,12 +36,12 @@ CCustomIniFile& CCustomIniFile::operator=( const CCustomIniFile& src )
 	return ( *this );
 }
 
-bool FASTCALL CCustomIniFile::ReadBool( const stru::char_type *Section, const stru::char_type *Ident, bool Default )
+bool CCustomIniFile::ReadBool( const stru::char_type *Section, const stru::char_type *Ident, bool Default )
 {
 	return ( ReadInteger( Section, Ident, Default ) != 0 );
 }
 
-long FASTCALL CCustomIniFile::ReadInteger( const stru::char_type *Section, const stru::char_type *Ident, long Default )
+long CCustomIniFile::ReadInteger( const stru::char_type *Section, const stru::char_type *Ident, long Default )
 {
 	String      IntStr( ReadString( Section, Ident, TEXT("") ) );
 
@@ -50,7 +50,7 @@ long FASTCALL CCustomIniFile::ReadInteger( const stru::char_type *Section, const
 	return StrToIntDef( IntStr, Default );
 }
 
-TDateTime FASTCALL CCustomIniFile::ReadDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Default )
+TDateTime CCustomIniFile::ReadDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Default )
 {
 	String      str( ReadString( Section, Ident, TEXT("") ) );
 	TDateTime	result( Default );
@@ -63,7 +63,7 @@ TDateTime FASTCALL CCustomIniFile::ReadDateTime( const stru::char_type *Section,
 	return ( result );
 }
 
-double FASTCALL CCustomIniFile::ReadFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Default )
+double CCustomIniFile::ReadFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Default )
 {
 	String      str( ReadString( Section, Ident, TEXT("") ) );
 	double		result = Default;
@@ -77,7 +77,7 @@ double FASTCALL CCustomIniFile::ReadFloat( const stru::char_type *Section, const
 }
 
 
-void FASTCALL CCustomIniFile::ReadSection( const stru::char_type *Section, std::vector<String>& strings )
+void CCustomIniFile::ReadSection( const stru::char_type *Section, std::vector<String>& strings )
 {
     std::vector<stru::char_type>    buffer( 16384 );
 
@@ -95,39 +95,39 @@ void FASTCALL CCustomIniFile::ReadSection( const stru::char_type *Section, std::
     }
 }
 
-void FASTCALL CCustomIniFile::WriteBool( const stru::char_type *Section, const stru::char_type *Ident, bool Value )
+void CCustomIniFile::WriteBool( const stru::char_type *Section, const stru::char_type *Ident, bool Value )
 {
 	WriteString( Section, Ident, Value ? TEXT("1") : TEXT("0") );
 }
 
-void FASTCALL CCustomIniFile::WriteInteger( const stru::char_type *Section, const stru::char_type *Ident, long Value )
+void CCustomIniFile::WriteInteger( const stru::char_type *Section, const stru::char_type *Ident, long Value )
 {
 	WriteString( Section, Ident, IntToStr( static_cast<__int64>(Value) ).c_str() );
 }
 
-void FASTCALL CCustomIniFile::WriteDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Value )
+void CCustomIniFile::WriteDateTime( const stru::char_type *Section, const stru::char_type *Ident, const TDateTime& Value )
 {
     WriteString( Section, Ident, DateTimeToStr( Value ).c_str() );
 }
 
-void FASTCALL CCustomIniFile::WriteFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Value )
+void CCustomIniFile::WriteFloat( const stru::char_type *Section, const stru::char_type *Ident, const double& Value )
 {
     WriteString( Section, Ident, FloatToStr( Value ).c_str() );
 }
 //---------------------------------------------------------------------------
 //-- CIniFile
 //---------------------------------------------------------------------------
-FASTCALL CIniFile::CIniFile()
+CIniFile::CIniFile()
 	: CCustomIniFile()
 {
 }
 
-FASTCALL CIniFile::CIniFile( String fname )
+CIniFile::CIniFile( String fname )
 	: CCustomIniFile(fname)
 {
 }
 
-String FASTCALL CIniFile::ReadString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Default )
+String CIniFile::ReadString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Default )
 {
 	stru::char_type     buff[2048];
 
@@ -135,7 +135,7 @@ String FASTCALL CIniFile::ReadString( const stru::char_type *Section, const stru
                                                   buff, sizeof(buff), GetFileName().c_str() ) );
 }
 
-void FASTCALL CIniFile::WriteString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Value )
+void CIniFile::WriteString( const stru::char_type *Section, const stru::char_type *Ident, const stru::char_type *Value )
 {
 	if ( ! WritePrivateProfileString( Section, Ident, Value, GetFileName().c_str() ) )
 		throw Exception( TEXT("Ini file write error.") );
