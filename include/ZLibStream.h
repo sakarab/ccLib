@@ -5,7 +5,6 @@
 #include <exception>
 #include "CStreams.h"
 #include "zlib.h"
-#include "ssport.h"
 
 namespace cc
 {
@@ -13,7 +12,7 @@ namespace cc
 class CZStreamError : protected std::exception
 {
 public:
-    FASTCALL CZStreamError( const char *msg );
+    CZStreamError( const char *msg );
     virtual const char* what() const throw();
 };
 
@@ -27,27 +26,27 @@ protected:
     z_stream        FZRec;
     unsigned char   FBuffer[2];
 public:
-    FASTCALL CZCustomStream( CStream& strm );
+    CZCustomStream( CStream& strm );
 };
 
 class CZCompressionStream : public CZCustomStream
 {
 public:
-    FASTCALL CZCompressionStream( CStream& strm, CZCompressionLevel compression_level );
-    virtual FASTCALL ~CZCompressionStream();
-	virtual long FASTCALL Read( void *buffer, long count );
-	virtual long FASTCALL Write( const void *buffer, long count );
-	virtual long FASTCALL Seek( long offset, smode origin );
+    CZCompressionStream( CStream& strm, CZCompressionLevel compression_level );
+    virtual ~CZCompressionStream();
+	virtual long Read( void *buffer, long count );
+	virtual long Write( const void *buffer, long count );
+	virtual long Seek( long offset, smode origin );
 };
 
 class CZDecompressionStream : public CZCustomStream
 {
 public:
-    FASTCALL CZDecompressionStream( CStream& strm );
-    virtual FASTCALL ~CZDecompressionStream();
-	virtual long FASTCALL Read( void *buffer, long count );
-	virtual long FASTCALL Write( const void *buffer, long count );
-	virtual long FASTCALL Seek( long offset, smode origin );
+    CZDecompressionStream( CStream& strm );
+    virtual ~CZDecompressionStream();
+	virtual long Read( void *buffer, long count );
+	virtual long Write( const void *buffer, long count );
+	virtual long Seek( long offset, smode origin );
 };
 
 void CompressBuf( const void *InBuf, int InBytes, void *& OutBuf, int& OutBytes );
