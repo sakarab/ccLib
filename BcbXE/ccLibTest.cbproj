@@ -69,7 +69,7 @@
         <Multithreaded>true</Multithreaded>
         <BCC_PCHUsage>None</BCC_PCHUsage>
         <_TCHARMapping>wchar_t</_TCHARMapping>
-        <IncludePath>..\Test\;..\Src\;$(IncludePath)</IncludePath>
+        <IncludePath>..\Test\;..\Include\;$(IncludePath)</IncludePath>
         <PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;VclSmp.bpi;vclimg.bpi;svnui.bpi;svn.bpi;bdertl.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vcldb.bpi;dbrtl.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;inet.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DbxClientDriver.bpi;DataSnapClient.bpi;dbxcds.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;$(PackageImports)</PackageImports>
         <ProjectType>CppVCLApplication</ProjectType>
         <BCC_SmartPCHCache>false</BCC_SmartPCHCache>

@@ -5,7 +5,7 @@
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug_RTL</Config>
         <AppType>StaticLibrary</AppType>
-        <FrameworkType>None</FrameworkType>
+        <FrameworkType>VCL</FrameworkType>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
     </PropertyGroup>
@@ -14,6 +14,11 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -52,9 +57,10 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <Defines>CC_NOT_USING_QT;CC_NOT_USING_WTL;$(Defines)</Defines>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1032</VerInfo_Locale>
         <TLIB_PageSize>64</TLIB_PageSize>
         <BCC_SmartPCHCache>false</BCC_SmartPCHCache>
@@ -64,7 +70,7 @@
         <PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;VclSmp.bpi;vclimg.bpi;svnui.bpi;svn.bpi;bdertl.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vcldb.bpi;dbrtl.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;vclie.bpi;inet.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DbxClientDriver.bpi;DataSnapClient.bpi;dbxcds.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;$(PackageImports)</PackageImports>
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <_TCHARMapping>wchar_t</_TCHARMapping>
-        <IncludePath>..\Src\;$(IncludePath)</IncludePath>
+        <IncludePath>..\Src\;..\Include\;$(CG_BOOST_ROOT);$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <BPILibOutputDir>.\$(Config)\$(MSBuildProjectName)</BPILibOutputDir>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -76,7 +82,11 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -111,59 +121,83 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="..\Src\bcbStdString.h">
+        <None Include="..\include\ccList.h">
+            <BuildOrder>14</BuildOrder>
+        </None>
+        <None Include="..\include\ccRegExp.h">
+            <BuildOrder>15</BuildOrder>
+        </None>
+        <None Include="..\include\ccStdString.h">
+            <BuildOrder>16</BuildOrder>
+        </None>
+        <None Include="..\include\ccUtils.h">
+            <BuildOrder>17</BuildOrder>
+        </None>
+        <None Include="..\include\CdlList.h">
+            <BuildOrder>18</BuildOrder>
+        </None>
+        <None Include="..\include\CIniFiles.h">
+            <BuildOrder>19</BuildOrder>
+        </None>
+        <None Include="..\include\CommandLine.h">
+            <BuildOrder>20</BuildOrder>
+        </None>
+        <None Include="..\include\CStreams.h">
+            <BuildOrder>21</BuildOrder>
+        </None>
+        <None Include="..\include\CSync.h">
+            <BuildOrder>22</BuildOrder>
+        </None>
+        <None Include="..\include\CTree.h">
+            <BuildOrder>23</BuildOrder>
+        </None>
+        <None Include="..\include\RefCnt.h">
+            <BuildOrder>24</BuildOrder>
+        </None>
+        <None Include="..\include\ScanDir.h">
+            <BuildOrder>25</BuildOrder>
+        </None>
+        <None Include="..\include\winBuffers.h">
             <BuildOrder>13</BuildOrder>
         </None>
-        <CppCompile Include="..\Src\Buffers.cpp">
-            <DependentOn>..\Src\Buffers.h</DependentOn>
-            <BuildOrder>12</BuildOrder>
-        </CppCompile>
         <CppCompile Include="..\Src\ccList.cpp">
-            <DependentOn>..\Src\ccList.h</DependentOn>
-            <BuildOrder>5</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\ccMatch.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\ccRegExp.cpp">
-            <DependentOn>..\Src\ccRegExp.h</DependentOn>
-            <BuildOrder>0</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\ccUtils.cpp">
-            <DependentOn>..\Src\ccUtils.h</DependentOn>
-            <BuildOrder>3</BuildOrder>
+            <BuildOrder>11</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CdlList.cpp">
-            <DependentOn>..\Src\CdlList.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CIniFiles.cpp">
-            <DependentOn>..\Src\CIniFiles.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
+            <BuildOrder>11</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CommandLine.cpp">
-            <DependentOn>..\Src\CommandLine.h</DependentOn>
-            <BuildOrder>6</BuildOrder>
+            <BuildOrder>10</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CStreams.cpp">
-            <DependentOn>..\Src\CStreams.h</DependentOn>
-            <BuildOrder>7</BuildOrder>
+            <BuildOrder>11</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CSync.cpp">
-            <DependentOn>..\Src\CSync.h</DependentOn>
-            <BuildOrder>8</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CTree.cpp">
-            <DependentOn>..\Src\CTree.h</DependentOn>
             <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\RefCnt.cpp">
-            <DependentOn>..\Src\RefCnt.h</DependentOn>
-            <BuildOrder>10</BuildOrder>
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\ScanDir.cpp">
-            <DependentOn>..\Src\ScanDir.h</DependentOn>
-            <BuildOrder>11</BuildOrder>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Src\winBuffers.cpp">
+            <BuildOrder>12</BuildOrder>
         </CppCompile>
         <BuildConfiguration Include="Release_RTL">
             <Key>Cfg_2</Key>
