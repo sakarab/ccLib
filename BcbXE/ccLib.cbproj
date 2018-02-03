@@ -3,7 +3,7 @@
         <ProjectGuid>{58CF3F49-B367-4B88-B250-F5E1B3E50AE0}</ProjectGuid>
         <ProjectVersion>15.3</ProjectVersion>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug_RTL</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <AppType>StaticLibrary</AppType>
         <FrameworkType>VCL</FrameworkType>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -22,7 +22,7 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Debug_RTL' or '$(Cfg_1)'!=''">
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
@@ -39,7 +39,7 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Release_RTL' or '$(Cfg_2)'!=''">
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
@@ -72,10 +72,10 @@
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <IncludePath>..\Src\;..\Include\;$(CG_BOOST_ROOT);$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
-        <BPILibOutputDir>.\$(Config)\$(MSBuildProjectName)</BPILibOutputDir>
+        <BPILibOutputDir>.\$(Config)_$(Platform)\$(MSBuildProjectName)</BPILibOutputDir>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-        <IntermediateOutputDir>.\$(Config)\$(MSBuildProjectName)</IntermediateOutputDir>
-        <FinalOutputDir>.\$(Config)</FinalOutputDir>
+        <IntermediateOutputDir>.\$(Config)_$(Platform)\$(MSBuildProjectName)</IntermediateOutputDir>
+        <FinalOutputDir>.\$(Config)_$(Platform)</FinalOutputDir>
         <BCC_wpar>false</BCC_wpar>
         <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
         <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
@@ -205,14 +205,14 @@
         <CppCompile Include="..\Src\winBuffers.cpp">
             <BuildOrder>12</BuildOrder>
         </CppCompile>
-        <BuildConfiguration Include="Release_RTL">
+        <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
-        <BuildConfiguration Include="Debug_RTL">
+        <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>

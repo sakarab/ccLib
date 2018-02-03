@@ -48,13 +48,13 @@
     <ItemGroup Condition="'$(BuildGroup)'=='Debug_RTL'">
         <BuildGroupProject Include="ccLibTest.cbproj">
             <ProjectGuid>{427B68AF-3EAB-4911-AF9B-807A23C0EB63}</ProjectGuid>
-            <Configurations>Debug_RTL</Configurations>
+            <Configurations>Debug</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>True</Enabled>
         </BuildGroupProject>
         <BuildGroupProject Include="ccLib.cbproj">
             <ProjectGuid>{58CF3F49-B367-4B88-B250-F5E1B3E50AE0}</ProjectGuid>
-            <Configurations>Debug_RTL</Configurations>
+            <Configurations>Debug</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>True</Enabled>
         </BuildGroupProject>
@@ -62,13 +62,13 @@
     <ItemGroup Condition="'$(BuildGroup)'=='Release_RTL'">
         <BuildGroupProject Include="ccLibTest.cbproj">
             <ProjectGuid>{427B68AF-3EAB-4911-AF9B-807A23C0EB63}</ProjectGuid>
-            <Configurations>Release_RTL</Configurations>
+            <Configurations>Release</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>True</Enabled>
         </BuildGroupProject>
         <BuildGroupProject Include="ccLib.cbproj">
             <ProjectGuid>{58CF3F49-B367-4B88-B250-F5E1B3E50AE0}</ProjectGuid>
-            <Configurations>Release_RTL</Configurations>
+            <Configurations>Release</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>True</Enabled>
         </BuildGroupProject>

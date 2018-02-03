@@ -4,7 +4,7 @@
         <ProjectVersion>15.3</ProjectVersion>
         <MainSource>ccLibTest.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug_RTL</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -23,7 +23,7 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Debug_RTL' or '$(Cfg_1)'!=''">
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
@@ -40,7 +40,7 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Release_RTL' or '$(Cfg_2)'!=''">
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
@@ -65,7 +65,7 @@
         <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
         <BCC_InstructionSet>6</BCC_InstructionSet>
-        <ILINK_LibraryPath>..\Test\;.\$(Config);$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>..\Test\;.\$(Config)_$(Platform);$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Multithreaded>true</Multithreaded>
         <BCC_PCHUsage>None</BCC_PCHUsage>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -79,8 +79,8 @@
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <DynamicRTL>true</DynamicRTL>
         <UsePackages>true</UsePackages>
-        <IntermediateOutputDir>.\$(Config)\$(MSBuildProjectName)</IntermediateOutputDir>
-        <FinalOutputDir>.\$(Config)</FinalOutputDir>
+        <IntermediateOutputDir>.\$(Config)_$(Platform)\$(MSBuildProjectName)</IntermediateOutputDir>
+        <FinalOutputDir>.\$(Config)_$(Platform)</FinalOutputDir>
         <BCC_wpar>false</BCC_wpar>
         <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
         <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
@@ -171,14 +171,14 @@
         <FormResources Include="..\Test\FMain.dfm"/>
         <FormResources Include="..\Test\FRefCnt.dfm"/>
         <FormResources Include="..\Test\FCList.dfm"/>
-        <BuildConfiguration Include="Release_RTL">
+        <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
-        <BuildConfiguration Include="Debug_RTL">
+        <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
