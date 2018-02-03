@@ -142,6 +142,9 @@
         <None Include="..\include\CommandLine.h">
             <BuildOrder>20</BuildOrder>
         </None>
+        <None Include="..\include\cpp_string.h">
+            <BuildOrder>27</BuildOrder>
+        </None>
         <None Include="..\include\CStreams.h">
             <BuildOrder>21</BuildOrder>
         </None>
@@ -180,6 +183,9 @@
         </CppCompile>
         <CppCompile Include="..\Src\CommandLine.cpp">
             <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Src\cpp_string.cpp">
+            <BuildOrder>26</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Src\CStreams.cpp">
             <BuildOrder>11</BuildOrder>

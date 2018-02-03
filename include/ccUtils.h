@@ -6,9 +6,6 @@
 #include <System.hpp>
 #include "ccStdString.h"
 
-extern	const char	    EmptyChar[];
-extern	const wchar_t	EmptyCharW[];
-
 String BaseName( const String& sstr );
 String AddSlash( const String& fname );
 void AddSlash( stru::char_type *fname );

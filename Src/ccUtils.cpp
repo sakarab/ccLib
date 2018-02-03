@@ -8,9 +8,6 @@
 #include <string>
 //---------------------------------------------------------------------------
 
-const char	    EmptyChar[] = "";
-const wchar_t	EmptyCharW[] = L"";
-
 String AddSlash( const String& fname )
 {
 	String	    result;

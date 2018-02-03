@@ -39,6 +39,7 @@
     <ClCompile Include="..\Src\BomUtils.cpp" />
     <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
+    <ClCompile Include="..\Src\cpp_string.cpp" />
     <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
     <ClCompile Include="..\Src\frSelectEncoding.cpp" />
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
