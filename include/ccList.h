@@ -83,8 +83,9 @@ public:
 	typedef	std::ptrdiff_t  difference_type;
 private:
 	T ** GetList()						{ return ( reinterpret_cast<T **>(CCustomList::GetList()) ); }
-	NO_COPY_CTOR(CList);
-	NO_COPY_OPER(CList);
+    // non-copyable
+    CList( const CList& );
+    CList& operator=( const CList& );
 protected:
 	virtual void DeleteItem( void *Item )		{ delete reinterpret_cast<pointer>(Item); }
 

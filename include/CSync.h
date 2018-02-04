@@ -11,8 +11,9 @@ class CCriticalSection
 {
 private:
 	CRITICAL_SECTION	FCriticalSection;
-	NO_COPY_CTOR(CCriticalSection);
-	NO_COPY_OPER(CCriticalSection);
+    // non-copyable
+    CCriticalSection( const CCriticalSection& );
+    CCriticalSection& operator=( const CCriticalSection& );
 public:
 	CCriticalSection();
 	~CCriticalSection();
@@ -24,8 +25,9 @@ class Locker
 {
 private:
     CCriticalSection&   FCriticalSection;
-	NO_COPY_CTOR(Locker);
-	NO_COPY_OPER(Locker);
+    // non-copyable
+    Locker( const Locker& );
+    Locker& operator=( const Locker& );
 public:
     Locker( CCriticalSection& critical_section )
         : FCriticalSection(critical_section)

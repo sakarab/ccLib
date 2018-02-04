@@ -103,8 +103,9 @@ private:
 	HANDLE          FHandle;
 	std::string     FName;
 	HANDLE GetHandle()												{ return ( FHandle ); }
-	NO_COPY_CTOR(CFileStream);
-	NO_COPY_OPER(CFileStream);
+    // non-copyable
+    CFileStream( const CFileStream& );
+    CFileStream& operator=( const CFileStream& );
 protected:
 	virtual void SetSize( long new_size );
 public:
@@ -127,8 +128,6 @@ private:
 	char	*FMem;
 	char	*FEnd;
 	char	*FPtr;
-	NO_COPY_CTOR(CCustomMemoryStream);
-	NO_COPY_OPER(CCustomMemoryStream);
 	long InternalGetSize()										{ return ( FEnd - FMem ); }
 	long InternalGetPosition()									{ return ( FPtr - FMem ); }
 	void CheckedAdvance( char *new_ptr )
@@ -136,6 +135,9 @@ private:
 		if ( new_ptr <= FEnd && new_ptr >= FMem )
 			FPtr = new_ptr;
 	}
+    // non-copyable
+    CCustomMemoryStream( const CCustomMemoryStream& );
+    CCustomMemoryStream& operator=( const CCustomMemoryStream& );
 protected:
 	virtual long GetPosition();
 	virtual long GetSize();
@@ -161,8 +163,9 @@ private:
 	void SetCapacity( int new_capacity );
 	void * GetMemory()											{ return ( FMemory ); }
 	int GetCapacity()											{ return ( FCapacity ); }
-	NO_COPY_CTOR(CMemoryStream);
-	NO_COPY_OPER(CMemoryStream);
+    // non-copyable
+    CMemoryStream( const CMemoryStream& );
+    CMemoryStream& operator=( const CMemoryStream& );
 protected:
 	virtual void SetSize( long new_size );
 	void * Realloc( int new_capacity );

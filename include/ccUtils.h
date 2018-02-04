@@ -47,8 +47,9 @@ template <class T> class UpdateLocker
 {
 private:
     T   *FObj;
-    NO_COPY_CTOR(UpdateLocker);
-    NO_COPY_OPER(UpdateLocker);
+    // non-copyable
+    UpdateLocker( const UpdateLocker& );
+    UpdateLocker& operator=( const UpdateLocker& );
 public:
     UpdateLocker( T*& obj ) : FObj(obj)            { FObj->BeginUpdate(); }
     UpdateLocker( T* const & obj ) : FObj(obj)     { FObj->BeginUpdate(); }
@@ -59,8 +60,9 @@ class HandleCloser
 {
 private:
     const HANDLE&   Hand;
-    NO_COPY_CTOR(HandleCloser);
-    NO_COPY_OPER(HandleCloser);
+    // non-copyable
+    HandleCloser( const HandleCloser& );
+    HandleCloser& operator=( const HandleCloser& );
 public:
     HandleCloser( const HANDLE& hnd ) : Hand(hnd)      { /* empty */ }
     ~HandleCloser()                                    { CloseHandle( Hand ); }
