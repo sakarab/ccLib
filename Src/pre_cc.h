@@ -30,8 +30,8 @@
 #include <vector>
 #include <boost/lexical_cast.hpp>
 #include <boost/smart_ptr.hpp>
-#include <boost/format.hpp>
 #ifndef __BORLANDC__
+    #include <boost/format.hpp>
     #include <boost/scope_exit.hpp>
 #endif
 

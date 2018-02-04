@@ -6,9 +6,10 @@
     <PROJECT value=".\OutC\ccLib60s.lib"/>
     <OBJFILES value="OutC\ccLibS\ccMatch.obj OutC\ccLibS\ccRegExp.obj OutC\ccLibS\ccUtils.obj 
       OutC\ccLibS\CdlList.obj OutC\ccLibS\CIniFiles.obj 
-      OutC\ccLibS\CommandLine.obj OutC\ccLibS\CStreams.obj OutC\ccLibS\CSync.obj 
-      OutC\ccLibS\CTree.obj OutC\ccLibS\RefCnt.obj OutC\ccLibS\ScanDir.obj 
-      OutC\ccLibS\ccList.obj OutC\ccLibS\winBuffers.obj"/>
+      OutC\ccLibS\CommandLine.obj OutC\ccLibS\cpp_string.obj 
+      OutC\ccLibS\CStreams.obj OutC\ccLibS\CSync.obj OutC\ccLibS\CTree.obj 
+      OutC\ccLibS\RefCnt.obj OutC\ccLibS\ScanDir.obj OutC\ccLibS\ccList.obj 
+      OutC\ccLibS\winBuffers.obj"/>
     <RESFILES value=""/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -54,6 +55,7 @@
       <FILE FILENAME="..\Src\CdlList.cpp" FORMNAME="" UNITNAME="CdlList.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\CIniFiles.cpp" FORMNAME="" UNITNAME="CIniFiles.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\CommandLine.cpp" FORMNAME="" UNITNAME="CommandLine.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Src\cpp_string.cpp" FORMNAME="" UNITNAME="cpp_string" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\CStreams.cpp" FORMNAME="" UNITNAME="CStreams.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\CSync.cpp" FORMNAME="" UNITNAME="CSync.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\Src\CTree.cpp" FORMNAME="" UNITNAME="CTree.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -68,6 +70,7 @@
       <FILE FILENAME="..\include\CdlList.h" FORMNAME="" UNITNAME="CdlList.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\include\CIniFiles.h" FORMNAME="" UNITNAME="CIniFiles.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\include\CommandLine.h" FORMNAME="" UNITNAME="CommandLine.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\include\cpp_string.h" FORMNAME="" UNITNAME="cpp_string.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\include\CStreams.h" FORMNAME="" UNITNAME="CStreams.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\include\CSync.h" FORMNAME="" UNITNAME="CSync.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\include\CTree.h" FORMNAME="" UNITNAME="CTree.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
