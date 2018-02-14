@@ -39,6 +39,9 @@
     #define CC_HAVE_OVERRIDE
     #define CC_HAVE_ENUM_CLASS
     #define CC_HAVE_RANGE_FOR
+    #define CC_HAVE_THREAD
+    #define CC_HAVE_VARIADIC_TEMPLATES
+    #define CC_HAVE_MAKE_UNIQUE
 #endif
 
 // vs2010
