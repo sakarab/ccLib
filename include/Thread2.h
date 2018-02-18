@@ -89,7 +89,7 @@ namespace cclib
 
         template <class T> bool IsClass()
         {
-            //return boost::any_cast<std::shared_ptr<std::promise<T>> *>(&mPromise) != nullptr;
+            //return boost::any_cast<std::shared_ptr<cclib::promise<T>> *>(&mPromise) != nullptr;
             bool    result = true;
 
             try
@@ -186,7 +186,7 @@ namespace cclib
         void RunThreaded( FUNC&& func, Args&& ... args )
         {
             mFlags = std::make_shared<Flags>();
-            mThread = uqThread( new std::thread( func, mFlags, args... ), [this]( cclib::thread *ptr ) {
+            mThread = uqThread( new cclib::thread( func, mFlags, args... ), [this]( cclib::thread *ptr ) {
                 mFlags->CancelRun();
                 ptr->join();
                 delete ptr;
