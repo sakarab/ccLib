@@ -24,6 +24,8 @@
 #if !defined(PREDEF_CC_H)
 #define PREDEF_CC_H
 
+#define BOOST_THREAD_VERSION    3
+
 #ifndef __BORLANDC__
     #include <boost/predef.h>
 #endif
@@ -86,4 +88,3 @@
 #endif
 
 #endif
-

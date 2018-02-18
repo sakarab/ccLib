@@ -28,11 +28,23 @@
 
 #if !defined(CC_HAVE_THREAD) || defined(CC_USE_BOOST_THREAD)
     #include <boost/thread.hpp>
-    typedef boost::thread   std_thread;
+    #include <boost/thread/future.hpp>
+    namespace cclib
+    {
+        using boost::thread;
+        using boost::promise;
+        using boost::future;
+    }
+
 #else
     #include <thread>
     #include <future>
-    typedef std::thread   std_thread;
+    namespace cclib
+    {
+        using std::thread;
+        using std::promise;
+        using std::future;
+    }
 #endif
 
 #include <memory>
@@ -40,8 +52,6 @@
 
 namespace cclib
 {
-// no thread result with older compilers
-#if defined(CC_HAVE_THREAD) && !defined(CC_USE_BOOST_THREAD)
     //=======================================================================
     //==============    ThreadResult
     //=======================================================================
@@ -61,20 +71,20 @@ namespace cclib
         {
             mPromise = promise;
 
-            std::shared_ptr<std::promise<T>>    promise_ptr = boost::any_cast<std::shared_ptr<std::promise<T>>>(promise);
-            std::shared_ptr<std::future<T>>     future_ptr = std::make_shared<std::future<T>>( promise_ptr->get_future() );
+            std::shared_ptr<cclib::promise<T>>    promise_ptr = boost::any_cast<std::shared_ptr<cclib::promise<T>>>(promise);
+            std::shared_ptr<cclib::future<T>>     future_ptr = std::make_shared<cclib::future<T>>( promise_ptr->get_future() );
 
             mFuture = boost::any( future_ptr );
         }
 
-        template <class T> std::shared_ptr<std::promise<T>> GetPromise()
+        template <class T> std::shared_ptr<cclib::promise<T>> GetPromise()
         {
-            return boost::any_cast<std::shared_ptr<std::promise<T>>>(mPromise);
+            return boost::any_cast<std::shared_ptr<cclib::promise<T>>>(mPromise);
         }
 
-        template <class T> std::shared_ptr<std::future<T>> GetFuture()
+        template <class T> std::shared_ptr<cclib::future<T>> GetFuture()
         {
-            return boost::any_cast<std::shared_ptr<std::future<T>>>(mFuture);
+            return boost::any_cast<std::shared_ptr<cclib::future<T>>>(mFuture);
         }
 
         template <class T> bool IsClass()
@@ -84,7 +94,7 @@ namespace cclib
 
             try
             {
-                boost::any_cast<std::shared_ptr<std::future<T>>>(mFuture);
+                boost::any_cast<std::shared_ptr<cclib::future<T>>>(mFuture);
             }
             catch ( const boost::bad_any_cast& )
             {
@@ -93,7 +103,6 @@ namespace cclib
             return result;
         }
     };
-#endif
 
     //=======================================================================
     //==============    Thread
@@ -123,7 +132,7 @@ namespace cclib
 
         typedef std::shared_ptr<Flags>      spFlags;
     private:
-        typedef std::unique_ptr<std_thread, std::function<void( std_thread * )> >           uqThread;
+        typedef std::unique_ptr<cclib::thread, std::function<void( cclib::thread * )> >           uqThread;
 
         spFlags     mFlags;
         uqThread    mThread;
@@ -177,7 +186,7 @@ namespace cclib
         void RunThreaded( FUNC&& func, Args&& ... args )
         {
             mFlags = std::make_shared<Flags>();
-            mThread = uqThread( new std::thread( func, mFlags, args... ), [this]( std_thread *ptr ) {
+            mThread = uqThread( new std::thread( func, mFlags, args... ), [this]( cclib::thread *ptr ) {
                 mFlags->CancelRun();
                 ptr->join();
                 delete ptr;
