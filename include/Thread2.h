@@ -153,7 +153,7 @@ namespace cclib
         template <class FUNC> void RunThreaded( FUNC&& func )
         {
             mFlags = std::make_shared<Flags>();
-            mThread = uqThread( new std_thread( func, mFlags ), [this]( std_thread *ptr ) {
+            mThread = uqThread( new cclib::thread( func, mFlags ), [this]( cclib::thread *ptr ) {
                 mFlags->CancelRun();
                 ptr->join();
                 delete ptr;
@@ -168,7 +168,7 @@ namespace cclib
         template <class FUNC, class ARG1> void RunThreaded( FUNC&& func, ARG1&& arg1 )
         {
             mFlags = std::make_shared<Flags>();
-            mThread = uqThread( new std_thread( func, mFlags, arg1 ), [this]( std_thread *ptr ) {
+            mThread = uqThread( new cclib::thread( func, mFlags, arg1 ), [this]( cclib::thread *ptr ) {
                 mFlags->CancelRun();
                 ptr->join();
                 delete ptr;
