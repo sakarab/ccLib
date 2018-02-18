@@ -152,6 +152,9 @@
     <ClCompile Include="GeneratedFiles\Release_Static\moc_frSelectEncoding.cpp">
       <Filter>Generated Files\Release_Static</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Thread2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\pre_cc.h">
@@ -267,6 +270,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Thread2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -31,15 +31,17 @@
     typedef boost::thread   std_thread;
 #else
     #include <thread>
+    #include <future>
     typedef std::thread   std_thread;
 #endif
 
 #include <memory>
-#include <future>
 #include <boost/any.hpp>
 
 namespace cclib
 {
+// no thread result with older compilers
+#if defined(CC_HAVE_THREAD) && !defined(CC_USE_BOOST_THREAD)
     //=======================================================================
     //==============    ThreadResult
     //=======================================================================
@@ -91,6 +93,7 @@ namespace cclib
             return result;
         }
     };
+#endif
 
     //=======================================================================
     //==============    Thread
@@ -102,11 +105,11 @@ namespace cclib
         {
         private:
             std::string     mErrorMessage;
-            bool            mAquireCancelRun = false;
-            bool            mTerminated = false;
+            bool            mAquireCancelRun;
+            bool            mTerminated;
         public:
             Flags()
-                : mErrorMessage()
+                : mErrorMessage(), mAquireCancelRun( false ), mTerminated( false )
             {}
 
             void CancelRun() { mAquireCancelRun = true; }

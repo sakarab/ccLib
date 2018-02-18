@@ -139,6 +139,7 @@
     <ClCompile Include="..\Src\QtSingletons.cpp" />
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
+    <ClCompile Include="..\Src\Thread2.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
     <ClCompile Include="..\Src\winBuffers.cpp" />
     <ClCompile Include="..\Src\winClasses.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="..\include\SharedFlag.h" />
     <ClInclude Include="..\include\smException.h" />
     <ClInclude Include="..\include\Thread.h" />
+    <ClInclude Include="..\include\Thread2.h" />
     <ClInclude Include="..\include\UntitledSequence.h" />
     <ClInclude Include="..\include\utf8.h" />
     <ClInclude Include="..\include\winBuffers.h" />
