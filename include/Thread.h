@@ -21,8 +21,8 @@
 
 #pragma once
 
-#if ! defined (BB_THREAD_H)
-#define BB_THREAD_H
+#if ! defined (CCLIB_THREAD_H)
+#define CCLIB_THREAD_H
 
 #include <boost/thread.hpp>
 #include <boost/scope_exit.hpp>

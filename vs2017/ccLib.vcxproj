@@ -61,6 +61,7 @@
     <ClCompile Include="..\Src\QtSingletons.cpp" />
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
+    <ClCompile Include="..\Src\Thread2.cpp" />
     <ClCompile Include="..\Src\UntitledSequence.cpp" />
     <ClCompile Include="..\Src\winBuffers.cpp" />
     <ClCompile Include="..\Src\winClasses.cpp" />
@@ -403,6 +404,7 @@
     <ClInclude Include="..\include\ITStream.h" />
     <ClInclude Include="..\include\LibLoader.h" />
     <ClInclude Include="..\include\predef_cc.h" />
+    <ClInclude Include="..\include\Thread2.h" />
     <ClInclude Include="..\include\winBuffers.h" />
     <ClInclude Include="..\Src\pre_cc.h" />
     <ClInclude Include="..\include\qqOpenDlg.h" />
