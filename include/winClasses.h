@@ -138,8 +138,8 @@ namespace ccwin
         void FillStringList( const TBuffer& buffer, TStringList& list );
         void FillStringList( const TBuffer& buffer, std::vector<std::wstring>& list );
         // noncopyable
-        TIniFile( const TIniFile& src );
-        TIniFile& operator = ( const TIniFile& src );
+        TIniFile( const TIniFile& src ) CC_EQ_DELETE;
+        TIniFile& operator = ( const TIniFile& src ) CC_EQ_DELETE;
     public:
         explicit TIniFile( const std::wstring& file_name );
         ~TIniFile();
@@ -155,6 +155,8 @@ namespace ccwin
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
         std::wstring ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def );
+
+        void WriteBool( const wchar_t *section, const wchar_t *key, bool value );
         void WriteInteger( const wchar_t *section, const wchar_t *key, int value );
         void WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value );
     };

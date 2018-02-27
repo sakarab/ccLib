@@ -403,6 +403,11 @@ namespace ccwin
         return std::wstring( &buffer.front(), len );
     }
 
+    void TIniFile::WriteBool( const wchar_t * section, const wchar_t * key, bool value )
+    {
+        WriteInteger( section, key, value ? 1 : 0 );
+    }
+
     void TIniFile::WriteInteger( const wchar_t * section, const wchar_t * key, int value )
     {
         WriteString( section, key, boost::str( boost::wformat( L"%1%" ) % value ).c_str() );
