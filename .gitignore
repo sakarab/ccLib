@@ -18,3 +18,7 @@ OutC*
 *.db
 /qtc/ccLib/user_config.pri
 *.ddp
+Dbg_100.props
+Qt_591.props
+Rel_100.props
+vs2017.props
