@@ -19,7 +19,7 @@
 		<Configuration
 			Name="Debug_RTL|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -74,7 +74,7 @@
 		<Configuration
 			Name="Release_RTL|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -131,7 +131,7 @@
 		<Configuration
 			Name="Debug_Static|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Dbg_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -186,7 +186,7 @@
 		<Configuration
 			Name="Release_Static|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets="..\..\..\Rel_090.vsprops;..\..\..\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
