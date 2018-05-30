@@ -20,16 +20,16 @@
 //***************************************************************************
 #pragma once
 
-#ifndef CCLIB_CPP_LPSTR_H
-#define CCLIB_CPP_LPSTR_H
+#ifndef CCLIB_CPP_CHAR_UTILS_H
+#define CCLIB_CPP_CHAR_UTILS_H
 
+#include <vector>
 #include <string>
-#include <boost/smart_ptr.hpp>
 
 namespace cclib
 {
-    boost::shared_array<std::string::value_type> LPSTR( const std::string& str );
-    boost::shared_array<std::wstring::value_type> LPSTR( const std::wstring& str );
+    std::string Base64Encode( const std::vector<unsigned char>& src );
+    std::vector<unsigned char> Base64Decode( const std::string& src );
 }
 
 #endif

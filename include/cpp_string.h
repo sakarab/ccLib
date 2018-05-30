@@ -22,17 +22,22 @@
 #ifndef CPP_STRING_H
 #define CPP_STRING_H
 
+#if ! defined(CCTEXT)
+    #if defined(_UNICODE) || defined(UNICODE)
+        #define CCTEXT(a)               L##a
+    #else
+        #define CCTEXT(a)               a
+    #endif
+#endif
+
 #ifndef STD_STRING_DEFINED
 #define STD_STRING_DEFINED
 
 #include <string>
 
 #if defined(_UNICODE) || defined(UNICODE)
-    #define CCTEXT(a)               L##a
-
     typedef std::wstring            std_string;
 #else
-    #define CCTEXT(a)               a
     typedef std::string             std_string;
 #endif
 typedef std_string::value_type      std_char;
