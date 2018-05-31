@@ -29,7 +29,9 @@
 namespace cclib
 {
     std::string Base64Encode( const std::vector<unsigned char>& src );
+    std::string Base64Encode( const unsigned char * const src, size_t src_len );
     std::vector<unsigned char> Base64Decode( const std::string& src );
+    std::vector<unsigned char> Base64Decode( const char * const src, size_t src_len );
 }
 
 #endif

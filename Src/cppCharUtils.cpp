@@ -34,33 +34,110 @@ namespace
                                 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '_', '~' };
 
-    std::vector<char> Any64Encode( const unsigned char *source, int sourceLen, const base64charset& charset )
+    void Any64Encode_3( const unsigned char *source_end, size_t source_len_max3, const base64charset& charset, std::vector<char>& result )
+    {
+        unsigned int        bytes3 = 0;
+
+        for ( size_t n = 0 ; n < source_len_max3 - 1 ; ++n )
+        {
+            bytes3 |= *(--source_end);
+            bytes3 <<= 8;
+        }
+        bytes3 |= *(--source_end);
+
+        for ( size_t n = 0, eend = source_len_max3 * 8 ; n < eend ; n += 6 )
+        {
+            result.push_back( charset[bytes3 & 0x3F] );
+            bytes3 >>= 6;
+        }
+    }
+
+    std::vector<char> Any64Encode( const unsigned char *source, size_t source_len, const base64charset& charset )
+    {
+        std::vector<char>   result;
+        size_t              source_len_max3 = 3;
+
+        while ( source_len != 0 )
+        {
+            source_len_max3 = 3;
+            
+            if ( source_len < 3 )
+                source_len_max3 = source_len;
+            source += source_len_max3;
+            Any64Encode_3( source, source_len_max3, charset, result );
+            source_len -= source_len_max3;
+        }
+        result.insert( result.end(), 3-source_len_max3, charset[64] );
+        return result;
+    }
+
+    // non portable
+    std::vector<char> Any64Encode_NP( const unsigned char *source, size_t source_len, const base64charset& charset )
     {
         unsigned char       buf[4];
-        unsigned int        avail, j;
+        size_t              avail;
         std::vector<char>   result;
 
         avail = 3;
-        while ( sourceLen > 0 ) {
-            if ( sourceLen > 3 )
+        while ( source_len > 0 )
+        {
+            if ( source_len > 3 )
                 avail = 3;
             else
-                avail = sourceLen;
-            sourceLen -= avail;
+                avail = source_len;
+            source_len -= avail;
             *reinterpret_cast<unsigned int *>(buf) = 0;
-            j = 2;
-            for ( unsigned int i = 0 ; i < avail ; ++i ) {
-                buf[j] = *source;
-                ++source;
-                --j;
-            }
-            for ( unsigned int i = 0 ; i <= avail ; ++i ) {
-                j = (buf[2] & 0xFC) >> 2;
+            for ( unsigned int i = 0, j = 2 ; i < avail ; ++i, --j )
+                buf[j] = *source++;
+            for ( unsigned int i = 0 ; i <= avail ; ++i )
+            {
+                result.push_back( charset[((buf[2] & 0xFC) >> 2)] );
                 *reinterpret_cast<unsigned int *>(buf) = *reinterpret_cast<unsigned int *>(buf) << 6;
-                result.push_back( charset[j] );
             }
         }
-        result.insert( result.end(), 3-avail, charset[65] );
+        result.insert( result.end(), 3-avail, charset[64] );
+        return result;
+    }
+
+    std::vector<unsigned char> ReverseCharset_Create( const base64charset& charset )
+    {
+        std::vector<unsigned char>      result = std::vector<unsigned char>( 256, 0xFF );
+
+        for ( size_t n = 0, eend = charset.size() ; n < eend ; ++n )
+            result[charset[n]] = static_cast<unsigned char>(n);
+        return result;
+    }
+
+    std::vector<unsigned char> Any64Decode_NP( const char *source, size_t source_len, const std::vector<unsigned char>& reverse_charset )
+    {
+        unsigned char                   buf[4];
+        std::vector<unsigned char>      result;
+
+        if ( source_len % 4 != 0 )
+            throw std::runtime_error( "not multiple of 4-chars" );
+
+        while ( source_len > 0 )
+        {
+            int     avail = 0;
+
+            *reinterpret_cast<unsigned int *>(buf) = 0;
+            for ( int i = 0 ; i < 4 ; ++i )
+            {
+                --source_len;
+
+                int     ch = reverse_charset[*source++];
+
+                if ( ch == 0xFF )
+                    throw std::runtime_error( "illegal character" );
+                if ( ch == 64 )
+                    ch = 0;
+                else
+                    avail = i;
+                *reinterpret_cast<unsigned int *>(buf) = (*reinterpret_cast<unsigned int *>(buf) << 6) | ch;
+            }
+            for ( int i = 2 ; i >= 3-avail ; --i )
+                result.push_back( buf[i] );
+        }
         return result;
     }
 }
@@ -72,13 +149,32 @@ namespace cclib
         if ( src.empty() )
             return std::string();
 
-        std::vector<char>   encoded = Any64Encode( &src.front(), src.size(), Base64Set );
+        std::vector<char>   encoded = Any64Encode_NP( &src.front(), src.size(), Base64Set );
+
+        return std::string( encoded.begin(), encoded.end() );
+    }
+
+    std::string Base64Encode( const unsigned char * const src, size_t src_len )
+    {
+        if ( !src || !src_len )
+            return std::string();
+
+        std::vector<char>   encoded = Any64Encode_NP( src, src_len, Base64Set );
 
         return std::string( encoded.begin(), encoded.end() );
     }
 
     std::vector<unsigned char> Base64Decode( const std::string& src )
     {
+        if ( src.empty() )
+            return std::vector<unsigned char>();
+        return Any64Decode_NP( src.c_str(), src.length(), ReverseCharset_Create( Base64Set ) );
+    }
+
+    std::vector<unsigned char> Base64Decode( const char * const src, size_t src_len )
+    {
+        if ( !src || !src_len )
+            return std::vector<unsigned char>();
         return std::vector<unsigned char>();
     }
 }
