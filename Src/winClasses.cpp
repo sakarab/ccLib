@@ -281,6 +281,12 @@ namespace ccwin
     TIniFile::TIniFile( const std_string& file_name )
         : mFileName( file_name ), mDirectoryExists( DirectoryExists( ExtractFilePath( file_name ) ) )
     {
+        std_string  path = ExtractFilePath( file_name );
+
+        if ( path.empty() )
+            mDirectoryExists = true;
+        else
+            mDirectoryExists = DirectoryExists( path );
     }
 
     TIniFile::~TIniFile()
