@@ -38,18 +38,18 @@ SOURCES += \
     ../../Src/smException.cpp
 
 HEADERS += \
-    ../../Src/frmSelectEncoding.h \
-    ../../Src/frSelectEncoding.h \
-    ../../Src/qqOpenDlg.h \
-    ../../Src/QtApp.h \
-    ../../Src/QtSingletons.h \
-    ../../Src/BomUtils.h \
-    ../../Src/chasewidget.h \
-    ../../Src/UntitledSequence.h \
-    ../../Src/smException.h \
-    ../../Src/cpp_lpstr.h \
+    ../../include/frmSelectEncoding.h \
+    ../../include/frSelectEncoding.h \
+    ../../include/qqOpenDlg.h \
+    ../../include/QtApp.h \
+    ../../include/QtSingletons.h \
+    ../../include/BomUtils.h \
+    ../../include/chasewidget.h \
+    ../../include/UntitledSequence.h \
+    ../../include/smException.h \
+    ../../include/cpp_lpstr.h \
     ../../Src/pre_cc.h \
-    ../../Src/predef_cc.h
+    ../../include/predef_cc.h
 
 unix {
     target.path = /usr/lib

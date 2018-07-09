@@ -34,8 +34,8 @@ namespace
     {
         typedef std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >   str_type;
 
-        str_type::size_type                         len = str.length();
-        boost::shared_array<str_type::value_type>   result = boost::shared_array<str_type::value_type>( new str_type::value_type[len + 1] );
+        typename str_type::size_type                         len = str.length();
+        boost::shared_array<typename str_type::value_type>   result = boost::shared_array<typename str_type::value_type>( new typename str_type::value_type[len + 1] );
 
         std::copy( str.begin(), str.end(), result.get() );
         result[len] = 0;
