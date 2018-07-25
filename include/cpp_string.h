@@ -22,6 +22,12 @@
 #ifndef CPP_STRING_H
 #define CPP_STRING_H
 
+// All projects are Unicode.
+// All portable (Linux - Windows) programs use Qt or wxWidgets
+
+// according to QString documentation the constructor QString( char * ) assumes that the parameter
+// is a UTF-8 encoded string so although it is a bit time consuming it is generally acceptable.
+// so the macro CCTEXT is OK.
 #if ! defined(CCTEXT)
     #if defined(_UNICODE) || defined(UNICODE)
         #define CCTEXT(a)               L##a
@@ -30,6 +36,8 @@
     #endif
 #endif
 
+// the STD_STRING_DEFINED macro is for interoperability with pplib library
+// a library used for a single projects
 #ifndef STD_STRING_DEFINED
 #define STD_STRING_DEFINED
 
@@ -80,6 +88,10 @@ namespace cclib
         static const wchar_t l_bracket = L'[';
         static const wchar_t r_bracket = L']';
     };
+
+    inline std::string NarrowStringStrict( const std::string& sstr )       { return sstr; }
+    std::string NarrowStringStrict( const std::wstring& sstr );
+
 }
 
 #endif

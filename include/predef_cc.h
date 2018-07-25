@@ -64,6 +64,7 @@
     #define CC_HAVE_NULL_PTR
     #define CC_HAVE_SHARED_PTR
     #define CC_HAVE_ARRAY
+    #define CC_HAVE_VARIADIC_TEMPLATES
 
 #endif
 

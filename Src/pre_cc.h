@@ -35,7 +35,6 @@
     #include <boost/scope_exit.hpp>
 #endif
 
-
 #if ! defined (CC_NOT_USING_QT)
     #include <QtCore>
 #endif

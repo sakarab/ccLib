@@ -35,6 +35,8 @@ SOURCES += \
     ../../Src/chasewidget.cpp \
     ../../Src/UntitledSequence.cpp \
     ../../Src/cpp_lpstr.cpp \
+    ../../Src/cpp_string.cpp \
+    ../../Src/qt_string.cpp \
     ../../Src/smException.cpp
 
 HEADERS += \
@@ -48,6 +50,8 @@ HEADERS += \
     ../../include/UntitledSequence.h \
     ../../include/smException.h \
     ../../include/cpp_lpstr.h \
+    ../../include/cpp_string.h \
+    ../../include/qt_string.h \
     ../../Src/pre_cc.h \
     ../../include/predef_cc.h
 
