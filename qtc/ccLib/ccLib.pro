@@ -37,7 +37,9 @@ SOURCES += \
     ../../Src/cpp_lpstr.cpp \
     ../../Src/cpp_string.cpp \
     ../../Src/qt_string.cpp \
-    ../../Src/smException.cpp
+    ../../Src/smException.cpp \
+    ../../Src/Thread2.cpp
+
 
 HEADERS += \
     ../../include/frmSelectEncoding.h \
@@ -52,6 +54,11 @@ HEADERS += \
     ../../include/cpp_lpstr.h \
     ../../include/cpp_string.h \
     ../../include/qt_string.h \
+    ../../include/cc_array.hpp \
+    ../../include/cc_atomic.hpp \
+    ../../include/cc_memory.hpp \
+    ../../include/cpp_sstream.h \
+    ../../include/Thread2.h \
     ../../Src/pre_cc.h \
     ../../include/predef_cc.h
 
