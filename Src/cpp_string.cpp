@@ -20,61 +20,7 @@
 //***************************************************************************
 
 #include "pre_cc.h"
-#include <cpp_string.h>
-#include <cc_array.hpp>
-#include <cc_memory.hpp>
-#include <boost/smart_ptr.hpp>
-
-#if defined (BOOST_OS_WINDOWS_AVAILABLE)
-
-#include <Windows.h>
-
-namespace ccwin
-{
-    std::string NarrowStringStrict( const std::wstring& str )
-    {
-        std::string     result;
-
-        if ( str.empty() )
-            return result;
-
-        cclib::array<char, 4096>    buffer;
-        std::size_t                 hype_len = str.length() * 3 + 1;        // overallocate
-
-        if ( hype_len < buffer.size() )
-        {
-            int     dest_len = CharFromWChar( str, result, buffer.data(), buffer.size() );
-
-            if ( dest_len >= 0 )
-                return std::string( buffer.data(), buffer.data() + dest_len );
-        }
-
-        boost::scoped_array<char>   bbuff( new char[hype_len] );
-        int                         dest_len = CharFromWChar( str, result, bbuff.get(), hype_len );
-
-        if ( dest_len >= 0 )
-            return std::string( bbuff.get(), bbuff.get() + dest_len );
-        return std::string();
-    }
-}
-#endif
-
-#if defined (BOOST_OS_LINUX_AVAILABLE)
-
-#include <utf8.h>
-
-namespace cclin
-{
-    std::string NarrowStringStrict( const std::wstring& str )
-    {
-        std::string     result;
-
-        utf8::utf16to8( str.begin(), str.end(), std::back_inserter( result ) );
-        return result;
-    }
-}
-
-#endif
+#include "cpp_string.h"
 
 namespace cclib
 {
@@ -83,15 +29,37 @@ namespace cclib
     const wchar_t * const CharConstant<wchar_t>::crlf = L"\r\n";
     const wchar_t * const CharConstant<wchar_t>::empty_str = L"";
 
-    std::string NarrowStringStrict( const std::wstring& sstr )
+    std::string narrow_string( const std::wstring& sstr )
     {
-#if defined (BOOST_OS_WINDOWS_AVAILABLE)
-        return ccwin::NarrowStringStrict( sstr );
-#endif
-#if defined (BOOST_OS_LINUX_AVAILABLE)
-        return cclin::NarrowStringStrict( sstr );
+        std::string     result;
+
+        utf8::utf16to8( sstr.begin(), sstr.end(), std::back_inserter( result ) );
+        return result;
+    }
+
+    std::wstring wide_string( const std::string& sstr )
+    {
+        std::wstring    result;
+
+        utf8::utf8to16( sstr.begin(), sstr.end(), std::back_inserter( result ) );
+        return result;
+    }
+
+    std_string to_std_string( const std::string& sstr )
+    {
+#if defined(BOOST_OS_LINUX_AVAILABLE)
+        return narrow_string( sstr );
+#elif defined (BOOST_OS_WINDOWS_AVAILABLE)
+        return wide_string( sstr );
 #endif
     }
 
-
+    std_string to_std_string( const std::wstring& sstr )
+    {
+#if defined(BOOST_OS_LINUX_AVAILABLE)
+        return narrow_string( sstr );
+#elif defined (BOOST_OS_WINDOWS_AVAILABLE)
+        return wide_string( sstr );
+#endif
+    }
 }

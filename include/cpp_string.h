@@ -42,6 +42,7 @@
 #define STD_STRING_DEFINED
 
 #include <string>
+#include "utf8.h"
 
 #if defined(_UNICODE) || defined(UNICODE)
     typedef std::wstring            std_string;
@@ -89,8 +90,15 @@ namespace cclib
         static const wchar_t r_bracket = L']';
     };
 
-    inline std::string NarrowStringStrict( const std::string& sstr )       { return sstr; }
-    std::string NarrowStringStrict( const std::wstring& sstr );
+    // to_std_string
+    std_string to_std_string( const std::string& sstr );
+    std_string to_std_string( const std::wstring& sstr );
+
+    // to std::string - parameter is typically std_string
+    inline std::string narrow_string( const std::string& sstr )         { return sstr; }
+    std::string narrow_string( const std::wstring& sstr );
+    std::wstring wide_string( const std::string& sstr );
+    inline std::wstring wide_string( const std::wstring& sstr )         { return sstr; }
 
 }
 
