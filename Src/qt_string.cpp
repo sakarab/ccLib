@@ -24,14 +24,24 @@
 
 namespace cclib
 {
+    std::string narrow_string( const QString& sstr )
+    {
+        QByteArray  utf8 = sstr.toUtf8();
+
+        return std::string( utf8.data(), utf8.count() );
+    }
+
+    std::wstring wide_string( const QString& sstr )
+    {
+        return sstr.toStdWString();
+    }
+
     std_string to_std_string( const QString& sstr )
     {
 #if defined(BOOST_OS_LINUX_AVAILABLE)
-        QByteArray  utf8 = sstr.toUtf8();
-
-        return std_string( utf8.data(), utf8.count() );
+        return narrow_string( sstr );
 #elif defined (BOOST_OS_WINDOWS_AVAILABLE)
-        return sstr.toStdWString();
+        return wide_string( sstr );
 #endif
     }
 }

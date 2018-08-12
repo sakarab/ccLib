@@ -29,6 +29,8 @@
 namespace cclib
 {
     std_string to_std_string( const QString& sstr );
+    std::string narrow_string( const QString& sstr );
+    std::wstring wide_string( const QString& sstr );
 }
 
 #endif // QT_STRING_H

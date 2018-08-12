@@ -28,4 +28,38 @@ namespace cclib
     const char * const CharConstant<char>::empty_str = "";
     const wchar_t * const CharConstant<wchar_t>::crlf = L"\r\n";
     const wchar_t * const CharConstant<wchar_t>::empty_str = L"";
+
+    std::string narrow_string( const std::wstring& sstr )
+    {
+        std::string     result;
+
+        utf8::utf16to8( sstr.begin(), sstr.end(), std::back_inserter( result ) );
+        return result;
+    }
+
+    std::wstring wide_string( const std::string& sstr )
+    {
+        std::wstring    result;
+
+        utf8::utf8to16( sstr.begin(), sstr.end(), std::back_inserter( result ) );
+        return result;
+    }
+
+    std_string to_std_string( const std::string& sstr )
+    {
+#if defined(BOOST_OS_LINUX_AVAILABLE)
+        return narrow_string( sstr );
+#elif defined (BOOST_OS_WINDOWS_AVAILABLE)
+        return wide_string( sstr );
+#endif
+    }
+
+    std_string to_std_string( const std::wstring& sstr )
+    {
+#if defined(BOOST_OS_LINUX_AVAILABLE)
+        return narrow_string( sstr );
+#elif defined (BOOST_OS_WINDOWS_AVAILABLE)
+        return wide_string( sstr );
+#endif
+    }
 }
