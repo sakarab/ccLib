@@ -19,25 +19,20 @@
 // information.
 //***************************************************************************
 
-#include <pre_cc.h>
-#include "ScanDirectory.h"
+#include "pre_ccqt.h"
+#include <ScanDirectoryQT.h>
 #include <boost/algorithm/string.hpp>
-
-#if defined (QT_CORE_LIB)
 #include "IDirIter_Qt.h"
-#endif
-
-#include "IDirIter_Boost.h"
 
 namespace fs = boost::filesystem;
 
-namespace cclib
+namespace ccqt
 {
 
     /*********************************************************************
     ****    ScanDirectory
     *********************************************************************/
-    ScanDirectory::ScanDirectory( const fnObserver& observer, const SharedFlag& cancelf )
+    ScanDirectory::ScanDirectory( const fnObserver& observer, const cclib::SharedFlag& cancelf )
         : mObserver( observer ), mFCancel( cancelf )
     {}
 
@@ -57,8 +52,7 @@ namespace cclib
         if ( !mObserver )
             return;
 
-        //boost::shared_ptr<IDirIterator>     dit( new QT_DirIterator( path, flags ) );
-        boost::shared_ptr<IDirIterator>     dit( new Boost_DirIterator( path, flags ) );
+        boost::shared_ptr<IDirIterator>     dit( new QT_DirIterator( path, flags ) );
 
         if ( dit->First() )
             do

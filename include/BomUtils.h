@@ -24,7 +24,7 @@
 #if ! defined (CC_BOM_UTILS_H)
 #define CC_BOM_UTILS_H
 
-#include <string>
+#include <cpp_string.h>
 
 /**************************************************************************
 ********    BOM
@@ -38,23 +38,18 @@ private:
     // nonconstructible
     BOM();
 private:
-    static wchar_t const *Names[];
+    static std_char const *Names[];
 public:
     enum type { no_bom, utf8, utf16le, utf16be, utf32le, utf32be };
 
-    static std::wstring Name( type bom );
-    static type Value( std::wstring name );
+    static std_string Name( type bom );
+    static type Value( std_string name );
 };
 
 /**************************************************************************
 ********    Free functions
 **************************************************************************/
-BOM::type GetBom( const std::string& file_name );
-BOM::type GetBom( const char *file_name );
-
-#if defined (WIN32)
-BOM::type GetBom( const std::wstring& file_name );
-BOM::type GetBom( const wchar_t *file_name );
-#endif
+BOM::type GetBom( const std_string& file_name );
+BOM::type GetBom( const std_char *file_name );
 
 #endif

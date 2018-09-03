@@ -74,6 +74,7 @@
     <ClInclude Include="..\include\QtApp.h" />
     <ClInclude Include="..\include\QtSingletons.h" />
     <ClInclude Include="..\include\qt_string.h" />
+    <ClInclude Include="..\include\ScanDirectoryQT.h" />
     <ClInclude Include="..\Src\pre_ccqt.h" />
   </ItemGroup>
   <ItemGroup>

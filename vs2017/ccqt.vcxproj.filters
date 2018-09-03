@@ -81,6 +81,9 @@
     <ClInclude Include="..\include\BomUtilsQT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ScanDirectoryQT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="..\Src\Forms\frmSelectEncoding.ui">

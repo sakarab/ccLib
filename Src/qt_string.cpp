@@ -26,9 +26,8 @@ namespace cclib
 {
     std::string narrow_string( const QString& sstr )
     {
-        QByteArray  utf8 = sstr.toUtf8();
-
-        return std::string( utf8.data(), utf8.count() );
+        // uses toUtf8() according to documentation
+        return sstr.toStdString();
     }
 
     std::wstring wide_string( const QString& sstr )

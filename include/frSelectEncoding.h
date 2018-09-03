@@ -26,7 +26,7 @@
 
 #include <QFileDialog>
 #include "ui_frSelectEncoding.h"
-#include "BomUtils.h"
+#include "BomUtilsQT.h"
 #include <boost/shared_ptr.hpp>
 
 namespace ccqt

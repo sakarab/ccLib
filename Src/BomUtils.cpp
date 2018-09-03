@@ -21,7 +21,7 @@
 
 #include <pre_cc.h>
 #include "BomUtils.h"
-#include <string>
+#include <cpp_string.h>
 #include <fstream>
 #include <boost/scope_exit.hpp>
 #include <boost/lexical_cast.hpp>
@@ -88,53 +88,37 @@ BOM::type GetBom( std::istream& st )
     return BOM::no_bom;
 }
 
-BOM::type GetBom_in( const char *file_name )
+BOM::type GetBom_in( const std_char *file_name )
 {
     std::ifstream   st( file_name, std::ios_base::in );
 
     if ( !st )
-        throw cclib::BaseException( boost::str( boost::format( "Unable to open file: %1%" ) % file_name ) );
+        throw cclib::BaseException( boost::str( boost::format( "Unable to open file: %1%" ) % cclib::narrow_string( file_name ) ) );
     return GetBom( st );
 }
-
-#if defined (WIN32)
-
-BOM::type GetBom_in( const wchar_t *file_name )
-{
-    std::ifstream   st( file_name, std::ios_base::in );
-
-    return GetBom( st );
-}
-
-#endif
 
 } // namespace
 
-BOM::type GetBom( const std::string& file_name )    { return GetBom_in( file_name.c_str() ); }
-BOM::type GetBom( const char *file_name )           { return GetBom_in( file_name ); }
-
-#if defined (WIN32)
-BOM::type GetBom( const std::wstring& file_name )   { return GetBom_in( file_name.c_str() ); }
-BOM::type GetBom( const wchar_t *file_name )        { return GetBom_in( file_name ); }
-#endif
+BOM::type GetBom( const std_string& file_name )     { return GetBom_in( file_name.c_str() ); }
+BOM::type GetBom( const std_char *file_name )       { return GetBom_in( file_name ); }
 
 /**************************************************************************
 ********    BOM
 **************************************************************************/
 //static
-wchar_t const * BOM::Names[] =
+std_char const * BOM::Names[] =
 {
-    L"<none>", L"UTF-8", L"UTF-16LE", L"UTF-16BE", L"UTF-32LE", L"UTF-32BE"
+    CCTEXT("<none>"), CCTEXT("UTF-8"), CCTEXT("UTF-16LE"), CCTEXT("UTF-16BE"), CCTEXT("UTF-32LE"), CCTEXT("UTF-32BE")
 };
 
 //static
-std::wstring BOM::Name( type bom )
+std_string BOM::Name( type bom )
 {
-    return std::wstring( Names[bom] );
+    return std_string( Names[bom] );
 }
 
 //static
-BOM::type BOM::Value( std::wstring name )
+BOM::type BOM::Value( std_string name )
 {
     boost::to_lower( name );
     for ( int n = 1 ; n < static_cast<int>(sizeof(Names) / sizeof(Names[0])) ; ++n )
