@@ -35,12 +35,8 @@
     #include <boost/scope_exit.hpp>
 #endif
 
-#if defined (WIN32) && !defined (CC_NOT_USING_WTL)
-    #define _WTL_USE_CSTRING
-    #include <atlbase.h>
-    #include <atlapp.h>
-    #include <atlctrls.h>
-    #include <atlmisc.h>
+#if defined (WIN32)
+    #include <windows.h>
 #endif
 
 #ifndef __BORLANDC__

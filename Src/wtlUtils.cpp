@@ -19,7 +19,7 @@
 // information.
 //***************************************************************************
 
-#include <pre_cc.h>
+#include "pre_ccwtl.h"
 #include "wtlUtils.h"
 
 namespace ccwtl

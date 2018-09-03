@@ -19,17 +19,4 @@
 // information.
 //***************************************************************************
 
-#pragma once
-
-#if ! defined (CC_BOM_UTILS_QT_H)
-#define CC_BOM_UTILS_QT_H
-
-#include <QString>
-#include <BomUtils.h>
-
-/**************************************************************************
-********    Free functions
-**************************************************************************/
-BOM::type GetBom( const QString& file_name );
-
-#endif
+#include "pre_ccwtl.h"

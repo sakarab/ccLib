@@ -63,7 +63,6 @@
     <ClCompile Include="..\Src\winUtils.cpp" />
     <ClCompile Include="..\Src\winVersion.cpp" />
     <ClCompile Include="..\Src\win_str.cpp" />
-    <ClCompile Include="..\Src\wtlUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\boDateUtils.h" />
@@ -95,11 +94,6 @@
     <ClInclude Include="..\include\winUtils.h" />
     <ClInclude Include="..\include\winVersion.h" />
     <ClInclude Include="..\include\win_str.h" />
-    <ClInclude Include="..\include\wtlPropertyGrid.h" />
-    <ClInclude Include="..\include\wtlPropertyItem.h" />
-    <ClInclude Include="..\include\wtlPropertyItemEditors.h" />
-    <ClInclude Include="..\include\wtlPropertyItemImpl.h" />
-    <ClInclude Include="..\include\wtlUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />
