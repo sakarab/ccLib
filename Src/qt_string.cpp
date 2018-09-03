@@ -19,7 +19,7 @@
 // information.
 //***************************************************************************
 
-#include <pre_cc.h>
+#include "pre_ccqt.h"
 #include "qt_string.h"
 
 namespace cclib

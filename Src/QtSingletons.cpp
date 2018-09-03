@@ -19,7 +19,7 @@
 // information.
 //***************************************************************************
 
-#include <pre_cc.h>
+#include "pre_ccqt.h"
 #include "QtSingletons.h"
 #include <QApplication>
 #include <loki/Singleton.h>

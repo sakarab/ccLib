@@ -110,6 +110,10 @@ BOM::type GetBom_in( const wchar_t *file_name )
 
 } // namespace
 
+#if defined(QT_CORE_LIB)
+BOM::type GetBom( const QString& file_name )        { return GetBom_in( file_name.toLocal8Bit().constData() ); }
+#endif
+
 BOM::type GetBom( const std::string& file_name )    { return GetBom_in( file_name.c_str() ); }
 BOM::type GetBom( const char *file_name )           { return GetBom_in( file_name ); }
 

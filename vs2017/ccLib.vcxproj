@@ -37,14 +37,10 @@
   <ItemGroup>
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
-    <ClCompile Include="..\Src\chasewidget.cpp" />
     <ClCompile Include="..\Src\cppCharUtils.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
     <ClCompile Include="..\Src\cpp_string.cpp" />
-    <ClCompile Include="..\Src\frmSelectEncoding.cpp" />
-    <ClCompile Include="..\Src\frSelectEncoding.cpp" />
     <ClCompile Include="..\Src\IDirIter_Boost.cpp" />
-    <ClCompile Include="..\Src\IDirIter_Qt.cpp" />
     <ClCompile Include="..\Src\ITStream.cpp" />
     <ClCompile Include="..\Src\LibLoader.cpp" />
     <ClCompile Include="..\Src\pre_cc.cpp">
@@ -57,10 +53,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Src\qqOpenDlg.cpp" />
-    <ClCompile Include="..\Src\QtApp.cpp" />
-    <ClCompile Include="..\Src\QtSingletons.cpp" />
-    <ClCompile Include="..\Src\qt_string.cpp" />
     <ClCompile Include="..\Src\ScanDirectory.cpp" />
     <ClCompile Include="..\Src\smException.cpp" />
     <ClCompile Include="..\Src\Thread2.cpp" />
@@ -76,8 +68,6 @@
   <ItemGroup>
     <ClInclude Include="..\include\boDateUtils.h" />
     <ClInclude Include="..\include\BomUtils.h" />
-    <QtMoc Include="..\include\chasewidget.h">
-    </QtMoc>
     <ClInclude Include="..\include\cc_array.hpp" />
     <ClInclude Include="..\include\cc_atomic.hpp" />
     <ClInclude Include="..\include\cc_memory.hpp" />
@@ -85,23 +75,14 @@
     <ClInclude Include="..\include\cpp_lpstr.h" />
     <ClInclude Include="..\include\cpp_sstream.h" />
     <ClInclude Include="..\include\cpp_string.h" />
-    <QtMoc Include="..\include\frmSelectEncoding.h">
-    </QtMoc>
-    <QtMoc Include="..\include\frSelectEncoding.h">
-    </QtMoc>
     <ClInclude Include="..\include\IDirIterator.h" />
     <ClInclude Include="..\include\IDirIter_Boost.h" />
-    <ClInclude Include="..\include\IDirIter_Qt.h" />
     <ClInclude Include="..\include\ITStream.h" />
     <ClInclude Include="..\include\LibLoader.h" />
     <ClInclude Include="..\include\predef_cc.h" />
-    <ClInclude Include="..\include\qt_string.h" />
     <ClInclude Include="..\include\Thread2.h" />
     <ClInclude Include="..\include\winBuffers.h" />
     <ClInclude Include="..\Src\pre_cc.h" />
-    <ClInclude Include="..\include\qqOpenDlg.h" />
-    <ClInclude Include="..\include\QtApp.h" />
-    <ClInclude Include="..\include\QtSingletons.h" />
     <ClInclude Include="..\include\RefCnt.h" />
     <ClInclude Include="..\include\ScanDirectory.h" />
     <ClInclude Include="..\include\SharedFlag.h" />
@@ -119,19 +100,14 @@
     <ClInclude Include="..\include\wtlPropertyItemEditors.h" />
     <ClInclude Include="..\include\wtlPropertyItemImpl.h" />
     <ClInclude Include="..\include\wtlUtils.h" />
-    <ClInclude Include="GeneratedFiles\ui_frmSelectEncoding.h" />
-    <ClInclude Include="GeneratedFiles\ui_frSelectEncoding.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="..\Src\Forms\frmSelectEncoding.ui">
-    </QtUic>
-    <QtUic Include="..\Src\Forms\frSelectEncoding.ui">
-    </QtUic>
     <None Include="ccLib.props" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
-    <Keyword>Qt4VSv1.0</Keyword>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'" Label="Configuration">
@@ -179,15 +155,6 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
-    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
-  </PropertyGroup>
-  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
-    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
-  </Target>
-  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
-    <Import Project="$(QtMsBuild)\qt.props" />
-  </ImportGroup>
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'" Label="PropertySheets">
@@ -252,35 +219,35 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(Configuration)_$(Platform)\</IntDir>
@@ -305,22 +272,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>$(Platform);CCLIB_LIB;$(Platform)_LEAN_AND_MEAN;QT_CORE_LIB;_DEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
-    <QtUic>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <InputFile>%(FullPath)</InputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
     <ClCompile>
@@ -335,22 +286,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>$(Platform);CCLIB_LIB;$(Platform)_LEAN_AND_MEAN;QT_CORE_LIB;_DEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
-    <QtUic>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <InputFile>%(FullPath)</InputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
     <ClCompile>
@@ -365,22 +300,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>WIN32;CCLIB_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_DEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
-    <QtUic>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <InputFile>%(FullPath)</InputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <ClCompile>
@@ -395,22 +314,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtUic>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <InputFile>%(FullPath)</InputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>WIN32;CCLIB_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_DEBUG;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <ClCompile>
@@ -426,22 +329,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtUic>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <InputFile>%(FullPath)</InputFile>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>$(Platform);QT_NO_DEBUG;NDEBUG;CCLIB_LIB;$(Platform)_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
     <ClCompile>
@@ -457,22 +344,6 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>$(Platform);QT_NO_DEBUG;NDEBUG;CCLIB_LIB;$(Platform)_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
-    <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
     <ClCompile>
@@ -489,22 +360,6 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <ClCompile>
@@ -521,32 +376,8 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <QtMoc>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <Define>WIN32;QT_NO_DEBUG;NDEBUG;CCLIB_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_UNICODE;UNICODE</Define>
-      <ForceInclude>pre_cc.h;../../../include/%(Filename)%(Extension)</ForceInclude>
-      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
-      <DynamicSource>output</DynamicSource>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\.;.\..\Src;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(WTLINC)\.;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
-    </QtMoc>
-    <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
-      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
-    </QtUic>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
-    <Import Project="$(QtMsBuild)\qt.targets" />
-  </ImportGroup>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="Qt59-32" Qt5Version_x0020_x64="Qt59-64" MocOptions="" />
-    </VisualStudio>
-  </ProjectExtensions>
 </Project>

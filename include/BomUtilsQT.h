@@ -25,6 +25,9 @@
 #define CC_BOM_UTILS_H
 
 #include <string>
+#if defined(QT_CORE_LIB)
+#include <QString>
+#endif
 
 /**************************************************************************
 ********    BOM
@@ -49,6 +52,10 @@ public:
 /**************************************************************************
 ********    Free functions
 **************************************************************************/
+#if defined(QT_CORE_LIB)
+BOM::type GetBom( const QString& file_name );
+#endif
+
 BOM::type GetBom( const std::string& file_name );
 BOM::type GetBom( const char *file_name );
 

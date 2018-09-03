@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include <pre_cc.h>
+#include "pre_ccqt.h"
 #include "chasewidget.h"
 
 #include <QPoint>

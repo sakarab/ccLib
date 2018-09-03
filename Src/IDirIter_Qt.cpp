@@ -19,7 +19,7 @@
 // information.
 //***************************************************************************
 
-#include <pre_cc.h>
+#include "pre_ccqt.h"
 #include "IDirIter_Qt.h"
 #include <boost/shared_ptr.hpp>
 #include <boost/filesystem.hpp>

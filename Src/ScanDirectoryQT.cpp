@@ -22,6 +22,11 @@
 #include <pre_cc.h>
 #include "ScanDirectory.h"
 #include <boost/algorithm/string.hpp>
+
+#if defined (QT_CORE_LIB)
+#include "IDirIter_Qt.h"
+#endif
+
 #include "IDirIter_Boost.h"
 
 namespace fs = boost::filesystem;
