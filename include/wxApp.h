@@ -5,7 +5,14 @@
 
 namespace ccwx
 {
-
+    //=======================================================================
+    //==============    Application
+    //=======================================================================
+    class Application : public wxApp
+    {
+        int OnRun() override;
+        void HandleEvent( wxEvtHandler *handler, wxEventFunction func, wxEvent& event ) const override;
+    };
 }
 
 #endif
