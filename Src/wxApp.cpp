@@ -1,26 +1,40 @@
 #include <pre_ccwx.h>
 #include <wxApp.h>
 
+namespace
+{
+    void ShowExceptionMessage( const wxString& msg )
+    {
+        ::wxMessageBox( msg, wxT( "Error" ), wxICON_ERROR | wxOK | wxCENTRE );
+    }
+
+    void ShowExceptionMessage( const std::exception& ex )
+    {
+        ShowExceptionMessage( wxString( ex.what(), wxConvLocal ) );
+    }
+
+    void ShowExceptionMessage()
+    {
+        try
+        {
+            throw;
+        }
+        catch ( const std::exception& e )
+        {
+            ShowExceptionMessage( e );
+        }
+        catch ( ... )
+        {
+            ShowExceptionMessage( wxT( "Unknown Error" ) );
+        }
+    }
+}
+
 namespace ccwx
 {
     //=======================================================================
     //==============    Application
     //=======================================================================
-    int Application::OnRun()
-    {
-        int     result;
-
-        try
-        {
-            result = wxApp::OnRun();
-        }
-        catch ( ... )
-        {
-            result = 1;
-        }
-        return result;
-    }
-
     void Application::HandleEvent( wxEvtHandler * handler, wxEventFunction func, wxEvent & event ) const
     {
         try
@@ -29,13 +43,16 @@ namespace ccwx
         }
         catch ( const std::exception& e )
         {
-            ::wxMessageBox( wxString( e.what(), wxConvLocal ), wxT( "Error" ) );
-            throw;
+            ShowExceptionMessage( e );
         }
         catch ( ... )
         {
-            ::wxMessageBox( wxT( "Unknown Error" ), wxT( "Error" ) );
-            throw;
+            ShowExceptionMessage( wxT( "Unknown Error" ) );
         }
+    }
+
+    void Application::OnUnhandledException()
+    {
+        ShowExceptionMessage();
     }
 }

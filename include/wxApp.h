@@ -10,8 +10,8 @@ namespace ccwx
     //=======================================================================
     class Application : public wxApp
     {
-        int OnRun() override;
         void HandleEvent( wxEvtHandler *handler, wxEventFunction func, wxEvent& event ) const override;
+        void OnUnhandledException() override;
     };
 }
 
