@@ -37,6 +37,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
+    <ClCompile Include="..\Src\cc_odbc.cpp" />
     <ClCompile Include="..\Src\cppCharUtils.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
     <ClCompile Include="..\Src\cpp_string.cpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="..\include\cc_array.hpp" />
     <ClInclude Include="..\include\cc_atomic.hpp" />
     <ClInclude Include="..\include\cc_memory.hpp" />
+    <ClInclude Include="..\include\cc_odbc.h" />
     <ClInclude Include="..\include\cppCharUtils.h" />
     <ClInclude Include="..\include\cpp_lpstr.h" />
     <ClInclude Include="..\include\cpp_sstream.h" />
