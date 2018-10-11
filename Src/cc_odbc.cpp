@@ -236,89 +236,91 @@ namespace ccodbc
         }
     }
 
-    //=======================================================================
-    //======    Statement
-    //=======================================================================
-    Statement::Statement( Connection& connection )
-        : mStatement(SQL_NULL_HANDLE), mFields(), mIsEof(false)
+    namespace detail
     {
-        CheckReturn( SQLAllocHandle( SQL_HANDLE_STMT, connection.GetHandle(), &mStatement ), Hinfo() );
-    }
-
-    Statement::~Statement()
-    {
-        SQLFreeHandle( SQL_HANDLE_STMT, mStatement );
-    }
-
-    std::tuple<std_string, int, ccdb::type>  // field name, data size, data type
-    Statement::GetFieldAttributes( int idx )
-    {
-        Field&          field = mFields[idx];
-
-        return std::make_tuple( field.GetName(), field.GetDataSize(), field.DB_Type() );
-    }
-
-    void Statement::ExecSql( const std_string& sql )
-    {
-        mIsEof = false;
-        CheckReturn( SQLExecDirect( mStatement, cclib::LPSTR( sql ).get(), SQL_NTS ), Hinfo() );
-
-        SWORD    nCols;                      // # of result columns
-
-        CheckReturn( SQLNumResultCols( mStatement, &nCols ), Hinfo() );
-
-        std::vector<std_char>   field_name( 50 );
-
-        for ( SWORD n = 1 ; n <= nCols ; ++n )
+        //=======================================================================
+        //======    Statement
+        //=======================================================================
+        Statement::Statement( Connection& connection )
+            : mOdbcHandle(SQL_NULL_HANDLE), mFields(), mIsEof(false)
         {
-            SWORD   data_type;                  // column data type
-            SQLULEN precision;                  // precision on the column
-            SWORD   scale;                      // column scale
-            SWORD   nullable;                   // nullable column ?
-            SWORD   name_length;                // column data length
+            CheckReturn( SQLAllocHandle( SQL_HANDLE_STMT, connection.GetHandle(), &mOdbcHandle ), Hinfo() );
+        }
 
-            SQLRETURN   ret = CheckReturn( SQLDescribeCol( mStatement, n, &field_name.front(), static_cast<SQLSMALLINT>(field_name.size()),
-                                                           &name_length, &data_type, &precision, &scale, &nullable ), Hinfo() );
-            if ( ret == SQL_SUCCESS_WITH_INFO )
+        Statement::~Statement()
+        {
+            SQLFreeHandle( SQL_HANDLE_STMT, mOdbcHandle );
+        }
+
+        std::tuple<std_string, int, ccdb::type>  // field name, data size, data type
+        Statement::GetFieldAttributes( int idx )
+        {
+            Field&          field = mFields[idx];
+
+            return std::make_tuple( field.GetName(), field.GetDataSize(), field.DB_Type() );
+        }
+
+        void Statement::ExecSql( const std_string& sql )
+        {
+            mIsEof = false;
+            CheckReturn( SQLExecDirect( mOdbcHandle, cclib::LPSTR( sql ).get(), SQL_NTS ), Hinfo() );
+
+            SWORD    nCols;                      // # of result columns
+
+            CheckReturn( SQLNumResultCols( mOdbcHandle, &nCols ), Hinfo() );
+
+            std::vector<std_char>   field_name( 50 );
+
+            for ( SWORD n = 1 ; n <= nCols ; ++n )
             {
-                field_name.resize( name_length + 1 );
-                CheckReturn( SQLDescribeCol( mStatement, n, &field_name.front(), static_cast<SQLSMALLINT>(field_name.size()),
-                                             &name_length, &data_type, &precision, &scale, &nullable ), Hinfo() );
+                SWORD   data_type;                  // column data type
+                SQLULEN precision;                  // precision on the column
+                SWORD   scale;                      // column scale
+                SWORD   nullable;                   // nullable column ?
+                SWORD   name_length;                // column data length
+
+                SQLRETURN   ret = CheckReturn( SQLDescribeCol( mOdbcHandle, n, &field_name.front(), static_cast<SQLSMALLINT>(field_name.size()),
+                                                               &name_length, &data_type, &precision, &scale, &nullable ), Hinfo() );
+                if ( ret == SQL_SUCCESS_WITH_INFO )
+                {
+                    field_name.resize( name_length + 1 );
+                    CheckReturn( SQLDescribeCol( mOdbcHandle, n, &field_name.front(), static_cast<SQLSMALLINT>(field_name.size()),
+                                                 &name_length, &data_type, &precision, &scale, &nullable ), Hinfo() );
+                }
+                mFields.push_back( Field( std_string( &field_name.front(), name_length ), &TypeRawFromODBCtype( data_type ), precision, scale, nullable ) );
             }
-            mFields.push_back( Field( std_string( &field_name.front(), name_length ), &TypeRawFromODBCtype( data_type ), precision, scale, nullable ) );
+            for ( SWORD n = 1 ; n <= nCols ; ++n )
+            {
+                Field&     field = mFields[n-1];
+
+                if ( ! field.IsLongData() )
+                    CheckReturn( SQLBindCol( mOdbcHandle, n, field.C_Type(), field.GetBuffer(),
+                                             field.GetBufferLength(), field.GetIndicatorAddress() ), Hinfo() );
+            }
+            Next();
         }
-        for ( SWORD n = 1 ; n <= nCols ; ++n )
+
+        void Statement::CloseSql()
         {
-            Field&     field = mFields[n-1];
-
-            if ( ! field.IsLongData() )
-                CheckReturn( SQLBindCol( mStatement, n, field.C_Type(), field.GetBuffer(),
-                                         field.GetBufferLength(), field.GetIndicatorAddress() ), Hinfo() );
+            CheckReturn( SQLFreeStmt( mOdbcHandle, SQL_CLOSE ), Hinfo() );
+            mIsEof = false;
         }
-        Next();
+
+        void Statement::Next()
+        {
+            SQLRETURN   nReturn = SQLFetch( mOdbcHandle );
+
+            if ( nReturn != SQL_NO_DATA )
+                CheckReturn( nReturn, Hinfo() );
+            mIsEof = nReturn != SQL_SUCCESS;
+        }
+
+        Field * Statement::FieldByName( const std_string& field_name )
+        {
+            for ( std::vector<Field>::iterator it = mFields.begin(), eend = mFields.end() ; it != eend ; ++it )
+                if ( it->GetName() == field_name )
+                    return &(*it);
+            throw std::runtime_error( "ODBC FieldByName error." );
+        }
     }
-
-    void Statement::CloseSql()
-    {
-        CheckReturn( SQLFreeStmt( mStatement, SQL_CLOSE ), Hinfo() );
-        mIsEof = false;
-    }
-
-    void Statement::Next()
-    {
-        SQLRETURN   nReturn = SQLFetch( mStatement );
-
-        if ( nReturn != SQL_NO_DATA )
-            CheckReturn( nReturn, Hinfo() );
-        mIsEof = nReturn != SQL_SUCCESS;
-    }
-
-    Field * Statement::FieldByName( const std_string& field_name )
-    {
-        for ( std::vector<Field>::iterator it = mFields.begin(), eend = mFields.end() ; it != eend ; ++it )
-            if ( it->GetName() == field_name )
-                return &(*it);
-        throw std::runtime_error( "ODBC FieldByName error." );
-    }
-
 }

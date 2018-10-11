@@ -105,8 +105,8 @@ namespace ccodbc
 
         HandleInfo Hinfo()          { return HandleInfo( SQL_HANDLE_ENV, mEnvironment ); }
         // noncopyable
-        Environment( const Environment& src );
-        Environment& operator=( const Environment& src );
+        Environment( const Environment& src ) CC_EQ_DELETE;
+        Environment& operator=( const Environment& src ) CC_EQ_DELETE;
     public:
         Environment();
         ~Environment();
@@ -126,8 +126,8 @@ namespace ccodbc
 
         HandleInfo Hinfo()          { return HandleInfo( SQL_HANDLE_DBC, mConnection ); }
         // noncopyable
-        Connection( const Connection& src );
-        Connection& operator=( const Connection& src );
+        Connection( const Connection& src ) CC_EQ_DELETE;
+        Connection& operator=( const Connection& src ) CC_EQ_DELETE;
     public:
         Connection( Environment& env );
         ~Connection();
@@ -136,36 +136,82 @@ namespace ccodbc
         void Disconnect();
     };
 
+    namespace detail
+    {
+        //=======================================================================
+        //======    Statement
+        //=======================================================================
+        class Statement
+        {
+        private:
+            SQLHANDLE               mOdbcHandle;
+            std::vector<Field>      mFields;
+            bool                    mIsEof;
+
+            HandleInfo Hinfo()          { return HandleInfo( SQL_HANDLE_STMT, mOdbcHandle ); }
+            // noncopyable
+            Statement( const Statement& src ) CC_EQ_DELETE;
+            Statement& operator=( const Statement& src ) CC_EQ_DELETE;
+        public:
+            Statement( Connection& connection );
+            ~Statement();
+
+            std::size_t GetFieldCount()                            { return mFields.size(); }
+
+            std::tuple<std_string, int, ccdb::type>  // field name, data size, data type
+            GetFieldAttributes( int idx );
+
+            void ExecSql( const std_string& sql );
+            void CloseSql();
+            void Next();
+            bool Eof() const                                    { return mIsEof; }
+
+            Field * FieldByName( const std_string& field_name );
+            Field * FieldByIndex( int idx )                     { return &mFields[idx]; }
+        };
+    }
+
     //=======================================================================
-    //======    Statement
+    //======    Select
     //=======================================================================
-    class Statement
+    class Select
     {
     private:
-        SQLHANDLE               mStatement;
-        std::vector<Field>      mFields;
-        bool                    mIsEof;
-
-        HandleInfo Hinfo()          { return HandleInfo( SQL_HANDLE_STMT, mStatement ); }
+        detail::Statement       mStatement;
         // noncopyable
-        Statement( const Statement& src );
-        Statement& operator=( const Statement& src );
+        Select( const Select& src ) CC_EQ_DELETE;
+        Select& operator=( const Select& src ) CC_EQ_DELETE;
     public:
-        Statement( Connection& connection );
-        ~Statement();
+        Select( Connection& connection ) : mStatement( connection )             {}
+        ~Select()                                                               {}
 
-        std::size_t GetFieldCount()                            { return mFields.size(); }
+        std::size_t GetFieldCount()                                             { return mStatement.GetFieldCount(); }
+        // field name, data size, data type
+        std::tuple<std_string, int, ccdb::type> GetFieldAttributes( int idx )   { return mStatement.GetFieldAttributes( idx ); }
+        void ExecSql( const std_string& sql )                                   { mStatement.ExecSql( sql ); }
+        void CloseSql()                                                         { mStatement.CloseSql(); }
+        void Next()                                                             { mStatement.Next(); }
+        bool Eof() const                                                        { return mStatement.Eof(); }
+        Field * FieldByName( const std_string& field_name )                     { return mStatement.FieldByName( field_name ); }
+        Field * FieldByIndex( int idx )                                         { return mStatement.FieldByIndex( idx ); }
+    };
 
-        std::tuple<std_string, int, ccdb::type>  // field name, data size, data type
-        GetFieldAttributes( int idx );
+    //=======================================================================
+    //======    ExecSql
+    //=======================================================================
+    class ExecSql
+    {
+    private:
+        detail::Statement       mStatement;
+        // noncopyable
+        ExecSql( const ExecSql& src ) CC_EQ_DELETE;
+        ExecSql& operator=( const ExecSql& src ) CC_EQ_DELETE;
+    public:
+        ExecSql( Connection& connection ) : mStatement( connection )            {}
+        ~ExecSql()                                                              {}
 
-        void ExecSql( const std_string& sql );
-        void CloseSql();
-        void Next();
-        bool Eof() const                                    { return mIsEof; }
-
-        Field * FieldByName( const std_string& field_name );
-        Field * FieldByIndex( int idx )                     { return &mFields[idx]; }
+        void Exec( const std_string& sql )                                      { mStatement.ExecSql( sql ); }
+        void CloseSql()                                                         { mStatement.CloseSql(); }
     };
 
     //=======================================================================
