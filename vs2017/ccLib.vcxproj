@@ -70,6 +70,7 @@
     <ClInclude Include="..\include\BomUtils.h" />
     <ClInclude Include="..\include\cc_array.hpp" />
     <ClInclude Include="..\include\cc_atomic.hpp" />
+    <ClInclude Include="..\include\cc_db.h" />
     <ClInclude Include="..\include\cc_memory.hpp" />
     <ClInclude Include="..\include\cc_odbc.h" />
     <ClInclude Include="..\include\cppCharUtils.h" />

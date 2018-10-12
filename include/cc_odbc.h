@@ -30,11 +30,7 @@
 #include <vector>
 #include <tuple>
 #include <cpp_string.h>
-
-namespace ccdb
-{
-    enum class type { ftBool, ftByte, ftShort, ftInteger, ftLongLong, ftDouble, ftString, ftDate, ftTime, ftDateTime, ftGUID, ftBlob };
-}
+#include <cc_db.h>
 
 namespace ccodbc
 {
