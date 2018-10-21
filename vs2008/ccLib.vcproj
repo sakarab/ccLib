@@ -262,7 +262,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\cpp_string.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\cppCharUtils.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\IDirIter_Boost.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Src\ITStream.cpp"
 				>
 			</File>
 			<File
@@ -318,6 +330,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Src\winBuffers.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Src\winClasses.cpp"
 				>
 			</File>
@@ -330,7 +346,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Src\wtlUtils.cpp"
+				RelativePath="..\Src\winVersion.cpp"
 				>
 			</File>
 		</Filter>
@@ -356,6 +372,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\include\cc_db.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\cc_memory.hpp"
 				>
 			</File>
@@ -364,7 +384,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\include\cpp_sstream.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\cpp_string.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\cppCharUtils.h"
 				>
 			</File>
 			<File
@@ -373,6 +401,10 @@
 			</File>
 			<File
 				RelativePath="..\include\IDirIterator.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\ITStream.h"
 				>
 			</File>
 			<File
@@ -404,11 +436,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\include\Thread.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\utf8.h"
 				>
 			</File>
 			<File
 				RelativePath="..\include\win_str.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\winBuffers.h"
 				>
 			</File>
 			<File
@@ -424,7 +464,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\include\wtlUtils.h"
+				RelativePath="..\include\winVersion.h"
 				>
 			</File>
 		</Filter>

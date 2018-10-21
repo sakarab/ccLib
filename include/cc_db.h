@@ -26,7 +26,14 @@
 
 namespace ccdb
 {
+#if defined (CC_HAVE_ENUM_CLASS)
     enum class type { ftBool, ftByte, ftShort, ftInteger, ftLongLong, ftDouble, ftString, ftDate, ftTime, ftDateTime, ftGUID, ftBlob };
+#else
+	struct type
+	{
+		enum { ftBool, ftByte, ftShort, ftInteger, ftLongLong, ftDouble, ftString, ftDate, ftTime, ftDateTime, ftGUID, ftBlob };
+	};
+#endif
 
     //=======================================================================
     //======    Param
