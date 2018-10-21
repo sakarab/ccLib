@@ -2,16 +2,12 @@
 <VisualStudioPropertySheet
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="ccLib"
+	Name="ccWtl"
 	OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 	IntermediateDirectory="$(SolutionDir)$(ConfigurationName)\$(ProjectName)"
 	>
 	<Tool
 		Name="VCCLCompilerTool"
-		AdditionalIncludeDirectories="..\include;&quot;$(BOOST_INC)&quot;;&quot;$(LOKI_INC)&quot;"
-		PreprocessorDefinitions="WIN32_LEAN_AND_MEAN;NOMINMAX;CC_NOT_USING_QT"
-		UsePrecompiledHeader="2"
-		PrecompiledHeaderThrough="pre_cc.h"
-		DisableSpecificWarnings="4512"
+		AdditionalIncludeDirectories="..\include;&quot;$(BOOST_INC)&quot;;&quot;$(WTLINC)&quot;;&quot;$(LOKI_INC)&quot;"
 	/>
 </VisualStudioPropertySheet>

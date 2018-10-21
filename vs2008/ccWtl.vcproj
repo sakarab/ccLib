@@ -2,10 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="ccLib"
-	ProjectGUID="{D9A06BA3-0708-4176-A1C3-6311E938E065}"
-	RootNamespace="ccLib"
-	Keyword="Qt4VSv1.0"
+	Name="ccWtl"
+	ProjectGUID="{66518ACD-C1EB-49AD-90EB-BDECEAB45953}"
+	RootNamespace="ccWtl"
+	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -19,7 +19,7 @@
 		<Configuration
 			Name="Debug_RTL|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -39,9 +39,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
-				RuntimeLibrary="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -74,7 +72,7 @@
 		<Configuration
 			Name="Release_RTL|Win32"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -95,10 +93,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -130,8 +125,10 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Static|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -151,7 +148,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				RuntimeLibrary="1"
 			/>
@@ -185,8 +181,10 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Static|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -207,8 +205,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="0"
 			/>
@@ -250,103 +246,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\Src\boDateUtils.cpp"
+				RelativePath="..\Src\pre_ccwtl.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\BomUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\cpp_lpstr.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\cpp_string.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\cppCharUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\IDirIter_Boost.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\ITStream.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\LibLoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\pre_cc.cpp"
-				>
-				<FileConfiguration
-					Name="Debug_RTL|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_RTL|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_Static|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release_Static|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\Src\ScanDirectory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\smException.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\win_str.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winBuffers.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winClasses.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winOSUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winVersion.cpp"
+				RelativePath="..\Src\wtlUtils.cpp"
 				>
 			</File>
 		</Filter>
@@ -356,115 +260,27 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\include\boDateUtils.h"
+				RelativePath="..\Src\pre_ccwtl.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\BomUtils.h"
+				RelativePath="..\include\wtlPropertyGrid.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_array.hpp"
+				RelativePath="..\include\wtlPropertyItem.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_atomic.hpp"
+				RelativePath="..\include\wtlPropertyItemEditors.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_db.h"
+				RelativePath="..\include\wtlPropertyItemImpl.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_memory.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_lpstr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_sstream.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_string.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cppCharUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\IDirIter_Boost.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\IDirIterator.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ITStream.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\LibLoader.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\pre_cc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\predef_cc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\RefCnt.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ScanDirectory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\SharedFlag.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\smException.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\Thread.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\utf8.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\win_str.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winBuffers.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winClasses.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winOSUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winVersion.h"
+				RelativePath="..\include\wtlUtils.h"
 				>
 			</File>
 		</Filter>
@@ -474,10 +290,6 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
-		<File
-			RelativePath=".\ccLib.vsprops"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
