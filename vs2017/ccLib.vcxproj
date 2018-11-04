@@ -77,6 +77,7 @@
     <ClInclude Include="..\include\cpp_lpstr.h" />
     <ClInclude Include="..\include\cpp_sstream.h" />
     <ClInclude Include="..\include\cpp_string.h" />
+    <ClInclude Include="..\include\cpp_StringList.h" />
     <ClInclude Include="..\include\IDirIterator.h" />
     <ClInclude Include="..\include\IDirIter_Boost.h" />
     <ClInclude Include="..\include\ITStream.h" />

@@ -171,6 +171,9 @@
     <ClInclude Include="..\include\cc_db.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\cpp_StringList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccLib.props" />
