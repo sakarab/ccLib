@@ -90,19 +90,22 @@ namespace cclib
         static const wchar_t r_bracket = L']';
     };
 
-    // Reminder: LFLF, CRCR and LFCR are **NOT** valid combinations
-    // on entry 'ch' is assumed to be CR or LF
-    template <class IT, class CH> void AdvanceOverCRLF( IT& it, IT end, CH ch )
+    namespace implementetion
     {
-        if ( it != end )
+        // Reminder: LFLF, CRCR and LFCR are **NOT** valid combinations
+        // on entry 'ch' is assumed to be CR or LF
+        template <class IT, class CH> void AdvanceOverCRLF( IT& it, IT end, CH ch )
         {
-            ++it;
-            if ( ch == CharConstant<CH>::cr && it != end )
+            if ( it != end )
             {
-                CH      ch_2 = *it;
+                ++it;
+                if ( ch == CharConstant<CH>::cr && it != end )
+                {
+                    CH      ch_2 = *it;
 
-                if ( ch == CharConstant<CH>::lf )
-                    ++it;
+                    if ( ch == CharConstant<CH>::lf )
+                        ++it;
+                }
             }
         }
     }

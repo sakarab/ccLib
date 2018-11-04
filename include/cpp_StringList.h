@@ -44,10 +44,10 @@ namespace cclib
             buffer.push_back( delimiter );
         }
         if ( buffer.empty() )
-            return str_type();
+            return string_type();
         else
             buffer.resize( buffer.size() - 1 );
-        return str_type( &buffer.front(), buffer.size() );
+        return string_type( &buffer.front(), buffer.size() );
     }
 
     // vector<string> DelimitedText( string text, char delimiter )
@@ -61,16 +61,16 @@ namespace cclib
         typedef std::vector<string_type>                                            list_type;
 
         std::size_t     start = 0;
-        std::size_t     end_pos = value.find_first_of( delimiter, start );
+        std::size_t     end_pos = sstr.find_first_of( delimiter, start );
 
-        while ( end_pos != str_type::npos )
+        while ( end_pos != string_type::npos )
         {
-            list.push_back( value.substr( start, end_pos - start ) );
+            list.push_back( sstr.substr( start, end_pos - start ) );
             start = end_pos + 1;
-            end_pos = value.find_first_of( delimiter, start );
+            end_pos = sstr.find_first_of( delimiter, start );
         }
-        if ( start < value.length() )
-            list.push_back( value.substr( start ) );
+        if ( start < sstr.length() )
+            list.push_back( sstr.substr( start ) );
     }
 
     template <class CH>
@@ -132,7 +132,7 @@ namespace cclib
                 ch = *begin;
             }
             list.push_back( string_type( start, begin ) );
-            AdvanceOverCRLF( begin, end, ch );
+            implementetion::AdvanceOverCRLF( begin, end, ch );
         }
     }
 
