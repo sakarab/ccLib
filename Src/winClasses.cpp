@@ -100,13 +100,13 @@ namespace ccwin
 
     TStringList::size_type TStringList::IndexOf( const std::wstring& str )
     {
-        class find_func : public std::unary_function<std::wstring, bool>
+        class find_func
         {
         private:
             std::wstring  mValue;
         public:
             find_func( const std::wstring& str ) : mValue( str ) {} // empty
-            result_type operator()( const argument_type& str )
+            bool operator()( const std::wstring& str )
             {
                 return CompareText( mValue, str ) == 0;
             }
