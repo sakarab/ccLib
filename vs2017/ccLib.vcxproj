@@ -37,6 +37,7 @@
   <ItemGroup>
     <ClCompile Include="..\Src\boDateUtils.cpp" />
     <ClCompile Include="..\Src\BomUtils.cpp" />
+    <ClCompile Include="..\Src\cc_db.cpp" />
     <ClCompile Include="..\Src\cc_odbc.cpp" />
     <ClCompile Include="..\Src\cppCharUtils.cpp" />
     <ClCompile Include="..\Src\cpp_lpstr.cpp" />
