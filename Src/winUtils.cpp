@@ -42,9 +42,9 @@ namespace
 namespace ccwin
 {
 
-    /************************************************************
-    ********    File Name Functions
-    ***********************************************************/
+    //===========================================================
+    //======    File Name Functions
+    //===========================================================
     std::wstring ExtractFileDrive( const std::wstring& fname )
     {
         if ( fname.length() >= 2 && fname[1] == DriveDelim )
@@ -104,9 +104,9 @@ namespace ccwin
         return fname.substr( 0, last_dot_pos ).append( ext );
     }
 
-    /************************************************************
-    ********    File Manipulation Functions
-    ***********************************************************/
+    //===========================================================
+    //======    File Manipulation Functions
+    //===========================================================
     bool FileExists( const std::wstring& fname )
     {
         DWORD   code = GetFileAttributes( fname.c_str() );
@@ -151,6 +151,25 @@ namespace ccwin
         if ( len > 0 && str[len - 1] == PathDelim )
             return str.substr( 0, len - 1 );
         return str;
+    }
+
+    //===========================================================
+    //======    Resource Helper Functions
+    //===========================================================
+    std::wstring ResourceString( HINSTANCE hInstance, UINT uID )
+    {
+        int             len = 0;
+        const wchar_t * buffer = ResourceStringPtr( hInstance, uID, len );
+
+        return std::wstring( buffer, len );
+    }
+
+    const wchar_t *ResourceStringPtr( HINSTANCE hInstance, UINT uID, int& len )
+    {
+        LPTSTR      buffer = nullptr;
+
+        len = LoadString( hInstance, uID, reinterpret_cast<LPTSTR>(&buffer), 0 );
+        return buffer;
     }
 
     /************************************************************

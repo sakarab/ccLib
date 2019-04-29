@@ -34,10 +34,9 @@
 
 namespace ccwin
 {
-
-    /************************************************************
-    ********    File Name Functions
-    ***********************************************************/
+    //===========================================================
+    //======    File Name Functions
+    //===========================================================
     std::wstring IncludeTrailingPathDelimiter( const std::wstring& str );
     std::wstring ExcludeTrailingPathDelimiter( const std::wstring& str );
     std::wstring ExtractFileDrive( const std::wstring& fname );
@@ -46,14 +45,20 @@ namespace ccwin
     std::wstring BaseFileName( const std::wstring& fname );
     std::wstring ChangeFileExt( const std::wstring& fname, const std::wstring& ext );
 
-    /************************************************************
-    ********    File Manipulation Functions
-    ***********************************************************/
+    //===========================================================
+    //======    File Manipulation Functions
+    //===========================================================
     bool FileExists( const std::wstring& fname );
     bool DirectoryExists( const std::wstring& directory );
     inline bool IsFile( const std::wstring& fname )             { return FileExists( fname ); }
     inline bool IsDirectory( const std::wstring& directory )    { return DirectoryExists( directory ); }
     bool ForceDirectories( const std::wstring& dir );
+
+    //===========================================================
+    //======    Resource Helper Functions
+    //===========================================================
+    std::wstring ResourceString( HINSTANCE hInstance, UINT uID );
+    const wchar_t *ResourceStringPtr( HINSTANCE hInstance, UINT uID, int& len );
 
 #pragma region Common Directories
     /************************************************************
