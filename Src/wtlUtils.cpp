@@ -21,9 +21,30 @@
 
 #include "pre_ccwtl.h"
 #include "wtlUtils.h"
+#include <atlapp.h>
 
 namespace ccwtl
 {
+    //===========================================================
+    //======    Resource Helper Functions
+    //===========================================================
+    std::wstring ResourceString( UINT uID )
+    {
+        int             len = 0;
+        const wchar_t * buffer = ResourceStringPtr( uID, len );
+
+        return std::wstring( buffer, len );
+    }
+
+    const wchar_t * ResourceStringPtr( UINT uID, int& len )
+    {
+        return WTL::AtlGetStringPtr( uID, &len );
+    }
+
+
+    //=======================================================================
+    //==============    getControlText<T>
+    //=======================================================================
     std::wstring Get_Text( CComboBox& cb )
     {
         int         idx = cb.GetCurSel();

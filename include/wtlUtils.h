@@ -36,6 +36,15 @@
 
 namespace ccwtl
 {
+    //===========================================================
+    //======    Resource Helper Functions
+    //===========================================================
+    std::wstring    ResourceString( UINT uID );
+    const wchar_t * ResourceStringPtr( UINT uID, int& len );
+
+    //=======================================================================
+    //==============    getControlText<T>
+    //=======================================================================
     template <class CTRL> std_string getControlText( CTRL& ctrl )
     {
         int                     len = ctrl.GetWindowTextLength() + 1;
