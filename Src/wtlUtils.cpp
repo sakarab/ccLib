@@ -36,11 +36,15 @@ namespace ccwtl
         return std::wstring( buffer, len );
     }
 
+    const wchar_t * ResourceStringPtr( UINT uID )
+    {
+        return WTL::AtlGetStringPtr( uID, NULL );
+    }
+
     const wchar_t * ResourceStringPtr( UINT uID, int& len )
     {
         return WTL::AtlGetStringPtr( uID, &len );
     }
-
 
     //=======================================================================
     //==============    getControlText<T>

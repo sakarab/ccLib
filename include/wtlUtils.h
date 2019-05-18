@@ -40,6 +40,7 @@ namespace ccwtl
     //======    Resource Helper Functions
     //===========================================================
     std::wstring    ResourceString( UINT uID );
+    const wchar_t * ResourceStringPtr( UINT uID );
     const wchar_t * ResourceStringPtr( UINT uID, int& len );
 
     //=======================================================================
