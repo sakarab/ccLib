@@ -29,6 +29,9 @@
     <ClInclude Include="..\Src\pre_ccwtl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\wtlFilesDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\wtlUtils.cpp">

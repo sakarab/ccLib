@@ -48,6 +48,7 @@
     <ClCompile Include="..\Src\wtlUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\wtlFilesDlg.h" />
     <ClInclude Include="..\include\wtlPropertyGrid.h" />
     <ClInclude Include="..\include\wtlPropertyItem.h" />
     <ClInclude Include="..\include\wtlPropertyItemEditors.h" />
