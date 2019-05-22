@@ -214,6 +214,79 @@ namespace ccwtl
         }
     };
 
+    //=======================================================================
+    //==============    CHDrop
+    //=======================================================================
+    template <class CHAR> class CHDrop
+    {
+        HDROP   m_hd;
+        bool    bHandled;               // Checks if resources should be released.
+        CHAR    m_buff[MAX_PATH + 5];   // DragQueryFile() wants LPTSTR.
+    public:
+        CHDrop( WPARAM wParam )
+            : m_hd( reinterpret_cast<HDROP>(wParam) ), bHandled(false)
+        {
+            m_buff[0] = '\0';
+        }
+
+        ~CHDrop()
+        {
+            if ( bHandled )
+                ::DragFinish( m_hd );
+        }
+
+        // Helper function, detects if the message is meant for 'this' window.
+        BOOL IsInClientRect( HWND hw )
+        {
+            ATLASSERT( ::IsWindow( hw ) );
+
+            POINT       p;
+
+            ::DragQueryPoint( m_hd, &p );
+
+            RECT        rc;
+
+            ::GetClientRect( hw, &rc );
+
+            return ::PtInRect( &rc, p );
+        }
+
+        // This function returns the number of files dropped on the window by the current operation.
+        UINT GetNumFiles( void )
+        {
+            return ::DragQueryFile( m_hd, 0xffffFFFF, NULL, 0 );
+        }
+
+        // This function gets the whole file path for a file, given its ordinal number.
+        UINT GetDropedFile( UINT iFile )
+        {
+            bHandled = true;
+            return ::DragQueryFile( m_hd, iFile, m_buff, MAX_PATH );
+        }
+
+        std_string GetDropedFileName()              { return std_string( m_buff ); }
+
+#ifdef _WTL_USE_CSTRING
+        // CString overload for DragQueryFile (not used here, might be used by a handler
+        // which is implemented outside CDropFilesHandler<T>.
+        UINT GetDropedFile( UINT iFile, CString &cs )
+        {
+            bHandled = true;
+
+            UINT    ret = ::DragQueryFile( m_hd, iFile, m_buff, MAX_PATH );
+
+            cs = m_buff;
+            return ret;
+        }
+
+        //inline operator CString() const         { return CString( m_buff ); }
+#endif
+        // Other string overloads (such as std::string) might come handy...
+
+        // This class can 'be' the currently held file's path.
+        //inline operator const CHAR *() const    { return m_buff; }
+    }; // class CHDrop
+
 }
 
 #endif
