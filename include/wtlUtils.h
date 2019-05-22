@@ -27,6 +27,7 @@
 #include <string>
 #include "cpp_string.h"
 #include <atlctrls.h>
+#include <ShellAPI.h>
 #include "winClasses.h"
 
 #define WTL_CLASS_USER                  WM_USER + 1000
