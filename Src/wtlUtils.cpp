@@ -77,26 +77,49 @@ namespace ccwtl
         return std::wstring();
     }
 
+    namespace
+    {
+        bool Menu_ToggleChecked( HMENU menu, int menu_id )
+        {
+            MENUITEMINFO    mii;
+
+            mii.cbSize = sizeof( MENUITEMINFO );
+            mii.fMask = MIIM_STATE;
+            ::GetMenuItemInfo( menu, menu_id, FALSE, &mii );
+            mii.fState ^= MFS_CHECKED;
+            ::SetMenuItemInfo( menu, menu_id, FALSE, &mii );
+            return (mii.fState & MFS_CHECKED) != 0;
+        }
+
+        bool Menu_GetChecked( HMENU menu, int menu_id )
+        {
+            MENUITEMINFO    mii;
+
+            mii.cbSize = sizeof( MENUITEMINFO );
+            mii.fMask = MIIM_STATE;
+            ::GetMenuItemInfo( menu, menu_id, FALSE, &mii );
+            return (mii.fState & MFS_CHECKED) != 0;
+        }
+    }
+
+
     bool Menu_ToggleChecked( CMenu& menu, int menu_id )
     {
-        MENUITEMINFO    mii;
-
-        mii.cbSize = sizeof( MENUITEMINFO );
-        mii.fMask = MIIM_STATE;
-        menu.GetMenuItemInfo( menu_id, FALSE, &mii );
-        mii.fState ^= MFS_CHECKED;
-        menu.SetMenuItemInfo( menu_id, FALSE, &mii );
-        return (mii.fState & MFS_CHECKED) != 0;
+        return Menu_ToggleChecked( menu.m_hMenu, menu_id );
     }
 
     bool Menu_GetChecked( CMenu& menu, int menu_id )
     {
-        MENUITEMINFO    mii;
-
-        mii.cbSize = sizeof( MENUITEMINFO );
-        mii.fMask = MIIM_STATE;
-        menu.GetMenuItemInfo( menu_id, FALSE, &mii );
-        return (mii.fState & MFS_CHECKED) != 0;
+        return Menu_GetChecked( menu.m_hMenu, menu_id );
     }
 
+    bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id )
+    {
+        return Menu_ToggleChecked( menu.m_hMenu, menu_id );
+    }
+
+    bool Menu_GetChecked( CMenuHandle& menu, int menu_id )
+    {
+        return Menu_GetChecked( menu.m_hMenu, menu_id );
+    }
 }

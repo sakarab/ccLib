@@ -61,6 +61,8 @@ namespace ccwtl
 
     bool Menu_ToggleChecked( CMenu& menu, int menu_id );
     bool Menu_GetChecked( CMenu& menu, int menu_id );
+    bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id );
+    bool Menu_GetChecked( CMenuHandle& menu, int menu_id );
 
     //=======================================================================
     //==============    CFormSize<T>
