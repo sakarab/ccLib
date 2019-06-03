@@ -100,6 +100,17 @@ namespace ccwtl
             ::GetMenuItemInfo( menu, menu_id, FALSE, &mii );
             return (mii.fState & MFS_CHECKED) != 0;
         }
+
+        void Menu_SetChecked( HMENU menu, int menu_id )
+        {
+            MENUITEMINFO    mii;
+
+            mii.cbSize = sizeof( MENUITEMINFO );
+            mii.fMask = MIIM_STATE;
+            ::GetMenuItemInfo( menu, menu_id, FALSE, &mii );
+            mii.fState |= MFS_CHECKED;
+            ::SetMenuItemInfo( menu, menu_id, FALSE, &mii );
+        }
     }
 
 
@@ -113,6 +124,11 @@ namespace ccwtl
         return Menu_GetChecked( menu.m_hMenu, menu_id );
     }
 
+    void Menu_SetChecked( CMenu& menu, int menu_id )
+    {
+        Menu_SetChecked( menu.m_hMenu, menu_id );
+    }
+
     bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id )
     {
         return Menu_ToggleChecked( menu.m_hMenu, menu_id );
@@ -121,5 +137,10 @@ namespace ccwtl
     bool Menu_GetChecked( CMenuHandle& menu, int menu_id )
     {
         return Menu_GetChecked( menu.m_hMenu, menu_id );
+    }
+
+    void Menu_SetChecked( CMenuHandle& menu, int menu_id )
+    {
+        Menu_SetChecked( menu.m_hMenu, menu_id );
     }
 }
