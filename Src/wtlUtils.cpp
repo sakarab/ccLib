@@ -101,46 +101,25 @@ namespace ccwtl
             return (mii.fState & MFS_CHECKED) != 0;
         }
 
-        void Menu_SetChecked( HMENU menu, int menu_id )
+        void Menu_SetCheck( HMENU menu, int menu_id, bool value )
         {
             MENUITEMINFO    mii;
 
             mii.cbSize = sizeof( MENUITEMINFO );
             mii.fMask = MIIM_STATE;
             ::GetMenuItemInfo( menu, menu_id, FALSE, &mii );
-            mii.fState |= MFS_CHECKED;
+            if ( value )
+                mii.fState |= MFS_CHECKED;
+            else
+                mii.fState &= ~MFS_CHECKED;
             ::SetMenuItemInfo( menu, menu_id, FALSE, &mii );
         }
     }
 
-
-    bool Menu_ToggleChecked( CMenu& menu, int menu_id )
-    {
-        return Menu_ToggleChecked( menu.m_hMenu, menu_id );
-    }
-
-    bool Menu_GetChecked( CMenu& menu, int menu_id )
-    {
-        return Menu_GetChecked( menu.m_hMenu, menu_id );
-    }
-
-    void Menu_SetChecked( CMenu& menu, int menu_id )
-    {
-        Menu_SetChecked( menu.m_hMenu, menu_id );
-    }
-
-    bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id )
-    {
-        return Menu_ToggleChecked( menu.m_hMenu, menu_id );
-    }
-
-    bool Menu_GetChecked( CMenuHandle& menu, int menu_id )
-    {
-        return Menu_GetChecked( menu.m_hMenu, menu_id );
-    }
-
-    void Menu_SetChecked( CMenuHandle& menu, int menu_id )
-    {
-        Menu_SetChecked( menu.m_hMenu, menu_id );
-    }
+    bool Menu_ToggleChecked( CMenu& menu, int menu_id )                 { return Menu_ToggleChecked( menu.m_hMenu, menu_id ); }
+    bool Menu_GetChecked( CMenu& menu, int menu_id )                    { return Menu_GetChecked( menu.m_hMenu, menu_id ); }
+    void Menu_SetCheck( CMenu& menu, int menu_id, bool value )          { Menu_SetCheck( menu.m_hMenu, menu_id, value ); }
+    bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id )           { return Menu_ToggleChecked( menu.m_hMenu, menu_id ); }
+    bool Menu_GetChecked( CMenuHandle& menu, int menu_id )              { return Menu_GetChecked( menu.m_hMenu, menu_id ); }
+    void Menu_SetCheck( CMenuHandle& menu, int menu_id, bool value )    { Menu_SetCheck( menu.m_hMenu, menu_id, value ); }
 }
