@@ -106,13 +106,9 @@ namespace
     ********    String Functions (Comparison)
     ***********************************************************/
     template<class CH, class COMPARATOR>
-    int CompareTextIN( const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& S1,
-                       const std::basic_string< CH, std::char_traits<CH>, std::allocator<CH> >& S2,
-                       COMPARATOR compare )
+    int CompareTextIN( CH *S1, unsigned int S1_len, CH *S2, unsigned int S2_len, COMPARATOR compare )
     {
-        return compare( LOCALE_USER_DEFAULT, NORM_IGNORECASE,
-                        S1.c_str(), cclib::size_cast<unsigned int>(S1.length()),
-                        S2.c_str(), cclib::size_cast<unsigned int>(S2.length()) ) - 2;
+        return compare( LOCALE_USER_DEFAULT, NORM_IGNORECASE, S1, S1_len, S2, S2_len ) - 2;
     }
 
     /************************************************************
@@ -241,8 +237,11 @@ namespace ccwin
         return std::wstring();
     }
 
-    int CompareText( const std::string& S1, const std::string& S2 )                     { return CompareTextIN( S1, S2, CompareStringA ); }
-    int CompareText( const std::wstring& S1, const std::wstring& S2 )                   { return CompareTextIN( S1, S2, CompareStringW ); }
+    int CompareText( const std::string& S1, const std::string& S2 )                                     { return CompareTextIN( S1.c_str(), S1.length(), S2.c_str(), S2.length(), CompareStringA ); }
+    int CompareText( const std::wstring& S1, const std::wstring& S2 )                                   { return CompareTextIN( S1.c_str(), S1.length(), S2.c_str(), S2.length(), CompareStringW ); }
+    int CompareText( const char *S1, unsigned int S1_len, const char *S2, unsigned int S2_len )         { return CompareTextIN( S1, S1_len, S2, S2_len, CompareStringA ); }
+    int CompareText( const wchar_t *S1, unsigned int S1_len, const wchar_t *S2, unsigned int S2_len )   { return CompareTextIN( S1, S1_len, S2, S2_len, CompareStringW ); }
+
     std::wstring Trim( const std::wstring& str )                                        { return Trim_in( str ); }
     std::string Trim( const std::string& str )                                          { return Trim_in( str ); }
 
