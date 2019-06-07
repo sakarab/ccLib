@@ -67,6 +67,29 @@ namespace
         throw cclib::BaseException( boost::str( boost::format( "InvalidRegistryType %1%" ) % ccwin::NarrowStringStrict( name ) ) );
     }
 
+    /************************************************************
+    ********    TLargeInteger
+    ************************************************************/
+    class TLargeInteger
+    {
+    private:
+        LARGE_INTEGER   mVal;
+    public:
+        explicit TLargeInteger( int val )
+        {
+            mVal.u.LowPart = val;
+            mVal.u.HighPart = 0;
+        }
+        explicit TLargeInteger( long long val )
+        {
+            mVal.QuadPart = val;
+        }
+
+        LARGE_INTEGER& val()            { return mVal; }
+        operator LARGE_INTEGER()        { return mVal; }
+        operator long long()            { return mVal.QuadPart; }
+    };
+
 }
 // namespace
 
@@ -701,4 +724,135 @@ namespace ccwin
     //}
 #pragma endregion
 
+#pragma region TFileStreamEx
+    //===========================================================
+    //======    TFileStreamEx
+    //===========================================================
+    TFileStreamEx::TFileStreamEx( const TCHAR *FileName, WORD create_mode, WORD access_share_mode )
+        : ITStream(), mHandle(INVALID_HANDLE_VALUE), mFileName(FileName)
+    {
+        Open( FileName, create_mode, access_share_mode );
+    }
+
+    TFileStreamEx::TFileStreamEx( const std_string& FileName, WORD create_mode, WORD access_share_mode )
+        : ITStream(), mHandle(INVALID_HANDLE_VALUE), mFileName(FileName)
+    {
+        Open( FileName.c_str(), create_mode, access_share_mode );
+    }
+
+    TFileStreamEx::~TFileStreamEx()
+    {
+        Close();
+    }
+
+    void TFileStreamEx::Open( const TCHAR *fname, WORD create_mode, WORD access_share_mode )
+    {
+        static const ULONG AccessMode[3] = { GENERIC_READ, GENERIC_WRITE, GENERIC_READ | GENERIC_WRITE };
+        static const LONG  ShareMode[5]  = { 0, 0, FILE_SHARE_READ, FILE_SHARE_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE };
+
+        if (((create_mode & 3) < rfmOpenAlways) && ((access_share_mode & 0xF0) <= fmShareDenyNone) )
+        {
+            mHandle = CreateFile( fname,
+                                  AccessMode[access_share_mode & 3],
+                                  ShareMode[(access_share_mode & 0xF0) >> 4],
+                                  NULL,
+                                  create_mode,
+                                  FILE_ATTRIBUTE_NORMAL, 0 );
+
+            DWORD   last_error = GetLastError();
+
+            if ( mHandle == INVALID_HANDLE_VALUE )
+            {
+                if ( (create_mode == rfmCreateNew) || (create_mode == rfmCreateAlways) )
+                    throw std::runtime_error( boost::str( boost::format( "Unable to create file : %1%\n%2%" )
+                                                          % NarrowString( mFileName ) % SysErrorMessage( last_error ) ) );
+                else // rfmOpenExisting, rfmOpenAlways
+                    throw std::runtime_error( boost::str( boost::format( "Unable to open file : %1%\n%2%" )
+                                                          % NarrowString( mFileName ) % SysErrorMessage( last_error ) ) );
+            }
+        }
+    }
+
+    void TFileStreamEx::Close()
+    {
+        if ( IsOpen() )
+        {
+            CloseHandle( mHandle );
+            mHandle = INVALID_HANDLE_VALUE;
+        }
+    }
+
+    //virtual
+    void TFileStreamEx::Raise_LastError()
+    {
+        throw std::runtime_error( boost::str( boost::format( "Error: 0x%1%, %2%" )
+                                              % boost::io::group( std::uppercase, std::hex, mLastError )
+                                              % SysErrorMessage( mLastError ) ) );
+    }
+
+    //virtual
+    size_t TFileStreamEx::ReadInternal( void *buffer, size_t count )
+    {
+        DWORD   result = 0;
+
+        if ( ReadFile( mHandle, buffer, count, &result, NULL ) == 0 )
+        {
+            mLastError = GetLastError();
+            result = 0;
+        }
+        return result;
+    }
+
+    //virtual
+    size_t TFileStreamEx::WriteInternal( const void *buffer, size_t count )
+    {
+        DWORD    result = 0;
+
+        if ( WriteFile( mHandle, buffer, count, &result, NULL ) == 0 )
+        {
+            mLastError = GetLastError();
+            result = 0;
+        }
+        return result;
+    }
+
+    //virtual
+    cclib::ITStream::size_type TFileStreamEx::get_position() const
+    {
+        TLargeInteger   pos( 0 );
+
+        if ( SetFilePointerEx( mHandle, TLargeInteger( 0 ), &pos.val(), FILE_CURRENT ) == 0 )
+            RaiseLastOSError();
+        return pos;
+    }
+
+    //virtual
+    void TFileStreamEx::set_position( size_type value )
+    {
+        TLargeInteger   pos( value );
+
+        if ( SetFilePointerEx( mHandle, pos, NULL, FILE_BEGIN ) == 0 )
+            RaiseLastOSError();
+    }
+
+    //virtual
+    cclib::ITStream::size_type TFileStreamEx::get_size() const
+    {
+        TLargeInteger   pos( 0 );
+
+        if ( GetFileSizeEx( mHandle, &pos.val() ) == 0 )
+            RaiseLastOSError();
+        return pos;
+    }
+
+    //virtual
+    void TFileStreamEx::set_size( size_type value )
+    {
+        TLargeInteger   pos( value );
+
+        if ( SetFilePointerEx( mHandle, pos, NULL, FILE_BEGIN ) == 0 )
+            RaiseLastOSError();
+    }
+
+#pragma endregion
 }

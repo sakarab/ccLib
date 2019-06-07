@@ -28,6 +28,7 @@
 #include <vector>
 #include "cpp_string.h"
 #include "cc_array.hpp"
+#include "ITStream.h"
 
 namespace ccwin
 {
@@ -46,21 +47,6 @@ namespace ccwin
         container           mList;
 
         container::iterator IteratorOfName( const std::wstring& str );
-
-        // ch is CR or LF
-        template <class IT> bool AdvanceOverCRLF( IT& it, IT end, wchar_t& ch )
-        {
-            if ( it != end )
-            {
-                ++it;
-                if ( it != end )
-                {
-                    ch = *it;
-                    return (ch == cclib::CharConstant<wchar_t>::lf || ch == cclib::CharConstant<wchar_t>::cr);
-                }
-            }
-            return false;
-        }
 
         template <class IT> void TextIT( IT begin, IT end )
         {
@@ -82,10 +68,7 @@ namespace ccwin
                     ch = *begin;
                 }
                 mList.push_back( std::wstring( start, begin ) );
-
-                // Do it at most twice
-                if ( AdvanceOverCRLF( begin, end, ch ) )
-                    AdvanceOverCRLF( begin, end, ch );
+                cclib::AdvanceOverCRLF( begin, end, ch );
             }
         }
     public:
@@ -221,6 +204,54 @@ namespace ccwin
         bool GetKeyInfo( TRegKeyInfo& value );
 
         HKEY GetCurrentKey() const { return FCurrentKey; }
+    };
+#pragma endregion
+
+#pragma region TFileStreamEx
+    //===========================================================
+    //======    TFileStreamEx
+    //===========================================================
+    class TFileStreamEx : public cclib::ITStream
+    {
+    public:
+        // open modes
+        static const WORD rfmCreateNew      = CREATE_NEW;
+        static const WORD rfmCreateAlways   = CREATE_ALWAYS;
+        static const WORD rfmOpenExisting   = OPEN_EXISTING;
+        static const WORD rfmOpenAlways     = OPEN_ALWAYS;
+
+        static const WORD fmShareCompat = 0x0;
+        static const WORD fmShareExclusive = 0x10;
+        static const WORD fmShareDenyWrite = 0x20;
+        static const WORD fmShareDenyRead = 0x30;
+        static const WORD fmShareDenyNone = 0x40;
+    private:
+        HANDLE          mHandle;
+        std_string      mFileName;
+        DWORD           mLastError;
+        // ITStream
+        virtual void Raise_LastError() CC_OVERRIDE;
+        virtual size_t ReadInternal( void *mem, size_t count ) CC_OVERRIDE;
+        virtual size_t WriteInternal( const void *mem, size_t count ) CC_OVERRIDE;
+        virtual size_type get_position() const CC_OVERRIDE;
+        virtual void set_position( size_type value ) CC_OVERRIDE;
+        virtual size_type get_size() const CC_OVERRIDE;
+        virtual void set_size( size_type value ) CC_OVERRIDE;
+        // ITStream end
+
+        bool IsOpen()                                               { return ( mHandle != INVALID_HANDLE_VALUE ); }
+        void Open( const TCHAR *fname, WORD create_mode, WORD access_share_mode );
+        void Close();
+
+        // noncopyable
+        TFileStreamEx( const TFileStreamEx& src ) CC_EQ_DELETE;
+        TFileStreamEx& operator = ( const TFileStreamEx& src ) CC_EQ_DELETE;
+    public:
+        TFileStreamEx( const TCHAR *FileName, WORD create_mode, WORD access_share_mode );
+        TFileStreamEx( const std_string& FileName, WORD create_mode, WORD access_share_mode );
+        ~TFileStreamEx();
+
+        HANDLE GetHandle() const            { return mHandle; }
     };
 #pragma endregion
 
