@@ -31,7 +31,7 @@ namespace cclib
     // string DelimitedText( vector<string> list, char delimiter )
     template <class CH>
     std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>
-        DelimitedText( const std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list, CH delimiter )
+    DelimitedText( const std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list, CH delimiter )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
@@ -75,7 +75,7 @@ namespace cclib
 
     template <class CH>
     std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-        DelimitedText( const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr, CH delimiter )
+    DelimitedText( const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr, CH delimiter )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
@@ -91,7 +91,7 @@ namespace cclib
     // string from vector<string>
     template <class CH>
     std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>
-        Text( const std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list )
+    Text( const std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
@@ -117,8 +117,6 @@ namespace cclib
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
 
-        if ( begin == end )
-            return;
         while ( begin != end )
         {
             IT      start = begin;
@@ -132,13 +130,13 @@ namespace cclib
                 ch = *begin;
             }
             list.push_back( string_type( start, begin ) );
-            implementetion::AdvanceOverCRLF( begin, end, ch );
+            AdvanceOverCRLF( begin, end, ch );
         }
     }
 
     template <class IT, class CH>
     std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-        Text( const IT& begin, const IT& end )
+    Text( const IT& begin, const IT& end )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
@@ -159,7 +157,7 @@ namespace cclib
 
     template <class IT, class CH>
     std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-        Text( const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr )
+    Text( const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr )
     {
         return Text( sstr.begin(), sstr.end() );
     }
