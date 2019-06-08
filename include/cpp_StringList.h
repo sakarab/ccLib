@@ -112,7 +112,7 @@ namespace cclib
     // vector from string iterators
     template <class IT, class CH>
     void Text( std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list,
-               const IT& begin, const IT& end )
+               IT begin, IT end )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
@@ -136,14 +136,14 @@ namespace cclib
 
     template <class IT, class CH>
     std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-    Text( const IT& begin, const IT& end )
+    Text( IT begin, IT end )
     {
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
 
         list_type   result;
 
-        TextIT( result, begin, end );
+        Text( result, begin, end );
         return result;
     }
 
