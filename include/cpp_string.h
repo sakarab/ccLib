@@ -90,6 +90,36 @@ namespace cclib
         static const wchar_t r_bracket = L']';
     };
 
+    template <class T> struct stru      {};
+
+    template <> struct stru<char>
+    {
+        typedef     char        char_type;
+
+        static char *strcpy( char *dest, const char *src )                      { return std::strcpy( dest, src ); }
+        static size_t strlen( const char *s )                                   { return std::strlen( s ); }
+        static const char *strrchr( const char *s, int c )                      { return std::strrchr( s, c ); }
+        static char *strrchr( char *s, int c )                                  { return std::strrchr( s, c ); }
+        static int strcmp( const char *s1, const char *s2 ) 	                { return std::strcmp( s1, s2 ); }
+        static int stricmp( const char *s1, const char *s2 )                    { return _stricmp( s1, s2 ); }
+        static int strncmp( const char *s1, const char *s2, size_t maxlen )     { return std::strncmp( s1, s2, maxlen ); }
+        static int strnicmp( const char *s1, const char *s2, size_t maxlen )    { return _strnicmp( s1, s2, maxlen ); }
+    };
+
+    template <> struct stru<wchar_t>
+    {
+        typedef     wchar_t     char_type;
+
+        static wchar_t *strcpy( wchar_t *dest, const wchar_t *src )                 { return std::wcscpy( dest, src ); }
+        static size_t strlen( const wchar_t *s )                                    { return std::wcslen( s ); }
+        static const wchar_t *strrchr( const wchar_t *s, wchar_t c )                { return std::wcsrchr( s, c ); }
+        static wchar_t *strrchr( wchar_t *s, wchar_t c )                            { return std::wcsrchr( s, c ); }
+        static int strcmp( const wchar_t *s1, const wchar_t *s2 )                   { return std::wcscmp( s1, s2 ); }
+        static int stricmp( const wchar_t *s1, const wchar_t *s2 )                  { return _wcsicmp( s1, s2 ); }
+        static int strncmp( const wchar_t *s1, const wchar_t *s2, size_t maxlen )   { return std::wcsncmp( s1, s2, maxlen ); }
+        static int strnicmp( const wchar_t *s1, const wchar_t *s2, size_t maxlen )  { return _wcsnicmp( s1, s2, maxlen ); }
+    };
+
     // Reminder: LFLF, CRCR and LFCR are **NOT** valid combinations
     // on entry 'ch' is assumed to be CR or LF
     template <class IT, class CH> void AdvanceOverCRLF( IT& it, IT end, CH ch )
