@@ -96,11 +96,13 @@ namespace cclib
 
 #pragma region Text
     // string from vector<string>::iterators
-    template <class CH>
-    typename type_helper<CH>::string_type
-    Text( typename type_helper<CH>::list_type::const_iterator begin,
-          typename type_helper<CH>::list_type::const_iterator end )
+    template <class IT>
+    typename std::iterator_traits<IT>::value_type
+    StringFromListIT( IT begin, IT end )
     {
+        using STR = typename std::iterator_traits<IT>::value_type;
+        using CH = typename STR::value_type;
+
         std::vector<CH>     buffer;
 
         while ( begin != end )
@@ -111,8 +113,9 @@ namespace cclib
             ++begin;
         }
         if ( buffer.empty() )
-            return type_helper<CH>::string_type();
-        return type_helper<CH>::string_type( &buffer.front(), buffer.size() );
+            return STR();
+        return STR( &buffer.front(), buffer.size() );
+
     }
 
     // string from vector<string>
@@ -120,19 +123,24 @@ namespace cclib
     typename type_helper<CH>::string_type
     Text( const typename type_helper<CH>::list_type& list )
     {
-        return Text<CH>( list.cbegin(), list.cend() );
+        return StringFromListIT( list.cbegin(), list.cend() );
     }
 
     // vector from string::iterators
-    template <class CH>
-    void Text( typename type_helper<CH>::list_type& list,
-               typename type_helper<CH>::string_type::const_iterator begin,
-               typename type_helper<CH>::string_type::const_iterator end )
+    template <class IT>
+    std::vector<typename type_helper<typename std::iterator_traits<IT>::value_type>::string_type>
+    ListFromStringIT( IT begin, IT end )
     {
+        using CH = typename std::iterator_traits<IT>::value_type;
+        using STR = typename type_helper<CH>::string_type;
+        using LIST = std::vector<STR>;
+
+        LIST    result;
+
         while ( begin != end )
         {
-            typename type_helper<CH>::string_type::const_iterator   start = begin;
-            CH                                                      ch = *begin;
+            typename STR::const_iterator      start = begin;
+            CH                          ch = *begin;
 
             while ( ch != CharConstant<CH>::cr && ch != CharConstant<CH>::lf )
             {
@@ -141,35 +149,17 @@ namespace cclib
                     break;
                 ch = *begin;
             }
-            list.push_back( typename type_helper<CH>::string_type( start, begin ) );
+            result.push_back( STR( start, begin ) );
             AdvanceOverCRLF( begin, end, ch );
         }
     }
 
-    template <class CH>
-    typename type_helper<CH>::list_type
-    Text( typename type_helper<CH>::string_type::const_iterator begin,
-          typename type_helper<CH>::string_type::const_iterator end )
-    {
-        typename type_helper<CH>::list_type     result;
-
-        Text<CH>( result, begin, end );
-        return result;
-    }
-
     // vector from string
-    template <class CH>
-    void Text( typename type_helper<CH>::list_type& list,
-               const typename type_helper<CH>::string_type& sstr )
-    {
-        Text<CH>( list, sstr.cbegin(), sstr.cend() );
-    }
-
     template <class CH>
     typename type_helper<CH>::list_type
     Text( const typename type_helper<CH>::string_type& sstr )
     {
-        return Text<CH>( sstr.cbegin(), sstr.cend() );
+        return ListFromStringIT( sstr.cbegin(), sstr.cend() );
     }
 #pragma endregion
 }
