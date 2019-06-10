@@ -114,9 +114,10 @@ namespace ccwin
         virtual void AppendToControl() CC_OVERRIDE;
         virtual void WriteChar( char_type ch ) CC_OVERRIDE;
     public:
-        TRitchEditStreambuf( HWND rich_edit, unsigned int size = 2048 )
-            : NewStreamBuf( size ), mWinHandle( rich_edit )
-        {}
+        TRitchEditStreambuf() : NewStreamBuf( 2048 ), mWinHandle()                                      {}
+        explicit TRitchEditStreambuf( unsigned int size ) : NewStreamBuf( size ), mWinHandle()          {}
+
+        void Attach( HWND win_handle )                                                                  { mWinHandle = win_handle; }
     };
 
 } // namespace ccwin
