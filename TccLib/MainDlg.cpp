@@ -7,6 +7,7 @@
 
 #include "aboutdlg.h"
 #include "MainDlg.h"
+#include "cclib_tests.h"
 
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
 {
@@ -21,7 +22,9 @@ BOOL CMainDlg::OnIdle()
 
 LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	// center the dialog on the screen
+    DlgResize_Init( true, true, WS_THICKFRAME | WS_CLIPCHILDREN );
+
+    // center the dialog on the screen
 	CenterWindow();
 
 	// set icons
@@ -29,6 +32,9 @@ LRESULT CMainDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam
 	SetIcon(hIcon, TRUE);
 	HICON hIconSmall = AtlLoadIconImage(IDR_MAINFRAME, LR_DEFAULTCOLOR, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON));
 	SetIcon(hIconSmall, FALSE);
+
+    mLog.Attach( GetDlgItem( IDC_RICHEDIT2_LOG ) );
+    mLogger.Attach( mLog );
 
 	// register object for message filtering and idle updates
 	CMessageLoop* pLoop = _Module.GetMessageLoop();
@@ -54,8 +60,9 @@ LRESULT CMainDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 
 LRESULT CMainDlg::OnAppAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	CAboutDlg dlg;
-	dlg.DoModal();
+	CAboutDlg   dlg;
+
+    dlg.DoModal();
 	return 0;
 }
 
@@ -70,6 +77,18 @@ LRESULT CMainDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 {
 	CloseDialog(wID);
 	return 0;
+}
+
+LRESULT CMainDlg::OnClearLog( WORD, WORD wID, HWND, BOOL & )
+{
+    mLog.SetWindowText( _TEXT("") );
+    return LRESULT();
+}
+
+LRESULT CMainDlg::OnTestStringList( WORD, WORD wID, HWND, BOOL & )
+{
+    testStringList( mLogger );
+    return LRESULT();
 }
 
 void CMainDlg::CloseDialog(int nVal)

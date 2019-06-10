@@ -41,7 +41,9 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	hRes = _Module.Init(NULL, hInstance);
 	ATLASSERT(SUCCEEDED(hRes));
 
-	int nRet = Run(lpstrCmdLine, nCmdShow);
+    HINSTANCE   hInstRich = ::LoadLibrary( CRichEditCtrl::GetLibraryName() );
+    int nRet = Run(lpstrCmdLine, nCmdShow);
+    ::FreeLibrary( hInstRich );
 
 	_Module.Term();
 	::CoUninitialize();
