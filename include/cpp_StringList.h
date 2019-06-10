@@ -24,9 +24,16 @@
 
 #include <string>
 #include <vector>
+#include <cpp_string.h>
 
 namespace cclib
 {
+    template <class CH> struct type_helper
+    {
+        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
+        typedef std::vector<string_type>                                            list_type;
+    };
+
 #pragma region DelimitedText
     // string DelimitedText( vector<string> list, char delimiter )
     template <class CH>
@@ -88,39 +95,44 @@ namespace cclib
 #pragma endregion
 
 #pragma region Text
-    // string from vector<string>
+    // string from vector<string>::iterators
     template <class CH>
-    std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>
-    Text( const std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list )
+    typename type_helper<CH>::string_type
+    Text( typename type_helper<CH>::list_type::const_iterator begin,
+          typename type_helper<CH>::list_type::const_iterator end )
     {
-        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
-        typedef std::vector<string_type>                                            list_type;
-
         std::vector<CH>     buffer;
-
-        for ( const string_type& sstr : list )
-        {
-            buffer.insert( buffer.end(), sstr.begin(), sstr.end() );
-            buffer.push_back( CharConstant<CH>::cr );
-            buffer.push_back( CharConstant<CH>::lf );
-        }
-        if ( buffer.empty() )
-            return string_type();
-        return string_type( &buffer.front(), buffer.size() );
-    }
-
-    // vector from string iterators
-    template <class IT, class CH>
-    void Text( std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list,
-               IT begin, IT end )
-    {
-        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
-        typedef std::vector<string_type>                                            list_type;
 
         while ( begin != end )
         {
-            IT      start = begin;
-            CH      ch = *begin;
+            buffer.insert( buffer.end(), begin->begin(), begin->end() );
+            buffer.push_back( CharConstant<CH>::cr );
+            buffer.push_back( CharConstant<CH>::lf );
+            ++begin;
+        }
+        if ( buffer.empty() )
+            return type_helper<CH>::string_type();
+        return type_helper<CH>::string_type( &buffer.front(), buffer.size() );
+    }
+
+    // string from vector<string>
+    template <class CH>
+    typename type_helper<CH>::string_type
+    Text( const typename type_helper<CH>::list_type& list )
+    {
+        return Text<CH>( list.cbegin(), list.cend() );
+    }
+
+    // vector from string::iterators
+    template <class CH>
+    void Text( typename type_helper<CH>::list_type& list,
+               typename type_helper<CH>::string_type::const_iterator begin,
+               typename type_helper<CH>::string_type::const_iterator end )
+    {
+        while ( begin != end )
+        {
+            typename type_helper<CH>::string_type::const_iterator   start = begin;
+            CH                                                      ch = *begin;
 
             while ( ch != CharConstant<CH>::cr && ch != CharConstant<CH>::lf )
             {
@@ -129,37 +141,35 @@ namespace cclib
                     break;
                 ch = *begin;
             }
-            list.push_back( string_type( start, begin ) );
+            list.push_back( typename type_helper<CH>::string_type( start, begin ) );
             AdvanceOverCRLF( begin, end, ch );
         }
     }
 
-    template <class IT, class CH>
-    std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-    Text( IT begin, IT end )
+    template <class CH>
+    typename type_helper<CH>::list_type
+    Text( typename type_helper<CH>::string_type::const_iterator begin,
+          typename type_helper<CH>::string_type::const_iterator end )
     {
-        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
-        typedef std::vector<string_type>                                            list_type;
+        typename type_helper<CH>::list_type     result;
 
-        list_type   result;
-
-        Text( result, begin, end );
+        Text<CH>( result, begin, end );
         return result;
     }
 
     // vector from string
-    template <class IT, class CH>
-    void Text( std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>& list,
-               const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr )
+    template <class CH>
+    void Text( typename type_helper<CH>::list_type& list,
+               const typename type_helper<CH>::string_type& sstr )
     {
-        Text( list, sstr.begin(), sstr.end() );
+        Text<CH>( list, sstr.cbegin(), sstr.cend() );
     }
 
-    template <class IT, class CH>
-    std::vector<std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>>
-    Text( const std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>& sstr )
+    template <class CH>
+    typename type_helper<CH>::list_type
+    Text( const typename type_helper<CH>::string_type& sstr )
     {
-        return Text( sstr.begin(), sstr.end() );
+        return Text<CH>( sstr.cbegin(), sstr.cend() );
     }
 #pragma endregion
 }
