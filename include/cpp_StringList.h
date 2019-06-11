@@ -115,7 +115,6 @@ namespace cclib
         if ( buffer.empty() )
             return STR();
         return STR( &buffer.front(), buffer.size() );
-
     }
 
     // string from vector<string>
@@ -129,7 +128,7 @@ namespace cclib
     // vector from string::iterators
     template <class IT>
     std::vector<typename type_helper<typename std::iterator_traits<IT>::value_type>::string_type>
-    ListFromStringIT( IT begin, IT end )
+    ListFromCharIT( IT begin, IT end )
     {
         using CH = typename std::iterator_traits<IT>::value_type;
         using STR = typename type_helper<CH>::string_type;
@@ -139,8 +138,8 @@ namespace cclib
 
         while ( begin != end )
         {
-            typename STR::const_iterator      start = begin;
-            CH                          ch = *begin;
+            IT      start = begin;
+            CH      ch = *begin;
 
             while ( ch != CharConstant<CH>::cr && ch != CharConstant<CH>::lf )
             {
@@ -152,6 +151,7 @@ namespace cclib
             result.push_back( STR( start, begin ) );
             AdvanceOverCRLF( begin, end, ch );
         }
+        return result;
     }
 
     // vector from string
@@ -159,7 +159,7 @@ namespace cclib
     typename type_helper<CH>::list_type
     Text( const typename type_helper<CH>::string_type& sstr )
     {
-        return ListFromStringIT( sstr.cbegin(), sstr.cend() );
+        return ListFromCharIT( sstr.cbegin(), sstr.cend() );
     }
 #pragma endregion
 }
