@@ -220,11 +220,15 @@ namespace ccwin
         static const WORD rfmOpenExisting   = OPEN_EXISTING;
         static const WORD rfmOpenAlways     = OPEN_ALWAYS;
 
-        static const WORD fmShareCompat = 0x0;
-        static const WORD fmShareExclusive = 0x10;
-        static const WORD fmShareDenyWrite = 0x20;
-        static const WORD fmShareDenyRead = 0x30;
-        static const WORD fmShareDenyNone = 0x40;
+        static const WORD fmOpenRead        = 0x00;
+        static const WORD fmOpenWrite       = 0x01;
+        static const WORD fmOpenReadWrite   = 0x02;
+
+        static const WORD fmShareCompat     = 0x00;
+        static const WORD fmShareExclusive  = 0x10;
+        static const WORD fmShareDenyWrite  = 0x20;
+        static const WORD fmShareDenyRead   = 0x30;
+        static const WORD fmShareDenyNone   = 0x40;
     private:
         HANDLE          mHandle;
         std_string      mFileName;
