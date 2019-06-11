@@ -116,18 +116,43 @@ namespace
     ***********************************************************/
     template <class CHAR_T>
     std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >
-        Trim_in( const std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >& str )
+    Trim_in( const std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >& str )
     {
         typedef std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >   str_type;
 
         typename str_type::size_type    len = str.length();
         typename str_type::size_type    low = 0;
 
-        while ( low < len && static_cast<unsigned char>(str[low]) <= cclib::CharConstant<CHAR_T>::sp )
+        while ( low < len && str[low] <= cclib::CharConstant<CHAR_T>::sp )
             ++low;
-        while ( low < len && static_cast<unsigned char>(str[len - 1]) <= cclib::CharConstant<CHAR_T>::sp )
+        while ( low < len && str[len-1] <= cclib::CharConstant<CHAR_T>::sp )
             --len;
         return str.substr( low, len - low );
+    }
+
+    template <class CHAR_T>
+    std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >
+    TrimRight_in( const std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >& str )
+    {
+        typedef std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >   str_type;
+
+        typename str_type::size_type    len = str.length();
+
+        while ( 0 < len && str[len-1] <= cclib::CharConstant<CHAR_T>::sp )
+            --len;
+        return str.substr( 0, len );
+    }
+
+    template <class CHAR_T> void
+    InplaceTrimRight_in( std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >& str )
+    {
+        typedef std::basic_string< CHAR_T, std::char_traits<CHAR_T>, std::allocator<CHAR_T> >   str_type;
+
+        typename str_type::size_type    len = str.length();
+
+        while ( 0 < len && str[len-1] <= cclib::CharConstant<CHAR_T>::sp )
+            --len;
+        str.resize( len );
     }
 
     /************************************************************
@@ -242,8 +267,12 @@ namespace ccwin
     int CompareText( const char *S1, unsigned int S1_len, const char *S2, unsigned int S2_len )         { return CompareTextIN( S1, S1_len, S2, S2_len, CompareStringA ); }
     int CompareText( const wchar_t *S1, unsigned int S1_len, const wchar_t *S2, unsigned int S2_len )   { return CompareTextIN( S1, S1_len, S2, S2_len, CompareStringW ); }
 
-    std::wstring Trim( const std::wstring& str )                                        { return Trim_in( str ); }
-    std::string Trim( const std::string& str )                                          { return Trim_in( str ); }
+    std::wstring Trim( const std::wstring& str )        { return Trim_in( str ); }
+    std::string Trim( const std::string& str )          { return Trim_in( str ); }
+    std::wstring TrimRight( const std::wstring& str )   { return TrimRight_in( str ); }
+    std::string TrimRight( const std::string& str )     { return TrimRight_in( str ); }
+    void InplaceTrimRight( std::wstring& str )          { InplaceTrimRight_in( str ); }
+    void InplaceTrimRight( std::string& str )           { InplaceTrimRight_in( str ); }
 
     std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern )
     {

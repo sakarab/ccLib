@@ -190,8 +190,14 @@ namespace ccwin
     int CompareText( const std::wstring& S1, const std::wstring& S2 );
     int CompareText( const char *S1, unsigned int S1_len, const char *S2, unsigned int S2_len );
     int CompareText( const wchar_t *S1, unsigned int S1_len, const wchar_t *S2, unsigned int S2_len );
+
     std::wstring Trim( const std::wstring& str );
     std::string Trim( const std::string& str );
+    std::wstring TrimRight( const std::wstring& str );
+    std::string TrimRight( const std::string& str );
+    void InplaceTrimRight( std::wstring& str );
+    void InplaceTrimRight( std::string& str );
+
     std::string StringReplace( const std::string& str, const std::string& old_pattern, const std::string& new_pattern );
     std::wstring StringReplace( const std::wstring& str, const std::wstring& old_pattern, const std::wstring& new_pattern );
 
