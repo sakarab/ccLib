@@ -73,6 +73,10 @@ namespace ccwin
         }
     public:
         TStringList();
+        explicit TStringList( const container& list );
+#if defined(CC_HAVE_MOVE_CTOR)
+        explicit TStringList( container&& list );
+#endif
         ~TStringList();
 
 #if defined(CC_HAVE_COPY_DEFAULT)
@@ -112,11 +116,12 @@ namespace ccwin
     {
     private:
         typedef cclib::array<wchar_t, 8192>     TBuffer;
+        typedef cclib::array<wchar_t, 32767>    TLargeBuffer;
     private:
         std::wstring    mFileName;
         bool            mDirectoryExists;
 
-        int ReadProfile( const wchar_t *section, const wchar_t *key, const wchar_t *def, wchar_t *out, int out_size );
+        DWORD ReadProfile( const wchar_t *section, const wchar_t *key, const wchar_t *def, wchar_t *out, int out_size );
         void WriteProfile( const wchar_t *section, const wchar_t *key, const wchar_t *value );
         void FillStringList( const TBuffer& buffer, TStringList& list );
         void FillStringList( const TBuffer& buffer, std::vector<std::wstring>& list );
@@ -130,8 +135,12 @@ namespace ccwin
         const std::wstring& FileName() const                { return mFileName; }
 
         void ReadSections( TStringList& list );
+
+        std::vector<std::wstring> ReadSection( const wchar_t *section );
+        std::vector<std::wstring> ReadSectionKeys( const wchar_t *section );
         void ReadSectionKeys( const wchar_t *section, TStringList& list );
         void ReadSectionKeys( const wchar_t *section, std::vector<std::wstring>& list );
+
         void EraseSection( const wchar_t *section );
         void EraseKey( const wchar_t *section, const wchar_t *key );
 

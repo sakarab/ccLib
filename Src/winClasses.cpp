@@ -102,7 +102,20 @@ namespace ccwin
     ************************************************************/
     TStringList::TStringList()
         : mList()
-    {}
+    {
+    }
+
+    TStringList::TStringList( const container& list )
+        : mList( list )
+    {
+    }
+
+#if defined(CC_HAVE_MOVE_CTOR)
+    TStringList::TStringList( container&& list )
+        : mList( std::move(list) )
+    {
+    }
+#endif
 
     TStringList::~TStringList()
     {}
@@ -315,7 +328,7 @@ namespace ccwin
     TIniFile::~TIniFile()
     {}
 
-    int TIniFile::ReadProfile( const wchar_t * section, const wchar_t * key, const wchar_t * def, wchar_t * out, int out_size )
+    DWORD TIniFile::ReadProfile( const wchar_t * section, const wchar_t * key, const wchar_t * def, wchar_t * out, int out_size )
     {
         return GetPrivateProfileString( section, key, def, out, out_size, mFileName.c_str() );
     }
@@ -351,7 +364,7 @@ namespace ccwin
         {
             list.push_back( std::wstring( ptr ) );
 
-            TBuffer::size_type      diff = wcslen( ptr ) + 1;
+            TBuffer::size_type      diff = list.back().length() + 1;
 
             ptr += diff;
             idx += diff;
@@ -363,10 +376,33 @@ namespace ccwin
         list.Clear();
 
         TBuffer     buffer;
-        int         len = ReadProfile( nullptr, nullptr, nullptr, &buffer.front(), buffer.size() );
+        DWORD       len = ReadProfile( nullptr, nullptr, nullptr, &buffer.front(), buffer.size() );
 
         if ( len > 0 )
             FillStringList( buffer, list );
+    }
+
+    std::vector<std::wstring> TIniFile::ReadSection( const wchar_t * section )
+    {
+        std::unique_ptr<TLargeBuffer>   buffer = std::make_unique<TLargeBuffer>();
+        TLargeBuffer::value_type        *bptr = &(buffer->front());
+        DWORD                           bsize = GetPrivateProfileSection( section, bptr, buffer->size(), mFileName.c_str() );
+        std::vector<std::wstring>       result;
+
+        while ( *bptr != 0 )
+        {
+            result.push_back( bptr );
+            bptr += result.back().length() + 1;
+        }
+        return result;
+    }
+
+    std::vector<std::wstring> TIniFile::ReadSectionKeys( const wchar_t * section )
+    {
+        std::vector<std::wstring>   result;
+
+        ReadSectionKeys( section, result );
+        return result;
     }
 
     void TIniFile::ReadSectionKeys( const wchar_t *section, TStringList& list )
@@ -374,7 +410,7 @@ namespace ccwin
         list.Clear();
 
         TBuffer     buffer;
-        int         len = ReadProfile( section, nullptr, nullptr, &buffer.front(), buffer.size() );
+        DWORD       len = ReadProfile( section, nullptr, nullptr, &buffer.front(), buffer.size() );
 
         if ( len > 0 )
             FillStringList( buffer, list );
@@ -385,7 +421,7 @@ namespace ccwin
         list.clear();
 
         TBuffer     buffer;
-        int         len = ReadProfile( section, nullptr, nullptr, &buffer.front(), buffer.size() );
+        DWORD       len = ReadProfile( section, nullptr, nullptr, &buffer.front(), buffer.size() );
 
         if ( len > 0 )
             FillStringList( buffer, list );
@@ -427,7 +463,7 @@ namespace ccwin
     std::wstring TIniFile::ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def )
     {
         TBuffer     buffer;
-        int         len = ReadProfile( section, key, def, &buffer.front(), buffer.size() );
+        DWORD       len = ReadProfile( section, key, def, &buffer.front(), buffer.size() );
 
         return std::wstring( &buffer.front(), len );
     }
