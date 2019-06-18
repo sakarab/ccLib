@@ -85,7 +85,14 @@ namespace ccwtl
     private:
         typedef std::vector<COMDLG_FILTERSPEC>      FILTERSPEC_array;
 
-        FILTERSPEC_array MakeFilterString_7( const open_filter_list& filters );
+        FILTERSPEC_array MakeFilterString_7( const open_filter_list& filters )
+        {
+            FILTERSPEC_array    result;
+
+            for ( auto& item : filters )
+                result.push_back( {item.first, item.second} );
+            return result;
+        }
 
         template<typename DLG> FilesDlgResult FileDlg_7( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const open_filter_list& filters, HWND wnd )
         {
