@@ -1,5 +1,5 @@
-#ifndef __PROPERTYTREE__H
-#define __PROPERTYTREE__H
+#ifndef CCWTL_PROPERTYTREE__H
+#define CCWTL_PROPERTYTREE__H
 
 #pragma once
 

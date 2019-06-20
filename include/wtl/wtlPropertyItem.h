@@ -1,5 +1,5 @@
-#ifndef __PROPERTYITEM__H
-#define __PROPERTYITEM__H
+#ifndef CCWTL_PROPERTYITEM__H
+#define CCWTL_PROPERTYITEM__H
 
 #pragma once
 

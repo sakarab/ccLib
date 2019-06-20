@@ -49,11 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\wtlFilesDlg.h" />
-    <ClInclude Include="..\include\wtlPropertyGrid.h" />
-    <ClInclude Include="..\include\wtlPropertyItem.h" />
-    <ClInclude Include="..\include\wtlPropertyItemEditors.h" />
-    <ClInclude Include="..\include\wtlPropertyItemImpl.h" />
     <ClInclude Include="..\include\wtlUtils.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyGrid.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyItem.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyItemEditors.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyItemImpl.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyList.h" />
+    <ClInclude Include="..\include\wtl\wtlPropertyTree.h" />
     <ClInclude Include="..\Src\pre_ccwtl.h" />
   </ItemGroup>
   <ItemGroup>

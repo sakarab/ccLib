@@ -1,5 +1,5 @@
-#ifndef __PROPERTYLIST__H
-#define __PROPERTYLIST__H
+#ifndef CCWTL_PROPERTYLIST__H
+#define CCWTL_PROPERTYLIST__H
 
 #pragma once
 
