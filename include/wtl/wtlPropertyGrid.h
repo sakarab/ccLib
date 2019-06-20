@@ -32,16 +32,8 @@
   #error WTL requires C++ compilation (use a .cpp suffix)
 #endif
 
-#ifndef __ATLAPP_H__
-  #error PropertyGrid.h requires atlapp.h to be included first
-#endif
-
 #if (_WTL_VER < 0x0700)
    #error This file requires WTL version 7.0 or higher
-#endif
-
-#ifndef __ATLCTRLS_H__
-  #error PropertyGrid.h requires atlctrls.h to be included first
 #endif
 
 #if (_WIN32_IE < 0x0400)

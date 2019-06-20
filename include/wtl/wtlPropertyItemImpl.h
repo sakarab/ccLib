@@ -21,19 +21,9 @@
 // Beware of bugs.
 //
 
-#ifndef __PROPERTYITEM__H
-  #error PropertyItemImpl.h requires PropertyItem.h to be included first
-#endif
-
-#ifndef __PROPERTYITEMEDITORS__H
-  #error PropertyItemImpl.h requires PropertyItemEditors.h to be included first
-#endif
-
-#ifndef __ATLBASE_H__
-  #error PropertyItem.h requires atlbase.h to be included first
-#endif
-
-
+#include <atlbase.h>
+#include "wtlPropertyItem.h"
+#include "wtlPropertyItemEditors.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // Base CProperty class

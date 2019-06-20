@@ -21,9 +21,7 @@
 // Beware of bugs.
 //
 
-#ifndef __PROPERTYITEM__H
-  #error PropertyItemEditors.h requires PropertyItem.h to be included first
-#endif
+#include "wtlPropertyItem.h"
 
 #define PROP_TEXT_INDENT 2
 
