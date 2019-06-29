@@ -32,112 +32,24 @@
 
 namespace ccwtl
 {
-    typedef std::pair<LPCTSTR, LPCTSTR>                 open_filter_spec;
-    typedef std::initializer_list<open_filter_spec>     open_filter_list;
-
-    struct FilesDlgResult
+    namespace FilesDlg
     {
-        bool            OK;
-        std::wstring    FileName;
-    };
+        constexpr DWORD FileMustExist = OFN_FILEMUSTEXIST;
+        constexpr DWORD PathMustExist = OFN_PATHMUSTEXIST;
+        constexpr DWORD AllowMultiSelect = OFN_ALLOWMULTISELECT;
 
-    //=======================================================================
-    //======    FilesDlg
-    //=======================================================================
-    class FilesDlg
-    {
-#if WINVER < 0x0600
-    private:
-        std::wstring MakeFilterString_XP( const open_filter_list& filters )
+        typedef std::pair<LPCTSTR, LPCTSTR>             filter_spec;
+        typedef std::initializer_list<filter_spec>      filter_list;
+
+        struct Result
         {
-            std::wstring    result;
+            bool            OK;
+            std::wstring    FileName;
+        };
 
-            for ( const open_filter_spec& filter : filters )
-            {
-                result.append( filter.first );
-                result.append( 1, '\0' );
-                result.append( filter.second );
-                result.append( 1, '\0' );
-            }
-            result.append( 1, '\0' );
-            return result;
-        }
-
-        FilesDlgResult FileDlg_XP( BOOL is_open, const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const open_filter_list& filters, HWND wnd )
-        {
-            auto            fname = cclib::LPSTR( filename );
-            auto            filter = cclib::LPSTR( MakeFilterString_XP( filters ) );
-            CFileDialog     dlg( is_open,                                               // TRUE for FileOpen, FALSE for FileSaveAs
-                                    def_ext.empty() ? nullptr : def_ext.c_str(),           // LPCTSTR lpszDefExt = 
-                                    fname.get(),                                           // LPCTSTR lpszFileName = 
-                                    flags,                                                 // DWORD dwFlags = 
-                                    filter.get(),                                          // LPCTSTR lpszFilter =
-                                    wnd );
-
-            FilesDlgResult      result;
-
-            result.OK = dlg.DoModal( wnd ) == IDOK;
-            if ( result.OK )
-                result.FileName = std::wstring( dlg.m_szFileName );
-            return result;
-        }
-#else
-    private:
-        typedef std::vector<COMDLG_FILTERSPEC>      FILTERSPEC_array;
-
-        FILTERSPEC_array MakeFilterString_7( const open_filter_list& filters )
-        {
-            FILTERSPEC_array    result;
-
-            for ( auto& item : filters )
-                result.push_back( {item.first, item.second} );
-            return result;
-        }
-
-        template<typename DLG> FilesDlgResult FileDlg_7( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const open_filter_list& filters, HWND wnd )
-        {
-            auto                    fname = cclib::LPSTR( ccwin::ExtractFileName( filename ) );
-            FILTERSPEC_array        fspecs = MakeFilterString_7( filters );
-
-            DLG     dlg( fname.get(),                                       // LPCTSTR lpszFileName
-                         flags,
-                         def_ext.empty() ? nullptr : def_ext.c_str(),       // LPCTSTR lpszDefExt = 
-                         fspecs.empty() ? nullptr : &fspecs.front(),
-                         filters.size() );
-
-            FilesDlgResult      result;
-
-            result.OK = dlg.DoModal( wnd ) == IDOK;
-            if ( result.OK )
-            {
-                CString     sstr;
-
-                dlg.GetFilePath( sstr );
-                result.FileName = std::wstring( static_cast<LPCTSTR>(sstr) );
-
-            }
-            return result;
-        }
-#endif
-    public:
-        FilesDlgResult OpenDlg( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const open_filter_list& filters, HWND wnd )
-        {
-#if WINVER >= 0x0600
-            return FileDlg_7<CShellFileOpenDialog>( def_ext, filename, flags, filters, wnd );
-#else
-            return FileDlg_XP( TRUE, def_ext, filename, flags, filters, wnd );
-#endif
-        }
-
-        FilesDlgResult SaveDlg( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const open_filter_list& filters, HWND wnd )
-        {
-#if WINVER >= 0x0600
-            return FileDlg_7<CShellFileSaveDialog>( def_ext, filename, flags, filters, wnd );
-#else
-            return FileDlg_XP( FALSE, def_ext, filename, flags, filters, wnd );
-#endif
-        }
-    };
+        Result Open( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const filter_list& filters, HWND wnd );
+        Result Save( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const filter_list& filters, HWND wnd );
+    }
 }
 
 #endif

@@ -45,6 +45,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Src\wtlFilesDlg.cpp" />
     <ClCompile Include="..\Src\wtlUtils.cpp" />
   </ItemGroup>
   <ItemGroup>

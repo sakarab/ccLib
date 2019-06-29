@@ -46,6 +46,9 @@
     <ClCompile Include="..\Src\pre_ccwtl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\wtlFilesDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ccWtl.props" />
