@@ -147,10 +147,16 @@ namespace ccwin
         bool ReadBool( const wchar_t *section, const wchar_t *key, bool def );
         int ReadInteger( const wchar_t *section, const wchar_t *key, int def );
         std::wstring ReadString( const wchar_t *section, const wchar_t *key, const wchar_t *def );
+        bool Read( const wchar_t *section, const wchar_t *key, bool def )                       { return ReadBool( section, key, def ); }
+        int Read( const wchar_t *section, const wchar_t *key, int def )                         { return ReadInteger( section, key, def ); }
+        std::wstring Read( const wchar_t *section, const wchar_t *key, const wchar_t *def )     { return ReadString( section, key, def ); }
 
         void WriteBool( const wchar_t *section, const wchar_t *key, bool value );
         void WriteInteger( const wchar_t *section, const wchar_t *key, int value );
         void WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value );
+        void Write( const wchar_t *section, const wchar_t *key, bool value )                    { WriteBool( section, key, value ); }
+        void Write( const wchar_t *section, const wchar_t *key, int value )                     { WriteInteger( section, key, value ); }
+        void Write( const wchar_t *section, const wchar_t *key, const wchar_t *value )          { WriteString( section, key, value ); }
     };
 #pragma endregion
 
