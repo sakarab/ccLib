@@ -92,19 +92,6 @@ namespace ccwtl
         WindowState     mWindowState;
         bool            mSizeSet;
 
-        WindowState GetWindowState( T *pT )
-        {
-            WINDOWPLACEMENT     wp;
-
-            wp.length = sizeof( WINDOWPLACEMENT );
-            GetWindowPlacement( *pT, &wp );
-            if ( wp.showCmd == SW_SHOWMINIMIZED )
-                return WindowState::Minimized;
-            else if ( wp.showCmd == SW_SHOWMAXIMIZED )
-                return WindowState::Maximized;
-            return WindowState::Normal;
-        }
-
         WindowState GetWindowState_2( T *pT )
         {
             if ( IsIconic( *pT ) )
@@ -211,11 +198,14 @@ namespace ccwtl
 
         void Save( ccwin::TIniFile& ini )
         {
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Left" ).c_str(), mClientLeft );
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Top" ).c_str(), mClientTop );
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Width" ).c_str(), mClientWidth );
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Height" ).c_str(), mClientHeight );
-            ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(), static_cast<int>(mWindowState) );
+            if ( mSizeSet )
+            {
+                ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Left" ).c_str(), mClientLeft );
+                ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Top" ).c_str(), mClientTop );
+                ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Width" ).c_str(), mClientWidth );
+                ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"Height" ).c_str(), mClientHeight );
+                ini.WriteInteger( mSection.c_str(), std::wstring( mKeyPrefix ).append( L"ShowState" ).c_str(), static_cast<int>(mWindowState) );
+            }
         }
     };
 
