@@ -388,11 +388,16 @@ namespace ccwin
         TLargeBuffer::value_type        *bptr = &(buffer->front());
         DWORD                           bsize = GetPrivateProfileSection( section, bptr, buffer->size(), mFileName.c_str() );
         std::vector<std::wstring>       result;
+        DWORD                           total_length = 0;
 
-        while ( *bptr != 0 )
+        while ( *bptr != 0 && total_length < bsize )
         {
             result.push_back( bptr );
-            bptr += result.back().length() + 1;
+
+            DWORD   plus = result.back().length() + 1;
+
+            bptr += plus;
+            total_length += plus;
         }
         return result;
     }

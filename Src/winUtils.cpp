@@ -85,6 +85,15 @@ namespace ccwin
         return (pos != std::wstring::npos ? fname.substr( pos + 1 ) : fname);
     }
 
+    std::wstring ExtractFileExt( const std::wstring& fname )
+    {
+        std::wstring::size_type     pos = fname.find_last_of( DotDelim );
+
+        if ( pos == std::wstring::npos )
+            return std::wstring();
+        return fname.substr( 0, pos + 1 );
+    }
+
     std::wstring BaseFileName( const std::wstring& fname )
     {
         std::wstring                result = ExtractFileName( fname );

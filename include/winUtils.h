@@ -42,6 +42,7 @@ namespace ccwin
     std::wstring ExtractFileDrive( const std::wstring& fname );
     std::wstring ExtractFilePath( const std::wstring& fname );
     std::wstring ExtractFileName( const std::wstring& fname );
+    std::wstring ExtractFileExt( const std::wstring& fname );
     std::wstring BaseFileName( const std::wstring& fname );
     std::wstring ChangeFileExt( const std::wstring& fname, const std::wstring& ext );
 
