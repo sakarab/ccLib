@@ -52,8 +52,9 @@ namespace cclib
         }
         if ( buffer.empty() )
             return string_type();
-        else
-            buffer.resize( buffer.size() - 1 );
+        buffer.resize( buffer.size() - 1 );
+        if ( buffer.empty() )
+            return string_type();
         return string_type( &buffer.front(), buffer.size() );
     }
 
