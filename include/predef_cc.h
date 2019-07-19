@@ -32,6 +32,12 @@
 
 #if defined (BOOST_COMP_MSVC_AVAILABLE)
 
+// vs2017
+#if ( _MSC_VER >= 1900 )
+    #define CC_DEPRICATED_AUTO_PTR
+    #define CC_HAVE_ATTRIBUTES
+#endif
+
 // vs2013
 #if ( _MSC_VER >= 1800 )
     #define CC_HAVE_COPY_DELETE
@@ -94,4 +100,8 @@
     #define CC_OVERRIDE
 #endif
 
+#if defined (CC_HAVE_ATTRIBUTES)
+    #define CC_USE_ATTRIBUTE(x)     [[x]]
+#else
+    #define CC_USE_ATTRIBUTE(x)
 #endif
