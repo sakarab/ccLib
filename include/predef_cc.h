@@ -105,3 +105,5 @@
 #else
     #define CC_USE_ATTRIBUTE(x)
 #endif
+
+#endif
