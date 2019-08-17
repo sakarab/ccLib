@@ -6,6 +6,7 @@
 
 #include <predef_cc.h>
 #include <winBuffers.h>
+#include <wtl_msg_map.h>
 
 class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
                  public CDialogResize<CMainDlg>,
@@ -17,6 +18,10 @@ private:
 
     virtual BOOL PreTranslateMessage(MSG* pMsg) CC_OVERRIDE;
     virtual BOOL OnIdle() CC_OVERRIDE;
+    void GlobalHandleException( const std::exception& ex )
+    {
+        MessageBoxA( *this, ex.what(), "Error", MB_OK | MB_ICONHAND );
+    }
 
     void CloseDialog(int nVal);
 
@@ -32,7 +37,7 @@ private:
     LRESULT OnClearLog(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
     LRESULT OnTestStringList(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
-    BEGIN_MSG_MAP( CMainDlg )
+    BEGIN_MSG_MAP_XX( CMainDlg )
         MESSAGE_HANDLER( WM_INITDIALOG, OnInitDialog );
         MESSAGE_HANDLER( WM_DESTROY, OnDestroy );
         COMMAND_ID_HANDLER( ID_APP_ABOUT, OnAppAbout );

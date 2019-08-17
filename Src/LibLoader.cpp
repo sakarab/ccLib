@@ -50,7 +50,7 @@ namespace ccwin
         mDll = LoadLibrary( dll_name.c_str() );
         if ( mDll == 0 )
 #if defined (CC_HAVE_FMT_FORMAT)
-            throw cclib::BaseException( fmt::format( "{1}: library not found.", NarrowStringStrict( dll_name.native() ) ) );
+            throw cclib::BaseException( fmt::format( "{0}: library not found.", NarrowStringStrict( dll_name.native() ) ) );
 #else
             throw cclib::BaseException( boost::str( boost::format( "%1%: library not found." ) % NarrowStringStrict( dll_name.native() ) ) );
 #endif
@@ -59,7 +59,7 @@ namespace ccwin
     std::string LibLoader::EntryPointNotFound( const char *function_name )
     {
 #if defined (CC_HAVE_FMT_FORMAT)
-        return fmt::format( "{1}: entry point not found in {2}.", function_name, NarrowStringStrict( mDllName.filename().native() ) );
+        return fmt::format( "{0}: entry point not found in {1}.", function_name, NarrowStringStrict( mDllName.filename().native() ) );
 #else
         return boost::str( boost::format( "%1%: entry point not found in %2%." ) % function_name % NarrowStringStrict( mDllName.filename().native() ) );
 #endif

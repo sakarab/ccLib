@@ -255,7 +255,7 @@ namespace ccwin
     {
         if ( last_error != 0 )
 #if defined (CC_HAVE_FMT_FORMAT)
-            throw cclib::BaseException( fmt::format( "{1}\n{2}", SysErrorMessage( last_error ), message ) );
+            throw cclib::BaseException( fmt::format( "{0}\n{1}", SysErrorMessage( last_error ), message ) );
 #else
             throw cclib::BaseException( boost::str( boost::format( "%1%\n%2%" ) % SysErrorMessage( last_error ) % message ) );
 #endif

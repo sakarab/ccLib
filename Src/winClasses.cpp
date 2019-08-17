@@ -65,7 +65,7 @@ namespace
     void ReadError( const std::wstring& name )
     {
 #if defined (CC_HAVE_FMT_FORMAT)
-        throw cclib::BaseException( fmt::format( "InvalidRegistryType {1}", ccwin::NarrowStringStrict( name ) ) );
+        throw cclib::BaseException( fmt::format( "InvalidRegistryType {0}", ccwin::NarrowStringStrict( name ) ) );
 #else
         throw cclib::BaseException( boost::str( boost::format( "InvalidRegistryType %1%" ) % ccwin::NarrowStringStrict( name ) ) );
 #endif
@@ -489,7 +489,7 @@ namespace ccwin
     void TIniFile::WriteInteger( const wchar_t * section, const wchar_t * key, int value )
     {
 #if defined (CC_HAVE_FMT_FORMAT)
-        WriteString( section, key, fmt::format( L"{1}", value ).c_str() );
+        WriteString( section, key, fmt::format( L"{0}", value ).c_str() );
 #else
         WriteString( section, key, boost::str( boost::wformat( L"%1%" ) % value ).c_str() );
 #endif
@@ -801,7 +801,7 @@ namespace ccwin
     void TFileStreamEx::UnableTo( const char *message, DWORD last_os_error )
     {
 #if defined (CC_HAVE_FMT_FORMAT)
-        throw std::runtime_error( fmt::format( "Unable to {3} file : {1}\n{2}", NarrowString( mFileName ), SysErrorMessage( last_os_error ), message ) );
+        throw std::runtime_error( fmt::format( "Unable to {2} file : {0}\n{1}", NarrowString( mFileName ), SysErrorMessage( last_os_error ), message ) );
 #else
         throw std::runtime_error( boost::str( boost::format( "Unable to %3% file : %1%\n%2%" )
                                               % NarrowString( mFileName ) % SysErrorMessage( last_os_error ) % message ) );

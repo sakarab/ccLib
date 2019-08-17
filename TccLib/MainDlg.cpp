@@ -8,6 +8,7 @@
 #include "aboutdlg.h"
 #include "MainDlg.h"
 #include "cclib_tests.h"
+#include <fmt/format.h>
 
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
 {
@@ -58,7 +59,7 @@ LRESULT CMainDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	return 0;
 }
 
-LRESULT CMainDlg::OnAppAbout(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+LRESULT CMainDlg::OnAppAbout(WORD wNotifyCode, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	CAboutDlg   dlg;
 
