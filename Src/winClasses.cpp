@@ -388,7 +388,11 @@ namespace ccwin
 
     std::vector<std::wstring> TIniFile::ReadSection( const wchar_t * section )
     {
+#if defined (CC_HAVE_SHARED_PTR)
         std::unique_ptr<TLargeBuffer>   buffer = std::make_unique<TLargeBuffer>();
+#else
+        std::auto_ptr<TLargeBuffer>		buffer = std::auto_ptr<TLargeBuffer>( new TLargeBuffer() );
+#endif
         TLargeBuffer::value_type        *bptr = &(buffer->front());
         DWORD                           bsize = GetPrivateProfileSection( section, bptr, buffer->size(), mFileName.c_str() );
         std::vector<std::wstring>       result;
