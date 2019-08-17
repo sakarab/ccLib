@@ -36,6 +36,7 @@
 #if ( _MSC_VER >= 1900 )
     #define CC_DEPRICATED_AUTO_PTR
     #define CC_HAVE_ATTRIBUTES
+    #define CC_HAVE_FMT_FORMAT
 #endif
 
 // vs2013

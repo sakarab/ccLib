@@ -64,7 +64,11 @@ namespace
 
     void ReadError( const std::wstring& name )
     {
+#if defined (CC_HAVE_FMT_FORMAT)
+        throw cclib::BaseException( fmt::format( "InvalidRegistryType {1}", ccwin::NarrowStringStrict( name ) ) );
+#else
         throw cclib::BaseException( boost::str( boost::format( "InvalidRegistryType %1%" ) % ccwin::NarrowStringStrict( name ) ) );
+#endif
     }
 
     /************************************************************
@@ -480,7 +484,11 @@ namespace ccwin
 
     void TIniFile::WriteInteger( const wchar_t * section, const wchar_t * key, int value )
     {
+#if defined (CC_HAVE_FMT_FORMAT)
+        WriteString( section, key, fmt::format( L"{1}", value ).c_str() );
+#else
         WriteString( section, key, boost::str( boost::wformat( L"%1%" ) % value ).c_str() );
+#endif
     }
 
     void TIniFile::WriteString( const wchar_t *section, const wchar_t *key, const wchar_t *value )
@@ -786,6 +794,16 @@ namespace ccwin
         Close();
     }
 
+    void TFileStreamEx::UnableTo( const char *message, DWORD last_os_error )
+    {
+#if defined (CC_HAVE_FMT_FORMAT)
+        throw std::runtime_error( fmt::format( "Unable to {3} file : {1}\n{2}", NarrowString( mFileName ), SysErrorMessage( last_os_error ), message ) );
+#else
+        throw std::runtime_error( boost::str( boost::format( "Unable to %3% file : %1%\n%2%" )
+                                              % NarrowString( mFileName ) % SysErrorMessage( last_os_error ) % message ) );
+#endif
+    }
+
     void TFileStreamEx::Open( const TCHAR *fname, WORD create_mode, WORD access_share_mode )
     {
         static const ULONG AccessMode[3] = { GENERIC_READ, GENERIC_WRITE, GENERIC_READ | GENERIC_WRITE };
@@ -805,11 +823,9 @@ namespace ccwin
             if ( mHandle == INVALID_HANDLE_VALUE )
             {
                 if ( (create_mode == rfmCreateNew) || (create_mode == rfmCreateAlways) )
-                    throw std::runtime_error( boost::str( boost::format( "Unable to create file : %1%\n%2%" )
-                                                          % NarrowString( mFileName ) % SysErrorMessage( last_error ) ) );
+                    UnableTo( "create", last_error );
                 else // rfmOpenExisting, rfmOpenAlways
-                    throw std::runtime_error( boost::str( boost::format( "Unable to open file : %1%\n%2%" )
-                                                          % NarrowString( mFileName ) % SysErrorMessage( last_error ) ) );
+                    UnableTo( "open", last_error );
             }
         }
     }
@@ -826,9 +842,13 @@ namespace ccwin
     //virtual
     void TFileStreamEx::Raise_LastError()
     {
+#if defined (CC_HAVE_FMT_FORMAT)
+        throw std::runtime_error( fmt::format( "Error: 0x{X}, {s}", mLastError, SysErrorMessage( mLastError ) ) );
+#else
         throw std::runtime_error( boost::str( boost::format( "Error: 0x%1%, %2%" )
                                               % boost::io::group( std::uppercase, std::hex, mLastError )
                                               % SysErrorMessage( mLastError ) ) );
+#endif
     }
 
     //virtual

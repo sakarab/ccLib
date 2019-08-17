@@ -31,7 +31,11 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/smart_ptr.hpp>
 #ifndef __BORLANDC__
-    #include <boost/format.hpp>
+    #if defined (CC_HAVE_FMT_FORMAT)
+        #include <fmt\format.h>
+    #else
+        #include <boost\format.hpp>
+    #endif
     #include <boost/scope_exit.hpp>
 #endif
 

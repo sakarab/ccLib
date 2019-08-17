@@ -68,7 +68,11 @@ namespace ccwin
         int     hi_ls = HIWORD( fixed.dwFileVersionLS );
         int     lo_ls = LOWORD( fixed.dwFileVersionLS );
 
+#if defined (CC_HAVE_FMT_FORMAT)
+        return fmt::format( TEXT( "{1}.{2}.{3}.{4}" ), hi_ms % lo_ms % hi_ls % lo_ls );
+#else
         return boost::str( boost::wformat( TEXT( "%1%.%2%.%3%.%4%" ) ) % hi_ms % lo_ms % hi_ls % lo_ls );
+#endif
     }
 
     std::wstring GetFileVersionStr( HMODULE h_module )

@@ -26,7 +26,6 @@
 
 #include <Windows.h>
 #include "predef_cc.h"
-#include <boost\format.hpp>
 #include <boost\filesystem.hpp>
 #include "smException.h"
 #include "cpp_string.h"

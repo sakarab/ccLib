@@ -27,7 +27,6 @@
 #include "cc_memory.hpp"
 #include "cpp_lpstr.h"
 #include <boost/scope_exit.hpp>
-#include <boost/format.hpp>
 
 namespace
 {
@@ -244,14 +243,22 @@ namespace ccwin
     void RaiseOSError( DWORD last_error )
     {
         if ( last_error != 0 )
+#if defined (CC_HAVE_FMT_FORMAT)
+            throw cclib::BaseException( fmt::format( "{}", SysErrorMessage( last_error ) ) );
+#else
             throw cclib::BaseException( boost::str( boost::format( "%1%" ) % SysErrorMessage( last_error ) ) );
+#endif
         throw cclib::BaseException( "Unknown OS Error." );
     }
 
     void RaiseOSError( DWORD last_error, const char *message )
     {
         if ( last_error != 0 )
+#if defined (CC_HAVE_FMT_FORMAT)
+            throw cclib::BaseException( fmt::format( "{1}\n{2}", SysErrorMessage( last_error ), message ) );
+#else
             throw cclib::BaseException( boost::str( boost::format( "%1%\n%2%" ) % SysErrorMessage( last_error ) % message ) );
+#endif
         throw cclib::BaseException( "Unknown OS Error." );
     }
 

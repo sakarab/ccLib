@@ -265,7 +265,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -290,7 +290,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -314,7 +314,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -339,7 +339,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -365,7 +365,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -392,7 +392,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -418,7 +418,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -445,7 +445,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.\..\include;$(BOOST_INC)\.;$(LOKI_INC)\.;$(QT_INC)\QtCore;$(QT_INC)\QtGui;$(QT_INC)\QtWidgets;$(QT_INC)\.;$(QT_INC)\QtANGLE;$(CCLIB_DIR)\vs$(VSDIR)\GeneratedFiles;$(CCLIB_INC)\.</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>

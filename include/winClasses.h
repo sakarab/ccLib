@@ -258,6 +258,7 @@ namespace ccwin
         virtual void set_size( size_type value ) CC_OVERRIDE;
         // ITStream end
 
+        void UnableTo( const char *message, DWORD last_os_error );
         bool IsOpen()                                               { return ( mHandle != INVALID_HANDLE_VALUE ); }
         void Open( const TCHAR *fname, WORD create_mode, WORD access_share_mode );
         void Close();
