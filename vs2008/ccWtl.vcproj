@@ -125,8 +125,6 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Static|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
@@ -181,8 +179,6 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Static|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccWtl.vsprops"
 			CharacterSet="1"
