@@ -47,6 +47,9 @@ namespace ccbo
         std::string to_string( const boost::gregorian::date& ddate );
     };
 
+    inline TDateConverter GR_Date()    { return TDateConverter( "%d/%m/%Y" ); }
+    inline TDateConverter XML_Date()   { return TDateConverter( boost::gregorian::date_facet::iso_format_extended_specifier ); }
+
     // TDateConverter   GR_Date( "%d/%m/%Y" );
     // TDateConverter   XML_Date( boost::gregorian::date_facet::iso_format_extended_specifier );
 
