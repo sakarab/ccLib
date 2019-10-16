@@ -59,12 +59,20 @@ namespace ccwtl
     std::wstring Get_Text( CComboBox& cb );
     std::wstring Get_Text( CListBox& cb );
 
-    bool Menu_ToggleChecked( CMenu& menu, int menu_id );
-    bool Menu_GetChecked( CMenu& menu, int menu_id );
-    void Menu_SetCheck( CMenu& menu, int menu_id, bool value );
-    bool Menu_ToggleChecked( CMenuHandle& menu, int menu_id );
-    bool Menu_GetChecked( CMenuHandle& menu, int menu_id );
-    void Menu_SetCheck( CMenuHandle& menu, int menu_id, bool value );
+    bool Menu_ToggleChecked( CMenu& menu, UINT menu_id );
+    bool Menu_GetChecked( CMenu& menu, UINT menu_id );
+    void Menu_SetCheck( CMenu& menu, UINT menu_id, bool value );
+    bool Menu_ToggleChecked( CMenuHandle& menu, UINT menu_id );
+    bool Menu_GetChecked( CMenuHandle& menu, UINT menu_id );
+    void Menu_SetCheck( CMenuHandle& menu, UINT menu_id, bool value );
+
+    struct Menu_ItemIndex
+    {
+        CMenuHandle     Parent;
+        int             Index;
+    };
+
+    Menu_ItemIndex Menu_HandleFromID( CMenu& menu, UINT menu_id );
 
     //=======================================================================
     //==============    CFormSize<T>
