@@ -74,27 +74,25 @@ namespace
     /************************************************************
     ********    String Functions (Char conversions)
     ***********************************************************/
-    int CharFromWChar( const std::wstring& str, std::string& result_str,
+    int CharFromWChar( const wchar_t *str, size_t str_len, std::string& result_str,
                        char *buffer, std::size_t buffer_chars )
     {
         BOOL            used_default_char = FALSE;
         unsigned int    buffer_size = cclib::size_cast<unsigned int>(buffer_chars);
         int             result = WideCharToMultiByte( DefaultUserCodePage::Value(), 0,
-                                                      str.c_str(), cclib::size_cast<unsigned int>(str.length()),
+                                                      str, cclib::size_cast<unsigned int>(str_len),
                                                       buffer, buffer_size, 0, &used_default_char );
 
-        //DUMPMSG1_IF( (result == 0), "CharFromWChar failed: %1%", GetLastError() );
-        //DUMPMSG_IF( (used_default_char), "CharFromWChar failed on some characters" );
         if ( result > 0 && buffer_size > 0 )
             result_str = std::string( buffer, buffer + result );
         return result;
     }
 
-    int WCharFromChar( const std::string& str, std::wstring& result_str,
+    int WCharFromChar( const char *str, size_t str_len, std::wstring& result_str,
                        wchar_t *buffer, std::size_t buffer_chars )
     {
         int     result = MultiByteToWideChar( DefaultUserCodePage::Value(), 0,
-                                              str.c_str(), cclib::size_cast<unsigned int>(str.length()),
+                                              str, cclib::size_cast<unsigned int>(str_len),
                                               buffer, cclib::size_cast<unsigned int>(buffer_chars) );
 
         if ( result >= 0 )
@@ -210,56 +208,66 @@ namespace
 
 namespace ccwin
 {
-    std::string NarrowStringStrict( const std::wstring& str )
+    std::string NarrowStringStrict( const wchar_t *str, size_t len )
     {
         std::string     result;
 
-        if ( str.empty() )
+        if ( len == 0 )
             return result;
 
         cclib::array<char, 4096>    buffer;
-        std::size_t                 hype_len = str.length() * 3 + 1;        // overallocate
+        std::size_t                 hype_len = len * 3 + 1;         // overallocate
 
         if ( hype_len < buffer.size() )
         {
-            int     dest_len = CharFromWChar( str, result, buffer.data(), buffer.size() );
+            int     dest_len = CharFromWChar( str, len, result, buffer.data(), buffer.size() );
 
             if ( dest_len >= 0 )
                 return std::string( buffer.data(), buffer.data() + dest_len );
         }
 
         boost::scoped_array<char>   bbuff( new char[hype_len] );
-        int                         dest_len = CharFromWChar( str, result, bbuff.get(), hype_len );
+        int                         dest_len = CharFromWChar( str, len, result, bbuff.get(), hype_len );
 
         if ( dest_len >= 0 )
             return std::string( bbuff.get(), bbuff.get() + dest_len );
         return std::string();
     }
     
-    std::wstring WidenStringStrict( const std::string& str )
+    std::string NarrowStringStrict( const std::wstring& str )
+    {
+        return NarrowStringStrict( str.c_str(), str.length() );
+    }
+
+    std::wstring WidenStringStrict( const char *str, size_t len )
     {
         std::wstring     result;
 
-        if ( str.empty() )
+        if ( len == 0 )
             return result;
 
         cclib::array<wchar_t, 2048>     buffer;
-        std::size_t                     hype_len = str.length() * 2 + 1;    // overallocate
+        std::size_t                     hype_len = len * 2 + 1;    // overallocate
 
         if ( hype_len < buffer.size() )
         {
-            int     dest_len = WCharFromChar( str, result, buffer.data(), buffer.size() );
+            int     dest_len = WCharFromChar( str, len, result, buffer.data(), buffer.size() );
 
             if ( dest_len >= 0 )
                 return std::wstring( buffer.data(), buffer.data() + dest_len );
         }
 
         boost::scoped_array<wchar_t>    bbuff( new wchar_t[hype_len] );
-        int                             dest_len = WCharFromChar( str, result, bbuff.get(), hype_len );
+        int                             dest_len = WCharFromChar( str, len, result, bbuff.get(), hype_len );
 
         if ( dest_len >= 0 )
             return std::wstring( bbuff.get(), bbuff.get() + dest_len );
         return std::wstring();
+    }
+
+    std::wstring WidenStringStrict( const std::string& str )
+    {
+        return WidenStringStrict( str.c_str(), str.length() );
     }
 
     int CompareText( const std::string& S1, const std::string& S2 )                                     { return CompareTextIN( S1.c_str(), S1.length(), S2.c_str(), S2.length(), CompareStringA ); }

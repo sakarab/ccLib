@@ -126,7 +126,10 @@ namespace ccwin
     /************************************************************
     ********    functions
     ************************************************************/
+    std::string NarrowStringStrict( const wchar_t *str, size_t len );
     std::string NarrowStringStrict( const std::wstring& str );
+
+    std::wstring WidenStringStrict( const char *str, size_t len );
     std::wstring WidenStringStrict( const std::string& str );
 
     /************************************************************
