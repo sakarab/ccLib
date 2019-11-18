@@ -37,6 +37,8 @@
     #define CC_DEPRICATED_AUTO_PTR
     #define CC_HAVE_ATTRIBUTES
     #define CC_HAVE_FMT_FORMAT
+    #define CC_HAVE_UNIFORM_INIT
+    #define CC_HAVE_IF_WITH_INIT
 #endif
 
 // vs2013

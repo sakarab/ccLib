@@ -70,6 +70,7 @@ namespace ccwtl
     {
         CMenuHandle     Parent;
         int             Index;
+        Menu_ItemIndex( CMenuHandle parent, int idx ) : Parent(parent), Index(idx)          {}
     };
 
     Menu_ItemIndex Menu_HandleFromID( CMenu& menu, UINT menu_id );

@@ -125,7 +125,11 @@ namespace ccwtl
                 menu.GetMenuString( n, sstr, MF_BYPOSITION );
 
                 if ( menu.GetMenuItemID( n ) == menu_id )
+#if defined (CC_HAVE_UNIFORM_INIT)
                     return { menu, n };
+#else
+                    return Menu_ItemIndex( menu, n );
+#endif
 
                 MENUITEMINFO    mii;
 
@@ -133,10 +137,21 @@ namespace ccwtl
                 mii.fMask = MIIM_SUBMENU;
                 menu.GetMenuItemInfo( n, TRUE, &mii );
                 if ( mii.hSubMenu )
+                {
+#if defined (CC_HAVE_IF_WITH_INIT)
                     if ( Menu_ItemIndex result = Menu_HandleFromID( mii.hSubMenu, menu_id ) ; result.Index >= 0 )
+#else
+                    Menu_ItemIndex  result = Menu_HandleFromID( mii.hSubMenu, menu_id );
+                    if ( result.Index >= 0 )
+#endif
                         return result;
+                }
             }
+#if defined (CC_HAVE_UNIFORM_INIT)
             return { 0, -1 };
+#else
+            return Menu_ItemIndex( 0, -1 );
+#endif
         }
 
     }
