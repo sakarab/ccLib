@@ -296,6 +296,7 @@ BEGIN
     POPUP "Tests"
     BEGIN
         MENUITEM "String List",                 ID_TESTS_STRINGLIST
+        MENUITEM "Base64",                      ID_TESTS_BASE64
     END
     POPUP "&Help"
     BEGIN

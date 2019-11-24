@@ -23,11 +23,26 @@
 #ifndef CCLIB_CPP_CHAR_UTILS_H
 #define CCLIB_CPP_CHAR_UTILS_H
 
+#include <limits>
 #include <vector>
 #include <string>
 
 namespace cclib
 {
+    template <class T> T rotate_left( T value, unsigned int count )
+    {
+        const unsigned int      mask = std::numeric_limits<T>::digits - 1;  // assumes width is a power of 2.
+
+        return (value << count) | (value >> ((~count + 1) & mask));
+    }
+
+    template <class T> T rotate_right( T value, unsigned int count )
+    {
+        const unsigned int      mask = std::numeric_limits<T>::digits - 1;  // assumes width is a power of 2.
+
+        return (value >> count) | (value << ((~count + 1) & mask));
+    }
+
     std::string Base64Encode( const std::vector<unsigned char>& src );
     std::string Base64Encode( const unsigned char * const src, size_t src_len );
     std::vector<unsigned char> Base64Decode( const std::string& src );

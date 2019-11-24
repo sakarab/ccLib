@@ -36,6 +36,7 @@ private:
     LRESULT OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
     LRESULT OnClearLog(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
     LRESULT OnTestStringList(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+    LRESULT OnTestBase64(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 
     BEGIN_MSG_MAP_XX( CMainDlg )
         MESSAGE_HANDLER( WM_INITDIALOG, OnInitDialog );
@@ -45,6 +46,7 @@ private:
         COMMAND_ID_HANDLER( IDCANCEL, OnCancel );
         COMMAND_ID_HANDLER( ID_FILE_CLEARLOG, OnClearLog );
         COMMAND_ID_HANDLER( ID_TESTS_STRINGLIST, OnTestStringList );
+        COMMAND_ID_HANDLER( ID_TESTS_BASE64, OnTestBase64 );
         CHAIN_MSG_MAP( CDialogResize<CMainDlg> );
     END_MSG_MAP()
 

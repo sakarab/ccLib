@@ -24,7 +24,7 @@ namespace
 }
 
 
-void testStringList( ccwin::TRitchEditStreambuf& logger )
+void testStringList( CRichEditCtrl& logger )
 {
     StringList      original = CreateList();
     CharBuffer      buffer = CreateBuffer();

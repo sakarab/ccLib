@@ -404,6 +404,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\TccLib\TccLib.cpp" />
+    <ClCompile Include="..\TccLib\testBase64.cpp" />
     <ClCompile Include="..\TccLib\testStringList.cpp" />
   </ItemGroup>
   <ItemGroup>

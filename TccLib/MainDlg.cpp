@@ -88,7 +88,13 @@ LRESULT CMainDlg::OnClearLog( WORD, WORD wID, HWND, BOOL & )
 
 LRESULT CMainDlg::OnTestStringList( WORD, WORD wID, HWND, BOOL & )
 {
-    testStringList( mLogger );
+    testStringList( mLog );
+    return LRESULT();
+}
+
+LRESULT CMainDlg::OnTestBase64( WORD, WORD wID, HWND, BOOL & )
+{
+    testBase64( mLog );
     return LRESULT();
 }
 
