@@ -58,28 +58,27 @@
 #define PACT_TAB            0x0006
 #define PACT_SPACE          0x0007
 
-
 // Draw structure
-typedef struct
+struct PROPERTYDRAWINFO
 {
-   HDC hDC;
-   RECT rcItem;
-   UINT state;
-   //
-   HFONT TextFont;
-   HFONT CategoryFont;
-   HPEN Border;
-   COLORREF clrText;
-   COLORREF clrBack;
-   COLORREF clrSelText;
-   COLORREF clrSelBack;
-   COLORREF clrBorder;
-   COLORREF clrDisabled;
-   COLORREF clrDisabledBack;
-   //
-   TEXTMETRIC tmText;
-   DWORD dwExtStyle;
-} PROPERTYDRAWINFO;
+    HDC hDC;
+    RECT rcItem;
+    UINT state;
+    //
+    HFONT TextFont;
+    HFONT CategoryFont;
+    HPEN Border;
+    COLORREF clrText;
+    COLORREF clrBack;
+    COLORREF clrSelText;
+    COLORREF clrSelBack;
+    COLORREF clrBorder;
+    COLORREF clrDisabled;
+    COLORREF clrDisabledBack;
+    //
+    TEXTMETRIC tmText;
+    DWORD dwExtStyle;
+};
 
 // Custom control messages
 #ifndef WM_USER_PROP_UPDATEPROPERTY
@@ -99,33 +98,33 @@ typedef struct
 class IProperty
 {
 public:
-   virtual ~IProperty() { };
-   virtual BYTE GetKind() const = 0;
-   virtual void SetOwner(HWND hWnd, LPVOID pData) = 0;
-   virtual LPCTSTR GetName() const = 0;
-   virtual void SetEnabled(BOOL bEnable) = 0;
-   virtual BOOL IsEnabled() const = 0;
-   virtual void SetItemData(LPARAM lParam) = 0;
-   virtual LPARAM GetItemData() const = 0;
-   virtual void DrawName(PROPERTYDRAWINFO& di) = 0;
-   virtual void DrawValue(PROPERTYDRAWINFO& di) = 0;
-   virtual HWND CreateInplaceControl(HWND hWnd, const RECT& rc) = 0;
-   virtual BOOL Activate(UINT action, LPARAM lParam) = 0;
-   virtual BOOL GetDisplayValue(LPTSTR pstr, UINT cchMax) const = 0;
-   virtual UINT GetDisplayValueLength() const = 0;
-   virtual BOOL GetValue(VARIANT* pValue) const = 0;
-   virtual BOOL SetValue(const VARIANT& value) = 0;
-   virtual BOOL SetValue(HWND hWnd) = 0;
+    virtual ~IProperty() {};
+
+    virtual BYTE GetKind() const = 0;
+    virtual void SetOwner( HWND hWnd, LPVOID pData ) = 0;
+    virtual LPCTSTR GetName() const = 0;
+    virtual void SetEnabled( BOOL bEnable ) = 0;
+    virtual BOOL IsEnabled() const = 0;
+    virtual void SetItemData( LPARAM lParam ) = 0;
+    virtual LPARAM GetItemData() const = 0;
+    virtual void DrawName( PROPERTYDRAWINFO& di ) = 0;
+    virtual void DrawValue( PROPERTYDRAWINFO& di ) = 0;
+    virtual HWND CreateInplaceControl( HWND hWnd, const RECT& rc ) = 0;
+    virtual BOOL Activate( UINT action, LPARAM lParam ) = 0;
+    virtual BOOL GetDisplayValue( LPTSTR pstr, UINT cchMax ) const = 0;
+    virtual UINT GetDisplayValueLength() const = 0;
+    virtual BOOL GetValue( VARIANT* pValue ) const = 0;
+    virtual BOOL SetValue( const VARIANT& value ) = 0;
+    virtual BOOL SetValue( HWND hWnd ) = 0;
 };
 typedef IProperty* HPROPERTY;
 
-
 // Property control notification structure
-typedef struct tagNMPROPERTYITEM 
+struct NMPROPERTYITEM 
 {
-   NMHDR hdr;
-   HPROPERTY prop;
-} NMPROPERTYITEM, *LPNMPROPERTYITEM;
-
+   NMHDR        hdr;
+   HPROPERTY    prop;
+};
+typedef NMPROPERTYITEM  *       LPNMPROPERTYITEM;
 
 #endif // __PROPERTYITEM__H
