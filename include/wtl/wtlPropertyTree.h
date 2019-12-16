@@ -28,6 +28,7 @@
   #error WTL requires C++ compilation (use a .cpp suffix)
 #endif
 
+#include <algorithm>
 #include <atlapp.h>
 #include <atlctrls.h>
 
@@ -433,7 +434,7 @@ public:
       RECT rcItem = { 0 };
       GetItemRect(iItem, &rcItem, FALSE);
       ::SetRect(pRect, rcText.right + HORIZ_VALUE_GAP, rcItem.top, rcItem.right, rcItem.bottom);
-      if( m_cxColumn>0 ) pRect->left = max( (int) pRect->left, m_cxColumn );
+      if( m_cxColumn>0 ) pRect->left = std::max( (int) pRect->left, m_cxColumn );
    }
 
    void _DestroyInplaceWindow()

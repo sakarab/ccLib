@@ -260,8 +260,9 @@ public:
 
    int GetItemCount() const
    {
-      if( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 ) return max(0, TBase::GetItemCount() - 1);
-      return TBase::GetItemCount();
+       if ( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 )
+           return std::max( 0, TBase::GetItemCount() - 1 );
+       return TBase::GetItemCount();
    }
 
    int InsertItem(int nItem, HPROPERTY hProp)
