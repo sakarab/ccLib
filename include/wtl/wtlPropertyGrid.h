@@ -52,8 +52,6 @@
 #include "wtlPropertyItemEditors.h"
 #include "wtlPropertyItemImpl.h"
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 // CPropertyGrid control
 
@@ -66,64 +64,64 @@
 #define PGS_EX_INVERTSELECTION   0x00000020
 #define PGS_EX_ADDITEMATEND      0x00000040
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 // The "AppendAction" property (PGS_EX_ADDITEMATEND support)
 
 class CPropertyAppendActionItem : public CProperty
 {
 public:
-   CPropertyAppendActionItem(LPCTSTR pstrName, LPARAM lParam) : 
-      CProperty(pstrName, lParam)
-   {
-   }
+    CPropertyAppendActionItem( LPCTSTR pstrName, LPARAM lParam )
+        : CProperty( pstrName, lParam )
+    {
+    }
 
-   BYTE GetKind() const 
-   { 
-      return PROPKIND_SIMPLE;
-   }
+    BYTE GetKind() const 
+    { 
+        return PROPKIND_SIMPLE;
+    }
 
-   void DrawValue(PROPERTYDRAWINFO& di)
-   {
+    void DrawValue( PROPERTYDRAWINFO& di )
+    {
 #ifdef IDS_LASTVALUE
-      TCHAR szText[128] = { 0 };
-      ::LoadString(_Module.GetResourceInstance(), IDS_LASTVALUE, szText, (sizeof(szText)/sizeof(TCHAR))-1);
-      LPCTSTR pstrText = szText;
+        TCHAR       szText[128] = { 0 };
+        ::LoadString( _Module.GetResourceInstance(), IDS_LASTVALUE, szText, (sizeof( szText ) / sizeof( TCHAR )) - 1 );
+        LPCTSTR     pstrText = szText;
 #else
-      LPCTSTR pstrText = _T("<< Click here to add a new item >>");
+        LPCTSTR     pstrText = _T( "<< Click here to add a new item >>" );
 #endif  // IDS_LASTVALUE
-      CDCHandle dc(di.hDC);
-      dc.SetBkMode(TRANSPARENT);
-      dc.SetTextColor((di.state & ODS_DISABLED) != 0 ? di.clrDisabled : di.clrText);
-      dc.SetBkColor(di.clrBack);
-      RECT rcText = di.rcItem;
-      rcText.left += PROP_TEXT_INDENT;
-      dc.DrawText(pstrText, -1, 
-         &rcText, 
-         DT_LEFT | DT_SINGLELINE | DT_EDITCONTROL | DT_NOPREFIX | DT_END_ELLIPSIS | DT_VCENTER);
-   }
+        CDCHandle   dc( di.hDC );
 
-   BOOL Activate(UINT action, LPARAM /*lParam*/) 
-   { 
-      switch( action ) {
-      case PACT_SPACE:
-      case PACT_CLICK:
-      case PACT_DBLCLICK:
-         // Send AddItem notification to parent of control
-         NMPROPERTYITEM nmh = { m_hWndOwner, static_cast<UINT_PTR>(::GetDlgCtrlID(m_hWndOwner)), PIN_ADDITEM, NULL };
-         ::SendMessage(::GetParent(m_hWndOwner), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM) &nmh);
-         break;
-      }
-      return TRUE;
-   }
+        dc.SetBkMode( TRANSPARENT );
+        dc.SetTextColor( (di.state & ODS_DISABLED) != 0 ? di.clrDisabled : di.clrText );
+        dc.SetBkColor( di.clrBack );
+
+        RECT        rcText = di.rcItem;
+
+        rcText.left += PROP_TEXT_INDENT;
+        dc.DrawText( pstrText, -1, &rcText,
+                     DT_LEFT | DT_SINGLELINE | DT_EDITCONTROL | DT_NOPREFIX | DT_END_ELLIPSIS | DT_VCENTER );
+    }
+
+    BOOL Activate( UINT action, LPARAM /*lParam*/ )
+    {
+        switch ( action )
+        {
+            case PACT_SPACE:
+            case PACT_CLICK:
+            case PACT_DBLCLICK:
+                // Send AddItem notification to parent of control
+                NMPROPERTYITEM      nmh = { m_hWndOwner, static_cast<UINT_PTR>(::GetDlgCtrlID( m_hWndOwner )), PIN_ADDITEM, NULL };
+                ::SendMessage( ::GetParent( m_hWndOwner ), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM)&nmh );
+                break;
+        }
+        return TRUE;
+    }
 };
 
-inline HPROPERTY PropCreateAppendActionItem(LPCTSTR pstrName, LPARAM lParam = 0)
+inline HPROPERTY PropCreateAppendActionItem( LPCTSTR pstrName, LPARAM lParam = 0 )
 {
-   return new CPropertyAppendActionItem(pstrName, lParam);
+    return new CPropertyAppendActionItem( pstrName, lParam );
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 // Block property - looks like a header (or button)
@@ -131,204 +129,211 @@ inline HPROPERTY PropCreateAppendActionItem(LPCTSTR pstrName, LPARAM lParam = 0)
 class CPropertyBlockItem : public CProperty
 {
 public:
-   CPropertyBlockItem(LPCTSTR pstrName, LPARAM lParam) : 
-      CProperty(pstrName, lParam)
-   {
-   }
+    CPropertyBlockItem(LPCTSTR pstrName, LPARAM lParam)
+        : CProperty(pstrName, lParam)
+    {
+    }
 
-   BYTE GetKind() const 
-   { 
-      return PROPKIND_SIMPLE;
-   }
+    BYTE GetKind() const 
+    { 
+        return PROPKIND_SIMPLE;
+    }
 
-   void DrawValue(PROPERTYDRAWINFO& di)
-   {
-      RECT rc = di.rcItem;
-      rc.bottom--;
-      ::DrawFrameControl(di.hDC, &rc, DFC_BUTTON, DFCS_BUTTONPUSH);
-   }
+    void DrawValue(PROPERTYDRAWINFO& di)
+    {
+        RECT    rc = di.rcItem;
 
-   BOOL Activate(UINT action, LPARAM /*lParam*/) 
-   { 
-      switch( action ) {
-      case PACT_SPACE:
-      case PACT_CLICK:
-      case PACT_DBLCLICK:
-         // Send AddItem notification to parent of control
-         NMPROPERTYITEM nmh = { m_hWndOwner, static_cast<UINT_PTR>(::GetDlgCtrlID(m_hWndOwner)), PIN_BROWSE, NULL };
-         ::SendMessage(::GetParent(m_hWndOwner), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM) &nmh);
-         break;
-      }
-      return TRUE;
-   }
+        rc.bottom--;
+        ::DrawFrameControl(di.hDC, &rc, DFC_BUTTON, DFCS_BUTTONPUSH);
+    }
+
+    BOOL Activate(UINT action, LPARAM /*lParam*/) 
+    { 
+        switch ( action )
+        {
+            case PACT_SPACE:
+            case PACT_CLICK:
+            case PACT_DBLCLICK:
+                // Send AddItem notification to parent of control
+                NMPROPERTYITEM      nmh = { m_hWndOwner, static_cast<UINT_PTR>(::GetDlgCtrlID( m_hWndOwner )), PIN_BROWSE, NULL };
+                ::SendMessage( ::GetParent( m_hWndOwner ), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM)&nmh );
+                break;
+        }
+        return TRUE;
+    }
 };
 
-inline HPROPERTY PropCreateBlockItem(LPCTSTR pstrName, LPARAM lParam = 0)
+inline HPROPERTY PropCreateBlockItem( LPCTSTR pstrName, LPARAM lParam = 0 )
 {
-   return new CPropertyBlockItem(pstrName, lParam);
+    return new CPropertyBlockItem( pstrName, lParam );
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 // The Property Grid control
 
 template< class T, class TBase = CListViewCtrl, class TWinTraits = CWinTraitsOR<LVS_SINGLESEL|LVS_SHOWSELALWAYS> >
-class ATL_NO_VTABLE CPropertyGridImpl : 
-   public CWindowImpl< T, TBase, TWinTraits >,
-   public CCustomDraw< T >
+class ATL_NO_VTABLE CPropertyGridImpl :  public CWindowImpl< T, TBase, TWinTraits >, public CCustomDraw< T >
 {
 public:
-   DECLARE_WND_SUPERCLASS(NULL, TBase::GetWndClassName())
+    DECLARE_WND_SUPERCLASS(NULL, TBase::GetWndClassName())
 
-   CHeaderCtrl m_ctrlHeader;
-   PROPERTYDRAWINFO m_di;
-   CFont m_TextFont;
-   CFont m_CategoryFont;
-   CPen m_BorderPen;
-   HWND m_hwndInplace;
-   int m_iInplaceRow;
-   int m_iInplaceCol;
-   int m_nColumns;
-   int m_iSelectedRow;
-   int m_iSelectedCol;
+    CHeaderCtrl m_ctrlHeader;
+    PROPERTYDRAWINFO m_di;
+    CFont m_TextFont;
+    CFont m_CategoryFont;
+    CPen m_BorderPen;
+    HWND m_hwndInplace;
+    int m_iInplaceRow;
+    int m_iInplaceCol;
+    int m_nColumns;
+    int m_iSelectedRow;
+    int m_iSelectedCol;
 
-   CPropertyGridImpl() : 
-      m_hwndInplace(NULL), 
-      m_iInplaceRow(-1), 
-      m_iInplaceCol(-1), 
-      m_nColumns(0), 
-      m_iSelectedRow(-1), 
-      m_iSelectedCol(-1)
-   {
-      m_di.dwExtStyle = 0;
-   }
+    CPropertyGridImpl()
+        : m_hwndInplace( NULL ), m_iInplaceRow( -1 ), m_iInplaceCol( -1 ), m_nColumns( 0 ), m_iSelectedRow( -1 ), m_iSelectedCol( -1 )
+    {
+        m_di.dwExtStyle = 0;
+    }
 
-   // Operations
+    // Operations
+    BOOL SubclassWindow( HWND hWnd )
+    {
+        ATLASSERT( m_hWnd == NULL );
+        ATLASSERT( ::IsWindow( hWnd ) );
+        BOOL    bRet = CWindowImpl< T, TBase, TWinTraits >::SubclassWindow( hWnd );
 
-   BOOL SubclassWindow(HWND hWnd)
-   {
-      ATLASSERT(m_hWnd==NULL);
-      ATLASSERT(::IsWindow(hWnd));
-      BOOL bRet = CWindowImpl< T, TBase, TWinTraits >::SubclassWindow(hWnd);
-      if( bRet ) _Init();
-      return bRet;
-   }
+        if ( bRet )
+            _Init();
+        return bRet;
+    }
 
-   void SetExtendedGridStyle(DWORD dwExtStyle)
-   {
-      // Handle change of PGS_EX_ADDITEMATEND flag
-      if( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 
-          && (dwExtStyle & PGS_EX_ADDITEMATEND) == 0 ) 
-      {
-         // Remove AppendAction item
-         DeleteItem(TBase::GetItemCount()-1);
-      } 
-      if( (dwExtStyle & PGS_EX_ADDITEMATEND) != 0 
-          && (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) == 0 ) 
-      {
-         // Add AppendAction item
-         InsertItem(TBase::GetItemCount(), PropCreateAppendActionItem(_T(""))); 
-      }
-      // Assign new style
-      m_di.dwExtStyle = dwExtStyle;
-      // Recalc colours and fonts
-      SendMessage(WM_SETTINGCHANGE);
-   }
+    void SetExtendedGridStyle( DWORD dwExtStyle )
+    {
+        // Handle change of PGS_EX_ADDITEMATEND flag
+        if ( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 && (dwExtStyle & PGS_EX_ADDITEMATEND) == 0 )
+        {
+            // Remove AppendAction item
+            DeleteItem( TBase::GetItemCount() - 1 );
+        }
+        if ( (dwExtStyle & PGS_EX_ADDITEMATEND) != 0 && (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) == 0 )
+        {
+            // Add AppendAction item
+            InsertItem( TBase::GetItemCount(), PropCreateAppendActionItem( _T( "" ) ) );
+        }
+        // Assign new style
+        m_di.dwExtStyle = dwExtStyle;
+        // Recalc colours and fonts
+        SendMessage( WM_SETTINGCHANGE );
+    }
 
-   DWORD GetExtendedGridStyle() const
-   {
-      return m_di.dwExtStyle;
-   }
+    DWORD GetExtendedGridStyle() const
+    {
+        return m_di.dwExtStyle;
+    }
 
-   BOOL SelectItem(int iRow, int iCol = 0)
-   {
-      // No editor and remove focus
-      _DestroyInplaceWindow();
-      _InvalidateItem(m_iSelectedRow, m_iSelectedCol);
-      // Select new item. If on same row then use internal update.
-      m_iSelectedCol = iCol;
-      if( GetSelectedIndex() == m_iSelectedRow && m_iSelectedRow == iRow ) {         
-         NMLISTVIEW nmlv = { m_hWnd, 0, 0, m_iSelectedRow, m_iSelectedCol, LVIS_SELECTED };
-         BOOL bDummy = FALSE;
-         OnSelChanged(0, reinterpret_cast<LPNMHDR>(&nmlv), bDummy);
-         return TRUE;
-      }
-      else {
-         return TBase::SelectItem(iRow);
-      }
-   }
+    BOOL SelectItem( int iRow, int iCol = 0 )
+    {
+        // No editor and remove focus
+        _DestroyInplaceWindow();
+        _InvalidateItem( m_iSelectedRow, m_iSelectedCol );
+        // Select new item. If on same row then use internal update.
+        m_iSelectedCol = iCol;
+        if ( GetSelectedIndex() == m_iSelectedRow && m_iSelectedRow == iRow )
+        {
+            NMLISTVIEW      nmlv = { m_hWnd, 0, 0, m_iSelectedRow, m_iSelectedCol, LVIS_SELECTED };
+            BOOL            bDummy = FALSE;
 
-   int GetItemCount() const
-   {
-       if ( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 )
-           return std::max( 0, TBase::GetItemCount() - 1 );
-       return TBase::GetItemCount();
-   }
+            OnSelChanged( 0, reinterpret_cast<LPNMHDR>(&nmlv), bDummy );
+            return TRUE;
+        }
+        else
+            return TBase::SelectItem( iRow );
+    }
 
-   int InsertItem(int nItem, HPROPERTY hProp)
-   {
-      // NOTE: This is the only InsertItem() we support...
-      ATLASSERT(::IsWindow(m_hWnd));
-      ATLASSERT(hProp);
-      // You must have initialized columns before calling this!
-      // And you are not allowed to add columns once the list is populated!
-      if( m_nColumns == 0 ) m_nColumns = m_ctrlHeader.GetItemCount();
-      ATLASSERT(m_nColumns>0);
-      ATLASSERT(m_ctrlHeader.GetItemCount()==m_nColumns);
-      // Create a place-holder for all sub-items
-      IProperty** props = NULL;
-      ATLTRY( props = new IProperty*[m_nColumns] );
-      ATLASSERT(props);
-      if( props == NULL ) return -1;
-      ::ZeroMemory(props, sizeof(IProperty*) * m_nColumns);
-      props[0] = hProp;
-      // Finally create the listview item itself...
-      if( nItem < 0 || nItem > GetItemCount() ) nItem = GetItemCount();
-      UINT mask = LVIF_TEXT | LVIF_PARAM;
-      int iItem = TBase::InsertItem(mask, nItem, hProp->GetName(), 0, 0, 0, (LPARAM) props); 
-      if( iItem != -1 ) hProp->SetOwner(m_hWnd, NULL);
-      return iItem;
-   }
+    int GetItemCount() const
+    {
+        if ( (m_di.dwExtStyle & PGS_EX_ADDITEMATEND) != 0 )
+            return std::max( 0, TBase::GetItemCount() - 1 );
+        return TBase::GetItemCount();
+    }
 
-   BOOL SetSubItem(int nItem, int nSubItem, HPROPERTY hProp)
-   {
-      ATLASSERT(::IsWindow(m_hWnd));
-      ATLASSERT(hProp);
-      ATLASSERT(nSubItem>=0);
-      ATLASSERT(nSubItem<m_nColumns);
-      IProperty** props = reinterpret_cast<IProperty**>(TBase::GetItemData(nItem));
-      ATLASSERT(props);
-      ATLASSERT(props[nSubItem]==NULL); // Do not replace HPROPERTY nodes.
-      if( props == NULL ) return FALSE;
-      if( nSubItem < 0 || nSubItem >= m_nColumns ) return FALSE;
-      props[nSubItem] = hProp;
-      hProp->SetOwner(m_hWnd, NULL);
-      // Trick ListView into thinking there is a subitem...
-      return TBase::SetItemText(nItem, nSubItem, _T(""));
-   }
+    int InsertItem( int nItem, HPROPERTY hProp )
+    {
+        // NOTE: This is the only InsertItem() we support...
+        ATLASSERT( ::IsWindow( m_hWnd ) );
+        ATLASSERT( hProp );
+        // You must have initialized columns before calling this!
+        // And you are not allowed to add columns once the list is populated!
+        if ( m_nColumns == 0 )
+            m_nColumns = m_ctrlHeader.GetItemCount();
+        ATLASSERT( m_nColumns > 0 );
+        ATLASSERT( m_ctrlHeader.GetItemCount() == m_nColumns );
+        // Create a place-holder for all sub-items
 
-   BOOL GetItemText(int iItem, int iSubItem, LPTSTR pstrText, UINT cchMax) const
-   {
-      return GetItemText(GetProperty(iItem, iSubItem), pstrText, cchMax);
-   }
+        IProperty**     props = NULL;
+        ATLTRY( props = new IProperty*[m_nColumns] );
+        ATLASSERT( props );
+        if ( props == NULL )
+            return -1;
+        ::ZeroMemory( props, sizeof( IProperty* ) * m_nColumns );
+        props[0] = hProp;
+        // Finally create the listview item itself...
+        if ( nItem < 0 || nItem > GetItemCount() )
+            nItem = GetItemCount();
 
-   BOOL GetItemText(HPROPERTY hProp, LPTSTR pstrText, UINT cchMax) const
-   {
-      ATLASSERT(::IsWindow(m_hWnd));
-      ATLASSERT(hProp);
-      ATLASSERT(!::IsBadWritePtr(pstrText,cchMax));
-      if( hProp == NULL || pstrText == NULL ) return FALSE;
-      return hProp->GetDisplayValue(pstrText, cchMax);
-   }
+        UINT    mask = LVIF_TEXT | LVIF_PARAM;
+        int     iItem = TBase::InsertItem( mask, nItem, hProp->GetName(), 0, 0, 0, (LPARAM)props );
 
-   BOOL GetItemValue(HPROPERTY hProp, VARIANT* pValue) const
-   {
-      ATLASSERT(::IsWindow(m_hWnd));
-      ATLASSERT(hProp);
-      ATLASSERT(pValue);
-      if( hProp == NULL || pValue == NULL ) return FALSE;
-      return hProp->GetValue(pValue);
-   }
+        if ( iItem != -1 )
+            hProp->SetOwner( m_hWnd, NULL );
+        return iItem;
+    }
+
+    BOOL SetSubItem( int nItem, int nSubItem, HPROPERTY hProp )
+    {
+        ATLASSERT( ::IsWindow( m_hWnd ) );
+        ATLASSERT( hProp );
+        ATLASSERT( nSubItem >= 0 );
+        ATLASSERT( nSubItem < m_nColumns );
+
+        IProperty**     props = reinterpret_cast<IProperty**>(TBase::GetItemData( nItem ));
+
+        ATLASSERT( props );
+        ATLASSERT( props[nSubItem] == NULL ); // Do not replace HPROPERTY nodes.
+        if ( props == NULL )
+            return FALSE;
+        if ( nSubItem < 0 || nSubItem >= m_nColumns )
+            return FALSE;
+        props[nSubItem] = hProp;
+        hProp->SetOwner( m_hWnd, NULL );
+        // Trick ListView into thinking there is a subitem...
+        return TBase::SetItemText( nItem, nSubItem, _T( "" ) );
+    }
+
+    BOOL GetItemText( int iItem, int iSubItem, LPTSTR pstrText, UINT cchMax ) const
+    {
+        return GetItemText( GetProperty( iItem, iSubItem ), pstrText, cchMax );
+    }
+
+    BOOL GetItemText( HPROPERTY hProp, LPTSTR pstrText, UINT cchMax ) const
+    {
+        ATLASSERT( ::IsWindow( m_hWnd ) );
+        ATLASSERT( hProp );
+        ATLASSERT( !::IsBadWritePtr( pstrText, cchMax ) );
+        if ( hProp == NULL || pstrText == NULL )
+            return FALSE;
+        return hProp->GetDisplayValue( pstrText, cchMax );
+    }
+
+    BOOL GetItemValue( HPROPERTY hProp, VARIANT* pValue ) const
+    {
+        ATLASSERT( ::IsWindow( m_hWnd ) );
+        ATLASSERT( hProp );
+        ATLASSERT( pValue );
+        if ( hProp == NULL || pValue == NULL )
+            return FALSE;
+        return hProp->GetValue( pValue );
+    }
 
    BOOL SetItemValue(HPROPERTY hProp, VARIANT* pValue)
    {
@@ -729,8 +734,8 @@ public:
                // Generate selection change notification on pure horizontal moves
                if( (iOldRow == m_iSelectedRow) && (iOldColumn != m_iSelectedCol) ) {
                   // Let owner know
-                  NMPROPERTYITEM nmh = { m_hWnd, static_cast<UINT_PTR>(GetDlgCtrlID()), PIN_SELCHANGED, prop };
-                  ::SendMessage(GetParent(), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM) &nmh);
+                  NMPROPERTYITEM nmh_1 = { m_hWnd, static_cast<UINT_PTR>(GetDlgCtrlID()), PIN_SELCHANGED, prop };
+                  ::SendMessage(GetParent(), WM_NOTIFY, nmh_1.hdr.idFrom, (LPARAM) &nmh_1);
                }
 
                // Recycle in-place editor...
