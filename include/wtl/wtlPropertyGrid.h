@@ -870,7 +870,8 @@ public:
             }
             return 0;
         }
-        if ( wParam == _T( ' ' ) ) return 0;
+        if ( wParam == _T( ' ' ) )
+            return 0;
         bHandled = FALSE;
         return 0;
     }
@@ -956,8 +957,10 @@ public:
 
     LRESULT OnNavigate( UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/ )
     {
-        if ( (m_di.dwExtStyle & PGS_EX_NOSHEETNAVIGATION) != 0 ) return 0;
-        if ( !_IsValidSelection() ) return 0;
+        if ( (m_di.dwExtStyle & PGS_EX_NOSHEETNAVIGATION) != 0 )
+            return 0;
+        if ( !_IsValidSelection() )
+            return 0;
         // Navigate in the grid control
         switch ( wParam )
         {
@@ -982,16 +985,18 @@ public:
                 }
                 break;
             case VK_RIGHT:
-                if ( _IsAppendActionItem( m_iSelectedRow ) ) break;
+                if ( _IsAppendActionItem( m_iSelectedRow ) )
+                    break;
                 if ( m_iSelectedRow >= 0 && m_iSelectedCol < m_nColumns - 1 )
                 {
                     // Can we navigate?
                     // Navigate
                     m_iSelectedCol++;
                     // Let owner know
-                    IProperty* prop = GetProperty( m_iSelectedRow, m_iSelectedCol );
+                    IProperty *     prop = GetProperty( m_iSelectedRow, m_iSelectedCol );
                     ATLASSERT( prop );
-                    NMPROPERTYITEM nmh = { m_hWnd, static_cast<UINT_PTR>(GetDlgCtrlID()), PIN_SELCHANGED, prop };
+                    NMPROPERTYITEM  nmh = { m_hWnd, static_cast<UINT_PTR>(GetDlgCtrlID()), PIN_SELCHANGED, prop };
+
                     ::SendMessage( GetParent(), WM_NOTIFY, nmh.hdr.idFrom, (LPARAM)&nmh );
                     // Repaint new and old item
                     _InvalidateItem( m_iSelectedRow, m_iSelectedCol - 1 );
@@ -999,10 +1004,12 @@ public:
                 }
                 break;
             case VK_UP:
-                if ( m_iSelectedRow > 0 ) SelectItem( m_iSelectedRow - 1, m_iSelectedCol );
+                if ( m_iSelectedRow > 0 )
+                    SelectItem( m_iSelectedRow - 1, m_iSelectedCol );
                 break;
             case VK_DOWN:
-                if ( m_iSelectedRow < GetItemCount() - 1 ) SelectItem( m_iSelectedRow + 1, m_iSelectedCol );
+                if ( m_iSelectedRow < GetItemCount() - 1 )
+                    SelectItem( m_iSelectedRow + 1, m_iSelectedCol );
                 break;
         }
         return 0;
