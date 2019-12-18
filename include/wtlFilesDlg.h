@@ -49,6 +49,7 @@ namespace ccwtl
 
         Result Open( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const filter_list& filters, HWND wnd );
         Result Save( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const filter_list& filters, HWND wnd );
+        Result SelectFolder( const std::wstring& def_path, HWND wnd );
     }
 }
 

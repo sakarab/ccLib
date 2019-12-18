@@ -110,10 +110,28 @@ namespace ccwtl
 
                 dlg.GetFilePath( sstr );
                 result.FileName = std::wstring( static_cast<LPCTSTR>(sstr) );
-
             }
             return result;
         }
+
+        FilesDlg::Result FolderDlg_7( const std::wstring& def_path, HWND wnd )
+        {
+            return FileDlg_7<CShellFileOpenDialog>( std_string(), def_path, FOS_PICKFOLDERS, {}, wnd );
+        }
+
+        FilesDlg::Result FolderDlg_XP( const std::wstring& def_path, HWND wnd )
+        {
+            CFolderDialog       dlg;
+            FilesDlg::Result    result;
+            auto                initial_path = cclib::LPSTR( def_path );
+
+            dlg.SetInitialFolder( initial_path.get() );
+            result.OK = dlg.DoModal( wnd ) == IDOK;
+            if ( result.OK )
+                result.FileName = std_string( dlg.GetFolderPath() );
+            return result;
+        }
+
     } // nemspace
 
     namespace FilesDlg
@@ -130,6 +148,13 @@ namespace ccwtl
             if ( supports_vista_dlg() )
                 return FileDlg_7<CShellFileSaveDialog>( def_ext, filename, flags, filters, wnd );
             return FileDlg_XP( FALSE, def_ext, filename, flags, filters, wnd );
+        }
+
+        Result SelectFolder( const std::wstring& def_path, HWND wnd )
+        {
+            if ( supports_vista_dlg() )
+                return FolderDlg_7( def_path, wnd );
+            return FolderDlg_XP( def_path, wnd );
         }
     }
 }
