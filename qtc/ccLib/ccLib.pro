@@ -16,10 +16,13 @@ unix {
 
 include (user_config.pri)
 
+DEFINES += FMT_HEADER_ONLY
+
 INCLUDEPATH += ../../Src \
                ../../include \
                $$ROOT_BOOST \
-               $$ROOT_LOKI/include
+               $$ROOT_LOKI/include \
+               $$ROOT_FMT/include
 
 win32 {
     INCLUDEPATH += $$ROOT_WTL\include
