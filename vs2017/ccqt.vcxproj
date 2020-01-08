@@ -249,7 +249,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -265,7 +265,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -274,7 +274,7 @@
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -290,7 +290,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -298,7 +298,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -314,7 +314,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -323,7 +323,7 @@
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -339,7 +339,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -347,7 +347,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -365,7 +365,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -374,7 +374,7 @@
     <ClCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -392,7 +392,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -400,7 +400,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -418,7 +418,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
@@ -427,7 +427,7 @@
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccqt.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -445,7 +445,7 @@
     </QtUic>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories);%(IncludePath)</IncludePath>
+      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;..\Src;%(AdditionalIncludeDirectories)</IncludePath>
       <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
     </QtMoc>
