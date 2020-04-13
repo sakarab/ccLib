@@ -24,7 +24,9 @@
 
 #include <memory>
 #include <set>
+#if _MSVC_LANG < 201703L
 #include <loki/Singleton.h>
+#endif
 #include "predef_cc.h"
 
 namespace cclib
@@ -38,7 +40,9 @@ namespace cclib
     private:
         typedef std::set<int>       container;
     private:
+#if _MSVC_LANG < 201703L
         friend struct Loki::CreateUsingNew<UntitledSequence>;
+#endif
     private:
         container       mSequence;
         // singleton
