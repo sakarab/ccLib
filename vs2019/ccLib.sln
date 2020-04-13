@@ -1,17 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccLib", "ccLib.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccqt", "ccqt.vcxproj", "{6B74B81B-682E-43D7-A953-061A318834F3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccWtl", "ccWtl.vcxproj", "{FE15B2CB-F508-4273-92A7-74D8A4AA9482}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccwx", "ccwx.vcxproj", "{910B9578-BFA9-4762-8882-E8799061A6ED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TccLib", "TccLib.vcxproj", "{DE55AA04-0F86-4442-8F90-97652CD6A37C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B12702AD-ABFB-343A-A199-8E24837244A3} = {B12702AD-ABFB-343A-A199-8E24837244A3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,22 +42,6 @@ Global
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release_Static|Win32.Build.0 = Release_Static|Win32
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release_Static|x64.ActiveCfg = Release_Static|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release_Static|x64.Build.0 = Release_Static|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|Win32.ActiveCfg = Debug_RTL|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|Win32.Build.0 = Debug_RTL|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|x64.ActiveCfg = Debug_RTL|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|x64.Build.0 = Debug_RTL|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|Win32.ActiveCfg = Debug_Static|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|Win32.Build.0 = Debug_Static|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|x64.ActiveCfg = Debug_Static|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|x64.Build.0 = Debug_Static|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|Win32.ActiveCfg = Release_RTL|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|Win32.Build.0 = Release_RTL|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|x64.ActiveCfg = Release_RTL|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|x64.Build.0 = Release_RTL|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|Win32.ActiveCfg = Release_Static|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|Win32.Build.0 = Release_Static|Win32
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|x64.ActiveCfg = Release_Static|x64
-		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|x64.Build.0 = Release_Static|x64
 		{FE15B2CB-F508-4273-92A7-74D8A4AA9482}.Debug_RTL|Win32.ActiveCfg = Debug_RTL|Win32
 		{FE15B2CB-F508-4273-92A7-74D8A4AA9482}.Debug_RTL|Win32.Build.0 = Debug_RTL|Win32
 		{FE15B2CB-F508-4273-92A7-74D8A4AA9482}.Debug_RTL|x64.ActiveCfg = Debug_RTL|x64
