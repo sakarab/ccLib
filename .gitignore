@@ -28,4 +28,7 @@ Drv.vsprops
 Rel_090.vsprops
 wxDll_3_0.props
 *.aps
+vs2019.props
+Dirs_100.props
+/vs2019/Bin
 /vs2017/Bin
