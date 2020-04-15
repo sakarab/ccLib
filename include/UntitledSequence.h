@@ -24,10 +24,12 @@
 
 #include <memory>
 #include <set>
-#if _MSVC_LANG < 201703L
-#include <loki/Singleton.h>
-#endif
+
 #include "predef_cc.h"
+
+#if CC_CPP_SUPPORT < CC_CPP_SUPPORT_2014
+    #include <loki/Singleton.h>
+#endif
 
 namespace cclib
 {
@@ -40,7 +42,7 @@ namespace cclib
     private:
         typedef std::set<int>       container;
     private:
-#if _MSVC_LANG < 201703L
+#if CC_CPP_SUPPORT < CC_CPP_SUPPORT_2014
         friend struct Loki::CreateUsingNew<UntitledSequence>;
 #endif
     private:
@@ -53,10 +55,17 @@ namespace cclib
     public:
         int getAvailable();
         void Release( int seq );
+
+#if CC_CPP_SUPPORT >= CC_CPP_SUPPORT_2014
+        static UntitledSequence& Instance();
+#endif
+
     };
 
+#if CC_CPP_SUPPORT < CC_CPP_SUPPORT_2014
     // Instantiate it with a typedef like the following in a cpp file
     // typedef Loki::SingletonHolder<UntitledSequence>     TUntitledSequence;
+#endif
 }
 
 #endif

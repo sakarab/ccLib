@@ -39,7 +39,13 @@ namespace cclib
     int UntitledSequence::getAvailable()
     {
         // adjacent diff greater then one (1)
+#if (CC_CPP_SUPPORT < CC_CPP_SUPPORT_2014)
+        struct finder { bool operator ()( int arg1, int arg2 ) const        { return arg2 - arg1 > 1; } };
+
+        container::const_iterator     it = std::adjacent_find( mSequence.begin(), mSequence.end(), finder() );
+#else
         auto    it = std::adjacent_find( mSequence.begin(), mSequence.end(), []( int arg1, int arg2 ) { return arg2 - arg1 > 1; } );
+#endif
         int     result = (it != mSequence.end()) ? *it : mSequence.size();
 
         ++result;
@@ -52,4 +58,12 @@ namespace cclib
         mSequence.erase( seq );
     }
 
+#if CC_CPP_SUPPORT >= CC_CPP_SUPPORT_2014
+    UntitledSequence& UntitledSequence::Instance()
+    {
+        static UntitledSequence     instance;
+
+        return instance;
+    }
+#endif
 }

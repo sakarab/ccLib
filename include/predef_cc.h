@@ -32,6 +32,10 @@
 
 #if defined (BOOST_COMP_MSVC_AVAILABLE)
 
+#define CC_CPP_SUPPORT          _MSVC_LANG
+#define CC_CPP_SUPPORT_2014     201402L
+#define CC_CPP_SUPPORT_2017     201703L
+
 // vs2017
 #if ( _MSC_VER >= 1900 )
     #define CC_DEPRICATED_AUTO_PTR
