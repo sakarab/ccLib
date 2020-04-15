@@ -74,6 +74,7 @@
     <ClInclude Include="..\include\cc_db.h" />
     <ClInclude Include="..\include\cc_memory.hpp" />
     <ClInclude Include="..\include\cc_odbc.h" />
+    <ClInclude Include="..\include\cc_scope_exit.h" />
     <ClInclude Include="..\include\cppCharUtils.h" />
     <ClInclude Include="..\include\cpp_lpstr.h" />
     <ClInclude Include="..\include\cpp_sstream.h" />
