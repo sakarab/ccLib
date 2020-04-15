@@ -30,6 +30,9 @@
     <ClCompile Include="..\TccLib\testStringList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\TccLib\testBase64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\TccLib\stdafx.h">
