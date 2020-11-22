@@ -8,6 +8,7 @@
       <PreprocessorDefinitions>WXUSINGDLL;wxNEEDS_DECL_BEFORE_TEMPLATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pre_ccwx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
