@@ -22,11 +22,14 @@
 #include "pre_ccqt.h"
 #include "QtSingletons.h"
 #include <QApplication>
+
+#if (__cplusplus < 201100) || (_MSC_VER < 1800)
 #include <loki/Singleton.h>
+#endif
 
 namespace // anonymous
 {
-
+#if (__cplusplus < 201100) || (_MSC_VER < 1800)
     /*********************************************************************
     ****    Settings<>
     *********************************************************************/
@@ -60,14 +63,37 @@ namespace // anonymous
     typedef Loki::SingletonHolder<QSettings, Settings_UserT>        GUserSettings;
     typedef Loki::SingletonHolder<QSettings, Settings_AllUsersT>    GAllUsersSettings;
     typedef Loki::SingletonHolder<QTranslator>                      GTranslator;
-
+#endif
 }
 
 namespace ccqt
 {
-
+#if (__cplusplus < 201100) || (_MSC_VER < 1800)
     QSettings& UserSettings() { return GUserSettings::Instance(); }
     QSettings& AllUserSettings() { return GAllUsersSettings::Instance(); }
     QTranslator& Translator() { return GTranslator::Instance(); }
+#else
+    QSettings& UserSettings()
+    {
+        static QSettings    settings( QSettings::IniFormat, QSettings::UserScope,
+                                      qApp->organizationName(), qApp->applicationName() );
 
+        return settings;
+    }
+
+    QSettings& AllUserSettings()
+    {
+        static QSettings    settings( QSettings::IniFormat, QSettings::SystemScope,
+                                      qApp->organizationName(), qApp->applicationName() );
+
+        return settings;
+    }
+
+    QTranslator& Translator()
+    {
+        static QTranslator  translator;
+
+        return translator;
+    }
+#endif
 }
