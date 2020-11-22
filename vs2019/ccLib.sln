@@ -14,6 +14,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TccLib", "TccLib.vcxproj", 
 		{B12702AD-ABFB-343A-A199-8E24837244A3} = {B12702AD-ABFB-343A-A199-8E24837244A3}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccqt", "ccqt.vcxproj", "{6B74B81B-682E-43D7-A953-061A318834F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_RTL|Win32 = Debug_RTL|Win32
@@ -90,6 +92,22 @@ Global
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|Win32.Build.0 = Release_Static|Win32
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|x64.ActiveCfg = Release_Static|x64
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|x64.Build.0 = Release_Static|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|Win32.ActiveCfg = Debug_RTL|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|Win32.Build.0 = Debug_RTL|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|x64.ActiveCfg = Debug_RTL|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_RTL|x64.Build.0 = Debug_RTL|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|Win32.ActiveCfg = Debug_Static|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|Win32.Build.0 = Debug_Static|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|x64.ActiveCfg = Debug_Static|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Debug_Static|x64.Build.0 = Debug_Static|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|Win32.ActiveCfg = Release_RTL|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|Win32.Build.0 = Release_RTL|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|x64.ActiveCfg = Release_RTL|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_RTL|x64.Build.0 = Release_RTL|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|Win32.ActiveCfg = Release_Static|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|Win32.Build.0 = Release_Static|Win32
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|x64.ActiveCfg = Release_Static|x64
+		{6B74B81B-682E-43D7-A953-061A318834F3}.Release_Static|x64.Build.0 = Release_Static|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
