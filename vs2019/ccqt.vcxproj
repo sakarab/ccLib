@@ -79,7 +79,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6B74B81B-682E-43D7-A953-061A318834F3}</ProjectGuid>
-    <Keyword>Qt4VSv1.0</Keyword>
+    <Keyword>QtVS_v303</Keyword>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'" Label="Configuration">
@@ -135,15 +136,9 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
-    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
-  </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
-  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
-    <Import Project="$(QtMsBuild)\qt.props" />
-  </ImportGroup>
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
@@ -205,27 +200,10 @@
     <Import Project="ccqt.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
@@ -240,11 +218,78 @@
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(Configuration)_$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
+    <QtInstall>Qt59-64</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
+    <QtInstall>Qt59-32</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
+    <QtInstall>Qt59-64</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
+    <QtInstall>Qt59-64</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
+    <QtInstall>Qt59-32</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
+    <QtInstall>Qt59-64</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
+    <QtInstall>Qt59-32</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
+    <QtInstall>Qt59-32</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -257,16 +302,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|Win32'">
@@ -282,16 +325,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>WIN32;_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_RTL|x64'">
@@ -306,16 +347,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
@@ -331,16 +370,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>_DEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS=1;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|Win32'">
@@ -357,16 +394,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|Win32'">
@@ -384,16 +419,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>WIN32;NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_RTL|x64'">
@@ -410,16 +443,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
@@ -437,16 +468,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <QtUic>
-      <QTDIR>$(QTDIR)</QTDIR>
-      <InputFile>%(FullPath)</InputFile>
-      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>.\GeneratedFiles</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
     <QtMoc>
-      <OutputFile>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)\moc_%(Filename).cpp</OutputFile>
-      <IncludePath>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>NDEBUG;_LIB;WIN32_LEAN_AND_MEAN;QT_CORE_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SECURE_SCL=0;_CRT_NON_CONFORMING_SWPRINTFS=1;_CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES=0;NO_CDFASTCALL;wxCFG=_141;_USING_V110_SDK71_;_UNICODE;UNICODE</Define>
       <ForceInclude>pre_ccqt.h;../../../include/%(Filename)%(Extension)</ForceInclude>
+      <QtMocDir>.\GeneratedFiles\$(ConfigurationName)_$(PlatformName)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
     </QtMoc>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -457,7 +486,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)_$(PlatformName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="Qt59-32" Qt5Version_x0020_x64="Qt59-64" MocOptions="" />
+      <UserProperties />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
