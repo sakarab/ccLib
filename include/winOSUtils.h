@@ -79,6 +79,7 @@ namespace ccwin
 
     void ExecuteProgram( const std::wstring& command );
     DWORD ExecuteProgramWait( const std::wstring& command, DWORD timeout_msecs );
+    bool IsUserAdmin();
 }
 
 #endif
