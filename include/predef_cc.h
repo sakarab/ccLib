@@ -43,6 +43,7 @@
     #define CC_HAVE_FMT_FORMAT
     #define CC_HAVE_UNIFORM_INIT
     #define CC_HAVE_IF_WITH_INIT
+    #define CC_HAVE_STRING_VIEW
 #endif
 
 // vs2013

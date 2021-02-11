@@ -26,6 +26,7 @@
 #include <limits>
 #include <vector>
 #include <string>
+#include <cpp_string.h>
 
 namespace cclib
 {
@@ -45,8 +46,10 @@ namespace cclib
 
     std::string Base64Encode( const std::vector<unsigned char>& src );
     std::string Base64Encode( const unsigned char * const src, size_t src_len );
+    std::string Base64Encode( const string_view& src );
     std::vector<unsigned char> Base64Decode( const std::string& src );
     std::vector<unsigned char> Base64Decode( const char * const src, size_t src_len );
+    std::vector<unsigned char> Base64Decode( const string_view& src );
 }
 
 #endif

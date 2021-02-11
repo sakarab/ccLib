@@ -186,6 +186,11 @@ namespace cclib
         return std::string( encoded.begin(), encoded.end() );
     }
 
+    std::string Base64Encode( const string_view& src )
+    {
+        return Base64Encode( reinterpret_cast<const unsigned char *>(src.data()), src.size() );
+    }
+
     std::vector<unsigned char> Base64Decode( const std::string& src )
     {
         if ( src.empty() )
@@ -198,5 +203,10 @@ namespace cclib
         if ( !src || !src_len )
             return std::vector<unsigned char>();
         return std::vector<unsigned char>();
+    }
+
+    std::vector<unsigned char> Base64Decode( const string_view& src )
+    {
+        return Base64Decode( src.data(), src.size() );
     }
 }

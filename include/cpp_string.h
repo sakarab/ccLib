@@ -42,6 +42,7 @@
 #define STD_STRING_DEFINED
 
 #include <string>
+#include <predef_cc.h>
 #include "utf8.h"
 
 #if defined(_UNICODE) || defined(UNICODE)
@@ -53,8 +54,21 @@ typedef std_string::value_type      std_char;
 
 #endif
 
+#if !defined( CC_HAVE_STRING_VIEW )
+    #include <boost/utility/string_view.hpp>
+    #include <boost/utility/string_view_fwd.hpp>
+#endif
+
 namespace cclib
 {
+#ifdef CC_HAVE_STRING_VIEW
+    typedef std::string_view        string_view;
+    typedef std::wstring_view       wstring_view;
+#else
+    typedef boost::string_view      string_view;
+    typedef boost::wstring_view     wstring_view;
+#endif
+
     /************************************************************
     ********    CharConstant
     ************************************************************/
