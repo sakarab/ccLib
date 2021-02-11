@@ -19,8 +19,12 @@
 // information.
 //***************************************************************************
 
-#ifndef CPP_STRING_LIST_H
-#define CPP_STRING_LIST_H
+#ifndef CPP_STRINGLIST_H
+#define CPP_STRINGLIST_H
+
+#if defined(CPP_STRING_LIST_H)
+    #pragma message("It is best not to #include both 'cpp_StringList.h' and 'cpp_string_list.h'.")
+#endif
 
 #include <string>
 #include <vector>

@@ -22,6 +22,10 @@
 #ifndef CPP_STRING_LIST_H
 #define CPP_STRING_LIST_H
 
+#if defined(CPP_STRINGLIST_H)
+    #pragma message("It is best not to #include both 'cpp_StringList.h' and 'cpp_string_list.h'.")
+#endif
+
 #include <string>
 #include <vector>
 #include <cpp_string.h>
