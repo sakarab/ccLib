@@ -44,6 +44,7 @@
     #define CC_HAVE_UNIFORM_INIT
     #define CC_HAVE_IF_WITH_INIT
     #define CC_HAVE_STRING_VIEW
+    #define CC_HAVE_INITIALIZER_LIST
 #endif
 
 // vs2013

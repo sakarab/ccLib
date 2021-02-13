@@ -8,7 +8,8 @@
 #include "aboutdlg.h"
 #include "MainDlg.h"
 #include "cclib_tests.h"
-#include <fmt/format.h>
+#include <cc_scope_exit.h>
+#include <boost/scope_exit.hpp>
 
 BOOL CMainDlg::PreTranslateMessage(MSG* pMsg)
 {
@@ -82,19 +83,30 @@ LRESULT CMainDlg::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOO
 
 LRESULT CMainDlg::OnClearLog( WORD, WORD wID, HWND, BOOL & )
 {
+#if defined(CC_HAVE_INLINE_FUNCTORS)
+	int		a = 5;
+	int		b = 5;
+
+	CC_SCOPE_EXIT( ([&a, &b]{ a = 0; }) );
+	CC_SCOPE_EXIT( ([&a, &b]{ a = 0; }) );
+#endif
     mLog.SetWindowText( _TEXT("") );
     return LRESULT();
 }
 
 LRESULT CMainDlg::OnTestStringList( WORD, WORD wID, HWND, BOOL & )
 {
+#if defined(CC_HAVE_INLINE_FUNCTORS)
     testStringList( mLog );
+#endif
     return LRESULT();
 }
 
 LRESULT CMainDlg::OnTestBase64( WORD, WORD wID, HWND, BOOL & )
 {
+#if defined(CC_HAVE_INLINE_FUNCTORS)
     testBase64( mLog );
+#endif
     return LRESULT();
 }
 

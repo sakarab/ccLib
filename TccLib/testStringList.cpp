@@ -9,18 +9,24 @@
 
 namespace
 {
-    using StringViewList = std::vector<std::string_view>;
-    using WStringViewList = std::vector<std::wstring_view>;
-    using StringVector = std::vector<std::string>;
-    using StringList = std::list<std::string>;
-    using CharBuffer = std::vector<char>;
+    typedef std::vector<cclib::string_view>     StringViewList;
+    typedef std::vector<cclib::wstring_view>    WStringViewList;
+    typedef std::vector<std::string>            StringVector;
+    typedef std::list<std::string>              StringList;
+    typedef std::vector<char>                   CharBuffer;
 }
 
 void testStringList( CRichEditCtrl& logger )
 {
+#if defined(CC_HAVE_INITIALIZER_LIST)
     StringVector    original = { "", "", "" };
     StringList      list = { "", "", "" };
     CharBuffer      buffer   = { 'a', 'b', 'c' };
+#else
+    StringVector    original;
+    StringList      list;
+    CharBuffer      buffer;
+#endif
 
     // string from vector<string>
     std::string     sstr = cclib::ToString( original );

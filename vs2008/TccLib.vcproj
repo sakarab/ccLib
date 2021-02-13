@@ -2,10 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="ccLib"
-	ProjectGUID="{D9A06BA3-0708-4176-A1C3-6311E938E065}"
-	RootNamespace="ccLib"
-	Keyword="Qt4VSv1.0"
+	Name="TccLib"
+	ProjectGUID="{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}"
+	RootNamespace="TccLib"
+	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -21,8 +21,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug_RTL|Win32"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -42,9 +42,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
-				RuntimeLibrary="3"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -56,10 +55,15 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				SubSystem="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -69,6 +73,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -76,8 +83,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_RTL|x64"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -98,9 +105,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
-				RuntimeLibrary="3"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -112,10 +118,15 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				SubSystem="2"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -125,6 +136,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -132,8 +146,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_RTL|Win32"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -154,10 +168,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="2"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -169,10 +181,16 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -182,6 +200,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -189,8 +210,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_RTL|x64"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -212,10 +233,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="2"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -227,10 +246,16 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -240,6 +265,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -247,8 +275,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Static|Win32"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -268,9 +296,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				RuntimeLibrary="1"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -282,10 +310,15 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				SubSystem="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -295,6 +328,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -302,8 +338,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Static|x64"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Dbg_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -324,9 +360,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				RuntimeLibrary="1"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -338,10 +374,15 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				SubSystem="2"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -351,6 +392,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -358,8 +402,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Static|Win32"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -380,10 +424,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -395,10 +438,16 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -410,13 +459,16 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release_Static|x64"
-			ConfigurationType="4"
-			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\ccLib.vsprops"
+			ConfigurationType="1"
+			InheritedPropertySheets=".\Rel_090.vsprops;.\Dirs_090.vsprops;.\TccLib.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -438,10 +490,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\Src;&quot;$(BOOST_INC)&quot;;.\GeneratedFiles"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -453,10 +504,16 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -466,6 +523,9 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -481,39 +541,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\Src\boDateUtils.cpp"
+				RelativePath="..\TccLib\AboutDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\BomUtils.cpp"
+				RelativePath="..\TccLib\MainDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\Src\cpp_lpstr.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\cpp_string.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\cppCharUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\IDirIter_Boost.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\ITStream.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\LibLoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\pre_cc.cpp"
+				RelativePath="..\TccLib\stdafx.cpp"
 				>
 				<FileConfiguration
 					Name="Debug_RTL|Win32"
@@ -581,39 +617,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\Src\ScanDirectory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\smException.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\UntitledSequence.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\win_str.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winBuffers.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winClasses.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winOSUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winUtils.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\winVersion.cpp"
+				RelativePath="..\TccLib\TccLib.cpp"
 				>
 			</File>
 		</Filter>
@@ -623,123 +627,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\include\boDateUtils.h"
+				RelativePath="..\TccLib\AboutDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\BomUtils.h"
+				RelativePath="..\TccLib\MainDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_array.hpp"
+				RelativePath="..\TccLib\resource.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cc_atomic.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cc_db.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cc_memory.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cc_scope_exit.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_lpstr.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_sstream.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cpp_string.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\cppCharUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\IDirIter_Boost.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\IDirIterator.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ITStream.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\LibLoader.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Src\pre_cc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\predef_cc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\RefCnt.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ScanDirectory.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\SharedFlag.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\smException.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\Thread.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\UntitledSequence.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\utf8.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\win_str.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winBuffers.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winClasses.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winOSUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winUtils.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\winVersion.h"
+				RelativePath="..\TccLib\stdafx.h"
 				>
 			</File>
 		</Filter>
@@ -748,9 +648,13 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath="..\TccLib\TccLib.rc"
+				>
+			</File>
 		</Filter>
 		<File
-			RelativePath=".\ccLib.vsprops"
+			RelativePath=".\TccLib.vsprops"
 			>
 		</File>
 	</Files>

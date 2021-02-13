@@ -4,6 +4,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccLib", "ccLib.vcproj", "{D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccWtl", "ccWtl.vcproj", "{66518ACD-C1EB-49AD-90EB-BDECEAB45953}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TccLib", "TccLib.vcproj", "{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D9A06BA3-0708-4176-A1C3-6311E938E065} = {D9A06BA3-0708-4176-A1C3-6311E938E065}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_RTL|Win32 = Debug_RTL|Win32
@@ -48,6 +53,22 @@ Global
 		{66518ACD-C1EB-49AD-90EB-BDECEAB45953}.Release_Static|Win32.Build.0 = Release_Static|Win32
 		{66518ACD-C1EB-49AD-90EB-BDECEAB45953}.Release_Static|x64.ActiveCfg = Release_Static|x64
 		{66518ACD-C1EB-49AD-90EB-BDECEAB45953}.Release_Static|x64.Build.0 = Release_Static|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_RTL|Win32.ActiveCfg = Debug_RTL|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_RTL|Win32.Build.0 = Debug_RTL|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_RTL|x64.ActiveCfg = Debug_RTL|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_RTL|x64.Build.0 = Debug_RTL|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_Static|Win32.ActiveCfg = Debug_Static|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_Static|Win32.Build.0 = Debug_Static|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_Static|x64.ActiveCfg = Debug_Static|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Debug_Static|x64.Build.0 = Debug_Static|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_RTL|Win32.ActiveCfg = Release_RTL|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_RTL|Win32.Build.0 = Release_RTL|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_RTL|x64.ActiveCfg = Release_RTL|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_RTL|x64.Build.0 = Release_RTL|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_Static|Win32.ActiveCfg = Release_Static|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_Static|Win32.Build.0 = Release_Static|Win32
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_Static|x64.ActiveCfg = Release_Static|x64
+		{FD06780B-C2D3-4DA3-8CF9-3936CF4CA361}.Release_Static|x64.Build.0 = Release_Static|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

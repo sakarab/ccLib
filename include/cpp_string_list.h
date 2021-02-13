@@ -34,8 +34,12 @@ namespace cclib
 {
     template <class CH> struct type_helper
     {
-        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
-        typedef std::basic_string_view<CH, std::char_traits<CH>>                    string_view_type;
+        typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH> >    string_type;
+#ifdef CC_HAVE_STRING_VIEW
+        typedef std::basic_string_view<CH, std::char_traits<CH> >                 string_view_type;
+#else
+        typedef boost::basic_string_view<CH, std::char_traits<CH> >               string_view_type;
+#endif
     };
 
 #pragma region ToString

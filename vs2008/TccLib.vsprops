@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1253"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="TccLib"
+	OutputDirectory="$(SolutionDir)$(ConfigurationName)_$(PlatformName)"
+	IntermediateDirectory="$(SolutionDir)$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="..\include;&quot;$(WTLINC)&quot;;&quot;$(BOOST_INC)&quot;"
+	/>
+	<Tool
+		Name="VCResourceCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(WTLINC)&quot;"
+	/>
+</VisualStudioPropertySheet>

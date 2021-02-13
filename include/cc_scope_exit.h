@@ -23,19 +23,41 @@
 #if !defined (CC_SCOPE_EXIT_H)
 #define CC_SCOPE_EXIT_H
 
+#include <predef_cc.h>
 #include <boost/preprocessor/cat.hpp>
+
+#if defined(CC_HAVE_INLINE_FUNCTORS)
+    #include <functional>
+#else
+    #include <boost/function.hpp>
+#endif
+
 
 namespace cclib
 {
-    template <typename FUNC> struct scope_exit
+#if defined(CC_HAVE_INLINE_FUNCTORS)
+    class scope_exit
     {
-        FUNC    mFunc;
-        explicit scope_exit( const FUNC& func ) : mFunc(func)       {};
-        scope_exit()                                                { mFunc(); }
+    private:
+        std::function<void()>   mOnExit;
+    public:
+        scope_exit( const std::function<void()>& on_exit ) : mOnExit(on_exit)       {}
+        ~scope_exit()                                                               { mOnExit(); }
     };
-}
 
-#define CC_SCOPE_EXIT_IMPL(name,function)       cclib::scope_exit   name(function)
-#define CC_SCOPE_EXIT(a)                        CC_SCOPE_EXIT_IMPL( BOOST_PP_CAT( se_, __LINE__ ), a )
+    #define CC_SCOPE_EXIT_IMPL(name,function)       cclib::scope_exit   name(function)
+    #define CC_SCOPE_EXIT(a)                        CC_SCOPE_EXIT_IMPL( BOOST_PP_CAT( se_, __LINE__ ), a )
+#else
+    //template <typename FUNC> struct scope_exit
+    //{
+    //    FUNC    mFunc;
+    //    explicit scope_exit( const FUNC& func ) : mFunc(func)       {};
+    //    scope_exit()                                                { mFunc(); }
+    //};
+
+    //#define CC_SCOPE_EXIT_IMPL(name,function)       cclib::scope_exit   name(function)
+    //#define CC_SCOPE_EXIT(a)                        CC_SCOPE_EXIT_IMPL( BOOST_PP_CAT( se_, __LINE__ ), a )
+#endif
+}
 
 #endif
