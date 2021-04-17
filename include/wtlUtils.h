@@ -27,6 +27,7 @@
 #include <string>
 #include "cpp_string.h"
 #include <atlctrls.h>
+#include <atltypes.h>
 #include <ShellAPI.h>
 #include "winClasses.h"
 
