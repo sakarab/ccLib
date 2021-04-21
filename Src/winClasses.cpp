@@ -847,7 +847,7 @@ namespace ccwin
     void TFileStreamEx::Raise_LastError()
     {
 #if defined (CC_HAVE_FMT_FORMAT)
-        throw std::runtime_error( fmt::format( "Error: 0x{X}, {s}", mLastError, SysErrorMessage( mLastError ) ) );
+        throw std::runtime_error( fmt::format( "Error: 0x{:X}, {:s}", mLastError, SysErrorMessage( mLastError ) ) );
 #else
         throw std::runtime_error( boost::str( boost::format( "Error: 0x%1%, %2%" )
                                               % boost::io::group( std::uppercase, std::hex, mLastError )
