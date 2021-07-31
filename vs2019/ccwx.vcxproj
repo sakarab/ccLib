@@ -38,8 +38,8 @@
     <None Include="ccwx.props" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\pre_ccwx.h" />
     <ClInclude Include="..\include\wxApp.h" />
+    <ClInclude Include="..\Src\pre_ccwx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\pre_ccwx.cpp">

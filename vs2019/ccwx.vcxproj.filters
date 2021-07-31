@@ -21,7 +21,7 @@
     <ClInclude Include="..\include\wxApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\pre_ccwx.h">
+    <ClInclude Include="..\Src\pre_ccwx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
