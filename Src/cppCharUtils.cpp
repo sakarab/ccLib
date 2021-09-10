@@ -202,7 +202,7 @@ namespace cclib
     {
         if ( !src || !src_len )
             return std::vector<unsigned char>();
-        return std::vector<unsigned char>();
+        return Any64Decode_NP( src, src_len, ReverseCharset_Create( Base64Set ) );
     }
 
     std::vector<unsigned char> Base64Decode( const string_view& src )
