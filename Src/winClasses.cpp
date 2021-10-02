@@ -810,27 +810,25 @@ namespace ccwin
 
     void TFileStreamEx::Open( const TCHAR *fname, WORD create_mode, WORD access_share_mode )
     {
-        static const ULONG AccessMode[3] = { GENERIC_READ, GENERIC_WRITE, GENERIC_READ | GENERIC_WRITE };
+        static const ULONG AccessMode[4] = { GENERIC_READ, GENERIC_WRITE, GENERIC_READ | GENERIC_WRITE, 0 };
         static const LONG  ShareMode[5]  = { 0, 0, FILE_SHARE_READ, FILE_SHARE_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE };
 
-        if (((create_mode & 3) < rfmOpenAlways) && ((access_share_mode & 0xF0) <= fmShareDenyNone) )
+        WORD    access_mode = access_share_mode & 3;
+        WORD    share_mode  = access_share_mode & 0xF0;
+
+        if ( access_mode >= fmOpenReadWrite || share_mode > fmShareDenyNone || create_mode == 0 )
+            return;
+
+        mHandle = CreateFile( fname, AccessMode[access_mode], ShareMode[share_mode >> 4], NULL, create_mode, FILE_ATTRIBUTE_NORMAL, 0 );
+
+        DWORD   last_error = GetLastError();
+
+        if ( mHandle == INVALID_HANDLE_VALUE )
         {
-            mHandle = CreateFile( fname,
-                                  AccessMode[access_share_mode & 3],
-                                  ShareMode[(access_share_mode & 0xF0) >> 4],
-                                  NULL,
-                                  create_mode,
-                                  FILE_ATTRIBUTE_NORMAL, 0 );
-
-            DWORD   last_error = GetLastError();
-
-            if ( mHandle == INVALID_HANDLE_VALUE )
-            {
-                if ( (create_mode == rfmCreateNew) || (create_mode == rfmCreateAlways) )
-                    UnableTo( "create", last_error );
-                else // rfmOpenExisting, rfmOpenAlways
-                    UnableTo( "open", last_error );
-            }
+            if ( (create_mode == rfmCreateNew) || (create_mode == rfmCreateAlways) )
+                UnableTo( "create", last_error );
+            else // rfmOpenExisting, rfmOpenAlways
+                UnableTo( "open", last_error );
         }
     }
 
