@@ -11,7 +11,7 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 unix {
-    QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs
+    QMAKE_CXXFLAGS += -std=c++11 -Wno-unused-local-typedefs -Wdeprecated-copy
 }
 
 include (user_config.pri)
@@ -63,6 +63,7 @@ HEADERS += \
     ../../include/cpp_sstream.h \
     ../../include/Thread2.h \
     ../../Src/pre_cc.h \
+    ../../Src/pre_ccqt.h \
     ../../include/predef_cc.h
 
 unix {

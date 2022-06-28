@@ -57,6 +57,8 @@ typedef std_string::value_type      std_char;
 #if !defined( CC_HAVE_STRING_VIEW )
     #include <boost/utility/string_view.hpp>
     #include <boost/utility/string_view_fwd.hpp>
+#else
+    #include <string_view>
 #endif
 
 namespace cclib
@@ -115,9 +117,23 @@ namespace cclib
         static const char *strrchr( const char *s, int c )                      { return std::strrchr( s, c ); }
         static char *strrchr( char *s, int c )                                  { return std::strrchr( s, c ); }
         static int strcmp( const char *s1, const char *s2 ) 	                { return std::strcmp( s1, s2 ); }
-        static int stricmp( const char *s1, const char *s2 )                    { return _stricmp( s1, s2 ); }
+        static int stricmp( const char *s1, const char *s2 )
+        {
+#if defined (BOOST_COMP_MSVC_AVAILABLE)
+            return _stricmp( s1, s2 );
+#else // defined (BOOST_COMP_GNUC_AVAILABLE)
+            return strcasecmp( s1, s2 );
+#endif
+        }
         static int strncmp( const char *s1, const char *s2, size_t maxlen )     { return std::strncmp( s1, s2, maxlen ); }
-        static int strnicmp( const char *s1, const char *s2, size_t maxlen )    { return _strnicmp( s1, s2, maxlen ); }
+        static int strnicmp( const char *s1, const char *s2, size_t maxlen )
+        {
+#if defined (BOOST_COMP_MSVC_AVAILABLE)
+            return _strnicmp( s1, s2, maxlen );
+#else // defined (BOOST_COMP_GNUC_AVAILABLE)
+            return strncasecmp( s1, s2, maxlen );
+#endif
+        }
     };
 
     template <> struct stru<wchar_t>
@@ -129,9 +145,23 @@ namespace cclib
         static const wchar_t *strrchr( const wchar_t *s, wchar_t c )                { return std::wcsrchr( s, c ); }
         static wchar_t *strrchr( wchar_t *s, wchar_t c )                            { return std::wcsrchr( s, c ); }
         static int strcmp( const wchar_t *s1, const wchar_t *s2 )                   { return std::wcscmp( s1, s2 ); }
-        static int stricmp( const wchar_t *s1, const wchar_t *s2 )                  { return _wcsicmp( s1, s2 ); }
+        static int stricmp( const wchar_t *s1, const wchar_t *s2 )
+        {
+#if defined (BOOST_COMP_MSVC_AVAILABLE)
+            return _wcsicmp( s1, s2 );
+#else // defined (BOOST_COMP_GNUC_AVAILABLE)
+            return wcscasecmp( s1, s2 );
+#endif
+        }
         static int strncmp( const wchar_t *s1, const wchar_t *s2, size_t maxlen )   { return std::wcsncmp( s1, s2, maxlen ); }
-        static int strnicmp( const wchar_t *s1, const wchar_t *s2, size_t maxlen )  { return _wcsnicmp( s1, s2, maxlen ); }
+        static int strnicmp( const wchar_t *s1, const wchar_t *s2, size_t maxlen )
+        {
+#if defined (BOOST_COMP_MSVC_AVAILABLE)
+            return _wcsnicmp( s1, s2, maxlen );
+#else // defined (BOOST_COMP_GNUC_AVAILABLE)
+            return wcsncasecmp( s1, s2, maxlen );
+#endif
+        }
     };
 
     // Reminder: LFLF, CRCR and LFCR are **NOT** valid combinations

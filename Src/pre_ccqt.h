@@ -32,9 +32,9 @@
 #include <boost/smart_ptr.hpp>
 #ifndef __BORLANDC__
     #if defined (CC_HAVE_FMT_FORMAT)
-        #include <fmt\format.h>
+        #include <fmt/format.h>
     #else
-        #include <boost\format.hpp>
+        #include <boost/format.hpp>
     #endif
     #include <boost/scope_exit.hpp>
 #endif

@@ -71,6 +71,16 @@
 
 #elif defined (BOOST_COMP_GNUC_AVAILABLE)
 
+    #define CC_DEPRICATED_AUTO_PTR
+    #define CC_HAVE_ATTRIBUTES
+    #define CC_HAVE_FMT_FORMAT
+    #define CC_HAVE_UNIFORM_INIT
+    #define CC_HAVE_IF_WITH_INIT
+#if __cplusplus >= 201703L
+    #define CC_HAVE_STRING_VIEW
+#endif
+    #define CC_HAVE_INITIALIZER_LIST
+
     #define CC_HAVE_COPY_DELETE
     //#define CC_HAVE_COPY_DEFAULT
     //#define CC_HAVE_ATOMIC
