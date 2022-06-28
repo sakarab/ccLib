@@ -1,0 +1,13 @@
+* text=auto
+
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+*.vsprops text eol=crlf
+*.props text eol=crlf
+*.vcproj text eol=crlf
+*.vcxproj text eol=crlf
+*.filters text eol=crlf
+*.sln text eol=crlf
+
+*.sh text eol=lf
