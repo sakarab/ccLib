@@ -16,7 +16,7 @@ unix {
 
 include (user_config.pri)
 
-DEFINES += FMT_HEADER_ONLY
+DEFINES += FMT_HEADER_ONLY UNICODE
 
 INCLUDEPATH += ../../Src \
                ../../include \
