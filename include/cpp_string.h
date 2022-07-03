@@ -36,13 +36,14 @@
     #endif
 #endif
 
+#include <predef_cc.h>
+
 // the STD_STRING_DEFINED macro is for interoperability with pplib library
 // a library used for a single projects
 #ifndef STD_STRING_DEFINED
 #define STD_STRING_DEFINED
 
 #include <string>
-#include <predef_cc.h>
 #include "utf8.h"
 
 #if defined(_UNICODE) || defined(UNICODE)
