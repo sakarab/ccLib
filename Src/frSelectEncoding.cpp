@@ -22,6 +22,7 @@
 #include "pre_ccqt.h"
 #include "frSelectEncoding.h"
 #include <QTextStream>
+#include <qt_string.h>
 
 namespace ccqt
 {
@@ -88,7 +89,7 @@ bool frSelectEncoding::FillControls( const QString& path, int current_encoding_i
     if ( ui.cbTextPreview->checkState() != Qt::Checked )
         return false;
 
-    ui.lblPreviewBOM->setText( QString::fromStdWString( BOM::Name( mCurrentBOM ).c_str() ) );
+    ui.lblPreviewBOM->setText( ccqt::fromStdString( BOM::Name( mCurrentBOM ) ) );
 
     std::vector<QString>    text = LoadFromFile( path, IgnoreBOM() ? BOM::no_bom : mCurrentBOM, Encoding( current_encoding_idx ) );
 
@@ -139,7 +140,7 @@ void frSelectEncoding::AppendFromFile( std::vector<QString>& container, const QS
     if ( !file.open( QIODevice::ReadOnly ) )
         throw std::runtime_error( "Unable to open file" );
     if ( bom_type != BOM::no_bom )
-        st.setCodec( QString::fromStdWString( BOM::Name( bom_type ) ).toLocal8Bit() );
+        st.setCodec( ccqt::fromStdString( BOM::Name( bom_type ) ).toLocal8Bit() );
     else
         st.setCodec( encoding.toStdString().c_str() );
     AppendFromStream( container, st );

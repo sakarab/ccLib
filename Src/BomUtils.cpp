@@ -125,7 +125,7 @@ BOM::type BOM::Value( std_string name )
 {
     boost::to_lower( name );
     for ( int n = 1 ; n < static_cast<int>(sizeof(Names) / sizeof(Names[0])) ; ++n )
-        if ( std::wcscmp( name.c_str(), Names[n] ) == 0 )
+        if ( cclib::stru<std_string::value_type>::strcmp( name.c_str(), Names[n] ) == 0 )
             return BOM::type(n);
     return no_bom;
 }
