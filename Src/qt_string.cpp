@@ -22,7 +22,7 @@
 #include "pre_ccqt.h"
 #include "qt_string.h"
 
-namespace cclib
+namespace ccqt
 {
     std::string narrow_string( const QString& sstr )
     {

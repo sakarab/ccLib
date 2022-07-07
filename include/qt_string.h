@@ -26,11 +26,14 @@
 #include "cpp_string.h"
 #include <QString>
 
-namespace cclib
+namespace ccqt
 {
     std_string to_std_string( const QString& sstr );
     std::string narrow_string( const QString& sstr );
     std::wstring wide_string( const QString& sstr );
+
+    QString fromStdString( const std::string& str )     { return QString::fromStdString( str ); }
+    QString fromStdString( const std::wstring& str )    { return QString::fromStdWString( str ); }
 }
 
 #endif // QT_STRING_H
