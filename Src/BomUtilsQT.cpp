@@ -23,4 +23,4 @@
 #include <BomUtilsQT.h>
 #include <qt_string.h>
 
-BOM::type GetBom( const QString& file_name )        { return GetBom( cclib::to_std_string( file_name ) ); }
+BOM::type GetBom( const QString& file_name )        { return GetBom( ccqt::to_std_string( file_name ) ); }

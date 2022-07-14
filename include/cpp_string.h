@@ -44,6 +44,7 @@
 #define STD_STRING_DEFINED
 
 #include <string>
+#include <cstring>
 #include "utf8.h"
 
 #if defined(_UNICODE) || defined(UNICODE)

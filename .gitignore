@@ -1,8 +1,8 @@
 *.res
 Debug_*
 Release_*
-qtc/Debug
-qtc/Release
+Debug-*
+Release-*
 GeneratedFiles
 *.opendb
 *.sdf
@@ -16,7 +16,7 @@ ipch
 OutC*
 *.local
 *.db
-/qtc/ccLib/user_config.pri
+user_config.pri
 *.ddp
 Dbg_100.props
 Qt_591.props
