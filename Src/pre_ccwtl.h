@@ -26,6 +26,10 @@
 
 #include "predef_cc.h"
 
+// minimum versions for WTL 10_8356
+#define WINVER          0x0600
+#define _WIN32_WINNT	0x0600
+
 #include <string>
 #include <vector>
 #include <boost/lexical_cast.hpp>
@@ -38,10 +42,6 @@
     #endif
     #include <boost/scope_exit.hpp>
 #endif
-
-// minimum versions for WTL 10_8356
-#define WINVER          0x0600
-#define _WIN32_WINNT	0x0600
 
 #define _WTL_USE_CSTRING
 #include <atlbase.h>
