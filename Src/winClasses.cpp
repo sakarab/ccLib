@@ -237,17 +237,21 @@ namespace ccwin
     void TStringList::DelimitedText( const std::wstring& value, wchar_t delimiter )
     {
         container       slist;
-        std::size_t     start = 0;
-        std::size_t     end_pos = value.find_first_of( delimiter, start );
 
-        while ( end_pos != std::wstring::npos )
+        if ( !value.empty() )
         {
-            slist.push_back( value.substr( start, end_pos - start ) );
-            start = end_pos + 1;
-            end_pos = value.find_first_of( delimiter, start );
+            std::size_t     start = 0;
+            std::size_t     end_pos = value.find_first_of( delimiter, start );
+
+            while ( end_pos != std::wstring::npos )
+            {
+                slist.push_back( value.substr( start, end_pos - start ) );
+                start = end_pos + 1;
+                end_pos = value.find_first_of( delimiter, start );
+            }
+            if ( start < value.length() )
+                slist.push_back( value.substr( start ) );
         }
-        if ( start < value.length() )
-            slist.push_back( value.substr( start ) );
         mList = slist;
     }
 
@@ -265,8 +269,7 @@ namespace ccwin
         if ( buffer.empty() )
             return std::wstring();
         else
-            buffer.resize( buffer.size() - 1 );
-        return std::wstring( &buffer.front(), buffer.size() );
+            return std::wstring( &buffer.front(), buffer.size() - 1 );
     }
 
     TStringList::size_type TStringList::Count() const

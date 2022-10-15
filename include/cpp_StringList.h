@@ -56,10 +56,8 @@ namespace cclib
         }
         if ( buffer.empty() )
             return string_type();
-        buffer.resize( buffer.size() - 1 );
-        if ( buffer.empty() )
-            return string_type();
-        return string_type( &buffer.front(), buffer.size() );
+        else
+            return string_type( &buffer.front(), buffer.size() - 1 );
     }
 
     // vector<string> DelimitedText( string text, char delimiter )
@@ -72,17 +70,20 @@ namespace cclib
         typedef std::basic_string<CH, std::char_traits<CH>, std::allocator<CH>>     string_type;
         typedef std::vector<string_type>                                            list_type;
 
-        std::size_t     start = 0;
-        std::size_t     end_pos = sstr.find_first_of( delimiter, start );
-
-        while ( end_pos != string_type::npos )
+        if ( !sstr.empty() )
         {
-            list.push_back( sstr.substr( start, end_pos - start ) );
-            start = end_pos + 1;
-            end_pos = sstr.find_first_of( delimiter, start );
+            std::size_t     start = 0;
+            std::size_t     end_pos = sstr.find_first_of( delimiter, start );
+
+            while ( end_pos != string_type::npos )
+            {
+                list.push_back( sstr.substr( start, end_pos - start ) );
+                start = end_pos + 1;
+                end_pos = sstr.find_first_of( delimiter, start );
+            }
+            if ( start < sstr.length() )
+                list.push_back( sstr.substr( start ) );
         }
-        if ( start < sstr.length() )
-            list.push_back( sstr.substr( start ) );
     }
 
     template <class CH>
