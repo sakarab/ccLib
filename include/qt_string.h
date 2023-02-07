@@ -32,8 +32,8 @@ namespace ccqt
     std::string narrow_string( const QString& sstr );
     std::wstring wide_string( const QString& sstr );
 
-    QString fromStdString( const std::string& str )     { return QString::fromStdString( str ); }
-    QString fromStdString( const std::wstring& str )    { return QString::fromStdWString( str ); }
+    inline QString fromStdString( const std::string& str )      { return QString::fromStdString( str ); }
+    inline QString fromStdString( const std::wstring& str )     { return QString::fromStdWString( str ); }
 }
 
 #endif // QT_STRING_H
