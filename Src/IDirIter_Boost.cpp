@@ -110,7 +110,7 @@ bool Boost_DirIterator::Next()
         {
             try
             {
-                mStack.push( IterPair( DirIterator( boost::filesystem::wpath( iter.Iter()->path().wstring() ) ) ) );
+                mStack.push( IterPair( DirIterator( boost::filesystem::path( iter.Iter()->path().wstring() ) ) ) );
                 result = true;
             }
             catch ( const boost::filesystem::filesystem_error& )
