@@ -63,6 +63,12 @@ typedef std_string::value_type      std_char;
     #include <string_view>
 #endif
 
+#if defined(_UNICODE) || defined(UNICODE)
+    typedef std::wstring_view       std_string_view;
+#else
+    typedef std::string_view        std_string_view;
+#endif
+
 namespace cclib
 {
 #ifdef CC_HAVE_STRING_VIEW
