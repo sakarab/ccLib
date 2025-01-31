@@ -64,9 +64,17 @@ typedef std_string::value_type      std_char;
 #endif
 
 #if defined(_UNICODE) || defined(UNICODE)
-    typedef std::wstring_view       std_string_view;
+    #ifdef CC_HAVE_STRING_VIEW
+        typedef std::wstring_view       std_string_view;
+    #else
+        typedef boost::wstring_view     std_string_view;
+    #endif
 #else
-    typedef std::string_view        std_string_view;
+    #ifdef CC_HAVE_STRING_VIEW
+        typedef std::string_view        std_string_view;
+    #else
+        typedef boost::string_view      std_string_view;
+    #endif
 #endif
 
 namespace cclib
