@@ -37,24 +37,14 @@
 #endif
 
 #include <predef_cc.h>
+#include <string>
+#include <cstring>
+#include "utf8.h"
 
 // the STD_STRING_DEFINED macro is for interoperability with pplib library
 // a library used for a single projects
 #ifndef STD_STRING_DEFINED
 #define STD_STRING_DEFINED
-
-#include <string>
-#include <cstring>
-#include "utf8.h"
-
-#if defined(_UNICODE) || defined(UNICODE)
-    typedef std::wstring            std_string;
-#else
-    typedef std::string             std_string;
-#endif
-typedef std_string::value_type      std_char;
-
-#endif
 
 #if !defined( CC_HAVE_STRING_VIEW )
     #include <boost/utility/string_view.hpp>
@@ -64,18 +54,23 @@ typedef std_string::value_type      std_char;
 #endif
 
 #if defined(_UNICODE) || defined(UNICODE)
+    typedef std::wstring                std_string;
     #ifdef CC_HAVE_STRING_VIEW
         typedef std::wstring_view       std_string_view;
     #else
         typedef boost::wstring_view     std_string_view;
     #endif
 #else
+    typedef std::string                 std_string;
     #ifdef CC_HAVE_STRING_VIEW
         typedef std::string_view        std_string_view;
     #else
         typedef boost::string_view      std_string_view;
     #endif
 #endif
+typedef std_string::value_type      std_char;
+
+#endif // STD_STRING_DEFINED
 
 namespace cclib
 {
