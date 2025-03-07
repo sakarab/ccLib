@@ -90,6 +90,24 @@ namespace ccwtl
             return result;
         }
 
+        inline bool EndsWith( const std::wstring_view& end, const std::wstring_view& str )
+        {
+            return str.size() >= end.size() && str.compare(str.size() - end.size(), std::string_view::npos, end) == 0;
+        }
+
+        size_t DefExtIndex( const std::wstring_view def_ext, const FilesDlg::filter_list& filters )
+        {
+            int     idx = 1;
+
+            for ( FilesDlg::filter_list::const_iterator it = filters.begin(), eend = filters.end() ; it != eend ; ++it )
+            {
+                if ( EndsWith( def_ext, std::wstring_view( it->second ) ) )
+                    return idx;
+                ++idx;
+            }
+            return filters.size();
+        }
+
         template<typename DLG> FilesDlg::Result FileDlg_7( const std::wstring& def_ext, const std::wstring& filename, DWORD flags, const FilesDlg::filter_list& filters, HWND wnd )
         {
             flags |= (FOS_NOCHANGEDIR | FOS_FORCEFILESYSTEM);
@@ -100,7 +118,11 @@ namespace ccwtl
                                          flags,
                                          def_ext.empty() ? nullptr : def_ext.c_str(),       // LPCTSTR lpszDefExt = 
                                          fspecs.empty() ? nullptr : &fspecs.front(),
-                                         filters.size() );
+                                         static_cast<UINT>(filters.size()) );
+
+            if ( !def_ext.empty() && filters.size() > 0 )
+                dlg.GetPtr()->SetFileTypeIndex( static_cast<UINT>(DefExtIndex( def_ext, filters )) );
+
             FilesDlg::Result        result;
 
             result.OK = dlg.DoModal( wnd ) == IDOK;
