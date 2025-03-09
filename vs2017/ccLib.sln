@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TccLib", "TccLib.vcxproj", 
 		{B12702AD-ABFB-343A-A199-8E24837244A3} = {B12702AD-ABFB-343A-A199-8E24837244A3}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ccTestCmd", "ccTestCmd.vcxproj", "{38134374-5F03-411B-BAC7-00E3A8045EDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_RTL|Win32 = Debug_RTL|Win32
@@ -72,6 +74,22 @@ Global
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|Win32.Build.0 = Release_Static|Win32
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|x64.ActiveCfg = Release_Static|x64
 		{DE55AA04-0F86-4442-8F90-97652CD6A37C}.Release_Static|x64.Build.0 = Release_Static|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_RTL|Win32.ActiveCfg = Debug_RTL|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_RTL|Win32.Build.0 = Debug_RTL|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_RTL|x64.ActiveCfg = Debug_RTL|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_RTL|x64.Build.0 = Debug_RTL|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_Static|Win32.ActiveCfg = Debug_Static|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_Static|Win32.Build.0 = Debug_Static|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_Static|x64.ActiveCfg = Debug_Static|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Debug_Static|x64.Build.0 = Debug_Static|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_RTL|Win32.ActiveCfg = Release_RTL|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_RTL|Win32.Build.0 = Release_RTL|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_RTL|x64.ActiveCfg = Release_RTL|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_RTL|x64.Build.0 = Release_RTL|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_Static|Win32.ActiveCfg = Release_Static|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_Static|Win32.Build.0 = Release_Static|Win32
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_Static|x64.ActiveCfg = Release_Static|x64
+		{38134374-5F03-411B-BAC7-00E3A8045EDE}.Release_Static|x64.Build.0 = Release_Static|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
