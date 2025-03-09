@@ -27,8 +27,6 @@
 #include <vector>
 #include <string>
 #include <atldlgs.h>
-#include <cpp_lpstr.h>
-#include <winUtils.h>
 
 namespace ccwtl
 {

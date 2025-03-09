@@ -23,6 +23,7 @@
 
 #include <atldlgs.h>
 #include <cpp_lpstr.h>
+#include <cpp_string.h>
 #include <winUtils.h>
 #include "wtlFilesDlg.h"
 
@@ -90,18 +91,13 @@ namespace ccwtl
             return result;
         }
 
-        inline bool EndsWith( const std::wstring_view& end, const std::wstring_view& str )
-        {
-            return str.size() >= end.size() && str.compare(str.size() - end.size(), std::string_view::npos, end) == 0;
-        }
-
         size_t DefExtIndex( const std::wstring_view def_ext, const FilesDlg::filter_list& filters )
         {
             int     idx = 1;
 
             for ( FilesDlg::filter_list::const_iterator it = filters.begin(), eend = filters.end() ; it != eend ; ++it )
             {
-                if ( EndsWith( def_ext, std::wstring_view( it->second ) ) )
+                if ( cclib::ends_with( std::wstring_view( it->second ), def_ext ) )
                     return idx;
                 ++idx;
             }
