@@ -188,6 +188,16 @@ namespace cclib
         }
     }
 
+    template <class T> bool starts_with( const T& sstr, const T& start )
+    {
+        return sstr.size() >= start.size() && T( sstr.data(), std::min( sstr.size(), start.size() ) ) == start;
+    }
+
+    template <class T> bool ends_with( const T& sstr, const T& eend )
+    {
+        return sstr.size() >= eend.size() && sstr.compare( sstr.size() - eend.size(), std::string_view::npos, eend ) == 0;
+    }
+
     // to_std_string
     std_string to_std_string( const std::string& sstr );
     std_string to_std_string( const std::wstring& sstr );
