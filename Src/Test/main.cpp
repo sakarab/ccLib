@@ -32,15 +32,30 @@
 
 #include <cpp_string.h>
 
+// TODO: Do the 'BOOST_AUTO_TEST_TEMPLATE_CASE'
 BOOST_AUTO_TEST_CASE( test_string_view )
 {
     BOOST_TEST( cclib::starts_with( cclib::string_view( "A long string" ), cclib::string_view( "A long" ) ) );
     BOOST_TEST( cclib::ends_with( cclib::string_view( "A long string" ), cclib::string_view( "ong string" ) ) );
     BOOST_TEST( cclib::starts_with( cclib::string_view( "A long string" ), cclib::string_view( "long" ) ) == false );
     BOOST_TEST( cclib::ends_with( cclib::string_view( "A long string" ), cclib::string_view( "ong stri" ) ) == false );
+    BOOST_TEST( cclib::contains( cclib::string_view( "A long string" ), cclib::string_view( "ong stri" ) ) );
+
+    BOOST_TEST( cclib::starts_with( std::string( "A long string" ), std::string( "A long" ) ) );
+    BOOST_TEST( cclib::ends_with( std::string( "A long string" ), std::string( "ong string" ) ) );
+    BOOST_TEST( cclib::starts_with( std::string( "A long string" ), std::string( "long" ) ) == false );
+    BOOST_TEST( cclib::ends_with( std::string( "A long string" ), std::string( "ong stri" ) ) == false );
+    BOOST_TEST( cclib::contains( std::string( "A long string" ), std::string( "ong stri" ) ) );
 
     BOOST_TEST( cclib::starts_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"A long" ) ) );
     BOOST_TEST( cclib::ends_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"ong string" ) ) );
     BOOST_TEST( cclib::starts_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"long" ) ) == false );
     BOOST_TEST( cclib::ends_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"ong stri" ) ) == false );
+    BOOST_TEST( cclib::contains( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"ong stri" ) ) );
+
+    BOOST_TEST( cclib::starts_with( std::wstring( L"A long string" ), std::wstring( L"A long" ) ) );
+    BOOST_TEST( cclib::ends_with( std::wstring( L"A long string" ), std::wstring( L"ong string" ) ) );
+    BOOST_TEST( cclib::starts_with( std::wstring( L"A long string" ), std::wstring( L"long" ) ) == false );
+    BOOST_TEST( cclib::ends_with( std::wstring( L"A long string" ), std::wstring( L"ong stri" ) ) == false );
+    BOOST_TEST( cclib::contains( std::wstring( L"A long string" ), std::wstring( L"ong stri" ) ) );
 }
