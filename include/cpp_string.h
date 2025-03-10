@@ -195,7 +195,12 @@ namespace cclib
 
     template <class T> bool ends_with( const T& sstr, const T& eend )
     {
-        return sstr.size() >= eend.size() && sstr.compare( sstr.size() - eend.size(), std::string_view::npos, eend ) == 0;
+        return sstr.size() >= eend.size() && sstr.compare( sstr.size() - eend.size(), T::npos, eend ) == 0;
+    }
+
+    template <class T> bool contains( const T& sstr, const T& sub_str )
+    {
+        return sstr.find( sub_str ) != T::npos;
     }
 
     // to_std_string
