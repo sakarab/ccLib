@@ -20,6 +20,11 @@
 //***************************************************************************
 
 // Using Boost test
+
+// Back off using precompiled headers
+// give it more time to understand the framework
+// #include "pre_TestCmd.h"
+
 #define BOOST_TEST_MODULE ccLibTest
 #include <boost/test/included/unit_test.hpp>
 
