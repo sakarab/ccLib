@@ -36,6 +36,11 @@ BOOST_AUTO_TEST_CASE( test_string_view )
 {
     BOOST_TEST( cclib::starts_with( cclib::string_view( "A long string" ), cclib::string_view( "A long" ) ) );
     BOOST_TEST( cclib::ends_with( cclib::string_view( "A long string" ), cclib::string_view( "ong string" ) ) );
-    //BOOST_TEST( cclib::starts_with( cclib::string_view( "A long string" ), cclib::string_view( "long" ) ) );
-    //BOOST_TEST( cclib::ends_with( cclib::string_view( "A long string" ), cclib::string_view( "ong stri" ) ) );
+    BOOST_TEST( cclib::starts_with( cclib::string_view( "A long string" ), cclib::string_view( "long" ) ) == false );
+    BOOST_TEST( cclib::ends_with( cclib::string_view( "A long string" ), cclib::string_view( "ong stri" ) ) == false );
+
+    BOOST_TEST( cclib::starts_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"A long" ) ) );
+    BOOST_TEST( cclib::ends_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"ong string" ) ) );
+    BOOST_TEST( cclib::starts_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"long" ) ) == false );
+    BOOST_TEST( cclib::ends_with( cclib::wstring_view( L"A long string" ), cclib::wstring_view( L"ong stri" ) ) == false );
 }
